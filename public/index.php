@@ -55,18 +55,6 @@ send($response);
 
 ?>
 
-<!-- 
-etapes
-maquette soit schema BDD
-BDD->s interroger sur corps de metier t besoins
-decomposer: ex machine caf
-App
-Container + config PHP DI
-Database Factory
-
-
-on commence par partie admin 
--->
 
 
 
