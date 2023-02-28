@@ -13,6 +13,6 @@ class NotFoundMiddleware extends AbstractMiddleware{
 
     public function process(ServerRequestInterface $request)
     {
-        return new Response(404, [], "Page introuvable");
+        return new Response(404, [], "not found middleware");
     }
 }

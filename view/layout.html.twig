@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ assets('/assets/css/layout.css') }}">
+    {% block meta %}
+
+    {% endblock %}
+    {% block stylesheet %}
+
+    {% endblock %}
+    {% block title %}
+
+    {% endblock %}
+</head>
+<body>
+    <header>
+        <nav>
+            {# en js faire un set attribute pour bold la class active ? #}
+            <a href="{{path('accueil')}}"><img src="{{ assets('/assets/imgs/logo/logo.svg') }}" id="logo"></a>
+            <ul>
+                <li><a href="{{path('accueil')}}">accueil</a></li>
+                <li><a href="{{path('aPropos')}}">à propos</a></li>
+                <li><a href="{{path('aPropos')}}">Nos chantiers</a></li>
+                <li><a href="{{path('aPropos')}}">devis en ligne</a></li>
+                <li><a href="{{path('aPropos')}}">FAQ</a></li>
+                <li><a href="{{path('aPropos')}}">contact</a></li>
+            </ul>
+        </nav>
+        <div>
+            <button type="button" class="langue"><img src="{{ assets('/assets/imgs/icone/france.png') }}" ></button>
+            <p>|</p>
+            <button type="button" class="langue"><img src="{{ assets('/assets/imgs/icone/royaume-uni.png') }}" ></button>
+        </div>
+
+    </header>
+
+    <main>
+        {% if hasToast() %}
+            {% for toast in renderToast() %}
+            {{ toast | raw}}
+            {% endfor %}
+        {% endif %}
+        {% block body %}
+        <!-- inserer page ici -->
+        {% endblock %}
+    </main>
+
+    <footer>
+        <section>
+            <p>20 avenue du Neuhof</p>
+            <p>67100 Strasbourg</p>
+            <p>06 12 29 06 23</p>
+        </section>
+        <nav>
+            <ul>
+                <li><a href="{{path('accueil')}}">accueil</a></li>
+                <p>|</p>
+                <li><a href="{{path('aPropos')}}">à propos</a></li>
+                <p>|</p>
+                <li><a href="{{path('aPropos')}}">Nos chantiers</a></li>
+                <p>|</p>
+                <li><a href="{{path('aPropos')}}">devis en ligne</a></li>
+                <p>|</p>
+                <li><a href="{{path('aPropos')}}">FAQ</a></li>
+                <p>|</p>
+                <li><a href="{{path('aPropos')}}">contact</a></li>
+            </ul>
+        </nav>
+        <a href="https://www.facebook.com/BrigitteKevinWilson"><img src="{{ assets('/assets/imgs/icone/fb.png') }}"></a>
+        <a href="" id="copyrigth">&copy; 2023 ~ Cmydesignprojets</a>
+
+    </footer>
+    {% block scripts %}
+    
+    {% endblock %}
+</body>
+</html>

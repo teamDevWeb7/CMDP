@@ -1,0 +1,137 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* travail sur le header */
+header{
+    width: 100%;
+    height: 10vh;
+    /* border: solid black 1px; */
+    display: flex;
+    background-color: rgb(213,180,61);
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.527);
+    position: fixed;
+}
+
+#logo{
+    filter: 5px 5px 5px rgba(71, 71, 71, 0.527);
+    -webkit-filter: drop-shadow(3px 3px 5px #525151c5);
+}
+
+header nav>a{
+    width: 4%;
+    display: flex;
+    align-items: center;
+    /* border: solid black 2px; */
+}
+
+
+header{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+/* la nav comprend le logo + les liens */
+header nav{
+    display: flex;
+    width: 90%;
+    justify-content: space-around;
+}
+header div{
+    width: 10%;
+}
+
+header nav ul{
+    display: flex;
+    width: 90%;
+    justify-content: space-around;
+    align-items: center;
+}
+
+header li{
+    list-style: none;
+    display: flex;
+    justify-content: center;
+
+}
+
+header ul a{
+    text-decoration: none;
+    text-transform: capitalize;
+    font-size: 1.2rem;
+    color: white;
+
+}
+header ul a:hover{
+    font-size: 1.4rem;
+}
+
+/* les button pour changer la langue */
+header div{
+    display: flex;
+    align-items: center;
+}
+.langue{
+    width: 50%;
+    background-color: rgb(213,180,61);
+    border: none;
+}
+.langue>img{
+    width: 55%;
+    cursor: pointer;
+}
+header p{
+    color: white;
+    font-size: 1.5rem;
+    margin-bottom: 6px;
+}
+
+
+
+
+
+/* footer */
+footer{
+    margin-top: 10vh;
+    height: 15vh;
+    display: flex;
+    align-items: center;
+    background-color: rgb(213,180,61);
+    box-shadow: 0px -5px 5px rgba(0, 0, 0, 0.452);
+    color: white;
+    font-size: 1.1rem;
+    position: relative;
+}
+
+footer section{
+    width: 15%;
+}
+
+footer nav{
+    width: 70%;
+    border: solid black 2px;
+}
+footer nav ul{
+    display: flex;
+
+}
+
+footer a{
+    text-decoration: none;
+    color: white;
+}
+
+footer img{
+    width: 10%;
+}
+
+
+
+#copyrigth{
+    position: absolute;
+    bottom: 5px;
+    left:40%;
+}

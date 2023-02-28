@@ -1,5 +1,5 @@
 <?php
-namespace core\Framework\AbstractClass;
+namespace Core\Framework\AbstractClass;
 
 
 /**

@@ -5,7 +5,6 @@ use Model\Entity\Admin;
 
 include dirname(__DIR__, 2).DIRECTORY_SEPARATOR.'public'.DIRECTORY_SEPARATOR.'index.php';
 
-// pck on a include l'index on peut use $app etc
 
 if($app){
     $container=$app->getContainer();

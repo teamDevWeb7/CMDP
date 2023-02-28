@@ -18,7 +18,7 @@ class App{
 
     private ContainerInterface $container;
 
-    private MiddlewareInterface $middleware;
+    // private MiddlewareInterface $middleware;
 
     /**
      * Initialise la liste des modules et enregistre le container
@@ -28,13 +28,8 @@ class App{
      */
     public function __construct(ContainerInterface $container, array $modules= [])
     {
-        // charger modules et instancier
-        $this->router= $container->get(Router::class);
-        // $dependencies['renderer']->addGlobale('router', $this->router);
 
-        // foreach($modules as $module){
-        //     $this->modules[]= new $module($this->router, $dependencies['renderer']);
-        // }
+        $this->router= $container->get(Router::class);
 
         foreach($modules as $module){
             $this->modules[]=$container->get($module);
