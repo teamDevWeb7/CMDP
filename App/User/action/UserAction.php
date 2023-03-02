@@ -37,11 +37,36 @@ class UserAction{
         // repo photos ? 80% oui
     }
 
+    // rendre les vues correspondantes aux noms des pages
     public function accueil(ServerRequest $request){
         return $this->renderer->render('@user/accueil');
     }
 
     public function aPropos(ServerRequest $request){
         return $this->renderer->render('@user/aPropos');
+    }
+
+    public function chantiers(ServerRequest $request){
+        return $this->renderer->render('@user/chantiers');
+    }
+
+    public function contact(ServerRequest $request){
+        return $this->renderer->render('@user/contact');
+    }
+
+    public function devis(ServerRequest $request){
+        return $this->renderer->render('@user/devis');
+    }
+
+    public function faq(ServerRequest $request){
+        return $this->renderer->render('@user/FAQ');
+    }
+
+    public function chantier(ServerRequest $request){
+        return $this->renderer->render('@user/infosChantier');
+    }
+
+    public function mentionsLeg(ServerRequest $request){
+        return $this->renderer->render('@user/ML');
     }
 }

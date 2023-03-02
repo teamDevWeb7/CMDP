@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+body{
+    position: relative;
+}
+
 /* travail sur le header */
 header{
     width: 100%;
@@ -12,7 +16,8 @@ header{
     display: flex;
     background-color: rgb(213,180,61);
     box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.527);
-    position: fixed;
+    position: sticky;
+    top: 0;
 }
 
 #logo{
@@ -58,9 +63,12 @@ header li{
 
 }
 
+nav a::first-letter{
+    text-transform: capitalize;
+}
+
 header ul a{
     text-decoration: none;
-    text-transform: capitalize;
     font-size: 1.2rem;
     color: white;
 
@@ -83,6 +91,7 @@ header div{
     width: 55%;
     cursor: pointer;
 }
+/* separateur des icones langues */
 header p{
     color: white;
     font-size: 1.5rem;
@@ -90,12 +99,25 @@ header p{
 }
 
 
+#scroll_to_top {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 25px;
+    height: 25px;
+    bottom: 20vh;
+    right: 30px;
+    border-radius: 50%;
+    background-color: rgb(228, 202, 128);
+    }
+
+
 
 
 
 /* footer */
 footer{
-    margin-top: 10vh;
     height: 15vh;
     display: flex;
     align-items: center;
@@ -106,17 +128,30 @@ footer{
     position: relative;
 }
 
+/* adresse tél */
 footer section{
     width: 15%;
+    margin-left: 2%;
+    height: 70%;
+    background-color: rgb(213,180,61);
 }
 
+/* nav */
 footer nav{
-    width: 70%;
-    border: solid black 2px;
+    width: 50%;
+    /* border: solid black 2px; */
+    margin-bottom: 2%;
+    margin-left: 6%;
+
 }
 footer nav ul{
     display: flex;
+    justify-content: space-around;
 
+}
+
+footer li{
+    list-style: none;
 }
 
 footer a{
@@ -124,12 +159,27 @@ footer a{
     color: white;
 }
 
-footer img{
-    width: 10%;
+footer a:hover{
+    font-weight: 600;
 }
 
 
+/* icone fb */
+#fb{
+    width: 10%;
+}
 
+footer img{
+    margin-left: 200%;
+    width: 35%;
+}
+
+footer img:hover{
+    width: 40%;
+    margin-left: 197%;
+}
+
+/* copyright lien mentions legales */
 #copyrigth{
     position: absolute;
     bottom: 5px;

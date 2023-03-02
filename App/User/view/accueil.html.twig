@@ -1,8 +1,57 @@
 {% extends 'layout.html.twig' %}
 
+{% block meta %}
+    <meta name="description" content="Découvrez notre entreprise de rénovation spécialisée dans la réhabilitation de vos espaces intérieurs et extérieurs.
+     Notre équipe réalise tous vos projets sur mesure, de la conception à la réalisation. Contactez-nous dès maintenant pour obtenir un devis gratuit
+      et profitez d'une expertise de qualité pour donner vie à vos idées">
+{% endblock %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="{{ assets('/assets/css/user/accueil.css') }}">
+{% endblock %}
+
+{% block title %}
+    <title>Cmydesignprojets ~ entreprise de rénovation</title>
+{% endblock %}
+
+
 {% block body %}
 
-    <div>Travailles plus vite</div>
+    {# animation #}
+    <section id="anim">
+
+    </section>
+    <section id="intro">
+        <img src="{{ assets('/assets/imgs/photos/paint-brush.jpg') }}" alt="Image décorative représentant des outils de peinture">
+        <div>
+            <h1>Pourquoi choisir Cmydesignprojets ?</h1>
+            <p id="blo">Pour tous vos projets de rénovation, Cmydesignprojets vous proposera un design unique, un suivi rigoureux, avec une attention particulière à votre satisfaction.<br>N'attendez plus, il n'y a qu'un pas entre vos rêves et vous.</p>
+            <ol>
+                <li><a href="{{path('aPropos')}}">À propos de nous 
+                    <img src="{{ assets('/assets/imgs/icone/chevron.png') }}" alt="flèche"></a></li>
+                <li><a href="{{path('chantiers')}}">Tous nos chantiers
+                    <img src="{{ assets('/assets/imgs/icone/chevron.png') }}" alt="flèche">
+                </a></li>
+                <li><a href="{{path('contact')}}">Nous contacter
+                    <img src="{{ assets('/assets/imgs/icone/chevron.png') }}" alt="flèche">
+                </a></li>
+            </ol>
+
+
+
+            <h2>Les étapes de votre idée jusqu'à sa réalisation</h2>
+            <ul id="etapes">
+                <li>Demande de devis en ligne</li>
+                <li>Rencontre avec l'équipe commerciale</li>
+                <li>Réception du devis définitif</li>
+                <li>Début des travaux</li>
+                <li>Suivi permanent avec le chef de projet</li>
+                <li>Livraison du projet, prêt à vivre</li>
+            </ul>
+        </div>
+
+    </section>
+    <button id="dev"><a href="{{path('devis')}}">Demander un devis</a></button>
     
 
 {% endblock %}

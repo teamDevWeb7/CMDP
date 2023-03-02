@@ -19,20 +19,21 @@
     <header>
         <nav>
             {# en js faire un set attribute pour bold la class active ? #}
-            <a href="{{path('accueil')}}"><img src="{{ assets('/assets/imgs/logo/logo.svg') }}" id="logo"></a>
+            <a href="{{path('accueil')}}"><img src="{{ assets('/assets/imgs/logo/logo.svg') }}" id="logo" alt="Logo de l'entreprise"></a>
             <ul>
                 <li><a href="{{path('accueil')}}">accueil</a></li>
                 <li><a href="{{path('aPropos')}}">à propos</a></li>
-                <li><a href="{{path('aPropos')}}">Nos chantiers</a></li>
-                <li><a href="{{path('aPropos')}}">devis en ligne</a></li>
-                <li><a href="{{path('aPropos')}}">FAQ</a></li>
-                <li><a href="{{path('aPropos')}}">contact</a></li>
+                <li><a href="{{path('chantiers')}}">Nos chantiers</a></li>
+                <li><a href="{{path('devis')}}">devis en ligne</a></li>
+                <li><a href="{{path('faq')}}">FAQ</a></li>
+                <li><a href="{{path('contact')}}">contact</a></li>
             </ul>
         </nav>
+        {# drapeaux choix de la langue #}
         <div>
-            <button type="button" class="langue"><img src="{{ assets('/assets/imgs/icone/france.png') }}" ></button>
+            <button type="button" class="langue"><img src="{{ assets('/assets/imgs/icone/france.png') }}" alt="drapeau français"></button>
             <p>|</p>
-            <button type="button" class="langue"><img src="{{ assets('/assets/imgs/icone/royaume-uni.png') }}" ></button>
+            <button type="button" class="langue"><img src="{{ assets('/assets/imgs/icone/royaume-uni.png') }}" alt="drapeau anglais"></button>
         </div>
 
     </header>
@@ -49,28 +50,32 @@
     </main>
 
     <footer>
+        <div id="scroll_to_top"> 
+            <a href="#top"> ZZZZ</a></div>
         <section>
             <p>20 avenue du Neuhof</p>
             <p>67100 Strasbourg</p>
-            <p>06 12 29 06 23</p>
+            <a href="tel:+33612290623">06 12 29 06 23</a>
         </section>
         <nav>
             <ul>
-                <li><a href="{{path('accueil')}}">accueil</a></li>
+                <li><a href="{{path('accueil')}}">Accueil</a></li>
                 <p>|</p>
-                <li><a href="{{path('aPropos')}}">à propos</a></li>
+                <li><a href="{{path('aPropos')}}">À propos</a></li>
                 <p>|</p>
-                <li><a href="{{path('aPropos')}}">Nos chantiers</a></li>
+                <li><a href="{{path('chantiers')}}">Nos chantiers</a></li>
                 <p>|</p>
-                <li><a href="{{path('aPropos')}}">devis en ligne</a></li>
+                <li><a href="{{path('devis')}}">Devis en ligne</a></li>
                 <p>|</p>
-                <li><a href="{{path('aPropos')}}">FAQ</a></li>
+                <li><a href="{{path('faq')}}">FAQ</a></li>
                 <p>|</p>
-                <li><a href="{{path('aPropos')}}">contact</a></li>
+                <li><a href="{{path('contact')}}">Contact</a></li>
             </ul>
         </nav>
-        <a href="https://www.facebook.com/BrigitteKevinWilson"><img src="{{ assets('/assets/imgs/icone/fb.png') }}"></a>
-        <a href="" id="copyrigth">&copy; 2023 ~ Cmydesignprojets</a>
+        {# lien FB #}
+        <a href="https://www.facebook.com/BrigitteKevinWilson" id="fb"><img src="{{ assets('/assets/imgs/icone/fb.png') }}" alt="icone facebook"></a>
+        {# copyright, permet aussi accès mentions legales #}
+        <a href="{{path('mentionsLeg')}}" id="copyrigth">&copy; 2023 ~ Cmydesignprojets</a>
 
     </footer>
     {% block scripts %}
@@ -78,3 +83,5 @@
     {% endblock %}
 </body>
 </html>
+{# alt <gr></gr>
+<7></7> #}
