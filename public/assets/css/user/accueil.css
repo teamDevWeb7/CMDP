@@ -3,6 +3,7 @@
     background-color: pink;
 }
 
+/* container img gauche + text et liens gauche */
 #intro{
     display: flex;
     align-items: center;
@@ -33,18 +34,20 @@ h1, h2{
     font-weight: 300;
     margin: 3% 0;
 }
+/* texte en haut des liens redirection */
 #blo{
     margin-bottom: 2%;
     width: 90%;
     text-align: justify;
 }
 
+/* les fleches pour acceder aux autres pages */
 #intro a img{
     width: 15px;
     height: 15px;
     margin-bottom: -3px;
 }
-
+/* liens autres pages */
 #intro a{
     text-decoration: none;
     color: rgb(68, 68, 68);
@@ -55,16 +58,16 @@ h1, h2{
 
 #intro li{
     margin-bottom: 3px;
+    list-style: inside;
 }
 
+/* style liens redirection */
 #intro ol li{
     list-style: none;
 }
 
-#etapes{
-    margin-left: 3%;
-}
 
+/* btn redirige devis */
 #dev{
     padding: 10px;
     margin-left: 41%;
