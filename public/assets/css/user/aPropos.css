@@ -4,9 +4,111 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 5vh 0;
+    margin-top: 12vh;
+    margin-bottom: 13vh;
 }
 blockquote{
     margin-top: 15px;
     font-style: italic;
 }
+
+/* les deux titres de la page */
+h1, h2{
+    color: rgb(213,180,61);
+    font-size: 2rem;
+    margin-left: 5vh;
+    margin-bottom: 8vh;
+    margin-top: 10vh;
+}
+
+/* nos valeurs, 3blocs */
+#values{
+    display: flex;
+    width: 90%;
+    margin-left: 5%;
+    justify-content: space-between;
+}
+
+#values article{
+    width: 30%;
+}
+
+#values p{
+    text-align: justify;
+    margin-bottom: 5vh;
+}
+
+h3{
+    text-align: center;
+    margin-bottom: 3vh;
+}
+
+#values img{
+    width: 50%;
+    margin-left: 25%;
+}
+
+/* section nos réalisation avec les img blur */
+#rea section{
+    margin-bottom: 93vh;
+    margin-top: 7vh;
+    position: relative;
+    width: 80%;
+    margin-left: 6%;
+}
+
+/* on force les img à prendre la taille que je veux */
+#rea div{
+    width: 50%;
+    /* height: 70vh; */
+    position: absolute;
+}
+#rea img{
+    width: 100%;
+    height: 100%;
+
+}
+
+/* positionnement etc et effets blur, avec blur.js */
+#n1{
+    top: 5px;
+    left: 0;
+    z-index: 2;
+    filter: blur(3px);
+    height: 69vh;
+}
+#n1:hover, #n3:hover{
+    z-index: 4;
+    filter: none;
+    height: 70vh;
+    top: 0;
+}
+
+#n2{
+    top: 0;
+    left: 30%;
+    z-index: 3;
+    height: 70vh;
+}
+
+#n3{
+    top: 5px;
+    left: 60%;
+    z-index: 2;
+    filter: blur(3px);
+    height: 69vh;
+}
+
+.blur{
+    z-index: 2;
+    filter: blur(3px);
+}
+
+.norm{
+    filter: none;
+}
+
+
+
+
+

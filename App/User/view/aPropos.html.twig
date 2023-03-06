@@ -15,7 +15,7 @@
 {% block body %}
 
     <section id="video">
-        <iframe width="500" height="320" src=""></iframe>
+        <iframe width="600" height="400" src=""></iframe>
         <blockquote>Parce qu'une image vaut mille mots</blockquote>
     </section>
 
@@ -33,7 +33,7 @@
         </article>
         <article>
             <h3>Un suivi personnalisé</h3>
-            <p>Parce que chaque projet est unique, nos designs le sont aussi. Notre équipe commerciale assure un suivi complet de votre projet afin de vous assurer une réalisation sur mesure de vos idées. Des conseils ciblés et une disponibilité à tout instant, nous fzaisons de nos clients notre priorité. </p>
+            <p>Parce que chaque projet est unique, nos designs le sont aussi. Notre équipe commerciale assure un suivi complet de votre projet afin de vous assurer une réalisation sur mesure de vos idées. Des conseils ciblés et une disponibilité à tout instant, nous faisons de nos clients notre priorité. </p>
             <img src="{{ assets('/assets/imgs/icone/devis.png') }}" alt="icone représentant une entreprise et ses employés">
         </article>
 
@@ -41,13 +41,17 @@
 
     <section id="rea">
         <h2>Nos réalisations</h2>
-        <h4>Notre dernier projet</h4>
-        <section>
-            <div><img src="{{ assets('/assets/imgs/photos/narf1.jpg') }}" alt="icone représentant une entreprise et ses employés"></div>
-            <div><img src="{{ assets('/assets/imgs/photos/narf2.jpg') }}" alt="icone représentant une entreprise et ses employés"></div>
-            <div><img src="{{ assets('/assets/imgs/photos/narf3.jpg') }}" alt="icone représentant une entreprise et ses employés"></div>
+        <h3>Notre dernier projet</h3>
+        <section id="blur">
+            <div id="n1"><img src="{{ assets('/assets/imgs/photos/narf1.jpg') }}" alt="icone représentant une entreprise et ses employés"></div>
+            <div id="n2"><img src="{{ assets('/assets/imgs/photos/narf2.jpg') }}" alt="icone représentant une entreprise et ses employés"></div>
+            <div id="n3"><img src="{{ assets('/assets/imgs/photos/narf3.jpg') }}" alt="icone représentant une entreprise et ses employés"></div>
         </section>
     </section>
     
 
+{% endblock %}
+
+{% block scripts %}
+    <script src="{{ assets('/assets/js/blur.js') }}"></script>
 {% endblock %}
