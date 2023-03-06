@@ -1,8 +1,59 @@
 {% extends 'layout.html.twig' %}
 
-{% block body %}
+{% block meta %}
+    <meta name="description" content="Vous avez une question, besoin d'informations supplémentaires ? Vous êtes au bon endroit.">
+{% endblock %}
 
-    <div>Contact</div>
+{% block stylesheet %}
+    <link rel="stylesheet" href="{{ assets('/assets/css/user/contact.css') }}">
+{% endblock %}
+
+{% block title %}
+    <title>Cmydesignprojets ~ Nous contacter</title>
+{% endblock %}
+
+{% block body %}
+    <div id="container">
+        <aside>
+            <div>
+                <p>20 av du Neuhof<br>67100 Strasbourg</p>
+                <p>Du lundi au vendredi<br>de 9h à 19h</p>
+                <a href="tel:+33612290623">06 12 29 06 23</a>
+            </div>
+            <div id="maps">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2640.8379539197776!2d7.764028715095967!3d48.55549757925902!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4796c96d0be6d707%3A0xf16e301fd32cd5e8!2s20%20Av.%20du%20Neuhof%2C%2067100%20Strasbourg!5e0!3m2!1sfr!2sfr!4v1678110603916!5m2!1sfr!2sfr" width="350" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </aside>
+        <section>
+            <form action="#" method="POST">
+    
+                <input type="text" id="nom" name="nom">
+                <label for="nom" id="labNom">Votre nom :</label>
+                <i id="iNom"></i>
+    
+                <input type="text" id="prenom" name="prenom">
+                <label for="prenom" id="labPrenom">Votre prénom :</label>
+                <i id="iPrenom"></i>
+    
+                <input type="text" id="mail" name="mail">
+                <label for="mail" id="labMail">Votre adresse mail :</label>
+                <i id="iMail"></i>
+    
+                <input type="text" id="tel" name="tel">
+                <label for="tel" id="labTel">Votre numéro de téléphone :</label>
+                <i id="iTel"></i>
+    
+    
+                <textarea id="message" name="message" rows="10" cols="30"></textarea>
+                <label for="message" id="labMess">Votre message :</label>
+                <i id="iMess"></i>
+    
+                <input type="submit" value="Envoyer">
+            </form>
+        </section>
+    </div>
+
+    
     
 
 {% endblock %}
