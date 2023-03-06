@@ -1,0 +1,12 @@
+/* container de la video */
+#video{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 5vh 0;
+}
+blockquote{
+    margin-top: 15px;
+    font-style: italic;
+}

@@ -26,15 +26,13 @@ class UserModule extends AbstractModule{
         $this->renderer->addPath('user', __DIR__ . DIRECTORY_SEPARATOR . 'view');
 
 
-        $this->router->get('/user/accueil', [$userAction, 'accueil'], 'accueil');
+        $this->router->get('/', [$userAction, 'accueil'], 'accueil');
         $this->router->get('/user/aPropos', [$userAction, 'aPropos'], 'aPropos' );
-        $this->router->get('/user/chantiers', [$userAction, 'chantiers'], 'chantiers');
         $this->router->get('/user/contact', [$userAction, 'contact'], 'contact');
         $this->router->post('/user/contact', [$userAction, 'contact']);
         $this->router->get('/user/devis', [$userAction, 'devis'], 'devis');
         $this->router->post('/user/devis', [$userAction, 'devis']);
         $this->router->get('/user/FAQ', [$userAction, 'faq'], 'faq');
-        $this->router->get('/user/infosChantier/{id:[\d]+}', [$userAction, 'chantier'], 'chantier');
         $this->router->get('/user/mentionsLegales', [$userAction, 'mentionsLeg'], 'mentionsLeg');
 
     }

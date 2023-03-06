@@ -1,5 +1,6 @@
 <?php
 
+use App\Chantier\ChantierModule;
 use App\User\UserModule;
 use Core\App;
 use DI\ContainerBuilder;
@@ -17,7 +18,8 @@ require dirname(__DIR__)."/vendor/autoload.php";
 
 // declare tab modules à charger
 $modules = [
-    UserModule::class
+    UserModule::class,
+    ChantierModule::class
 
 ];
 
