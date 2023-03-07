@@ -16,21 +16,24 @@ header{
     /* border: solid black 1px; */
     display: flex;
     background-color: rgb(213,180,61);
-    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.527);
+    box-shadow: 0px 5px 5px rgba(107, 107, 107, 0.452);
     position: sticky;
     top: 0;
     z-index: 100;
+    padding-left: 3vh;
 }
 
 #logo{
     filter: 5px 5px 5px rgba(71, 71, 71, 0.527);
     -webkit-filter: drop-shadow(3px 3px 5px #525151c5);
+
 }
 
 header nav>a{
     width: 4%;
     display: flex;
     align-items: center;
+
     /* border: solid black 2px; */
 }
 
@@ -45,7 +48,7 @@ header{
 header nav{
     display: flex;
     width: 90%;
-    justify-content: space-around;
+    /* border: red 1px solid; */
 }
 header div{
     width: 10%;
@@ -53,9 +56,11 @@ header div{
 
 header nav ul{
     display: flex;
-    width: 90%;
+    width: 70%;
     justify-content: space-around;
     align-items: center;
+    margin-left: 16%;
+    /* border: 1px solid black; */
 }
 
 header li{
@@ -71,12 +76,12 @@ nav a::first-letter{
 
 header ul a{
     text-decoration: none;
-    font-size: 1.2rem;
     color: white;
+    font-size: 1.2rem;
 
 }
 header ul a:hover{
-    font-size: 1.4rem;
+    color: rgb(156, 133, 0);
 }
 
 /* les button pour changer la langue */
@@ -110,6 +115,7 @@ header p{
     height: 5vh;
     bottom: 20vh;
     right: 12vw;
+    transition: .5s;
     }
 
 #scroll_to_top img{
@@ -132,14 +138,14 @@ footer{
     display: flex;
     align-items: center;
     background-color: rgb(213,180,61);
-    box-shadow: 0px -5px 5px rgba(0, 0, 0, 0.452);
+    box-shadow: 0px -5px 5px rgba(107, 107, 107, 0.452);
     color: white;
     font-size: 1.1rem;
     position: relative;
 }
 
 /* adresse tél */
-footer section{
+#infosContact{
     width: 15%;
     margin-left: 2%;
     height: 70%;
@@ -170,7 +176,7 @@ footer a{
 }
 
 footer a:hover{
-    font-weight: 600;
+    color:rgb(156, 133, 0)
 }
 
 
@@ -182,6 +188,7 @@ footer a:hover{
 footer img{
     margin-left: 200%;
     width: 35%;
+    transition: 0.5s;
 }
 
 footer img:hover{
