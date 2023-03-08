@@ -1,8 +1,68 @@
 {% extends 'layout.html.twig' %}
 
+{% block meta %}
+    <meta name="description" content="Vous ne vous y connaissez pas beaucoup en rénovation ? C My Design Projets vous propose une FAQ pour répondre à vos questions.">
+{% endblock %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="{{ assets('/assets/css/user/faq.css') }}">
+{% endblock %}
+
+{% block title %}
+    <title>Cmydesignprojets ~ FAQ</title>
+{% endblock %}
+
 {% block body %}
-
-    <div>FAQ</div>
+    <div id="prems">
+        <section id="quest">
+            <button type="button" onclick="showNhide()">Thème 1 <img src="{{ assets('/assets/imgs/icone/plus.png') }}" alt="décoration pour inviter à cliquer"></button>
+            <div class="hide">
+                <p onclick="rep()">Quest 1</p>
+                <hr>
+                <p onclick="rep1()">Quest 2</p>
+                <hr>
+                <p>dfgh</p>
+                <hr>
+                <p>fghjk</p>
+                <hr>
+                <p>fgh</p>
+            </div>
+            <button type="button" onclick="showNhide2()">Thème 2 <img src="{{ assets('/assets/imgs/icone/plus.png') }}" alt="décoration pour inviter à cliquer"></button>
+            <div class="hide">
+                <p onclick="rep()">Quest 1</p>
+                <hr>
+                <p onclick="rep1()">Quest 2</p>
+                <hr>
+                <p>dfgh</p>
+                <hr>
+                <p>fghjk</p>
+                <hr>
+                <p>fgh</p>
+                <hr>
+                <p>dfgh</p>
+                <hr>
+                <p>fghjk</p>
+                <hr>
+                <p>fgh</p>
+            </div>
+            <button type="button" onclick="showNhide3()">Thème 3 <img src="{{ assets('/assets/imgs/icone/plus.png') }}" alt="décoration pour inviter à cliquer"></button>
+            <div class="hide">
+                <p onclick="rep()">Quest 1</p>
+                <hr>
+                <p onclick="rep1()">Quest 2</p>
+            </div>
     
-
+        </section>
+        <section id="rep">
+            <p>Votre question ne figure pas dans cette FAQ ?<br><br>
+                Nous vous invitons à nous contacter directement via un formulaire de contact.<br><br>
+                <a href="{{path('contact')}}">Contactez-nous.</a>
+            </p>
+    
+        </section>
+        <div id="triche"></div>
+    </div>
+{% endblock %}
+{% block scripts %}
+    <script src="{{ assets('/assets/js/faq.js') }}"></script>
 {% endblock %}
