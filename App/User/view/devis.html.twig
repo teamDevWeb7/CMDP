@@ -1,8 +1,59 @@
 {% extends 'layout.html.twig' %}
 
-{% block body %}
+{% block meta %}
+    <meta name="description" content="Vous êtes intéressé par nos services ? Vous pouvez à tout moment réaliser un devis en ligne, après étude de votre dossier, un commercial vous accompagneras dans la suite des démarches.">
+{% endblock %}
 
-    <div>devis</div>
+{% block stylesheet %}
+    <link rel="stylesheet" href="{{ assets('/assets/css/user/devis/devis.css') }}">
+    <link rel="stylesheet" href="{{ assets('/assets/css/user/devis/devis1.css') }}">
+{% endblock %}
+
+{% block title %}
+    <title>Cmydesignprojets ~ Devis en ligne</title>
+{% endblock %}
+
+{% block body %}
+    <div id="swipe">
+        <section id="p1">
+            <section class="chemin">
+                <div class="trait"></div>
+                <div class="pts1 bigger"></div>
+                <h1>Mon bien</h1>
+                <div class="pts2"></div>
+                <h2>Ma rénovation</h2>
+                <div class="pts3"></div>
+                <h2>Mon projet</h2>
+                <div class="pts4"></div>
+                <h2>Mes coordonnées</h2>
+            </section>
+            <section id="formul">
+                <h3>Je souhaite rénover :</h3>
+                <div id="Q1">
+                    <p class="choix"><img src="{{ assets('/assets/imgs/icone/devis/app.png') }}" alt="Image d'un appartement"><span class="R">Un appartement</span></p>
+                    
+                        
+                    <p class="choix"><img src="{{ assets('/assets/imgs/icone/devis/home.png') }}" alt="Image d'une maison"><span class="R">Une maison</span></p>
+                    
+                        
+                    <p class="choix"><img src="{{ assets('/assets/imgs/icone/devis/tipi.png') }}" alt="Image d'un tipi"><span class="R">Autre</span></p>
+                </div>
+            </section>
+            <button type="button" class="suivant" onclick="swip()">Suivant</button>
+        </section>
+        <section id="p2">
+
+        </section>
+    </div>
+    
     
 
+
+
+    
+
+{% endblock %}
+{% block scripts %}
+    <script src="{{ assets('/assets/js/devis.js') }}"></script>
+    <script src="{{ assets('/assets/js/swipe.js') }}"></script>
 {% endblock %}

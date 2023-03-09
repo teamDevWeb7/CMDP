@@ -21,3 +21,8 @@ if($app){
 }
 
 // a executer dans le terminal
+
+
+
+// clé secrete communication entre site et service re CAPTCHA
+// 6LfpX-ckAAAAAN9NuwK9BKuWBfPekgenk1TinPU6

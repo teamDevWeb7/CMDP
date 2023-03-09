@@ -34,16 +34,15 @@ iframe{
 /* form */
 #formu{
     width: 50%;
-    display: flex;
-    align-items: center;
     position: relative;
+    margin-left: 10vw;
 }
 
 form{
     position: relative;
-    width: 50%;
+    width: 75%;
     height: 65vh;
-    margin-left: 18vh;
+    margin-top: 3vh;
 }
 
 /* faire les floating placeholder */
@@ -54,7 +53,7 @@ form{
 #nom{
     position: relative;
     padding: 8px 10px;
-    width: 100%;
+    width: 80%;
     border: none;
     outline: none;
     background-color: transparent;
@@ -84,7 +83,7 @@ form{
     position: absolute;
     bottom: 58vh;
     left: 0;
-    width: 100%;
+    width: 80%;
     height: 3px;
     background-color: rgb(224, 224, 224);
     transition: 0.5s;
@@ -128,7 +127,7 @@ form{
     margin-top: 1.7vh;
     position: relative;
     padding: 8px 10px;
-    width: 100%;
+    width: 80%;
     border: none;
     outline: none;
     background-color: transparent;
@@ -156,7 +155,7 @@ form{
     position: absolute;
     bottom: 50vh;
     left: 0;
-    width: 100%;
+    width: 80%;
     height: 3px;
     background-color: rgb(224, 224, 224);
     transition: 0.5s;
@@ -174,7 +173,7 @@ form{
     margin-top: 1.7vh;
     position: relative;
     padding: 8px 10px;
-    width: 100%;
+    width: 80%;
     border: none;
     outline: none;
     background-color: transparent;
@@ -202,7 +201,7 @@ form{
     position: absolute;
     bottom: 42.5vh;
     left: 0;
-    width: 100%;
+    width: 80%;
     height: 3px;
     background-color: rgb(224, 224, 224);
     transition: 0.5s;
@@ -221,7 +220,7 @@ form{
     margin-top: 1.7vh;
     position: relative;
     padding: 8px 10px;
-    width: 100%;
+    width: 80%;
     border: none;
     outline: none;
     background-color: transparent;
@@ -249,7 +248,7 @@ form{
     position: absolute;
     bottom: 34.5vh;
     left: 0;
-    width: 100%;
+    width: 80%;
     height: 3px;
     background-color: rgb(224, 224, 224);
     transition: 0.5s;
@@ -290,14 +289,16 @@ form{
     font-size: 0.80rem;
 }
 
-
+.red{
+    color: rgb(180, 3, 3);
+}
 
 
 /* style btn */
 #btn{
     position: absolute;
-    bottom: 0;
-    width: 10vw;
+    bottom: -1vh;
+    width: 8vw;
     padding: 5px;
     color: #333;
     font-size: 1.1rem;
@@ -305,7 +306,7 @@ form{
     background-color: rgb(224, 224, 224);
     border: none;
     cursor: pointer;
-    left: 32%;
+    left: 25vw;
     box-shadow: 2px 2px 5px rgba(54, 54, 54, 0.568);
 }
 
@@ -313,15 +314,12 @@ form{
     box-shadow: inset 2px 2px 5px rgba(54, 54, 54, 0.568);
 }
 
+#scroll_to_top{
+    display: none;
+}
 
-
-/* div pour cacher la fleche scroll to top */
-#triche{
+.g-recaptcha{
     position: absolute;
-    height: 20vh;
-    width: 20vh;
-    bottom: 3vh;
-    right: 0;
-    background-color: rgb(255, 255, 255);
-    z-index: 2;
+    bottom: -5vh;
+    left: 0;
 }

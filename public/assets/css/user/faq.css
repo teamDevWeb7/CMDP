@@ -72,15 +72,9 @@ hr{
     border-top: 1px solid rgba(213, 180, 61, 0.795);
 }
 
-/* div triche qui cache la fleche */
-#triche{
-    height: 15vh;
-    width: 8vw;
-    position: absolute;
-    z-index: 2;
-    bottom: 3vh;
-    left: 92vw;
-    background-color: rgb(255, 255, 255);
+/* fleche aller en haut pas besoin, page 100vh max */
+#scroll_to_top{
+    display: none;
 }
 
 .hide{
