@@ -7,6 +7,7 @@
 {% block stylesheet %}
     <link rel="stylesheet" href="{{ assets('/assets/css/user/devis/devis.css') }}">
     <link rel="stylesheet" href="{{ assets('/assets/css/user/devis/devis1.css') }}">
+    <link rel="stylesheet" href="{{ assets('/assets/css/user/devis/devis2.css') }}">
 {% endblock %}
 
 {% block title %}
@@ -15,19 +16,20 @@
 
 {% block body %}
     <div id="swipe">
-        <section id="p1">
-            <section class="chemin">
-                <div class="trait"></div>
-                <div class="pts1 bigger"></div>
-                <h1>Mon bien</h1>
-                <div class="pts2"></div>
-                <h2>Ma rénovation</h2>
-                <div class="pts3"></div>
-                <h2>Mon projet</h2>
-                <div class="pts4"></div>
-                <h2>Mes coordonnées</h2>
-            </section>
-            <section id="formul">
+        <section class="chemin">
+            <div class="trait"></div>
+            <div class="pts1 bigger"></div>
+            <h1>Mon bien</h1>
+            <div class="pts2"></div>
+            <h2>Ma rénovation</h2>
+            <div class="pts3"></div>
+            <h2>Mon projet</h2>
+            <div class="pts4"></div>
+            <h2>Mes coordonnées</h2>
+        </section>
+
+
+        <section id="p1" class="left0">
                 <h3>Je souhaite rénover :</h3>
                 <div id="Q1">
                     <p class="choix"><img src="{{ assets('/assets/imgs/icone/devis/app.png') }}" alt="Image d'un appartement"><span class="R">Un appartement</span></p>
@@ -38,12 +40,34 @@
                         
                     <p class="choix"><img src="{{ assets('/assets/imgs/icone/devis/tipi.png') }}" alt="Image d'un tipi"><span class="R">Autre</span></p>
                 </div>
-            </section>
-            <button type="button" class="suivant" onclick="swip()">Suivant</button>
+                <button type="button" class="suivant" id="s1" onclick="swip()">Suivant</button>
         </section>
-        <section id="p2">
+
+        <section id="p2" class="left">
+                <h3>De quoi pensez vous avoir besoin?</h3>
+                <div id="grid">
+                    <p><img src="{{ assets('/assets/imgs/icone/devis/roul.png') }}" alt="Image d'un rouleau à peinture" class="tooMuch"><span class="R2">Revêtements sols et murs</span></p>
+                    <p ><img src="{{ assets('/assets/imgs/icone/devis/fenetre.png') }}" alt="Image d'une fenêtre"><span class="R2">Menuiseries</span></p>
+                    <p><img src="{{ assets('/assets/imgs/icone/devis/maisFroid.png') }}" alt="Image d'une maison avec une écharpe"><span class="R2">Isolation</span></p>
+                    <p><img src="{{ assets('/assets/imgs/icone/devis/toit.png') }}" alt="Image d'une maison avec un toit en construction"><span class="R2">Toiture</span></p>
+                    <p><img src="{{ assets('/assets/imgs/icone/devis/mur.png') }}" alt="Image d'un mur en construction" class="tooMuch"><span class="R2">Travaux de construction</span></p>
+                    <p><img src="{{ assets('/assets/imgs/icone/devis/sdb.png') }}" alt="Image d'une salle de bain"><span class="R2">Salle de bain</span></p>
+                    <p><img src="{{ assets('/assets/imgs/icone/devis/jardin.png') }}" alt="Image d'un jardin"><span class="R2">Extérieur</span></p>
+                    <p><img src="{{ assets('/assets/imgs/icone/devis/cuisine.png') }}" alt="Image d'une cuisine"><span class="R2">Cuisine</span></p>
+                </div>
+                <p id="g1"><img src="{{ assets('/assets/imgs/icone/devis/outils.png') }}" alt="Image d'outils"><span class="R2">Autre</span></p>
+                <button type="button" class="preced" id="pre2" onclick="swi()">Précédent</button>
+                <button type="button" class="suivant" id="s2" onclick="swipo()">Suivant</button>
+        </section>
+
+        <section id="p3" class="left">
 
         </section>
+
+
+
+
+        
     </div>
     
     
