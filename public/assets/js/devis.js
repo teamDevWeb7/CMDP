@@ -111,8 +111,16 @@ p[6].addEventListener(
     (event)=>{
         if(span[5].getAttribute('class')==='R2'){
             span[5].setAttribute("class", "selecte");
+            besoins.push(span[5].innerText);
         }else{
             span[5].setAttribute("class", "R2");
+
+            // pr trouver index
+            let retrouver= (element)=> element === span[5].innerText;
+            index=besoins.findIndex(retrouver);
+            
+            // supprimer du tableau
+            besoins.splice(index, 1);
         }
     } 
 )
@@ -122,8 +130,16 @@ p[7].addEventListener(
     (event)=>{
         if(span[6].getAttribute('class')==='R2'){
             span[6].setAttribute("class", "selecte");
+            besoins.push(span[6].innerText);
         }else{
             span[6].setAttribute("class", "R2");
+
+            // pr trouver index
+            let retrouver= (element)=> element === span[6].innerText;
+            index=besoins.findIndex(retrouver);
+            
+            // supprimer du tableau
+            besoins.splice(index, 1);
         }
     } 
 )
@@ -133,8 +149,16 @@ p[8].addEventListener(
     (event)=>{
         if(span[7].getAttribute('class')==='R2'){
             span[7].setAttribute("class", "selecte");
+            besoins.push(span[7].innerText);
         }else{
             span[7].setAttribute("class", "R2");
+
+            // pr trouver index
+            let retrouver= (element)=> element === span[7].innerText;
+            index=besoins.findIndex(retrouver);
+            
+            // supprimer du tableau
+            besoins.splice(index, 1);
         }
     } 
 )
@@ -144,8 +168,16 @@ p[9].addEventListener(
     (event)=>{
         if(span[8].getAttribute('class')==='R2'){
             span[8].setAttribute("class", "selecte");
+            besoins.push(span[8].innerText);
         }else{
             span[8].setAttribute("class", "R2");
+
+            // pr trouver index
+            let retrouver= (element)=> element === span[8].innerText;
+            index=besoins.findIndex(retrouver);
+            
+            // supprimer du tableau
+            besoins.splice(index, 1);
         }
     } 
 )
@@ -155,8 +187,16 @@ p[10].addEventListener(
     (event)=>{
         if(span[9].getAttribute('class')==='R2'){
             span[9].setAttribute("class", "selecte");
+            besoins.push(span[9].innerText);
         }else{
             span[9].setAttribute("class", "R2");
+
+            // pr trouver index
+            let retrouver= (element)=> element === span[9].innerText;
+            index=besoins.findIndex(retrouver);
+            
+            // supprimer du tableau
+            besoins.splice(index, 1);
         }
     } 
 )
@@ -166,8 +206,16 @@ p[11].addEventListener(
     (event)=>{
         if(span[10].getAttribute('class')==='R2'){
             span[10].setAttribute("class", "selecte");
+            besoins.push(span[10].innerText);
         }else{
             span[10].setAttribute("class", "R2");
+
+            // pr trouver index
+            let retrouver= (element)=> element === span[10].innerText;
+            index=besoins.findIndex(retrouver);
+            
+            // supprimer du tableau
+            besoins.splice(index, 1);
         }
     } 
 )
@@ -177,29 +225,25 @@ p[12].addEventListener(
     (event)=>{
         if(span[11].getAttribute('class')==='R2'){
             span[11].setAttribute("class", "selecte");
+            besoins.push(span[11].innerText);
         }else{
             span[11].setAttribute("class", "R2");
+
+            // pr trouver index
+            let retrouver= (element)=> element === span[11].innerText;
+            index=besoins.findIndex(retrouver);
+            
+            // supprimer du tableau
+            besoins.splice(index, 1);
         }
     } 
 )
 
 
 
-// faire boucle if class = selecte dans tab
-// function recueil(){
-//     let i;
-//     let besoin=[span[3], span[4], span[5], span[6], span[7], span[8], span[9], span[10], span[11]];
-//     let taille=besoin.length;
-//     let besoins;
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-//     for(i=0; i<taille; i++){
-//         if(besoin[i].style.class="selecte"){
-//             alert('jojo');
-//             besoins+=besoin[i]+' ';
-//         }
-//         alert(besoins);
-//     }
-// }
+// page 3, prospect explique son projet
 
 
 

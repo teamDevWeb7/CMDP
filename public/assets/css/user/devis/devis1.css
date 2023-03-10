@@ -1,3 +1,5 @@
+/* page devis 2 */
+
 #p2{
     width: 70vw;
     margin-left: 15%;
@@ -17,6 +19,7 @@
 .left{
     left: -100vw;
 }
+
 
 /* chemin, tout est déjà ds css1 */
 #grid{
@@ -53,7 +56,7 @@
 }
 
 
-
+/* class selon si selectionné ou pas, choix multiples */
 .R2{
     border: none;
     padding: 0;

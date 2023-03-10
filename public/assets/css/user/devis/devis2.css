@@ -1,0 +1,270 @@
+/* pages devis 3 et 4 */
+
+/* le container */
+#p3{
+    height: 55vh;
+    width: 70%;
+    position: absolute;
+    top: 15vh;
+    left: -100vw;
+    margin-left: 15%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    /* background-color: beige; */
+}
+
+/* le textarea */
+#descriptionProjet{
+    border: none;
+    border-radius: 20px;
+    background-color: rgb(224, 224, 224);
+    font-size: 1rem;
+    padding: 20px;
+}
+
+
+
+/* btn suivant 3 */
+#s3{
+    bottom: 1vh;
+    right: -10vw;
+}
+/* btn precedent page 3 */
+#pre3{
+    bottom: 1vh;
+    left: -10vw;
+}
+
+
+
+/* le container */
+#p4{
+    height: 50vh;
+    width: 70%;
+    position: absolute;
+    top: 20vh;
+    left: -100vw;
+    margin-left: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: beige;
+}
+
+form{
+    position: relative;
+    border: black 1px solid;
+    width: 50%;
+    height: 100%;
+
+}
+
+
+/* NOM */
+/* input */
+#nom{
+    position: relative;
+    padding: 8px 10px;
+    width: 80%;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    font-size: 1.25rem;
+    letter-spacing: 0.05rem;
+    z-index: 3;
+    margin-top: 1.5vh;
+}
+
+/* label pour le nom */
+#labNom{
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding: 10px 0;
+    pointer-events: none;
+    font-size: 1em;
+    transition: 0.5s;
+    color: #333;
+    letter-spacing: 0.05rem;
+    z-index: 2;
+}
+
+
+/* deco, le i qui s'étend*/
+#iNom{
+    position: absolute;
+    bottom: 58vh;
+    left: 0;
+    width: 80%;
+    height: 3px;
+    background-color: rgb(224, 224, 224);
+    transition: 0.5s;
+    z-index: 2;
+    border-radius: 15px;
+    pointer-events: none;
+}
+
+
+#prenom{
+    margin-top: 1.7vh;
+    position: relative;
+    padding: 8px 10px;
+    width: 80%;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    font-size: 1.25rem;
+    letter-spacing: 0.05rem;
+    z-index: 3;
+}
+
+/* label pour le prenom */
+#labPrenom{
+    position: absolute;
+    left: 0;
+    top: 8vh;
+    padding: 10px 0;
+    pointer-events: none;
+    font-size: 1em;
+    transition: 0.5s;
+    color: #333;
+    letter-spacing: 0.05rem;
+    z-index: 2;
+}
+
+/* deco, le i qui s'étend*/
+#iPrenom{
+    position: absolute;
+    bottom: 50vh;
+    left: 0;
+    width: 80%;
+    height: 3px;
+    background-color: rgb(224, 224, 224);
+    transition: 0.5s;
+    z-index: 2;
+    border-radius: 15px;
+    pointer-events: none;
+}
+
+/* input mail */
+#mail{
+    margin-top: 1.7vh;
+    position: relative;
+    padding: 8px 10px;
+    width: 80%;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    font-size: 1.25rem;
+    letter-spacing: 0.05rem;
+    z-index: 3;
+}
+
+/* label pour le mail */
+#labMail{
+    position: absolute;
+    left: 0;
+    top: 16vh;
+    padding: 10px 0;
+    pointer-events: none;
+    font-size: 1em;
+    transition: 0.5s;
+    color: #333;
+    letter-spacing: 0.05rem;
+    z-index: 2;
+}
+
+/* deco, le i qui s'étend*/
+#iMail{
+    position: absolute;
+    bottom: 42.5vh;
+    left: 0;
+    width: 80%;
+    height: 3px;
+    background-color: rgb(224, 224, 224);
+    transition: 0.5s;
+    z-index: 2;
+    border-radius: 15px;
+    pointer-events: none;
+}
+
+
+
+/* input tel */
+#tel{
+    margin-top: 1.7vh;
+    position: relative;
+    padding: 8px 10px;
+    width: 80%;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    font-size: 1.25rem;
+    letter-spacing: 0.05rem;
+    z-index: 3;
+}
+
+/* label pour le tel */
+#labTel{
+    position: absolute;
+    left: 0;
+    top: 24vh;
+    padding: 10px 0;
+    pointer-events: none;
+    font-size: 1em;
+    transition: 0.5s;
+    color: #333;
+    letter-spacing: 0.05rem;
+    z-index: 2;
+}
+
+/* deco, le i qui s'étend*/
+#iTel{
+    position: absolute;
+    bottom: 34.5vh;
+    left: 0;
+    width: 80%;
+    height: 3px;
+    background-color: rgb(224, 224, 224);
+    transition: 0.5s;
+    z-index: 2;
+    border-radius: 15px;
+    pointer-events: none;
+}
+
+
+
+/* COMMUNS A TOUS */
+/* faire remonter le label */
+#nom:valid ~ #labNom,
+#nom:focus ~ #labNom,
+#prenom:valid ~ #labPrenom,
+#prenom:focus ~ #labPrenom,
+#mail:valid ~ #labMail,
+#mail:focus ~ #labMail,
+#tel:valid ~ #labTel,
+#tel:focus ~ #labTel
+{
+    font-size: 0.80rem;
+    transform: translateY(-19px);
+}
+/* idem ts i */
+#nom:valid ~ #iNom,
+#nom:focus ~ #iNom,
+#prenom:focus ~ #iPrenom,
+#prenom:valid ~ #iPrenom,
+#mail:focus ~ #iMail,
+#mail:valid ~ #iMail,
+#tel:valid ~ #iTel,
+#tel:focus ~ #iTel
+{
+    height: 5vh;
+}
+
+/* btn precedent page 4 */
+#pre4{
+    bottom: 1vh;
+    left: -10vw;
+}

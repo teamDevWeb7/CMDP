@@ -1,3 +1,5 @@
+/* page devis principale */
+
 /* fleche aller en haut pas besoin, page 100vh max */
 #scroll_to_top{
     display: none;
@@ -10,10 +12,10 @@
     position: absolute;
     top: 18vh;
     left: 0;
-        margin-left: 15%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+    margin-left: 15%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 /* %finit */
@@ -60,6 +62,7 @@
     top: 30%;
     left: 81%;
 }
+/* class pr page active */
 .bigger{
     height: 2.7vh;
     width: 1.5vw;
@@ -141,11 +144,7 @@ h3{
 }
 
 
-
-.move{
-    transform: translateX(-1600px);
-}
-
+/* le container de tous les modules */
 #swipe{
     width: 100vw;
     height: 75vh;
