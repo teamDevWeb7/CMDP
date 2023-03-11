@@ -41,16 +41,24 @@
 
 /* le container */
 #p4{
-    height: 50vh;
+    height: 52vh;
     width: 70%;
     position: absolute;
     top: 20vh;
     left: -100vw;
     margin-left: 15%;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     background-color: beige;
+}
+
+/* le blabla légalité */
+#p4 p{
+    font-size: 0.7rem;
+    text-align: justify;
+    width: 50%;
 }
 
 form{
@@ -58,6 +66,7 @@ form{
     border: black 1px solid;
     width: 50%;
     height: 100%;
+    margin-top: 5vh;
 
 }
 
@@ -74,14 +83,14 @@ form{
     font-size: 1.25rem;
     letter-spacing: 0.05rem;
     z-index: 3;
-    margin-top: 1.5vh;
+    margin-top: 1vh;
 }
 
 /* label pour le nom */
 #labNom{
     position: absolute;
     left: 0;
-    top: 0;
+    top: 0.5vh;
     padding: 10px 0;
     pointer-events: none;
     font-size: 1em;
@@ -95,11 +104,12 @@ form{
 /* deco, le i qui s'étend*/
 #iNom{
     position: absolute;
-    bottom: 58vh;
+    bottom: 31vh;
     left: 0;
     width: 80%;
     height: 3px;
-    background-color: rgb(224, 224, 224);
+    /* background-color: rgb(224, 224, 224); */
+    background-color: red;
     transition: 0.5s;
     z-index: 2;
     border-radius: 15px;

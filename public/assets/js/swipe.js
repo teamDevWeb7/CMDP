@@ -77,3 +77,14 @@ function swopo(){
     div[6].setAttribute('class', 'pts4 bigger');
 
 }
+
+// retour de lapage 4 à 3
+function swa(){
+    // si je suis sur page 3 et que je retourne sur page 2
+        para3.style.left="0";
+        para4.style.left="-100vw";
+
+        div[6].removeAttribute('class');
+        div[6].setAttribute('class', 'pts4');
+        div[5].setAttribute('class', 'pts3 bigger');
+}
