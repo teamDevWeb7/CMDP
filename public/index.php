@@ -61,9 +61,6 @@ $response =$app->run(ServerRequest::fromGlobals());
 // on renvoi la rep au server apres avoir transformé le retour de l'appli en une reponse comprehensible pour la machine client
 send($response);
 }
-
-$sitename='Cmydesignprojets';
-
 ?>
 
 
