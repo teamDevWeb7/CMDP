@@ -33,26 +33,26 @@ class UserAction{
 
     // rendre les vues correspondantes aux noms des pages
     public function accueil(ServerRequest $request){
-        return $this->renderer->render('@user/accueil');
+        return $this->renderer->render('@user/accueil', ['siteName' => 'Cmydesignprojets']);
     }
 
     public function aPropos(ServerRequest $request){
-        return $this->renderer->render('@user/aPropos');
+        return $this->renderer->render('@user/aPropos', ['siteName' => 'Cmydesignprojets']);
     }
 
     public function contact(ServerRequest $request){
-        return $this->renderer->render('@user/contact');
+        return $this->renderer->render('@user/contact', ['siteName' => 'Cmydesignprojets']);
     }
 
     public function devis(ServerRequest $request){
-        return $this->renderer->render('@user/devis');
+        return $this->renderer->render('@user/devis', ['siteName' => 'Cmydesignprojets']);
     }
 
     public function faq(ServerRequest $request){
-        return $this->renderer->render('@user/FAQ');
+        return $this->renderer->render('@user/FAQ', ['siteName' => 'Cmydesignprojets']);
     }
 
     public function mentionsLeg(ServerRequest $request){
-        return $this->renderer->render('@user/ML');
+        return $this->renderer->render('@user/ML', ['siteName' => 'Cmydesignprojets']);
     }
 }

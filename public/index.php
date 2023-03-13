@@ -62,6 +62,8 @@ $response =$app->run(ServerRequest::fromGlobals());
 send($response);
 }
 
+$sitename='Cmydesignprojets';
+
 ?>
 
 

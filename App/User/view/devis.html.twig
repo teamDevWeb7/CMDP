@@ -12,7 +12,7 @@
 {% endblock %}
 
 {% block title %}
-    <title>Cmydesignprojets ~ Devis en ligne</title>
+    <title>{{sitename}} ~ Devis en ligne</title>
 {% endblock %}
 
 {% block body %}
@@ -97,9 +97,10 @@
                 <input type="submit" value="Envoyer" id="btn">
             </form>
 
-            <p>Les informations recueillies à partir de ce formulaire font l’objet d’un traitement informatique par CMYDESIGNPROJETS afin de vous proposer par téléphone un rendez-vous pour l'obtention de votre devis personnalisé sans engagement et en assurer le suivi à l’issue de la prise de contact .
+            <p>
+                En cliquant sur envoyer, vous acceptez que vos données soient traitées informatiquement par {{siteName}}.
             
-            Pour en savoir plus : <a href="https://www.cnil.fr/fr/reglement-europeen-protection-donnees">Cliquez ici</a>
+                Pour en savoir plus : <a href="https://www.cnil.fr/fr/reglement-europeen-protection-donnees">Cliquez ici</a>
             </p>
 
 
@@ -111,4 +112,5 @@
 {% block scripts %}
     <script src="{{ assets('/assets/js/devis.js') }}"></script>
     <script src="{{ assets('/assets/js/swipe.js') }}"></script>
+    <script src="https://www.google.com/recaptcha/api.js" async></script>
 {% endblock %}

@@ -49,24 +49,23 @@
     margin-left: 15%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    background-color: beige;
+    /* background-color: beige; */
 }
 
 /* le blabla légalité */
 #p4 p{
     font-size: 0.7rem;
     text-align: justify;
-    width: 50%;
+    width: 45%;
 }
 
 form{
     position: relative;
-    border: black 1px solid;
+    /* border: black 1px solid; */
     width: 50%;
-    height: 100%;
-    margin-top: 5vh;
+    height: 50vh;
+    margin-top: 2vh;
 
 }
 
@@ -77,6 +76,7 @@ form{
     position: relative;
     padding: 8px 10px;
     width: 80%;
+    margin-left: 10%;
     border: none;
     outline: none;
     background-color: transparent;
@@ -89,7 +89,7 @@ form{
 /* label pour le nom */
 #labNom{
     position: absolute;
-    left: 0;
+    left: 7vh;
     top: 0.5vh;
     padding: 10px 0;
     pointer-events: none;
@@ -104,12 +104,11 @@ form{
 /* deco, le i qui s'étend*/
 #iNom{
     position: absolute;
-    bottom: 31vh;
-    left: 0;
+    bottom: 38.5vh;
+    left: 7vh;
     width: 80%;
     height: 3px;
-    /* background-color: rgb(224, 224, 224); */
-    background-color: red;
+    background-color:rgb(224, 224, 224);
     transition: 0.5s;
     z-index: 2;
     border-radius: 15px;
@@ -118,10 +117,11 @@ form{
 
 
 #prenom{
-    margin-top: 1.7vh;
+    margin-top: 1.5vh;
     position: relative;
     padding: 8px 10px;
     width: 80%;
+    margin-left: 10%;
     border: none;
     outline: none;
     background-color: transparent;
@@ -133,7 +133,7 @@ form{
 /* label pour le prenom */
 #labPrenom{
     position: absolute;
-    left: 0;
+    left: 7vh;
     top: 8vh;
     padding: 10px 0;
     pointer-events: none;
@@ -147,8 +147,8 @@ form{
 /* deco, le i qui s'étend*/
 #iPrenom{
     position: absolute;
-    bottom: 50vh;
-    left: 0;
+    bottom: 30.5vh;
+    left: 7vh;
     width: 80%;
     height: 3px;
     background-color: rgb(224, 224, 224);
@@ -164,6 +164,7 @@ form{
     position: relative;
     padding: 8px 10px;
     width: 80%;
+    margin-left: 10%;
     border: none;
     outline: none;
     background-color: transparent;
@@ -175,7 +176,7 @@ form{
 /* label pour le mail */
 #labMail{
     position: absolute;
-    left: 0;
+    left: 7vh;
     top: 16vh;
     padding: 10px 0;
     pointer-events: none;
@@ -189,9 +190,9 @@ form{
 /* deco, le i qui s'étend*/
 #iMail{
     position: absolute;
-    bottom: 42.5vh;
-    left: 0;
+    bottom: 22.5vh;
     width: 80%;
+    left:7vh;
     height: 3px;
     background-color: rgb(224, 224, 224);
     transition: 0.5s;
@@ -208,6 +209,7 @@ form{
     position: relative;
     padding: 8px 10px;
     width: 80%;
+    margin-left: 10%;
     border: none;
     outline: none;
     background-color: transparent;
@@ -219,7 +221,7 @@ form{
 /* label pour le tel */
 #labTel{
     position: absolute;
-    left: 0;
+    left: 7vh;
     top: 24vh;
     padding: 10px 0;
     pointer-events: none;
@@ -233,8 +235,8 @@ form{
 /* deco, le i qui s'étend*/
 #iTel{
     position: absolute;
-    bottom: 34.5vh;
-    left: 0;
+    bottom: 14.5vh;
+    left: 7vh;
     width: 80%;
     height: 3px;
     background-color: rgb(224, 224, 224);
@@ -271,6 +273,36 @@ form{
 #tel:focus ~ #iTel
 {
     height: 5vh;
+}
+
+/* les * pr obligatoire */
+.red{
+    color: rgb(180, 3, 3);
+}
+
+/* btn envoyer */
+#btn{
+    position: absolute;
+    bottom: 2vh;
+    width: 8vw;
+    padding: 5px;
+    color: #333;
+    font-size: 1.1rem;
+    border-radius: 15px;
+    background-color: rgb(224, 224, 224);
+    border: none;
+    cursor: pointer;
+    left: 26vw;
+    box-shadow: 2px 2px 5px rgba(54, 54, 54, 0.568);
+}
+#btn:active{
+    box-shadow: inset 2px 2px 5px rgba(54, 54, 54, 0.568);
+}
+
+.g-recaptcha{
+    position: absolute;
+    bottom: 0vh;
+    left: 1.5vw;
 }
 
 /* btn precedent page 4 */
