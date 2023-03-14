@@ -2,23 +2,30 @@
     display: flex;
     color: rgb(68, 68, 68);
     width: 100%;
-
 }
 
 /* maps et infos */
 aside{
     width: 50%;
     display: flex;
+    flex-direction: column;
     height: 75vh;
+
+}
+
+aside section{
+    display: flex;
     align-items: center;
     justify-content: space-around;
+    height: 85%;
+    margin-top: 5%;
 }
 
 aside div{
     text-align: center;
 }
 
-aside p{
+aside section p{
     margin-bottom: 2vh;
 }
 
@@ -29,6 +36,18 @@ aside a{
 iframe{
     border-radius: 10px;
 }
+
+/* le blabla légalité */
+aside>p{
+    font-size: 0.8rem;
+    text-align: center;
+    width: 85%;
+    margin-left: 10%;
+}
+aside>p a{
+    text-decoration: underline;
+}
+
 
 /* form */
 #formu{
@@ -152,7 +171,7 @@ form{
 /* deco, le i qui s'étend*/
 #iPrenom{
     position: absolute;
-    bottom: 50vh;
+    bottom: 49.75vh;
     left: 0;
     width: 80%;
     height: 3px;
@@ -185,7 +204,7 @@ form{
 #labMail{
     position: absolute;
     left: 0;
-    top: 16vh;
+    top: 16.25vh;
     padding: 10px 0;
     pointer-events: none;
     font-size: 1em;
@@ -198,7 +217,7 @@ form{
 /* deco, le i qui s'étend*/
 #iMail{
     position: absolute;
-    bottom: 42.5vh;
+    bottom: 41.75vh;
     left: 0;
     width: 80%;
     height: 3px;
@@ -232,7 +251,7 @@ form{
 #labTel{
     position: absolute;
     left: 0;
-    top: 24vh;
+    top: 24.25vh;
     padding: 10px 0;
     pointer-events: none;
     font-size: 1em;
@@ -245,7 +264,7 @@ form{
 /* deco, le i qui s'étend*/
 #iTel{
     position: absolute;
-    bottom: 34.5vh;
+    bottom: 33.75vh;
     left: 0;
     width: 80%;
     height: 3px;
