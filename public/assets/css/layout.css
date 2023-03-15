@@ -81,7 +81,7 @@ header ul a{
     font-size: 1.2rem;
 
 }
-header ul a:hover, header ul a:is(:link, :active, :visited).active{
+header ul a:hover, .pageActive{
     color: rgb(156, 133, 0);
 }
 
