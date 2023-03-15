@@ -12,15 +12,14 @@ const array={
    "/user/contact":a[5]
 }
 
+// sort le pathname de la page active
+// nom que j'ai définit dans mes routes
+let chemin = window.location.pathname;
 
 window.addEventListener(
    // event sur page qd chargée
     'load',
     (event)=>{
-      // sort le pathname de la page active
-      // nom que j'ai définit dans mes routes
-      let chemin = window.location.pathname;
-
       // manip en plus pour tableau associatif -> Object.key(...)
       // boucle forEach sur ts les éléments du tableau
       Object.keys(array).forEach(function(key){
@@ -34,4 +33,5 @@ window.addEventListener(
             array[key].setAttribute('class', 'pageActive');
          }
       })
-    } )
+   } 
+)

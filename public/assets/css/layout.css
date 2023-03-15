@@ -81,8 +81,11 @@ header ul a{
     font-size: 1.2rem;
 
 }
-header ul a:hover, .pageActive{
-    color: rgb(156, 133, 0);
+/* header ul a:hover,  */
+.pageActive{
+    /* color: rgb(124, 106, 3); */
+    font-size: 1.5rem;
+    font-weight: 600;
 }
 
 
