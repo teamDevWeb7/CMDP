@@ -113,6 +113,8 @@ my-alert button{
     border-radius: 20px;
     cursor: pointer;
     background-color: rgb(213, 180, 61);
+    color: white;
+    font-size: 1.1rem;
 }
 
 .hideAlert{

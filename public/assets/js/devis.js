@@ -66,7 +66,7 @@ p[4].addEventListener(
 
 // deuxieme page, recueil besoins
 let index;
-let besoins=[];
+var besoins=[];
 let i;
 
 

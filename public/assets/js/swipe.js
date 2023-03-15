@@ -5,7 +5,11 @@ let para2=document.getElementById('p2');
 let para3=document.getElementById('p3');
 let para4=document.getElementById('p4');
 
+let textArea=document.querySelector('textarea');
+
 let div=document.querySelectorAll('div');
+
+let pBalise=document.querySelectorAll('p');
 
 let alerte=document.querySelector('my-alert');
 
@@ -16,6 +20,7 @@ function swip(){
     // si user n'a rien selectionner
     if(Q1==null || Q1==''){
         alerte.removeAttribute('class');
+        para1.style.filter='blur(3px)';
         die;
     }
 
@@ -33,6 +38,8 @@ function swip(){
 // va avec l alerte qui empeche de passer à la page suivante
 function fermer(){
     alerte.setAttribute('class', 'hideAlert');
+    para1.style.filter='none';
+    para2.style.filter='none';
 }
 
 // retour en arriere
@@ -48,6 +55,17 @@ function swi(){
 
 // fonction suivant de lapage 2 vers 3
 function swipo(){
+
+    if(besoins.length == 0){
+        pBalise[1].innerText='Merci de sélectionner au moins une proposition';
+
+        alerte.removeAttribute('class');
+        
+        
+        para2.style.filter='blur(3px)';
+        die;
+        
+    }
     para2.removeAttribute('class');
     para2.style.left='-100vw';
 
@@ -76,6 +94,7 @@ function sw(){
 
 // fonction suivant de lapage 3 vers 4
 function swopo(){
+
     para3.removeAttribute('class');
     para3.style.left='-100vw';
 
