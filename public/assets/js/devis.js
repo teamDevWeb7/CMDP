@@ -2,13 +2,13 @@
 
 let p=document.querySelectorAll('p');
 let span=document.querySelectorAll('span');
-let Q1;
+var Q1;
 
 
 // je mets dans une var Q1 la valeur que sélectionne l'user
 
 // ajoute une class pr que user voit ce qu'il selectionne
-p[1].addEventListener(
+p[2].addEventListener(
     'click',
     (event)=>{
         if(span[0].getAttribute('class')==='R'){
@@ -19,12 +19,13 @@ p[1].addEventListener(
             // alert(Q1);
         }else{
             span[0].setAttribute("class", "R");
+            Q1='';
         }
     } 
 )
 
 // ajoute une class pr que user voit ce qu'il selectionne
-p[2].addEventListener(
+p[3].addEventListener(
     'click',
     (event)=>{
         if(span[1].getAttribute('class')==='R'){
@@ -35,12 +36,13 @@ p[2].addEventListener(
             // alert(Q1);
         }else{
             span[1].setAttribute("class", "R");
+            Q1='';
         }
     } 
 )
 
 // ajoute une class pr que user voit ce qu'il selectionne
-p[3].addEventListener(
+p[4].addEventListener(
     'click',
     (event)=>{
         if(span[2].getAttribute('class')==='R'){
@@ -51,6 +53,7 @@ p[3].addEventListener(
             // alert(Q1);
         }else{
             span[2].setAttribute("class", "R");
+            Q1='';
         }
     } 
 )
@@ -68,7 +71,7 @@ let i;
 
 
 // revetements
-p[4].addEventListener(
+p[5].addEventListener(
     'click',
     (event)=>{
         if(span[3].getAttribute('class')==='R2'){
@@ -87,7 +90,7 @@ p[4].addEventListener(
     } 
 )
 // menuiseries
-p[5].addEventListener(
+p[6].addEventListener(
     'click',
     (event)=>{
         if(span[4].getAttribute('class')==='R2'){
@@ -106,7 +109,7 @@ p[5].addEventListener(
     } 
 )
 // Isolation
-p[6].addEventListener(
+p[7].addEventListener(
     'click',
     (event)=>{
         if(span[5].getAttribute('class')==='R2'){
@@ -125,7 +128,7 @@ p[6].addEventListener(
     } 
 )
 // toiture
-p[7].addEventListener(
+p[8].addEventListener(
     'click',
     (event)=>{
         if(span[6].getAttribute('class')==='R2'){
@@ -144,7 +147,7 @@ p[7].addEventListener(
     } 
 )
 // construction
-p[8].addEventListener(
+p[9].addEventListener(
     'click',
     (event)=>{
         if(span[7].getAttribute('class')==='R2'){
@@ -163,7 +166,7 @@ p[8].addEventListener(
     } 
 )
 // sdb
-p[9].addEventListener(
+p[10].addEventListener(
     'click',
     (event)=>{
         if(span[8].getAttribute('class')==='R2'){
@@ -182,7 +185,7 @@ p[9].addEventListener(
     } 
 )
 // extérieur
-p[10].addEventListener(
+p[11].addEventListener(
     'click',
     (event)=>{
         if(span[9].getAttribute('class')==='R2'){
@@ -201,7 +204,7 @@ p[10].addEventListener(
     } 
 )
 // cuisine
-p[11].addEventListener(
+p[12].addEventListener(
     'click',
     (event)=>{
         if(span[10].getAttribute('class')==='R2'){
@@ -220,7 +223,7 @@ p[11].addEventListener(
     } 
 )
 // autre
-p[12].addEventListener(
+p[13].addEventListener(
     'click',
     (event)=>{
         if(span[11].getAttribute('class')==='R2'){

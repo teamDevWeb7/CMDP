@@ -16,7 +16,12 @@
 {% endblock %}
 
 {% block body %}
+    
     <div id="swipe">
+        <my-alert class="hideAlert">
+            <p>Merci de sélectionner une proposition</p>
+            <button onclick="fermer()">OK</button>
+        </my-alert>
         <section class="chemin">
             <div class="trait"></div>
             <div class="pts1 bigger"></div>

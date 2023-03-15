@@ -88,3 +88,33 @@
     bottom: 7vh;
     left: -10vw;
 }
+
+
+my-alert{
+    position: absolute;
+    top: 42%;
+    left: 35%;
+    height: 15vh;
+    width: 30vw;
+    border-radius: 20px;
+    border: rgba(213, 180, 61, 0.795) 2px solid;
+    z-index: 3;
+    background-color:  rgb(255, 253, 247);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+my-alert button{
+    width: 4vw;
+    height: 5vh;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    background-color: rgb(213, 180, 61);
+}
+
+.hideAlert{
+    display: none;
+}

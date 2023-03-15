@@ -5,12 +5,19 @@ let para2=document.getElementById('p2');
 let para3=document.getElementById('p3');
 let para4=document.getElementById('p4');
 
-let btnPreced=document.querySelectorAll('button');
 let div=document.querySelectorAll('div');
+
+let alerte=document.querySelector('my-alert');
 
 // suivant
 function swip(){
     // si je suis sur page 1 et que je vais sur page 2
+
+    // si user n'a rien selectionner
+    if(Q1==null || Q1==''){
+        alerte.removeAttribute('class');
+        die;
+    }
 
         para1.removeAttribute('class');
         para1.style.left='-100vw';
@@ -22,6 +29,10 @@ function swip(){
         div[3].removeAttribute('class');
         div[3].setAttribute('class', 'pts1');
         div[4].setAttribute('class', 'pts2 bigger');
+}
+// va avec l alerte qui empeche de passer à la page suivante
+function fermer(){
+    alerte.setAttribute('class', 'hideAlert');
 }
 
 // retour en arriere
