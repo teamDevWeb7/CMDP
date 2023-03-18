@@ -9,7 +9,10 @@ use Core\Session\SessionInterface;
 use Psr\Container\ContainerInterface;
 use Core\Framework\Router\RedirectTrait;
 use Core\Framework\Renderer\RendererInterface;
+use Core\Framework\Validator\Validator;
 use GuzzleHttp\Psr7\ServerRequest;
+use Model\Entity\Message;
+use Model\Entity\Prospect;
 
 class UserAction{
 
@@ -21,6 +24,8 @@ class UserAction{
     private Router $router;
     private SessionInterface $session;
     private EntityManager $manager;
+    private $userRepo;
+    private $messRepo;
 
     public function __construct(ContainerInterface $container){
         $this->container=$container;
@@ -29,6 +34,8 @@ class UserAction{
         $this->router=$container->get(Router::class);
         $this->session=$container->get(SessionInterface::class);
         $this->manager=$container->get(EntityManager::class);
+        $this->userRepo=$container->get(EntityManager::class)->getRepository(Prospect::class);
+        $this->messRepo=$container->get(EntityManager::class)->getRepository(Message::class);
     }
 
     // rendre les vues correspondantes aux noms des pages
@@ -41,7 +48,34 @@ class UserAction{
     }
 
     public function contact(ServerRequest $request){
-        return $this->renderer->render('@user/contact', ['siteName' => 'Cmydesignprojets']);
+        $method=$request->getMethod();
+
+        if($method === 'POST'){
+            $data=$request->getParsedBody();
+            // pot de miel
+            if(!empty($data['sujet'])){
+                return $this->redirect('contact');
+            }else{
+                $validator=new Validator($data);
+                // check ts champs remplis
+                $errors=$validator
+                                ->required('nom', 'prenom', 'mail', 'tel', 'message')
+                                ->email('mail')
+                                ->getErrors();
+                // si champs pas remplis ou mail pas correct renvoie toast+redirect
+                if($errors){
+                    foreach($errors as $error){
+                        $this->toaster->makeToast($error->toString(), Toaster::ERROR);
+                        return $this->redirect('contact');
+                    }
+                }
+                // laver message
+                // relier au client si existe deja sinon creer
+                // flush execute
+            }
+        }else{
+            return $this->renderer->render('@user/contact', ['siteName' => 'Cmydesignprojets']);
+        }
     }
 
     public function devis(ServerRequest $request){
