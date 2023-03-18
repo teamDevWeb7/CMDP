@@ -72,7 +72,7 @@ form{
 
 /* NOM */
 /* input */
-#nom{
+#nom1{
     position: relative;
     padding: 8px 10px;
     width: 100%;
@@ -86,7 +86,7 @@ form{
 }
 
 /* label pour le nom */
-#labNom{
+#labNom1{
     position: absolute;
     left: 0vh;
     top: 0.5vh;
@@ -101,9 +101,9 @@ form{
 
 
 /* deco, le i qui s'étend*/
-#iNom{
+#iNom1{
     position: absolute;
-    bottom: 38.5vh;
+    bottom: 39vh;
     left: 0vh;
     width: 100%;
     height: 3px;
@@ -115,7 +115,7 @@ form{
 }
 
 
-#prenom{
+#prenom1{
     margin-top: 1.5vh;
     position: relative;
     padding: 8px 10px;
@@ -129,7 +129,7 @@ form{
 }
 
 /* label pour le prenom */
-#labPrenom{
+#labPrenom1{
     position: absolute;
     left: 0vh;
     top: 8vh;
@@ -143,9 +143,9 @@ form{
 }
 
 /* deco, le i qui s'étend*/
-#iPrenom{
+#iPrenom1{
     position: absolute;
-    bottom: 30.5vh;
+    bottom: 31.5vh;
     left: 0vh;
     width: 100%;
     height: 3px;
@@ -157,7 +157,7 @@ form{
 }
 
 /* input mail */
-#mail{
+#mail1{
     margin-top: 1.7vh;
     position: relative;
     padding: 8px 10px;
@@ -171,7 +171,7 @@ form{
 }
 
 /* label pour le mail */
-#labMail{
+#labMail1{
     position: absolute;
     left: 0vh;
     top: 16vh;
@@ -185,9 +185,9 @@ form{
 }
 
 /* deco, le i qui s'étend*/
-#iMail{
+#iMail1{
     position: absolute;
-    bottom: 22.5vh;
+    bottom: 23.75vh;
     width: 100%;
     left:0vh;
     height: 3px;
@@ -201,7 +201,7 @@ form{
 
 
 /* input tel */
-#tel{
+#tel1{
     margin-top: 1.7vh;
     position: relative;
     padding: 8px 10px;
@@ -215,7 +215,7 @@ form{
 }
 
 /* label pour le tel */
-#labTel{
+#labTel1{
     position: absolute;
     left: 0vh;
     top: 24vh;
@@ -229,9 +229,9 @@ form{
 }
 
 /* deco, le i qui s'étend*/
-#iTel{
+#iTel1{
     position: absolute;
-    bottom: 14.5vh;
+    bottom: 16vh;
     left: 0vh;
     width: 100%;
     height: 3px;
@@ -246,27 +246,27 @@ form{
 
 /* COMMUNS A TOUS */
 /* faire remonter le label */
-#nom:valid ~ #labNom,
-#nom:focus ~ #labNom,
-#prenom:valid ~ #labPrenom,
-#prenom:focus ~ #labPrenom,
-#mail:valid ~ #labMail,
-#mail:focus ~ #labMail,
-#tel:valid ~ #labTel,
-#tel:focus ~ #labTel
+#nom1:valid ~ #labNom1,
+#nom1:focus ~ #labNom1,
+#prenom1:valid ~ #labPrenom1,
+#prenom1:focus ~ #labPrenom1,
+#mail1:valid ~ #labMail1,
+#mail1:focus ~ #labMail1,
+#tel1:valid ~ #labTel1,
+#tel1:focus ~ #labTel1
 {
     font-size: 0.80rem;
     transform: translateY(-19px);
 }
 /* idem ts i */
-#nom:valid ~ #iNom,
-#nom:focus ~ #iNom,
-#prenom:focus ~ #iPrenom,
-#prenom:valid ~ #iPrenom,
-#mail:focus ~ #iMail,
-#mail:valid ~ #iMail,
-#tel:valid ~ #iTel,
-#tel:focus ~ #iTel
+#nom1:valid ~ #iNom1,
+#nom1:focus ~ #iNom1,
+#prenom1:focus ~ #iPrenom1,
+#prenom1:valid ~ #iPrenom1,
+#mail1:focus ~ #iMail1,
+#mail1:valid ~ #iMail1,
+#tel1:valid ~ #iTel1,
+#tel1:focus ~ #iTel1
 {
     height: 5vh;
 }
@@ -277,7 +277,7 @@ form{
 }
 
 /* btn envoyer */
-#btn{
+#btn1{
     position: absolute;
     bottom: 2vh;
     width: 8vw;
@@ -291,7 +291,7 @@ form{
     left: 26vw;
     box-shadow: 2px 2px 5px rgba(54, 54, 54, 0.568);
 }
-#btn:active{
+#btn1:active{
     box-shadow: inset 2px 2px 5px rgba(54, 54, 54, 0.568);
 }
 
