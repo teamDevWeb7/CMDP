@@ -7,9 +7,9 @@ class ValidatorError{
     private string $rule;
 
     private array $message=[
-        'required'=>'Le champs %s est requis',
-        'email'=>"Le champs %s doit être un email valide",
-        'tel'=>"Le champs %s doit être un numéro valide provenant de France ou du Luxembourg"
+        'required'=>"Le champs '%s' est requis",
+        'email'=>"Le champs '%s' doit être un email valide",
+        'tel'=>"Le champs '%s' doit être un numéro valide provenant de France ou du Luxembourg"
     ];
 
     public function __construct(string $key, string $rule){

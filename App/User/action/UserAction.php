@@ -61,7 +61,7 @@ class UserAction{
             // }
             else{
                 $validator=new Validator($data);
-                // check ts champs remplis
+                // check ts champs ok
                 $errors=$validator
                                 ->required('nom', 'prenom', 'mail', 'tel', 'message')
                                 ->email('mail')

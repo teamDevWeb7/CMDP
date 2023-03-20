@@ -59,6 +59,12 @@ class Validator{
         return $this;
     }
 
+    /**
+     * on vérifie que le numéro rentré dans le formulaire corresponde à un numéro Français ou Luxembourgeois
+     *
+     * @param string $key
+     * @return self
+     */
     public function tel(string $key):self{
         if(!preg_match('0|\+33|\+352)[1-9]( *[0-9]{2}){4}' ,$this->data[$key])){
             $this->addError($key, 'tel');
