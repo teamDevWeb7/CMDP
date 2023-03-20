@@ -5,9 +5,7 @@ namespace Core;
 use Core\Framework\Middleware\MiddlewareInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\ResponseInterface;
-use GuzzleHttp\Psr7\Response;
 use Core\Framework\Router\Router;
-use Exception;
 use Psr\Container\ContainerInterface;
 
 class App{
@@ -18,7 +16,7 @@ class App{
 
     private ContainerInterface $container;
 
-    // private MiddlewareInterface $middleware;
+    private MiddlewareInterface $middleware;
 
     /**
      * Initialise la liste des modules et enregistre le container

@@ -55,12 +55,17 @@ class UserAction{
             // pot de miel
             if(!empty($data['sujet'])){
                 return $this->redirect('contact');
-            }else{
+            }
+            // if(){
+            //     // captcha pas coché
+            // }
+            else{
                 $validator=new Validator($data);
                 // check ts champs remplis
                 $errors=$validator
                                 ->required('nom', 'prenom', 'mail', 'tel', 'message')
                                 ->email('mail')
+                                ->tel('tel')
                                 ->getErrors();
                 // si champs pas remplis ou mail pas correct renvoie toast+redirect
                 if($errors){
