@@ -56,9 +56,11 @@ class UserAction{
             if(!empty($data['sujet'])){
                 return $this->redirect('contact');
             }
-            // if(){
-            //     // captcha pas coché
-            // }
+            // avec contact.html.twig et captcha.js ->input prend value si coché
+            if(empty($data['recaptchaResponse'])){
+                $this->toaster->makeToast("Afin d'envoyer le formulaire vous devez réussir le test captcha", Toaster::ERROR);
+                return $this->redirect('contact');
+            }
             else{
                 $validator=new Validator($data);
                 // check ts champs ok

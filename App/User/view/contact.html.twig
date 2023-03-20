@@ -10,7 +10,7 @@
 
 {% block title %}
     <title>{{siteName}} ~ Nous contacter</title>
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
 {% endblock %}
 
 {% block body %}
@@ -54,13 +54,15 @@
                 <textarea id="message" name="message" rows="10" cols="30" required="required"></textarea>
 
                 <div class="g-recaptcha" data-sitekey="6LfpX-ckAAAAAFgQUFqEEzZe9E2TlH_jFr8WLxVI"></div>
+                <input type="hidden" id="recaptchaResponse" name="recaptchaResponse">
+
                 <input type="submit" value="Envoyer" id="btn">
             </form>
         </section>
     </section>
-    
 
-    
-    
-
+{% endblock %}
+{% block scripts %}
+    <script src="https://www.google.com/recaptcha/api.js" async></script>
+    <script src="{{ assets('/assets/js/captcha.js') }}"></script>
 {% endblock %}
