@@ -55,34 +55,35 @@ class UserAction{
             // pot de miel
             if(!empty($data['sujet'])){
                 return $this->redirect('contact');
-            }
-            // avec contact.html.twig et captcha.js ->input prend value si coché
-            if(empty($data['recaptchaResponse'])){
-                $this->toaster->makeToast("Afin d'envoyer le formulaire vous devez réussir le test captcha", Toaster::ERROR);
-                return $this->redirect('contact');
-            }
-            else{
+            }else{
                 $validator=new Validator($data);
                 // check ts champs ok
                 $errors=$validator
                                 ->required('nom', 'prenom', 'mail', 'tel', 'message')
                                 ->email('mail')
-                                ->tel('tel')
+                                // pb tel
+                                // ->tel('tel')
+                                // pb 1 seule erreur
                                 ->getErrors();
-                // si champs pas remplis ou mail pas correct renvoie toast+redirect
+                // si champs pas remplis ou input !value demandée, renvoie toast+redirect
                 if($errors){
                     foreach($errors as $error){
                         $this->toaster->makeToast($error->toString(), Toaster::ERROR);
                         return $this->redirect('contact');
                     }
                 }
+                // captcha
                 // laver message
                 // relier au client si existe deja sinon creer
                 // flush execute
+                $this->toaster->makeToast("Pour l'instant ça fonctionne", Toaster::SUCCESS);
+                return $this->redirect('contact');
             }
-        }else{
-            return $this->renderer->render('@user/contact', ['siteName' => 'Cmydesignprojets']);
         }
+        else{
+            return $this->renderer->render('@user/contact', ['siteName' => 'Cmydesignprojets']);
+        };
+
     }
 
     public function devis(ServerRequest $request){

@@ -66,7 +66,15 @@ class Validator{
      * @return self
      */
     public function tel(string $key):self{
-        if(!preg_match('0|\+33|\+352)[1-9]( *[0-9]{2}){4}' ,$this->data[$key])){
+        $carac=array(".", " ", "/", "-", "(", ")");
+        $this->data[$key]=str_replace($carac, "", $this->data[$key]);
+        $regExp='^(?:(?:\+|00)33|0)\s*[1-9]*(\d{2}){4}$|^(?:(?:\+|00)352)\s*(?:[2-7]\d|81)(\d{2}){3}$';
+
+        // regExp pr num FR et foreign Lux
+        // ^(?:(?:\+|00)33|0)\s*[1-9]*(\d{2}){4}$|^(?:(?:\+|00)352)\s*(?:[2-7]\d|81)(\d{2}){3}$
+
+        // fonctionne pas, ni avec !preg_match, ni avec false... test regExp sur regex101 ct bon
+        if(preg_match($regExp ,$this->data[$key])==0){
             $this->addError($key, 'tel');
         }
         return $this;
