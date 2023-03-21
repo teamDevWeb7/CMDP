@@ -34,6 +34,7 @@ class UserModule extends AbstractModule{
         $this->router->post('/user/devis', [$userAction, 'devis']);
         $this->router->get('/user/FAQ', [$userAction, 'faq'], 'faq');
         $this->router->get('/user/mentionsLegales', [$userAction, 'mentionsLeg'], 'mentionsLeg');
+        $this->router->get('/user/PageNotFound', [$userAction, 'page'], 'PageNotFound');
 
     }
 }

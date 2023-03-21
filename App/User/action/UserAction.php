@@ -52,6 +52,7 @@ class UserAction{
 
         if($method === 'POST'){
             $data=$request->getParsedBody();
+            
             // pot de miel
             if(!empty($data['sujet'])){
                 return $this->redirect('contact');
@@ -87,11 +88,31 @@ class UserAction{
                             return $this->redirect('contact');
                         }
                     }
-                    // captcha
-                    // laver message
-                    // relier au client si existe deja sinon creer
-                    // flush execute
-                    $this->toaster->makeToast("Pour l'instant ça fonctionne", Toaster::SUCCESS);
+
+                    // laver message ?
+
+                    $prospect=$this->userRepo->find($data['mail']);
+                    $message= new Message;
+                    $message->setMessage($data['message']);
+                    $this->manager->persist($message);
+                    if($prospect){
+                        $prospect->addMessage($message);
+                        $this->manager->persist($prospect);
+                    }
+                    else{
+                        $prosp= new Prospect;
+                        $prosp->setNom($data['nom'])
+                                ->setPrenom($data['prenom'])
+                                ->setMail($data['mail'])
+                                ->setPhone($data['tel'])
+                                ->addMessage($message);
+                        $this->manager->persist($prosp);
+                    }
+                    $this->manager->flush();
+
+                    // ds ts les cas, nv Prospect et message n'a pas la clé etrangere du prospect
+
+                    $this->toaster->makeToast("Votre message a bien été envoyé", Toaster::SUCCESS);
                     return $this->redirect('contact');
                 }  
             }
@@ -112,5 +133,9 @@ class UserAction{
 
     public function mentionsLeg(ServerRequest $request){
         return $this->renderer->render('@user/ML', ['siteName' => 'Cmydesignprojets']);
+    }
+
+    public function page(ServerRequest $request){
+        return $this->renderer->render('@user/PageNotFound');
     }
 }

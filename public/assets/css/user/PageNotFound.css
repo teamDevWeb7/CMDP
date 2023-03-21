@@ -1,0 +1,119 @@
+header, footer{
+    display: none;
+}
+
+h1{
+    width: 100%;
+    text-align: center;
+}
+
+body{
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+}
+
+/* truck */
+.a1{
+    position: absolute;
+    bottom: -20vh;
+    left: -50vw;
+    width: 50%;
+    animation-name: passage;
+    animation-duration: 8s;
+    z-index: 2;
+}
+@keyframes passage{
+    from{
+        left:-50vw;
+    }40%{
+        left: 50vw;
+    }60%{
+        left: 50vw;
+    }
+    to{
+        left: 120vw;
+    }
+}
+
+.sot{
+    position: absolute;
+    width: 15%;
+    z-index: 3;
+}
+.c1{
+    bottom: -5vh;
+    left: 35vw;
+}
+.c2{
+    bottom: -5vh;
+    left: 48vw;
+}
+.c3{
+    bottom: 0;
+    left: 41vw;
+    z-index: 2;
+}
+
+
+.brick{
+    width: 20vw;
+    position: absolute;
+}
+.b1, .b2, .b3, .b4, .b5{
+    bottom: 0;
+}
+.b1{
+    left: 0;
+}
+.b2{
+    left: 20vw;
+}
+.b3{
+    left: 40vw;
+}
+.b4{
+    left: 60vw;
+}
+.b5{
+    left: 80vw;
+}
+.b6, .b7, .b8, .b9, .b10{
+    bottom: 21.5vh;
+}
+.b6{
+    left: 0;
+}
+.b7{
+    left: 20vw;
+}
+.b8{
+    left: 40vw;
+}
+.b9{
+    left: 60vw;
+}
+.b10{
+    left: 80vw;
+}
+.b11, .b12, .b13, .b14, .b15{
+    bottom: 43vh;
+}
+.b11{
+    left: 0;
+}
+.b12{
+    left: 20vw;
+}
+.b13{
+    left: 40vw;
+}
+.b14{
+    left: 60vw;
+}
+.b15{
+    left: 80vw;
+}
+
+
