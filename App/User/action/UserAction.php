@@ -56,28 +56,44 @@ class UserAction{
             if(!empty($data['sujet'])){
                 return $this->redirect('contact');
             }else{
-                $validator=new Validator($data);
-                // check ts champs ok
-                $errors=$validator
-                                ->required('nom', 'prenom', 'mail', 'tel', 'message')
-                                ->email('mail')
-                                // pb tel
-                                // ->tel('tel')
-                                // pb 1 seule erreur
-                                ->getErrors();
-                // si champs pas remplis ou input !value demandée, renvoie toast+redirect
-                if($errors){
-                    foreach($errors as $error){
-                        $this->toaster->makeToast($error->toString(), Toaster::ERROR);
-                        return $this->redirect('contact');
-                    }
-                }
                 // captcha
-                // laver message
-                // relier au client si existe deja sinon creer
-                // flush execute
-                $this->toaster->makeToast("Pour l'instant ça fonctionne", Toaster::SUCCESS);
-                return $this->redirect('contact');
+                // clé secrète donnée par google
+                $cle='6LfpX-ckAAAAAN9NuwK9BKuWBfPekgenk1TinPU6';
+                $response = $_POST['g-recaptcha-response'];
+
+                $gapi = 'https://www.google.com/recaptcha/api/siteverify?secret='.$cle.'&response='.$response;
+
+                $json = json_decode(file_get_contents($gapi), true);
+
+                // if captcha pas sélectionné
+                if(!$json['success']){
+                    $this->toaster->makeToast("La validation du captcha est nécessaire à l'envoi", Toaster::ERROR);
+                    return $this->redirect('contact');
+                // captcha ok
+                }else{
+                    $validator=new Validator($data);
+                    // check ts champs ok
+                    $errors=$validator
+                                    ->required('nom', 'prenom', 'mail', 'tel', 'message')
+                                    ->email('mail')
+                                    // pb tel
+                                    // ->tel('tel')
+                                    // pb 1 seule erreur
+                                    ->getErrors();
+                    // si champs pas remplis ou input !value demandée, renvoie toast+redirect
+                    if($errors){
+                        foreach($errors as $error){
+                            $this->toaster->makeToast($error->toString(), Toaster::ERROR);
+                            return $this->redirect('contact');
+                        }
+                    }
+                    // captcha
+                    // laver message
+                    // relier au client si existe deja sinon creer
+                    // flush execute
+                    $this->toaster->makeToast("Pour l'instant ça fonctionne", Toaster::SUCCESS);
+                    return $this->redirect('contact');
+                }  
             }
         }
         else{
