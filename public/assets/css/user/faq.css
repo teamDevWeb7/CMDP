@@ -30,13 +30,14 @@
     width: 24%;
     margin-left: 3%;
     margin-top: 5vh;
+    margin-bottom: 5vh;
     background-color: rgba(255, 253, 247, 0.842);
+    max-height: 65vh;
 }
 
-/* avec js, fonctionne pas */
-/* .scroll{
+.scroll{
     overflow: scroll;
-} */
+}
 
 /* les btn associés aux themes */
 #quest button{

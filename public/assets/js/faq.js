@@ -20,6 +20,14 @@ function showNhide(){
     if(div[2].getAttribute('class')==="hide"){
         div[2].setAttribute('class', 'show');
         img[3].style.rotate="45deg";
+        // refermer les autres
+        div[4].setAttribute("class", "hide");
+        img[5].style.rotate="0deg";
+        div[3].setAttribute("class", "hide");
+        img[4].style.rotate="0deg";
+
+        // fermer le scroll des gds
+        quest.removeAttribute('class');
     }
     else{
         div[2].setAttribute("class", "hide");
@@ -31,10 +39,18 @@ function showNhide2(){
     if(div[3].getAttribute('class')==="hide"){
         div[3].setAttribute('class', 'show');
         img[4].style.rotate="45deg";
+        // refermer les autres
+        div[2].setAttribute("class", "hide");
+        img[3].style.rotate="0deg";
+        div[4].setAttribute("class", "hide");
+        img[5].style.rotate="0deg";
+        // vu que trop grand on met un scroll
+        quest.setAttribute("class", "scroll");
     }
     else{
         div[3].setAttribute("class", "hide");
         img[4].style.rotate="0deg";
+        quest.removeAttribute('class');
     }
 }
 
@@ -47,6 +63,9 @@ function showNhide3(){
         img[3].style.rotate="0deg";
         div[3].setAttribute("class", "hide");
         img[4].style.rotate="0deg";
+
+        // fermer scroll des grands
+        quest.removeAttribute('class');
     }
     else{
         div[4].setAttribute("class", "hide");

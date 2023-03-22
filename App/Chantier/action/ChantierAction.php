@@ -3,6 +3,7 @@ namespace App\Chantier\action;
 
 use Core\toaster\Toaster;
 use Model\Entity\Chantier;
+use GuzzleHttp\Psr7\Response;
 use Doctrine\ORM\EntityManager;
 use Core\Framework\Router\Router;
 use Core\Session\SessionInterface;
@@ -20,7 +21,7 @@ class ChantierAction{
     private RendererInterface $renderer;
     private Toaster $toaster;
     private Router $router;
-    private EntityRepository $repository;
+    private EntityRepository $chantiersRepo;
     private SessionInterface $session;
     private EntityManager $manager;
 
@@ -32,17 +33,36 @@ class ChantierAction{
         $this->router=$container->get(Router::class);
         $this->session=$container->get(SessionInterface::class);
         $this->manager=$container->get(EntityManager::class);
-        $this->repository=$container->get(EntityManager::class)->getRepository(Chantier::class);
+        $this->chantiersRepo=$container->get(EntityManager::class)->getRepository(Chantier::class);
 
                 // repo photos ? 80% oui
         
     }
     public function chantiers(ServerRequest $request){
-        return $this->renderer->render('@user/chantiers');
+        $chantiers=$this->chantiersRepo->findAll();
+        return $this->renderer->render('@chantier/chantiersUser', ['siteName' => 'Cmydesignprojets', "chantiers"=>$chantiers]);
     }
 
     public function chantier(ServerRequest $request){
-        return $this->renderer->render('@user/infosChantier');
+        $id=$request->getAttribute('id');
+        $chantier=$this->chantiersRepo->find($id);
+        if(!$chantier){
+            return new Response(404,[], 'Aucun chantier ne correspond');
+        }
+        return $this->renderer->render('@chantier/infosChantierUser', ['siteName' => 'Cmydesignprojets', "chantier"=>$chantier]);
     }
 
+    public function adminChantiers(ServerRequest $request){
+        $chantiers=$this->chantiersRepo->findAll();
+        return $this->renderer->render('@chantier/chantiersAdmin', ["chantiers"=>$chantiers]);
+    }
+
+    public function adminChantier(ServerRequest $request){
+        $id=$request->getAttribute('id');
+        $chantier=$this->chantiersRepo->find($id);
+        if(!$chantier){
+            return new Response(404,[], 'Aucun chantier ne correspond');
+        }
+        return $this->renderer->render('@chantier/chantierAdmin', ["chantier"=>$chantier]);
+    }
 }

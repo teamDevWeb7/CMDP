@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta name="robots" content="noindex">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Espace admin réservé aux admins">
+    <title>Espace Admin</title>
+
+    <link rel="stylesheet" href="{{ assets('/assets/css/admin/adminLayout.css') }}">
+    <link rel="stylesheet" href="{{ assets('/assets/css/toasts.css') }}">
+    <link rel="shortcut icon" href="{{ assets('/assets/imgs/logo/logo.svg') }}" />
+    {% block stylesheet %}
+
+    {% endblock %}
+</head>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;1,400;1,600&display=swap');
+</style>
+<body>
+    <header>
+        <ul>
+            <li>Mes devis</li>
+            <li>Mes messages</li>
+            <li>Mes prospects</li>
+            <li>Mes chantiers</li>
+        </ul>
+    </header>
+    <main>
+        {% if hasToast() %}
+        {% for toast in renderToast() %}
+        {{ toast | raw}}
+        {% endfor %}
+        {% endif %}
+
+        {% block body %}
+        <!-- inserer page ici -->
+        {% endblock %}
+    </main>
+    
+</body>
+</html>
