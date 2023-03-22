@@ -94,7 +94,7 @@ class UserAction{
                     $prospect=$this->userRepo->find($data['mail']);
                     $message= new Message;
                     $message->setMessage($data['message']);
-                    $this->manager->persist($message);
+
                     if($prospect){
                         $prospect->addMessage($message);
                         $this->manager->persist($prospect);
@@ -108,6 +108,7 @@ class UserAction{
                                 ->addMessage($message);
                         $this->manager->persist($prosp);
                     }
+                    $this->manager->persist($message);
                     $this->manager->flush();
 
                     // ds ts les cas, nv Prospect et message n'a pas la clé etrangere du prospect
@@ -136,6 +137,6 @@ class UserAction{
     }
 
     public function page(ServerRequest $request){
-        return $this->renderer->render('@user/PageNotFound');
+        return $this->renderer->render('@user/PageNotFound', ['siteName' => 'Cmydesignprojets']);
     }
 }
