@@ -33,10 +33,20 @@
     margin-bottom: 5vh;
     background-color: rgba(255, 253, 247, 0.842);
     max-height: 65vh;
+    overflow: auto;
 }
 
-.scroll{
-    overflow: scroll;
+/* scrollbar chrome et edge */
+#quest::-webkit-scrollbar{
+    background-color: rgb(219, 219, 219);
+    width: 7px;
+    border-radius: 5px;
+    border: none;
+}
+#quest::-webkit-scrollbar-thumb{
+    background-color:rgba(213, 180, 61, 0.795);
+    border-radius: 5px;
+    width: 7px;
 }
 
 /* les btn associés aux themes */

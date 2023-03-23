@@ -8,6 +8,21 @@
 
 body{
     position: relative;
+    /* scrollbar firefox */
+    scrollbar-width:thin;
+    scrollbar-color: rgb(213,180,61) white;
+}
+
+/* scrollbar chrome et edge */
+::-webkit-scrollbar{
+    background-color: rgb(219, 219, 219);
+    width: 10px;
+
+}
+::-webkit-scrollbar-thumb{
+    background-color: rgb(169, 143, 46);
+    border-radius: 5px;
+    width: 10px;
 }
 
 /* travail sur le header */
@@ -109,6 +124,8 @@ header p{
     font-size: 1.5rem;
     margin-bottom: 6px;
 }
+
+
 
 /* la fleche pour remonter en haut de page */
 #scroll_to_top {

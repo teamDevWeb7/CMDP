@@ -40,8 +40,8 @@ class AdminAction{
         return $this->renderer->render('@admin/connexion');
     }
 
-    public function accueil(ServerRequest $request){
-        return $this->renderer->render('@admin/accueil');
+    public function accueilAdmin(ServerRequest $request){
+        return $this->renderer->render('@admin/accueilAdmin');
     }
 
     public function prospects(ServerRequest $request){

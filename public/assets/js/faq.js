@@ -7,13 +7,7 @@ let div=document.querySelectorAll('div');
 // tableau ttes img, commence ds le header
 let img=document.querySelectorAll('img');
 
-let quest=document.getElementById('quest');
 
-// inchallah j aimerais que y ait la classe scroll quand depasse les 70vh
-// if(quest.style.height>"70vh"){
-//     alert('coucou');
-//     quest.setAttribute("class", "scroll");
-// }
 
 // fonctions showNhide pour afficher et cacher les questions inside les thèmes
 function showNhide(){
@@ -25,9 +19,6 @@ function showNhide(){
         img[5].style.rotate="0deg";
         div[3].setAttribute("class", "hide");
         img[4].style.rotate="0deg";
-
-        // fermer le scroll des gds
-        quest.removeAttribute('class');
     }
     else{
         div[2].setAttribute("class", "hide");
@@ -44,13 +35,10 @@ function showNhide2(){
         img[3].style.rotate="0deg";
         div[4].setAttribute("class", "hide");
         img[5].style.rotate="0deg";
-        // vu que trop grand on met un scroll
-        quest.setAttribute("class", "scroll");
     }
     else{
         div[3].setAttribute("class", "hide");
         img[4].style.rotate="0deg";
-        quest.removeAttribute('class');
     }
 }
 
@@ -63,9 +51,6 @@ function showNhide3(){
         img[3].style.rotate="0deg";
         div[3].setAttribute("class", "hide");
         img[4].style.rotate="0deg";
-
-        // fermer scroll des grands
-        quest.removeAttribute('class');
     }
     else{
         div[4].setAttribute("class", "hide");

@@ -25,7 +25,7 @@ class AdminModule extends AbstractModule{
         $this->renderer->addPath('admin', __DIR__ . DIRECTORY_SEPARATOR . 'view');
 
         $this->router->get('/admin/connectAdmin', [$adminAction, 'connexion'], 'connexion');
-        $this->router->get('/admin/accueil', [$adminAction, 'accueil'], 'accueil');
+        $this->router->get('/admin/accueil', [$adminAction, 'accueilAdmin'], 'accueilAdmin');
         $this->router->get('/admin/tousMesProspects', [$adminAction, 'prospects'], 'prospects');
         $this->router->get('/admin/prospect/{id:[\d]+}', [$adminAction, 'prospect'], 'prospect');
     } 
