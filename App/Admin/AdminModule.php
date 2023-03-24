@@ -28,5 +28,7 @@ class AdminModule extends AbstractModule{
         $this->router->get('/admin/accueil', [$adminAction, 'accueilAdmin'], 'accueilAdmin');
         $this->router->get('/admin/tousMesProspects', [$adminAction, 'prospects'], 'prospects');
         $this->router->get('/admin/prospect/{id:[\d]+}', [$adminAction, 'prospect'], 'prospect');
+        $this->router->get('/admin/tousMesDevis', [$adminAction, 'pageDevis'], 'pageDevis');
+        $this->router->get('/admin/tousMesMessages', [$adminAction, 'pageMessages'], 'pageMessages');
     } 
 }

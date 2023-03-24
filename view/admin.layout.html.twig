@@ -21,10 +21,11 @@
 <body>
     <header>
         <ul>
-            <li>Mes devis</li>
-            <li>Mes messages</li>
-            <li>Mes prospects</li>
-            <li>Mes chantiers</li>
+            <li><a href="{{path('accueilAdmin')}}">Accueil</a></li>
+            <li><a href="{{path('pageDevis')}}">Mes devis</a></li>
+            <li><a href="{{path('pageMessages')}}">Mes messages</a></li>
+            <li><a href="{{path('prospects')}}">Mes prospects</a></li>
+            <li><a href="{{path('adminChantiers')}}">Mes chantiers</a></li>
         </ul>
     </header>
     <main>
@@ -41,3 +42,4 @@
     
 </body>
 </html>
+<script src="{{ assets('/assets/js/activeAdmin.js') }}"></script>

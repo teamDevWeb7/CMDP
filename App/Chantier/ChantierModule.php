@@ -31,6 +31,9 @@ class ChantierModule extends AbstractModule{
 
         $this->router->get('/admin/chantiers', [$chantierAction, 'adminChantiers'], 'adminChantiers');
         $this->router->get('/admin/infosChantier/{id:[\d]+}', [$chantierAction, 'adminChantier'], 'adminChantier');
+
+        $this->router->get('/admin/addChantier', [$chantierAction, 'addChantier'], 'addChantier');
+        $this->router->get('/admin/updateChantier/{id:[\d]+}', [$chantierAction, 'updateChantier'], 'updateChantier');
         
     }
 }

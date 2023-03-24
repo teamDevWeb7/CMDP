@@ -5,3 +5,26 @@
     font-family: 'Source Sans Pro', sans-serif;
     color: rgb(68, 68, 68);
 }
+
+header{
+    width: 74%;
+    margin-left: 13%;
+    height: 15vh;
+    display: flex;
+    align-items: center;
+}
+header ul{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+header li{
+    list-style: none;
+}
+header a{
+    text-decoration: none;
+    font-size: 1.2rem;
+}
+.pageActive{
+    font-size: 1.5rem;
+}

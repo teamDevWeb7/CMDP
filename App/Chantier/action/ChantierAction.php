@@ -65,4 +65,12 @@ class ChantierAction{
         }
         return $this->renderer->render('@chantier/chantierAdmin', ["chantier"=>$chantier]);
     }
+
+    public function addChantier(ServerRequest $request){
+        return $this->renderer->render('@chantier/addChantier');
+    }
+
+    public function updateChantier(ServerRequest $request){
+        return $this->renderer->render('@chantier/updateChantier');
+    }
 }
