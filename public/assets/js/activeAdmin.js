@@ -16,6 +16,8 @@ const array={
        Object.keys(array).forEach(function(key){
           if(key == chemin){
              array[key].setAttribute('class', 'pageActive');
+          }else{
+            array[key].style.color="grey";
           }
        })
     } 
