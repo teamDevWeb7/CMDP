@@ -24,11 +24,22 @@ class AdminModule extends AbstractModule{
 
         $this->renderer->addPath('admin', __DIR__ . DIRECTORY_SEPARATOR . 'view');
 
+        // connexion
         $this->router->get('/admin/connectAdmin', [$adminAction, 'connexion'], 'connexion');
+        $this->router->post('/admin/connectAdmin', [$adminAction, 'connexion']);
+        $this->router->get('/admin/deconnecte', [$adminAction, 'deco'], 'deco');
+
+        // accueil
         $this->router->get('/admin/accueil', [$adminAction, 'accueilAdmin'], 'accueilAdmin');
+
+        // gestion prospect
         $this->router->get('/admin/tousMesProspects', [$adminAction, 'prospects'], 'prospects');
         $this->router->get('/admin/prospect/{id:[\d]+}', [$adminAction, 'prospect'], 'prospect');
+
+        // devis
         $this->router->get('/admin/tousMesDevis', [$adminAction, 'pageDevis'], 'pageDevis');
+
+        // messagesconnectAdmin
         $this->router->get('/admin/tousMesMessages', [$adminAction, 'pageMessages'], 'pageMessages');
     } 
 }

@@ -34,14 +34,10 @@ class AdminAuth{
         $this->session->delete('auth');
     }
 
-    public function isLogged():bool{
-        // verif si user connecté
-        return $this->session->has('auth');
-    }
-
     public function isAdmin():bool{
-        if($this->isLogged()){
-            // instance of permet savoir si instance de le entité admin
+        // check si co
+        if($this->session->has('auth')){
+            // instance of permet savoir si instance de l entité admin
             return $this->session->get('auth') instanceof Admin;
         }
         return false;
