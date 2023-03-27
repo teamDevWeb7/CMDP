@@ -2,19 +2,21 @@
 
 namespace App\Admin\action;
 
+use Model\Entity\Pdf;
+use Core\toaster\Toaster;
+use Model\Entity\Message;
 use Model\Entity\Prospect;
 use GuzzleHttp\Psr7\Response;
 use Doctrine\ORM\EntityManager;
+use Core\Framework\Router\Router;
+use Core\Framework\Auth\AdminAuth;
+use Core\Session\SessionInterface;
 use Doctrine\ORM\EntityRepository;
 use GuzzleHttp\Psr7\ServerRequest;
 use Psr\Container\ContainerInterface;
+use Core\Framework\Validator\Validator;
 use Core\Framework\Router\RedirectTrait;
 use Core\Framework\Renderer\RendererInterface;
-use Core\Framework\Router\Router;
-use Core\Session\SessionInterface;
-use Core\toaster\Toaster;
-use Model\Entity\Message;
-use Model\Entity\Pdf;
 
 class AdminAction{
     use RedirectTrait;
@@ -43,7 +45,37 @@ class AdminAction{
     }
 
     public function connexion(ServerRequest $request){
+        $method=$request->getMethod();
+
+        if($method==='POST'){
+            $auth=$this->container->get(AdminAuth::class);
+            $data=$request->getParsedBody();
+
+            $validator=new Validator($data);
+            $errors=$validator->required('mail', 'password')->getErrors();
+            if(!empty($errors)){
+                foreach($errors as $error){
+                    $this->toaster->makeToast($error->toString(), Toaster::ERROR);
+                }
+                return $this->redirect('connexion');
+            }
+
+            if($auth->login($data['mail'], $data['password'])){
+                $this->toaster->makeToast('Connexion réussie', Toaster::SUCCESS);
+                return $this->redirect('accueilAdmin');
+            }
+            $this->toaster->makeToast('Connexion impossible, vos accès sont inconnus', Toaster::ERROR);
+            return $this->redirect('connexion');
+            
+        }
         return $this->renderer->render('@admin/connexion');
+    }
+
+    public function deco(ServerRequest $request){
+        $auth=$this->container->get(AdminAuth::class);
+        $auth->logout();
+        $this->toaster->makeToast('Déconnexion réussie', Toaster::SUCCESS);
+        return $this->redirect('connexion');
     }
 
     public function accueilAdmin(ServerRequest $request){

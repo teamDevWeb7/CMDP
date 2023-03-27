@@ -5,7 +5,8 @@ const array={
     "/admin/tousMesDevis":a[1],
     "/admin/tousMesMessages":a[2],
     "/admin/tousMesProspects":a[3],
-    "/admin/chantiers":a[4]
+    "/admin/chantiers":a[4],
+    "/admin/deco":a[5]
  }
 
  let chemin = window.location.pathname;

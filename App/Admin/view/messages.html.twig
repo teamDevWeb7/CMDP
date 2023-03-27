@@ -1,0 +1,41 @@
+{% extends 'admin.layout.html.twig' %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="{{ assets('/assets/css/admin/messages.css') }}">
+{% endblock %}
+
+{% block title %}
+    <title>Mes messages</title>
+{% endblock %}
+
+{% block body %}
+    <section>
+        <h1>Liste des messages</h1>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Nom du client</th>
+                    <th>Prénom du client</th>
+                    <th>Message</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for message in messages %}
+                    <tr>
+                        <td>{{ message.prospect.nom }}</td>
+                        <td>{{ message.prospect.prenom }}</td>
+                        <td>{{ message}}</td>
+                        <td>
+                            <a href="{{path('message.delete', {id: message.id})}}">Supprimer</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+            
+        </table>
+    </section>
+
+
+{% endblock %}

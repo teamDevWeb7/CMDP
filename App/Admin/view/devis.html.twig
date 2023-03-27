@@ -1,0 +1,41 @@
+{% extends 'admin.layout.html.twig' %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="{{ assets('/assets/css/admin/devis.css') }}">
+{% endblock %}
+
+{% block title %}
+    <title>Mes devis</title>
+{% endblock %}
+
+{% block body %}
+    <section>
+        <h1>Liste des devis</h1>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Nom du client</th>
+                    <th>Prénom du client</th>
+                    <th>PDF</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for devi in devis %}
+                    <tr>
+                        <td>{{ devi.prospect.nom }}</td>
+                        <td>{{ devi.prospect.prenom }}</td>
+                        <td>{{ devi.pdfPath }}</td>
+                        <td>
+                            <a href="{{path('pdf.delete', {id: pdf.id})}}">Supprimer</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+            
+        </table>
+    </section>
+
+
+{% endblock %}

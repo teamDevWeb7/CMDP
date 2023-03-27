@@ -1,0 +1,22 @@
+{% extends 'admin.layout.html.twig' %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="{{ assets('/assets/css/admin/connexion.css') }}">
+{% endblock %}
+
+{% block title %}
+    <title>Connexion</title>
+{% endblock %}
+
+{% block body %}
+    <section>
+        <form action="#" method="POST">
+            <label for="mail">Votre e-mail :</label>
+            <input type="text" id="mail" name="mail">
+            <label for="password">Votre mot de passe :</label>
+            <input type="password" id="password" name="password">
+            <input type="submit">
+        </form>
+    </section>
+
+{% endblock %}
