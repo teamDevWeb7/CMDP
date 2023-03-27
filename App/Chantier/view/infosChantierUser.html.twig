@@ -1,0 +1,26 @@
+{% extends 'layout.html.twig' %}
+
+{% block meta %}
+    <meta name="description" content="Vous avez accès à une description du chantier ainsi que les photographies prises sur le site.">
+{% endblock %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="{{ assets('/assets/css/chantiers/chantier.css') }}">
+{% endblock %}
+
+{% block title %}
+    <title>{{siteName}} ~ Nos chantiers</title>
+{% endblock %}
+
+{% block body %}
+    <h1>{{chantier.nomChantier}}</h1>
+    <p>{{chantier.dateChantier}} ~ {{chantier.lieu}}</p>
+
+    {% for photo in photos %}
+    <article>
+        <img src="{{assets('/assets/imgs/chantiers'~chantier.imgPath) }}">
+        <p>{{photo.descImg}}</p>
+    </article>
+    {% endfor %}
+
+{% endblock %}

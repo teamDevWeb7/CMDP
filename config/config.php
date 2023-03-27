@@ -15,7 +15,7 @@ use Core\toaster\ToasterTwigExtension;
 return [
     // info BDD
     "doctrine.user"=>"root",
-    "doctrine.dbname"=>"CMDP",
+    "doctrine.dbname"=>"cmdp",
     "doctrine.mdp"=>"",
     "doctrine.driver"=>"pdo_mysql",
     "doctrine.devMode"=>true,

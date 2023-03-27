@@ -1,11 +1,6 @@
 <?php
 namespace Core\bdd;
 
-// pr implementer doctrine
-//  doctrine gere model -> bdd
-//  doctrine ds symphony
-//  doc gere requetes pr nous
-//  doc recup toutes infos de ttes les tables reliées à notre request, fait auto inner joints
 
 use Doctrine\DBAL\DriverManager;
 use Doctrine\ORM\EntityManager;
@@ -29,7 +24,6 @@ class DatabaseFactory{
             ]
         ];
 
-        // expliquer a doctrine que metadata (donnees config base) seront annotations (commentaires ds class)
         $config=ORMSetup::createAnnotationMetadataConfiguration($paths, $isDevMode);
 
         try{

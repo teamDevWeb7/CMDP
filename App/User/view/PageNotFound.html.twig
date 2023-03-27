@@ -1,0 +1,24 @@
+{% extends 'layout.html.twig' %}
+
+{% block meta %}
+    <meta name="description" content="Vous vous êtes perdu non ?">
+{% endblock %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="{{ assets('/assets/css/user/PageNotFound.css') }}">
+{% endblock %}
+
+{% block title %}
+    <title>{{siteName}} ~ PageNotFound</title>
+{% endblock %}
+
+{% block body %}
+    <div>
+        <h1>Désolé, cette page est toujours en construction</h1>
+        <img src="{{ assets('/assets/imgs/icone/construction.jpg') }}" alt="caricature d'un chantier" id="chantier">
+    </div>
+    
+{% endblock %}
+
+
+

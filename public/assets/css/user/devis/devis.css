@@ -1,0 +1,155 @@
+/* page devis principale */
+
+/* fleche aller en haut pas besoin, page 100vh max */
+#scroll_to_top{
+    display: none;
+}
+
+/* englobe le % finit + le titre et le form */
+#p1{
+    height: 55vh;
+    width: 70%;
+    position: absolute;
+    top: 18vh;
+    left: 0;
+    margin-left: 15%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* %finit */
+.chemin{
+    height: 20%;
+    border: rgba(213, 180, 61, 0.795) 2px solid;
+    width: 60%;
+    margin-left: 20%;
+    margin-top: 5vh;
+    padding-bottom: 20px;
+    border-radius: 60px;
+    position: relative;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-end;
+    background-color: rgba(255, 253, 247, 0.842);
+}
+
+.pts1, .pts2, .pts3, .pts4{
+    height: 2vh;
+    width: 1.25vw;
+    border-radius: 50%;
+    background-color: blue;
+    border:none;
+    background-color: rgb(213, 180, 61);
+}
+.pts1{
+    position: absolute;
+    top: 30%;
+    left: 13.5%;
+}
+.pts2{
+    position: absolute;
+    top: 30%;
+    left: 35%;
+}
+.pts3{
+    position: absolute;
+    top: 30%;
+    left: 57%;
+}
+.pts4{
+    position: absolute;
+    top: 30%;
+    left: 81%;
+}
+/* class pr page active */
+.bigger{
+    height: 2.7vh;
+    width: 1.5vw;
+    top:26%;
+}
+.trait{
+    width: 67%;
+    height: 3px;
+    border: none;
+    background-color: rgb(213, 180, 61);
+    position: absolute;
+    top: 35%;
+    left: 15%;
+}
+h1, h2{
+    font-size: 1.1rem;
+    font-weight: 400;
+}
+
+
+/* premiere partie : je souhaite renover */
+/* container principal */
+
+h3{
+    margin-top: 5vh;
+    margin-bottom: 2vh;
+}
+
+/* contient 3 choix */
+#Q1{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    /* border: solid 1px black; */
+}
+/* imgs ds choix */
+#p1 img{
+    width: 30%;
+}
+
+.choix{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    /* border: 1px black solid; */
+    width: 35%;
+    height: 10vh;
+    margin: 4vh 0 ;
+    
+}
+
+/* les 2 classes pr JS */
+.selected{
+    border: rgba(213, 180, 61, 0.795) 2px solid;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: rgba(255, 253, 247, 0.842);
+    width: 15vw;
+    text-align: center;
+}
+.R{
+    border: none;
+    padding: 0;
+    width: 15vw;
+    text-align: center;
+}
+
+/* display et style des btns suivants */
+.suivant, .preced{
+    background-color: rgba(255, 253, 247, 0.842);
+    border: rgba(213, 180, 61, 0.795) 2px solid;
+    width: 10vw;
+    height: 5vh;
+    border-radius: 20px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    position: absolute;
+}
+
+
+/* le container de tous les modules */
+#swipe{
+    width: 100vw;
+    height: 75vh;
+    overflow: hidden;
+    display: flex;
+    position: relative;
+    
+}

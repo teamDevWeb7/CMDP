@@ -1,0 +1,57 @@
+{% extends 'layout.html.twig' %}
+
+{% block meta %}
+    <meta name="description" content="Découvrez notre entreprise ainsi que ses valeurs.">
+{% endblock %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="{{ assets('/assets/css/user/aPropos.css') }}">
+{% endblock %}
+
+{% block title %}
+    <title>{{siteName}} ~ À propos de nous</title>
+{% endblock %}
+
+{% block body %}
+
+    <section id="video">
+        <iframe width="600" height="400" src=""></iframe>
+        <blockquote>Parce qu'une image vaut mille mots</blockquote>
+    </section>
+
+    <h1>Nos valeurs</h1>
+    <section id="values">
+        <article>
+            <h3>Une entreprise familiale</h3>
+            <p>Engagés et à l'écoute, nous faisons notre possible pour vous garantir une performance à la hauteur de vos attentes. Notre entreprise à taille humaine nous permet une communication transversale qui vous assure des réponses rapides et définitives. Notre but, votre satisfaction.</p>
+            <img src="{{ assets('/assets/imgs/icone/valeur.png') }}" alt="icone représentant une entreprise et ses employés">
+        </article>
+        <article>
+            <h3>Une rénovation éco-friendly</h3>
+            <p>Nous avons conscience de l'impact que nous avons sur la planète, c'est pour cela que nous utilisons exclusivement des peintures à l'eau respectant les normes XXXX. De plus, nous nous fournissons exclusivement chez des enseignes qui ont à cœur leur empreinte écologique.</p>
+            <img src="{{ assets('/assets/imgs/icone/planete.png') }}" alt="icone représentant une entreprise et ses employés">
+        </article>
+        <article>
+            <h3>Un suivi personnalisé</h3>
+            <p>Parce que chaque projet est unique, nos designs le sont aussi. Notre équipe commerciale assure un suivi complet de votre projet afin de vous assurer une réalisation sur mesure de vos idées. Des conseils ciblés et une disponibilité à tout instant, nous faisons de nos clients notre priorité. </p>
+            <img src="{{ assets('/assets/imgs/icone/devis.png') }}" alt="icone représentant une entreprise et ses employés">
+        </article>
+
+    </section>
+
+    <section id="rea">
+        <h2>Nos réalisations</h2>
+        <h3>Notre dernier projet</h3>
+        <section id="blur">
+            <div id="n1"><img src="{{ assets('/assets/imgs/photos/narf1.jpg') }}" alt="icone représentant une entreprise et ses employés"></div>
+            <div id="n2"><img src="{{ assets('/assets/imgs/photos/narf2.jpg') }}" alt="icone représentant une entreprise et ses employés"></div>
+            <div id="n3"><img src="{{ assets('/assets/imgs/photos/narf3.jpg') }}" alt="icone représentant une entreprise et ses employés"></div>
+        </section>
+    </section>
+    
+
+{% endblock %}
+
+{% block scripts %}
+    <script src="{{ assets('/assets/js/blur.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,92 @@
+#anim{
+    height: 91vh;
+    background-color: pink;
+}
+
+/* container img gauche + text et liens gauche */
+#intro{
+    display: flex;
+    align-items: center;
+    width: 90%;
+    margin-left: 5%;
+    height: 65vh;
+    margin-top: 3vh;
+    color: rgb(68, 68, 68);
+}
+
+/* image des pinceaux et rouleaux */
+#intro img{
+    width: 45%;
+    height: 70%;
+    border-radius: 40px;
+    margin-top: 2vh;
+}
+
+/* contient les deux titres et blabla */
+#intro div{
+    width: 50%;
+    margin-left: 5%;
+
+}
+h1, h2{
+    color:  rgb(213,180,61);
+    font-size: 1.3rem;
+    font-weight: 400;
+    margin: 3% 0;
+}
+/* texte en haut des liens redirection */
+#blo{
+    margin-bottom: 2%;
+    width: 90%;
+    text-align: justify;
+}
+
+/* les fleches pour acceder aux autres pages */
+#intro a img{
+    width: 15px;
+    height: 15px;
+    margin-bottom: -3px;
+}
+/* liens autres pages */
+#intro a{
+    text-decoration: none;
+    color: rgb(68, 68, 68);
+}
+#intro a:hover{
+    text-decoration:underline;
+}
+
+#intro li{
+    margin-bottom: 3px;
+    list-style: inside;
+}
+
+/* style liens redirection */
+#intro ol li{
+    list-style: none;
+}
+
+
+/* btn redirige devis */
+#dev{
+    padding: 10px;
+    margin-left: 41%;
+    border-radius: 50px;
+    border: none;
+    background-color:  rgb(213,180,61);
+    margin-bottom: 6vh;
+    margin-top: 4vh;
+    width: 17%;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.473);
+}
+
+#dev a{
+    font-size: 1.2rem;
+    color: white;
+    text-decoration: none;
+
+}
+
+#dev:active{
+    box-shadow: inset 3px 3px 10px rgba(0, 0, 0, 0.466);
+}

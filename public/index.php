@@ -1,8 +1,17 @@
 <?php
 
+use App\Admin\AdminModule;
+use App\Chantier\ChantierModule;
+use App\User\UserModule;
+use Core\App;
 use DI\ContainerBuilder;
 use function Http\Response\send;
 use GuzzleHttp\Psr7\ServerRequest;
+use Core\Framework\Middleware\RouterMiddleware;
+use Core\Framework\Middleware\NotFoundMiddleware;
+use Core\Framework\Middleware\AdminAuthMiddleware;
+use Core\Framework\Middleware\TrailingSlashMiddleware;
+use Core\Framework\Middleware\RouterDispatcherMiddleware;
 
 
 // inclut autoloader de composer
@@ -10,6 +19,9 @@ require dirname(__DIR__)."/vendor/autoload.php";
 
 // declare tab modules à charger
 $modules = [
+    UserModule::class,
+    ChantierModule::class,
+    AdminModule::class
 
 ];
 
@@ -33,15 +45,14 @@ $container=$builder->build();
 
 
 // instancie application en lui donnant liste modules et container de dep
-// $app=new App($container, $modules);
+$app=new App($container, $modules);
 
 // middlewares
-// $app->linkFirst(new TrailingSlashMiddleware())
-//     ->linkWith(new RouterMiddleware($container))
-//     ->linkWith(new AdminAuthMiddleware($container))
-//     ->linkWith(new UserAuthMiddleware($container))
-//     ->linkWith(new RouterDispatcherMiddleware())
-//     ->linkWith(new NotFoundMiddleware());
+$app->linkFirst(new TrailingSlashMiddleware())
+    ->linkWith(new RouterMiddleware($container))
+    // ->linkWith(new AdminAuthMiddleware($container))
+    ->linkWith(new RouterDispatcherMiddleware())
+    ->linkWith(new NotFoundMiddleware());
 
 
 // si l index n est pas exe à partir de la CLI(command Line Interface)
@@ -52,21 +63,8 @@ $response =$app->run(ServerRequest::fromGlobals());
 // on renvoi la rep au server apres avoir transformé le retour de l'appli en une reponse comprehensible pour la machine client
 send($response);
 }
-
 ?>
 
-<!-- 
-etapes
-maquette soit schema BDD
-BDD->s interroger sur corps de metier t besoins
-decomposer: ex machine caf
-App
-Container + config PHP DI
-Database Factory
-
-
-on commence par partie admin 
--->
 
 
 

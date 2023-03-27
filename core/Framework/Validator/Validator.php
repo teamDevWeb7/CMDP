@@ -12,7 +12,6 @@
 
 namespace Core\Framework\Validator;
 
-use Doctrine\ORM\EntityRepository;
 
 class Validator{
     private array $data;
@@ -42,9 +41,6 @@ class Validator{
                 $this->addError($key, 'required');
             }
         }
-
-
-
         return $this;
     }
 
@@ -64,74 +60,23 @@ class Validator{
     }
 
     /**
-     * s assure que le nbr de caractère d'une string soit bien compris entre un $min et un $max
-     *
-     * @param string $key
-     * @param integer $min
-     * @param integer $max
-     * @return self
-     */
-    public function strSize(string $key, int $min, int $max):self{
-        if(!array_key_exists($key, $this->data)){
-            return $this;
-            // si cle existe pas ds tab on return this
-        }
-        $length=mb_strlen($this->data[$key]);
-        if($length < $min){
-            $this->addError($key, 'strMin');
-        }
-        if($length > $max){
-            $this->addError($key, 'strMax');
-        }
-        return $this;
-    }
-
-    /**
-     * s'assure que le champs saisit possède la même valeur que son champs de confirmation
-     * si la value de $key est "mdp", le champs de confirmation doit absolument se nommer "mdp_confirme"
+     * on vérifie que le numéro rentré dans le formulaire corresponde à un numéro Français ou Luxembourgeois
      *
      * @param string $key
      * @return self
      */
-    public function confirme(string $key):self{
-        $confirme=$key . '_confirme';
-        if(!array_key_exists($key, $this->data)){
-            return $this;
-        }
-        if(!array_key_exists($confirme, $this->data)){
-            return $this;
-        }
-        if($this->data[$key] !== $this->data[$confirme]){
-            $this->addError($key, 'confirme');
-        }
-        
-        return $this;
-    }
+    public function tel(string $key):self{
+        $carac=array(".", " ", "/", "-", "(", ")");
+        $this->data[$key]=str_replace($carac, "", $this->data[$key]);
+        $regExp='^(?:(?:\+|00)33|0)\s*[1-9]*(\d{2}){4}$|^(?:(?:\+|00)352)\s*(?:[2-7]\d|81)(\d{2}){3}$';
 
-    /**
-     * s assure qu'une value soit unique en BDD
-     *
-     * @param string $key index du tableau
-     * @param EntityRepository $repo doctrine's repositorie de l element à check
-     * @param string $field champs à check en BDD (default vaut nom)
-     * @return self
-     */
-    public function isUnique(string $key, EntityRepository $repo, string $field='nom'):self{
-        // recup entities du repo
-        $all=$repo->findAll();
-        // creer nom method usable pr recup la value(ex: si $field='model' alors $method='getModel')
-        $method='get'.ucfirst($field);
-        // on boucle sur tous les enregistrements de la bdd
-        foreach($all as $item){
-            // verif insensible a la casse
-            // on check si la value saisit par le user correspond à une valeur existante en BDD sans tenir compte des accents
-            // si existe on soulève une erreur
-            if(strcasecmp($item->$method(), $this->data[$key])===0){
-                $this->addError($key, 'unique');
-                break;
-            }
-        }
+        // regExp pr num FR et foreign Lux
+        // ^(?:(?:\+|00)33|0)\s*[1-9]*(\d{2}){4}$|^(?:(?:\+|00)352)\s*(?:[2-7]\d|81)(\d{2}){3}$
 
+        // fonctionne pas, ni avec !preg_match, ni avec false... test regExp sur regex101 ct bon
+        if(preg_match($regExp ,$this->data[$key])==0){
+            $this->addError($key, 'tel');
+        }
         return $this;
     }
 

@@ -1,0 +1,122 @@
+/* page devis 2 */
+
+#p2{
+    width: 70vw;
+    margin-left: 15%;
+    height: 70vh;
+    position: absolute;
+    top: 6vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* left: -100vw; */
+}
+
+.left0{
+    left: 0;
+}
+.left{
+    left: -100vw;
+}
+
+
+/* chemin, tout est déjà ds css1 */
+#grid{
+    /* background-color: rgb(231, 231, 231); */
+    width: 100%;
+    height: 25vh;
+    display: grid;
+    grid-template: 1fr 1fr/30% 1fr 1fr 1fr ;
+}
+#grid img{
+    width: 25%;
+}
+#grid .tooMuch{
+    width: 20%;
+}
+#grid p{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+#g1{
+    /* border: black solid 1px; */
+    height: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#g1 img{
+    width: 10%;
+    margin-right: 2vw;
+}
+#grid p, #g1{
+    cursor: pointer;
+}
+
+
+/* class selon si selectionné ou pas, choix multiples */
+.R2{
+    border: none;
+    padding: 0;
+    width: 10vw;
+    text-align: center;
+}
+.selecte{
+    border: rgba(213, 180, 61, 0.795) 2px solid;
+    border-radius: 5px;
+    padding: 7px;
+    background-color: rgba(255, 253, 247, 0.842);
+    width: 10vw;
+    text-align: center;
+}
+
+/* btn suivant 1 */
+#s1{
+    bottom:4vh;
+    right: -10vw;
+}
+
+/* btn suivant 2 */
+#s2{
+    bottom: 7vh;
+    right: -10vw;
+}
+/* btn precedent page 2 */
+#pre2{
+    bottom: 7vh;
+    left: -10vw;
+}
+
+
+my-alert{
+    position: absolute;
+    top: 42%;
+    left: 35%;
+    height: 15vh;
+    width: 30vw;
+    border-radius: 20px;
+    border: rgba(213, 180, 61, 0.795) 2px solid;
+    z-index: 3;
+    background-color:  rgb(255, 253, 247);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+my-alert button{
+    width: 4vw;
+    height: 5vh;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    background-color: rgb(213, 180, 61);
+    color: white;
+    font-size: 1.1rem;
+}
+
+.hideAlert{
+    display: none;
+}

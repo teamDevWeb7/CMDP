@@ -1,0 +1,31 @@
+{% extends 'layout.html.twig' %}
+
+{% block meta %}
+    <meta name="description" content="La liste de la plupart des chantiers que nous avons réalisé, avec leur description et photos.">
+{% endblock %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="{{ assets('/assets/css/chantiers/chantiers.css') }}">
+{% endblock %}
+
+{% block title %}
+    <title>{{siteName}} ~ Nos chantiers</title>
+{% endblock %}
+
+{% block body %}
+    <h1>Tous nos chantiers</h1>
+    {% for chantier in chantiers %}
+    <article>
+        <div><img src="{{assets('/assets/imgs/chantiers'~chantier.imgPathChantier) }}"></div>
+        <div>
+            <h2>{{chantier.nomChantier}}</h2>
+            <p>{{chantier.dateChantier}}</p>
+            <p>{{chantier.lieu}}</p>
+            <p>{{chantier.desc}}</p>
+            <a href="{{path('chantier', {id: chantier.id})}}">En savoir plus</a>
+        </div>
+    </article>
+    {% endfor %}
+
+
+{% endblock %}

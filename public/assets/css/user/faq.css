@@ -1,0 +1,94 @@
+/* container */
+#prems{
+    min-height: 70vh;
+    position: relative;
+}
+/* zone de réponse, à droite */
+#rep{
+    width: 65%;
+    position: fixed;
+    background-color: rgba(255, 253, 247, 0.842);
+    border: rgba(213, 180, 61, 0.795) 2px solid;
+    /* box-shadow: 2px 2px 5px rgb(182, 182, 182); */
+    border-radius: 50px;
+    top: 15vh;
+    left:32vw;
+    padding: 5vh;
+    text-align: justify;
+    font-size: 1.1rem;
+}
+#rep a{
+    text-decoration: none;
+    transition: .5s;
+}
+#rep a:hover{
+    font-size: 1.2rem;
+}
+
+/* zone avec les questions */
+#quest{
+    width: 24%;
+    margin-left: 3%;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+    background-color: rgba(255, 253, 247, 0.842);
+    max-height: 65vh;
+    overflow: auto;
+}
+
+/* scrollbar chrome et edge */
+#quest::-webkit-scrollbar{
+    background-color: rgb(219, 219, 219);
+    width: 7px;
+    border-radius: 5px;
+    border: none;
+}
+#quest::-webkit-scrollbar-thumb{
+    background-color:rgba(213, 180, 61, 0.795);
+    border-radius: 5px;
+    width: 7px;
+}
+
+/* les btn associés aux themes */
+#quest button{
+    width: 100%;
+    height: 6vh;
+    padding: 0 1.5vw;
+    font-size: 1.1rem;
+    border: rgba(213, 180, 61, 0.795) 1px solid;
+    background-color: rgba(255, 252, 241, 0.842);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#quest button img{
+    width: 8%;   
+}
+
+
+/* les questions inside les thèmes */
+#quest p{
+    padding: 1vh;
+    cursor: pointer;
+}
+hr{
+    width: 90%;
+    margin-left: 5%;
+    border: none;
+    border-top: 1px solid rgba(213, 180, 61, 0.795);
+}
+
+/* fleche aller en haut pas besoin, page 100vh max */
+#scroll_to_top{
+    display: none;
+}
+
+.hide{
+    display: none;
+}
+.show{
+    display: block;
+}
+

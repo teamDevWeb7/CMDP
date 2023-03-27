@@ -2,6 +2,7 @@
 
 namespace Core\Framework\Middleware;
 
+use Core\Framework\Renderer\RendererInterface;
 use GuzzleHttp\Psr7\Response;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -11,8 +12,10 @@ use Psr\Http\Message\ServerRequestInterface;
  */
 class NotFoundMiddleware extends AbstractMiddleware{
 
+
     public function process(ServerRequestInterface $request)
     {
-        return new Response(404, [], "Page introuvable");
+        // return new Response(404, [], "not found middleware");
+        return (new Response)->withHeader('Location', 'PageNotFound');
     }
 }
