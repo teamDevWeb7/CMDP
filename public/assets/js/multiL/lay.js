@@ -8,7 +8,7 @@ var arrLang={
         'contact':'Contact',
 
         // page accueil
-        'h1Acc':'Pourquoi nous choisir ?',
+        'h1Acc':'Pourquoi choisir ',
         'blo':'Pour tous vos projets de rénovation, nous vous proposerons un design unique, un suivi rigoureux, avec une attention particulière à votre satisfaction. N\'attendez plus, il n\'y a qu\'un pas entre vos rêves et vous.',
         'aPropos':'À propos de nous',
         'ourWork':'Tous nos chantiers',
@@ -33,6 +33,61 @@ var arrLang={
         'entSuiv':'Parce que chaque projet est unique, nos designs le sont aussi. Notre équipe commerciale assure un suivi complet de votre projet afin de vous assurer une réalisation sur mesure de vos idées. Des conseils ciblés et une disponibilité à tout instant, nous faisons de nos clients notre priorité.',
         'rea':'Nos réalisations',
         'lastProj':'Notre dernier projet',
+
+        // nos chantiers
+
+
+
+
+        // devis
+        'alert1':'Merci de sélectionner une proposition',
+        'belongings': 'Mon bien',
+        'myReno':'Ma rénovation',
+        'myProject':'Mon projet',
+        'myInfos':'Mes coordonnées',
+        'myReno':'Je souhaite rénover :',
+        'app':'Un appartement',
+        'house':'Une maison',
+        'else':'Autre',
+        'next':'Suivant',
+
+        'needs':'De quoi pensez vous avoir besoin ?',
+        'revet':'Revêtements sols et murs',
+        'menui':'Menuiseries',
+        'iso':'Isolation',
+        'toit':'Toiture',
+        'constr':'Travaux de construction',
+        'sdb':'Salle de bain',
+        'exte':'Extérieur',
+        'cuisi':'Cuisine',
+        'preced':'Précédent',
+
+        'descrb':'Décrivez-nous votre projet :',
+
+        'name':'Votre nom : ',
+        'sname':'Votre prénom : ',
+        'mail':'Votre adresse mail : ',
+        'tel':'Votre numéro de téléphone : ',
+        'data':'En cliquant sur envoyer, vous acceptez que vos données soient traitées informatiquement par',
+        'more':'Pour en savoir plus : ',
+        'rgpd':'Cliquez ici',
+
+
+
+        // FAQ
+        'quest': 'Votre question ne figure pas dans cette FAQ ?',
+        'form':'Nous vous invitons à nous contacter directement via un formulaire de contact.',
+        
+
+        // contact
+        'mess':'Votre message : ',
+        'day':'Du lundi au vendredi',
+        'hour':'de 9h à 19h'
+
+
+
+
+
     },
     'en':{
         'accueil':'Home',
@@ -43,7 +98,7 @@ var arrLang={
         'contact':'Contact',
 
         // page accueil
-        'h1Acc':'Why should you chose us ?',
+        'h1Acc':'Why should you chose ',
         'blo':'For all your renovation projects, we will create an unique design, keep you updated at every step, and we will be very attentive to give you a maximal satisfaction. Why wait ? There is only one step between your dreams and you.',
         'aPropos':'About us',
         'ourWork':'Look at our work',
@@ -68,6 +123,57 @@ var arrLang={
         'entSuiv':'Because each project is unique, our designs are too. Our sales team ensures a complete follow-up of your project in order to ensure a tailor-made realization of your ideas. Targeted advice and availability at all times, we make our customers our priority.',
         'rea':'Our realisations',
         'lastProj':'Our last project',
+
+        // nos chantiers
+
+
+
+
+        // devis
+        'alert1':'Please, choose one',
+        'belongings': 'My home',
+        'myReno':'My renovation',
+        'myProject':'My project',
+        'myInfos':'My informations',
+        'myReno':'My renovation',
+        'app':'An appartment',
+        'house':'A house',
+        'else':'Other',
+        'next':'Next',
+
+        'needs':'What do you think you need ?',
+        'revet':'Floor and wall coverings',
+        'menui':'Carpentry',
+        'iso':'Isolation',
+        'toit':'Rooftop',
+        'constr':'Construction\'s work',
+        'sdb':'Bathroom',
+        'exte':'Outside',
+        'cuisi':'Kitchen',
+        'preced':'Previous',
+
+        'descrb':'Describe your project :',
+
+        'name':'Your name : ',
+        'sname':'Your first name : ',
+        'mail':'Your email adress : ',
+        'tel':'Your phone number : ',
+        'data':'By sending this estimation you accept that your data are processed by',
+        'more':'If you want more informations on the subject : ',
+        'rgpd':'Click here',
+
+
+        // FAQ
+        'quest': 'You can\'t find the answer at your question here ?',
+        'form':'We invite you to contact us directly via a contact form.',
+
+
+
+        // contact
+        'mess':'Your message : ',
+        'day':'Monday to friday',
+        'hour':'from 9am to 7pm'
+
 
     }
 }
