@@ -14,13 +14,15 @@ blockquote{
 }
 
 /* les deux titres de la page */
-h1, h2{
+h1, h2, h2 a{
     color: rgb(213,180,61);
     font-size: 2rem;
     margin-left: 5vh;
     margin-bottom: 8vh;
     margin-top: 10vh;
+    text-decoration: none;
 }
+
 
 /* nos valeurs, 3blocs */
 #values{

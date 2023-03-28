@@ -16,6 +16,7 @@
     {% block title %}
 
     {% endblock %}
+    <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
 </head>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;1,400;1,600&display=swap');
@@ -26,19 +27,19 @@
             {# en js faire un set attribute pour bold la class active ? #}
             <a href="{{path('accueil')}}"><img src="{{ assets('/assets/imgs/logo/logo.svg') }}" id="logo" alt="Logo de l'entreprise"></a>
             <ul>
-                <li><a href="{{path('accueil')}}">accueil</a></li>
-                <li><a href="{{path('aPropos')}}">à propos</a></li>
-                <li><a href="{{path('chantiers')}}">Nos chantiers</a></li>
-                <li><a href="{{path('devis')}}">devis en ligne</a></li>
-                <li><a href="{{path('faq')}}">FAQ</a></li>
-                <li><a href="{{path('contact')}}">contact</a></li>
+                <li><a href="{{path('accueil')}}" key="accueil"  class="lang" >accueil</a></li>
+                <li><a href="{{path('aPropos')}}"  class="lang" key="aProp">à propos</a></li>
+                <li><a href="{{path('chantiers')}}"  class="lang" key="chantiers">Nos chantiers</a></li>
+                <li><a href="{{path('devis')}}"  class="lang" key="devis">devis en ligne</a></li>
+                <li><a href="{{path('faq')}}"  class="lang" key="faq">FAQ</a></li>
+                <li ><a href="{{path('contact')}}" class="lang" key="contact">contact</a></li>
             </ul>
         </nav>
         {# drapeaux choix de la langue #}
         <div>
-            <button type="button" class="langue"><img src="{{ assets('/assets/imgs/icone/france.png') }}" alt="drapeau français"></button>
+            <button type="button" class="langue" id="fr"><img src="{{ assets('/assets/imgs/icone/france.png') }}" alt="drapeau français"></button>
             <p>|</p>
-            <button type="button" class="langue"><img src="{{ assets('/assets/imgs/icone/royaume-uni.png') }}" alt="drapeau anglais"></button>
+            <button type="button" class="langue" id="en"><img src="{{ assets('/assets/imgs/icone/royaume-uni.png') }}" alt="drapeau anglais"></button>
         </div>
 
     </header>
@@ -65,17 +66,17 @@
         </section>
         <nav>
             <ul>
-                <li><a href="{{path('accueil')}}">Accueil</a></li>
+                <li><a href="{{path('accueil')}}"  class="lang" key="accueil">Accueil</a></li>
                 <p>|</p>
-                <li><a href="{{path('aPropos')}}">À propos</a></li>
+                <li><a href="{{path('aPropos')}}"  class="lang" key="aProp">À propos</a></li>
                 <p>|</p>
-                <li><a href="{{path('chantiers')}}">Nos chantiers</a></li>
+                <li><a href="{{path('chantiers')}}"  class="lang" key="chantiers">Nos chantiers</a></li>
                 <p>|</p>
-                <li><a href="{{path('devis')}}">Devis en ligne</a></li>
+                <li><a href="{{path('devis')}}"  class="lang" key="devis">Devis en ligne</a></li>
                 <p>|</p>
-                <li><a href="{{path('faq')}}">FAQ</a></li>
+                <li><a href="{{path('faq')}}"  class="lang" key="faq">FAQ</a></li>
                 <p>|</p>
-                <li><a href="{{path('contact')}}">Contact</a></li>
+                <li><a href="{{path('contact')}}"  class="lang" key="contact">Contact</a></li>
             </ul>
         </nav>
         {# lien FB #}
@@ -89,6 +90,8 @@
     {% endblock %}
     <script src="{{ assets('/assets/js/active.js') }}"></script>
     <script src="{{ assets('/assets/js/toasts.js') }}"></script>
+    <script src="{{ assets('/assets/js/multiL/lay.js') }}"></script>
+    <script src="{{ assets('/assets/js/multiL/function.js') }}"></script>
 </body>
 </html>
 {# alt <gr></gr>
