@@ -19,79 +19,79 @@
     
     <div id="swipe">
         <my-alert class="hideAlert">
-            <p>Merci de sélectionner une proposition</p>
+            <p key="alert1" class="lang">Merci de sélectionner une proposition</p>
             <button onclick="fermer()">OK</button>
         </my-alert>
         <section class="chemin">
             <div class="trait"></div>
             <div class="pts1 bigger"></div>
-            <h1>Mon bien</h1>
+            <h1 key="belongings" class="lang">Mon bien</h1>
             <div class="pts2"></div>
-            <h2>Ma rénovation</h2>
+            <h2 key="myReno"  class="lang">Ma rénovation</h2>
             <div class="pts3"></div>
-            <h2>Mon projet</h2>
+            <h2 key="myProject"  class="lang">Mon projet</h2>
             <div class="pts4"></div>
-            <h2>Mes coordonnées</h2>
+            <h2 key="myInfos"  class="lang">Mes coordonnées</h2>
         </section>
 
 
         <section id="p1" class="left0">
-                <h3>Je souhaite rénover :</h3>
+                <h3 class="lang" key="myReno">Je souhaite rénover :</h3>
                 <div id="Q1">
-                    <p class="choix"><img src="{{ assets('/assets/imgs/icone/devis/app.png') }}" alt="Image d'un appartement"><span class="R">Un appartement</span></p>
+                    <p class="choix"><img src="{{ assets('/assets/imgs/icone/devis/app.png') }}" alt="Image d'un appartement"><span class="R" ><my-p class="lang" key="app">Un appartement</my-p></span></p>
                     
                         
-                    <p class="choix"><img src="{{ assets('/assets/imgs/icone/devis/home.png') }}" alt="Image d'une maison"><span class="R">Une maison</span></p>
+                    <p class="choix"><img src="{{ assets('/assets/imgs/icone/devis/home.png') }}" alt="Image d'une maison"><span class="R"><my-p class="lang" key="house">Une maison</my-p></span></p>
                     
                         
-                    <p class="choix"><img src="{{ assets('/assets/imgs/icone/devis/tipi.png') }}" alt="Image d'un tipi"><span class="R">Autre</span></p>
+                    <p class="choix"><img src="{{ assets('/assets/imgs/icone/devis/tipi.png') }}" alt="Image d'un tipi"><span class="R"><my-p class="lang" key="else">Autre</my-p></span></p>
                 </div>
-                <button type="button" class="suivant" id="s1" onclick="swip()">Suivant</button>
+                <button type="button" class="suivant" id="s1" onclick="swip()" ><my-p class="lang" key="next">Suivant</my-p></button>
         </section>
 
         <section id="p2" class="left">
-                <h3>De quoi pensez vous avoir besoin?</h3>
+                <h3 class="lang" key="needs">De quoi pensez vous avoir besoin ?</h3>
                 <div id="grid">
-                    <p><img src="{{ assets('/assets/imgs/icone/devis/roul.png') }}" alt="Image d'un rouleau à peinture" class="tooMuch"><span class="R2">Revêtements sols et murs</span></p>
-                    <p ><img src="{{ assets('/assets/imgs/icone/devis/fenetre.png') }}" alt="Image d'une fenêtre"><span class="R2">Menuiseries</span></p>
-                    <p><img src="{{ assets('/assets/imgs/icone/devis/maisFroid.png') }}" alt="Image d'une maison avec une écharpe"><span class="R2">Isolation</span></p>
-                    <p><img src="{{ assets('/assets/imgs/icone/devis/toit.png') }}" alt="Image d'une maison avec un toit en construction"><span class="R2">Toiture</span></p>
-                    <p><img src="{{ assets('/assets/imgs/icone/devis/mur.png') }}" alt="Image d'un mur en construction" class="tooMuch"><span class="R2">Travaux de construction</span></p>
-                    <p><img src="{{ assets('/assets/imgs/icone/devis/sdb.png') }}" alt="Image d'une salle de bain"><span class="R2">Salle de bain</span></p>
-                    <p><img src="{{ assets('/assets/imgs/icone/devis/jardin.png') }}" alt="Image d'un jardin"><span class="R2">Extérieur</span></p>
-                    <p><img src="{{ assets('/assets/imgs/icone/devis/cuisine.png') }}" alt="Image d'une cuisine"><span class="R2">Cuisine</span></p>
+                    <p><img src="{{ assets('/assets/imgs/icone/devis/roul.png') }}" alt="Image d'un rouleau à peinture" class="tooMuch"><span class="R2"><my-p class="lang" key="revet">Revêtements sols et murs</my-p></span></p>
+                    <p ><img src="{{ assets('/assets/imgs/icone/devis/fenetre.png') }}" alt="Image d'une fenêtre"><span class="R2"><my-p class="lang" key="menui">Menuiseries</my-p></span></p>
+                    <p><img src="{{ assets('/assets/imgs/icone/devis/maisFroid.png') }}" alt="Image d'une maison avec une écharpe"><span class="R2"><my-p class="lang" key="iso">Isolation</my-p></span></p>
+                    <p><img src="{{ assets('/assets/imgs/icone/devis/toit.png') }}" alt="Image d'une maison avec un toit en construction"><span class="R2"><my-p class="lang" key="toit">Toiture</my-p></span></p>
+                    <p><img src="{{ assets('/assets/imgs/icone/devis/mur.png') }}" alt="Image d'un mur en construction" class="tooMuch"><span class="R2"><my-p class="lang" key="constr">Travaux de construction</my-p></span></p>
+                    <p><img src="{{ assets('/assets/imgs/icone/devis/sdb.png') }}" alt="Image d'une salle de bain"><span class="R2"><my-p class="lang" key="sdb">Salle de bain</my-p></span></p>
+                    <p><img src="{{ assets('/assets/imgs/icone/devis/jardin.png') }}" alt="Image d'un jardin"><span class="R2"><my-p class="lang" key="exte">Extérieur</my-p></span></p>
+                    <p><img src="{{ assets('/assets/imgs/icone/devis/cuisine.png') }}" alt="Image d'une cuisine"><span class="R2"><my-p class="lang" key="cuisi">Cuisine</my-p></span></p>
                 </div>
-                <p id="g1"><img src="{{ assets('/assets/imgs/icone/devis/outils.png') }}" alt="Image d'outils"><span class="R2">Autre</span></p>
-                <button type="button" class="preced" id="pre2" onclick="swi()">Précédent</button>
-                <button type="button" class="suivant" id="s2" onclick="swipo()">Suivant</button>
+                <p id="g1"><img src="{{ assets('/assets/imgs/icone/devis/outils.png') }}" alt="Image d'outils"><span class="R2"><my-p class="lang" key="else">Autre</my-p></span></p>
+                <button type="button" class="preced" id="pre2" onclick="swi()"><my-p class="lang" key="preced">Précédent</my-p></button>
+                <button type="button" class="suivant" id="s2" onclick="swipo()"><my-p class="lang" key="next">Suivant</my-p></button>
         </section>
 
         <section id="p3" class="left">
-            <h3>Décrivez-nous votre projet :</h3>
+            <h3 class="lang" key="descrb">Décrivez-nous votre projet :</h3>
             <textarea id="descriptionProjet" name="descriptionProjet" rows="9" cols="50"></textarea>
 
 
-            <button type="button" class="preced" id="pre3" onclick="sw()">Précédent</button>
-            <button type="button" class="suivant" id="s3" onclick="swopo()">Suivant</button>
+            <button type="button" class="preced" id="pre3" onclick="sw()" ><my-p class="lang" key="preced">Précédent</my-p></button>
+            <button type="button" class="suivant" id="s3" onclick="swopo()"><my-p class="lang" key="next">Suivant</my-p></button>
 
         </section>
         <section id="p4" class="left">
 
             <form action="#" method="POST">
                 <input type="text" id="nom1" name="nom" required="required">
-                <label for="nom" id="labNom1">Votre nom : <span class="red">*</span></label>
+                <label for="nom" id="labNom1"><my-p class="lang" key="name">Votre nom : </my-p><span class="red">*</span></label>
                 <i id="iNom1"></i>
     
                 <input type="text" id="prenom1" name="prenom" required="required">
-                <label for="prenom" id="labPrenom1">Votre prénom : <span class="red">*</span></label>
+                <label for="prenom" id="labPrenom1"><my-p class="lang" key="sname">Votre prénom : </my-p><span class="red">*</span></label>
                 <i id="iPrenom1"></i>
     
                 <input type="text" id="mail1" name="mail" required="required">
-                <label for="mail" id="labMail1">Votre adresse mail : <span class="red">*</span></label>
+                <label for="mail" id="labMail1"><my-p class="lang" key="mail">Votre addresse mail : </my-p><span class="red">*</span></label>
                 <i id="iMail1"></i>
     
                 <input type="text" id="tel1" name="tel" required="required">
-                <label for="tel" id="labTel1">Votre numéro de téléphone : <span class="red">*</span></label>
+                <label for="tel" id="labTel1"><my-p class="lang" key="tel">Votre numéro de téléphone : </my-p><span class="red">*</span></label>
                 <i id="iTel1"></i>
 
                 <input type="hidden" id="sujet" name="sujet">
@@ -99,17 +99,17 @@
                 
 
                 <div class="g-recaptcha" data-sitekey="6LfpX-ckAAAAAFgQUFqEEzZe9E2TlH_jFr8WLxVI"></div>
-                <input type="submit" value="Envoyer" id="btn1">
+                <input type="submit" value="OK" id="btn1">
             </form>
 
             <p>
-                En cliquant sur envoyer, vous acceptez que vos données soient traitées informatiquement par {{siteName}}.
+                <my-p class="lang" key="data">En cliquant sur envoyer, vous acceptez que vos données soient traitées informatiquement par</my-p> {{siteName}}.
             
-                Pour en savoir plus : <a href="https://www.cnil.fr/fr/reglement-europeen-protection-donnees">Cliquez ici</a>
+                <my-p class="lang" key="more">Pour en savoir plus : </my-p><a href="https://www.cnil.fr/fr/reglement-europeen-protection-donnees"><my-p class="lang" key="rgpd">Cliquez ici</my-p></a>
             </p>
 
 
-            <button type="button" class="preced" id="pre4" onclick="swa()">Précédent</button>
+            <button type="button" class="preced" id="pre4" onclick="swa()" ><my-p class="lang" key="preced">Précédent</my-p></button>
         </section>
     </div>    
 

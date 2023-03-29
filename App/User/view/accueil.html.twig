@@ -24,34 +24,31 @@
     <section id="intro">
         <img src="{{ assets('/assets/imgs/photos/paint-brush.jpg') }}" alt="Image décorative représentant des outils de peinture">
         <div>
-            <h1>Pourquoi choisir {{siteName}} ?</h1>
-            <p id="blo">Pour tous vos projets de rénovation, {{siteName}} vous proposera un design unique, un suivi rigoureux, avec une attention particulière à votre satisfaction.<br>N'attendez plus, il n'y a qu'un pas entre vos rêves et vous.</p>
+            <h1><my-p  class="lang" key="h1Acc">Pourquoi choisir </my-p>{{siteName}} ?</h1>
+            <p id="blo" class="lang" key="blo">Pour tous vos projets de rénovation, nous vous proposerons un design unique, un suivi rigoureux, avec une attention particulière à votre satisfaction.<br>N'attendez plus, il n'y a qu'un pas entre vos rêves et vous.</p>
             <ol>
-                <li><a href="{{path('aPropos')}}">À propos de nous
-                    <img src="{{ assets('/assets/imgs/icone/chevron.png') }}" alt="flèche"></a></li>
-                <li><a href="{{path('chantiers')}}">Tous nos chantiers
-                    <img src="{{ assets('/assets/imgs/icone/chevron.png') }}" alt="flèche">
-                </a></li>
-                <li><a href="{{path('contact')}}">Nous contacter
-                    <img src="{{ assets('/assets/imgs/icone/chevron.png') }}" alt="flèche">
-                </a></li>
+                <li><a href="{{path('aPropos')}}" class="lang" key="aPropos">À propos de nous </a><img src="{{ assets('/assets/imgs/icone/chevron.png') }}" alt="flèche"></li>
+                <li><a href="{{path('chantiers')}}" class="lang" key="ourWork">Tous nos chantiers
+                </a><img src="{{ assets('/assets/imgs/icone/chevron.png') }}" alt="flèche"></li>
+                <li><a href="{{path('contact')}}" class="lang" key="contactUs">Nous contacter
+                </a><img src="{{ assets('/assets/imgs/icone/chevron.png') }}" alt="flèche"></li>
             </ol>
 
 
 
-            <h2>Les étapes de votre idée jusqu'à sa réalisation</h2>
+            <h2 class="lang" key="etapes">Les étapes de votre idée jusqu'à sa réalisation</h2>
             <ul>
-                <li>Demande de devis en ligne</li>
-                <li>Rencontre avec l'équipe commerciale</li>
-                <li>Réception du devis définitif</li>
-                <li>Début des travaux</li>
-                <li>Suivi permanent avec le chef de projet</li>
-                <li>Livraison du projet, prêt à vivre</li>
+                <li class="lang" key="etape1">Demande de devis en ligne</li>
+                <li class="lang" key="etape2">Rencontre avec l'équipe commerciale</li>
+                <li class="lang" key="etape3">Réception du devis définitif</li>
+                <li class="lang" key="etape4">Début des travaux</li>
+                <li class="lang" key="etape5">Suivi permanent avec le chef de projet</li>
+                <li class="lang" key="etape6">Livraison du projet, prêt à vivre</li>
             </ul>
         </div>
 
     </section>
-    <button id="dev"><a href="{{path('devis')}}">Demander un devis</a></button>
+    <button id="dev"><a href="{{path('devis')}}" class="lang" key="btnDevis">Demander un devis</a></button>
     
 
 {% endblock %}
