@@ -41,6 +41,7 @@ var arrLang={
 
         // devis
         'alert1':'Merci de sélectionner une proposition',
+        'alert2':'Merci de sélectionner au moins une proposition',
         'belongings': 'Mon bien',
         'myReno':'Ma rénovation',
         'myProject':'Mon projet',
@@ -131,6 +132,7 @@ var arrLang={
 
         // devis
         'alert1':'Please, choose one',
+        'alert2':'Please, select at least one item',
         'belongings': 'My home',
         'myReno':'My renovation',
         'myProject':'My project',

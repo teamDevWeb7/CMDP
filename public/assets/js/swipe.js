@@ -11,7 +11,7 @@ let div=document.querySelectorAll('div');
 
 let pBalise=document.querySelectorAll('p');
 
-let alerte=document.querySelector('my-alert');
+let alerte=document.querySelectorAll('my-alert');
 
 // suivant
 function swip(){
@@ -19,7 +19,7 @@ function swip(){
 
     // si user n'a rien selectionner
     if(Q1==null || Q1==''){
-        alerte.removeAttribute('class');
+        alerte[0].removeAttribute('class');
         para1.style.filter='blur(3px)';
         die;
     }
@@ -37,8 +37,11 @@ function swip(){
 }
 // va avec l alerte qui empeche de passer à la page suivante
 function fermer(){
-    alerte.setAttribute('class', 'hideAlert');
+    alerte[0].setAttribute('class', 'hideAlert');
     para1.style.filter='none';
+}
+function fermer1(){
+    alerte[1].setAttribute('class', 'hideAlert');
     para2.style.filter='none';
 }
 
@@ -57,10 +60,7 @@ function swi(){
 function swipo(){
 
     if(besoins.length == 0){
-        pBalise[1].innerText='Merci de sélectionner au moins une proposition';
-
-        alerte.removeAttribute('class');
-        
+        alerte[1].removeAttribute('class');
         
         para2.style.filter='blur(3px)';
         die;

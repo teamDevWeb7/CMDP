@@ -7,9 +7,9 @@ function translateLang(lang){
     $(this).text(arrLang[lang][$(this).attr('key')]);
     });
     
-  }
+}
   
-  $(function() {
+$(function() {
     //on check si y a une langue enregistrée ds localSorage
     let stored_lang = localStorage.getItem("stored_lang");
     //si oui on traduit ds langue voulue
@@ -28,4 +28,4 @@ function translateLang(lang){
       location.reload();
     });
   
-  });
+});
