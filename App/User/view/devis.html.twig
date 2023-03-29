@@ -8,7 +8,8 @@
     <link rel="stylesheet" href="{{ assets('/assets/css/user/devis/devis.css') }}">
     <link rel="stylesheet" href="{{ assets('/assets/css/user/devis/devis1.css') }}">
     <link rel="stylesheet" href="{{ assets('/assets/css/user/devis/devis2.css') }}">
-
+    {# <link rel="stylesheet" href="{{ assets('/assets/css/user/devis/pdf.css') }}"> #}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 {% endblock %}
 
 {% block title %}
@@ -16,7 +17,6 @@
 {% endblock %}
 
 {% block body %}
-    
     <div id="swipe">
         <my-alert class="hideAlert">
             <p key="alert1" class="lang">Merci de sélectionner une proposition</p>
@@ -31,7 +31,7 @@
             <div class="pts1 bigger"></div>
             <h1 key="belongings" class="lang">Mon bien</h1>
             <div class="pts2"></div>
-            <h2 key="myReno"  class="lang">Ma rénovation</h2>
+            <h2 key="myRenov"  class="lang">Ma rénovation</h2>
             <div class="pts3"></div>
             <h2 key="myProject"  class="lang">Mon projet</h2>
             <div class="pts4"></div>
@@ -103,7 +103,8 @@
                 
 
                 <div class="g-recaptcha" data-sitekey="6LfpX-ckAAAAAFgQUFqEEzZe9E2TlH_jFr8WLxVI"></div>
-                <input type="submit" value="OK" id="btn1">
+
+                <input type="submit" value="OK" id="btn1" onclick="pdfMaker()">
             </form>
 
             <p>
@@ -121,5 +122,6 @@
 {% block scripts %}
     <script src="{{ assets('/assets/js/devis.js') }}"></script>
     <script src="{{ assets('/assets/js/swipe.js') }}"></script>
+    <script src="{{ assets('/assets/js/pdfMaker.js') }}"></script>
     <script src="https://www.google.com/recaptcha/api.js" async></script>
 {% endblock %}

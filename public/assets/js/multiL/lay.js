@@ -43,7 +43,7 @@ var arrLang={
         'alert1':'Merci de sélectionner une proposition',
         'alert2':'Merci de sélectionner au moins une proposition',
         'belongings': 'Mon bien',
-        'myReno':'Ma rénovation',
+        'myRenov':'Ma rénovation',
         'myProject':'Mon projet',
         'myInfos':'Mes coordonnées',
         'myReno':'Je souhaite rénover :',

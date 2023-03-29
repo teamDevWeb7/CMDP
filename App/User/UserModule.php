@@ -27,13 +27,20 @@ class UserModule extends AbstractModule{
 
 
         $this->router->get('/', [$userAction, 'accueil'], 'accueil');
+
         $this->router->get('/user/aPropos', [$userAction, 'aPropos'], 'aPropos' );
+
         $this->router->get('/user/contact', [$userAction, 'contact'], 'contact');
         $this->router->post('/user/contact', [$userAction, 'contact']);
+
         $this->router->get('/user/devis', [$userAction, 'devis'], 'devis');
         $this->router->post('/user/devis', [$userAction, 'devis']);
+        $this->router->get('/user/pdf', [$userAction, 'pdf'], 'pdf');
+
         $this->router->get('/user/FAQ', [$userAction, 'faq'], 'faq');
+
         $this->router->get('/user/mentionsLegales', [$userAction, 'mentionsLeg'], 'mentionsLeg');
+
         $this->router->get('/user/PageNotFound', [$userAction, 'page'], 'PageNotFound');
 
     }
