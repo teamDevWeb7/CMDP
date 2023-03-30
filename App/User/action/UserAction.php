@@ -125,7 +125,15 @@ class UserAction{
     }
 
     public function devis(ServerRequest $request){
+        $method=$request->getMethod();
+        if($method=='POST'){
+            // return $this->redirect('pdf');
+        }
         return $this->renderer->render('@user/devis', ['siteName' => 'Cmydesignprojets']);
+    }
+
+    public function pdf(ServerRequest $request){
+        return $this->renderer->render('@user/pdf');
     }
 
     public function faq(ServerRequest $request){

@@ -18,10 +18,10 @@
 /* le textarea */
 #descriptionProjet{
     border: none;
-    border-radius: 20px;
+    border-radius: 10px;
     background-color: rgb(224, 224, 224);
     font-size: 1rem;
-    padding: 20px;
+    padding: 15px;
 }
 
 
