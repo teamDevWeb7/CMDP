@@ -1,8 +1,8 @@
 function pdfMaker(){
+
     const {jsPDF} =window.jspdf;
     const doc= new jsPDF();
 
-    let date = new Date;
     var titre='Récapitulatif de ma demande de devis';
 
     let analyseBesoins='';
@@ -15,7 +15,6 @@ function pdfMaker(){
     let tel=document.querySelector('#tel1').value;
 
     let taille=besoins.length;
-
 
     for(i=0;i<taille;i++){
         if(i>=taille-1){
@@ -33,7 +32,6 @@ function pdfMaker(){
 
     let split=doc.splitTextToSize(description, 180);
 
-
     doc.text(55,20, titre);
     doc.text(10,50, 'Mon bien à rénover :');
     doc.text(10,60, Q1);
@@ -46,6 +44,7 @@ function pdfMaker(){
     doc.text(10,145,tel);
     doc.text(10,160, 'La description de mon projet :');
     doc.text(10,170, split);
+    doc.text(65, 290, 'Produit par Cmydesignprojets');
     // 1 margin left
     // 2 margin top
     doc.save("devisCmydesignprojets.pdf");
