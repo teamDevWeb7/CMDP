@@ -78,6 +78,7 @@ class UserAction{
                                     ->required('nom', 'prenom', 'mail', 'tel', 'message')
                                     ->email('mail')
                                     // pb tel
+                                    // pattern pb regex->accepte num-1nbr
                                     // ->tel('tel')
                                     // pb 1 seule erreur
                                     ->getErrors();
@@ -89,15 +90,13 @@ class UserAction{
                         }
                     }
 
-                    // laver message ?
-
                     $prospect=$this->userRepo->find($data['mail']);
                     $message= new Message;
                     $message->setMessage($data['message']);
 
                     if($prospect){
                         $prospect->addMessage($message);
-                        $this->manager->persist($prospect);
+                        // $this->manager->persist($prospect);
                     }
                     else{
                         $prosp= new Prospect;
