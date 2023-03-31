@@ -1,7 +1,7 @@
 {% extends 'admin.layout.html.twig' %}
 
 {% block stylesheet %}
-    <link rel="stylesheet" href="{{ assets('/assets/css/admin/prosp.css') }}">
+    <link rel="stylesheet" href="{{ assets('/assets/css/admin/prospects/prosp.css') }}">
 {% endblock %}
 
 {% block title %}
@@ -10,15 +10,46 @@
 
 {% block body %}
     <h1>Prospect {{prospect.nom}} {{prospect.prenom}}</h1>
+    <p><span>Attention</span> toute action de votre part sur le prospect ou ses messages/devis est définitive.</p>
+    <h2>Les informations de {{prospect.nom}} {{prospect.prenom}}</h2>
+    <table class="infos">
+        <tbody>
+                <tr>
+                    <td>{{prospect.nom}}</td>
+                </tr>
+                <tr>
+                    <td>{{prospect.prenom}}</td>
+                </tr>
+                <tr>
+                    <td>{{prospect.mail}}</td>
+                </tr>
+                <tr>
+                    <td>{{prospect.phone}}</td>
+                </tr>
+        </tbody>
+    </table>
+    
+    <p class="opts"><a href="{{path('updateProspect', {id: prospect.id})}}">Modifier le prospect</a>
+        <a href="{{path('deleteProspect', {id: prospect.id})}}">Supprimer le prospect</a></p>
+    <h2>Les messages et devis de {{prospect.nom}} {{prospect.prenom}}</h2>
     <section>
         <table>
             <thead>
                 <tr>
                     <th>Messages(s)</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
-                
+                {% for message in messages %}
+                    <tr>
+                        <td>{{message.message}}</td>
+                        <td>
+                            <a href="{{path('deleteMess', {id: message.id})}}">Supprimer</a>
+                        </td>
+                        
+                    </tr>
+                {% endfor %}
             </tbody>
             
         </table>
@@ -27,6 +58,7 @@
             <thead>
                 <tr>
                     <th>Devis</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>

@@ -1,0 +1,60 @@
+h1, h2{
+    width: 100%;
+    text-align: center;
+    margin-bottom: 5vh;
+}
+p{
+    margin-bottom: 3vh;
+    font-style: italic;
+    font-size: 0.8rem;
+    width: 100%;
+    text-align: center;
+}
+p span{
+    font-style: normal;
+    font-weight: bold;
+    color: rgb(179, 22, 22);
+}
+.opts{
+    font-style: normal;
+    font-size: 1rem;
+    margin-bottom: 5vh;
+}
+.opts a:nth-child(1){
+    margin-right: 2vw;
+}
+.opts a:hover{
+    font-weight: bold;
+}
+
+.infos{
+    width: 20vw;
+    margin-left: 40%;
+    text-align: center;
+    margin-bottom: 5vh;
+}
+
+section{
+    display: flex;
+    justify-content: space-around;
+}
+section table{
+    width: 44%;
+    text-align: center;
+}
+section table:nth-child(1) td:nth-child(1){
+    text-align: justify;
+    width: 70%;
+}
+/* qd aura des devis je pourrai supprimer la partie avec th */
+section table:nth-child(2) td:nth-child(2), table:nth-child(2) th:nth-child(2){
+    width: 30%;
+}
+
+section tbody tr:nth-child(even){
+    background-color: rgb(238, 238, 238);
+}
+section thead{
+    background-color: rgb(161, 161, 161);
+    text-transform: uppercase;
+}

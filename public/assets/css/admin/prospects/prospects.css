@@ -11,6 +11,11 @@ p{
     font-style: italic;
     font-size: 0.8rem;
 }
+p span{
+    font-style: normal;
+    font-weight: bold;
+    color: rgb(179, 22, 22);
+}
 table{
     width: 60%;
     border-collapse: collapse;

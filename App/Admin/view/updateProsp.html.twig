@@ -1,0 +1,32 @@
+{% extends 'admin.layout.html.twig' %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="{{ assets('/assets/css/admin/prospects/updateProp.css') }}">
+{% endblock %}
+
+{% block title %}
+    <title>Update mon prospect</title>
+{% endblock %}
+
+{% block body %}
+    <section>
+        <h1>Modifier les informations de {{prospect.nom}} {{prospect.prenom}}</h1>
+        <form method="POST">
+            <label for="nom">Modifier le nom :</label>
+            <input type="text" name="nom" id="nom" value="{{prospect.nom}}"><br>
+            <label for="prenom">Modifier le prénom :</label>
+            <input type="text" name="prenom" id="prenom" value="{{prospect.prenom}}"><br>
+            <label for="mail">Modifier le mail :</label>
+            <input type="text" name="mail" id="mail" value="{{prospect.mail}}"><br>
+            <label for="tel">Modifier le numéro de téléphone :</label>
+            <input type="text" name="tel" id="tel" value="{{prospect.phone}}"><br>
+            <input type="submit" value="Modifier">
+        </form>
+    </section>
+    
+
+
+
+
+
+{% endblock %}

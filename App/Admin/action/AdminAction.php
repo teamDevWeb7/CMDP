@@ -102,10 +102,64 @@ class AdminAction{
     public function prospect(ServerRequest $request){
         $id=$request->getAttribute('id');
         $prospect=$this->prospectsRepo->find($id);
+        $messages=$this->messageRepo->findBy(array('prospect'=>$id));
         if(!$prospect){
             return new Response(404,[], 'Aucun prospect ne correspond');
         }
-        return $this->renderer->render('@admin/prospectView', ["prospect"=>$prospect]);
+        return $this->renderer->render('@admin/prospectView', ["prospect"=>$prospect, "messages"=>$messages]);
+    }
+
+    /**
+     * Permet la suppression d'un prospect grâce à son ID
+     *
+     * @param ServerRequest $request
+     * @return void
+     */
+    public function deleteProspect(ServerRequest $request){
+        $id=$request->getAttribute('id');
+        $prospect=$this->prospectsRepo->find($id);
+        $this->manager->remove($prospect);
+        $this->manager->flush();
+        $this->toaster->makeToast('Prospect supprimé avec succès', Toaster::SUCCESS);
+    
+        return $this->redirect('prospects');
+    }
+
+    /**
+     * Permet de modifier le nom, prénom, mail, téléphone du prospect
+     *
+     * @param ServerRequest $request
+     * @return void
+     */
+    public function updateProspect(ServerRequest $request){
+        $id=$request->getAttribute('id');
+        $prospect=$this->prospectsRepo->find($id);
+        if(!$prospect){
+            return new Response(404,[], 'Aucun prospect ne correspond');
+        }
+
+        $method=$request->getMethod();
+        if($method==='POST'){
+            $data=$request->getParsedBody();
+            if(($data['nom']===$prospect->getNom()) 
+                && ($data['prenom']===$prospect->getPrenom())
+                && ($data['mail']===$prospect->getMail())
+                && ($data['tel']===$prospect->getPhone())){
+                $this->toaster->makeToast('Aucune modification n\'a été renseignée donc aucune valeur n\'a été modifiée', Toaster::ERROR);
+                    return $this->redirect('prospects');
+            }
+
+            $prospect->setNom($data['nom'])
+                    ->setPrenom($data['prenom'])
+                    ->setMail($data['mail'])
+                    ->setPhone($data['tel']);
+
+            $this->manager->flush();
+            $this->toaster->makeToast('Prospect modifié avec succès', Toaster::SUCCESS);
+            return $this->redirect('prospects');
+        }
+        
+        return $this->renderer->render('@admin/updateProsp', ["prospect"=>$prospect]);
     }
 
 
@@ -119,7 +173,7 @@ class AdminAction{
 
 
 
-    
+
 
     /**
      * render la page pageMessage

@@ -35,9 +35,9 @@ class AdminModule extends AbstractModule{
         // gestion prospect
         $this->router->get('/admin/tousMesProspects', [$adminAction, 'prospects'], 'prospects');
         $this->router->get('/admin/prospect/{id:[\d]+}', [$adminAction, 'prospect'], 'prospect');
-        $this->router->get('/admin/prospect/delete/{id:[\d]+}', [$adminAction, 'delete'], 'deleteProspect');
-        $this->router->get('/admin/updateProspect/{id:[\d]+}', [$adminAction, 'update'], 'updateProspect');
-        $this->router->post('/admin/updateProspect/{id:[\d]+}', [$adminAction, 'update']);
+        $this->router->get('/admin/prospect/delete/{id:[\d]+}', [$adminAction, 'deleteProspect'], 'deleteProspect');
+        $this->router->get('/admin/updateProspect/{id:[\d]+}', [$adminAction, 'updateProspect'], 'updateProspect');
+        $this->router->post('/admin/updateProspect/{id:[\d]+}', [$adminAction, 'updateProspect']);
 
         // devis
         $this->router->get('/admin/tousMesDevis', [$adminAction, 'pageDevis'], 'pageDevis');
