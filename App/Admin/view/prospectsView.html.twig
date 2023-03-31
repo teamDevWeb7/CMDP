@@ -11,7 +11,41 @@
 {% block body %}
     <section>
         <h1>Liste des prospects</h1>
+
+        <p><span>Attention</span> la suppression ou la modification d'un prospect est définitive.</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>E-mail</th>
+                    <th>Numéro</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for prospect in prospects %}
+                    <tr>
+                        <td>{{prospect.nom}}</td>
+                        <td>{{prospect.prenom}}</td>
+                        <td>{{prospect.mail}}</td>
+                        <td>{{prospect.phone}}</td>
+                        <td>
+                            <a href="{{path('prospect', {id: prospect.id})}}">Voir</a>
+                            <a href="{{path('updateProspect', {id: prospect.id})}}">Modifier</a>
+                            <a href="{{path('deleteProspect', {id: prospect.id})}}">Supprimer</a>
+                            
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+            
+        </table>
+
     </section>
+
+
 
 
 

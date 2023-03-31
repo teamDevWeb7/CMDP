@@ -77,9 +77,6 @@ class UserAction{
                     $errors=$validator
                                     ->required('nom', 'prenom', 'mail', 'tel', 'message')
                                     ->email('mail')
-                                    // pb tel
-                                    // pattern pb regex->accepte num-1nbr
-                                    // ->tel('tel')
                                     // pb 1 seule erreur
                                     ->getErrors();
                     // si champs pas remplis ou input !value demandée, renvoie toast+redirect
@@ -90,13 +87,13 @@ class UserAction{
                         }
                     }
 
-                    $prospect=$this->userRepo->find($data['mail']);
+                    $prospect=$this->userRepo->findOneBy(['mail' => $data['mail']]);
                     $message= new Message;
                     $message->setMessage($data['message']);
 
                     if($prospect){
                         $prospect->addMessage($message);
-                        // $this->manager->persist($prospect);
+                        $message->setProspect($prospect);
                     }
                     else{
                         $prosp= new Prospect;
@@ -105,12 +102,11 @@ class UserAction{
                                 ->setMail($data['mail'])
                                 ->setPhone($data['tel'])
                                 ->addMessage($message);
+                                $message->setProspect($prosp);
                         $this->manager->persist($prosp);
                     }
                     $this->manager->persist($message);
                     $this->manager->flush();
-
-                    // ds ts les cas, nv Prospect et message n'a pas la clé etrangere du prospect
 
                     $this->toaster->makeToast("Votre message a bien été envoyé", Toaster::SUCCESS);
                     return $this->redirect('contact');

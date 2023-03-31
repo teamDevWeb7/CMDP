@@ -1,0 +1,40 @@
+{% extends 'admin.layout.html.twig' %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="{{ assets('/assets/css/admin/prosp.css') }}">
+{% endblock %}
+
+{% block title %}
+    <title>Prospect à l'unité</title>
+{% endblock %}
+
+{% block body %}
+    <h1>Prospect {{prospect.nom}} {{prospect.prenom}}</h1>
+    <section>
+        <table>
+            <thead>
+                <tr>
+                    <th>Messages(s)</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+            </tbody>
+            
+        </table>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Devis</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+            </tbody>
+            
+        </table>
+    </section>
+
+
+{% endblock %}

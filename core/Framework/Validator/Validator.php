@@ -65,20 +65,21 @@ class Validator{
      * @param string $key
      * @return self
      */
-    public function tel(string $key):self{
-        $carac=array(".", " ", "/", "-", "(", ")");
-        $this->data[$key]=str_replace($carac, "", $this->data[$key]);
-        $regExp='^(?:(?:\+|00)33|0)\s*[1-9]*(\d{2}){4}$|^(?:(?:\+|00)352)\s*(?:[2-7]\d|81)(\d{2}){3}$';
+    // public function tel(string $key):self{
+    //     $carac=array(".", " ", "/", "-", "(", ")");
+    //     $this->data[$key]=str_replace($carac, "", $this->data[$key]);
+    //     $regExp='/^(?:\+33|0)[1-9](?:[\s.-]*\d{2}){4}$|^(?:\+352)?[26]\d{3}(?:[\s.-]*\d{2}){2}$/
+    //     ';
 
-        // regExp pr num FR et foreign Lux
-        // ^(?:(?:\+|00)33|0)\s*[1-9]*(\d{2}){4}$|^(?:(?:\+|00)352)\s*(?:[2-7]\d|81)(\d{2}){3}$
+    //     // regExp pr num FR et foreign Lux
+    //     // ^(?:(?:\+|00)33|0)\s*[1-9]*(\d{2}){4}$|^(?:(?:\+|00)352)\s*(?:[2-7]\d|81)(\d{2}){3}$
 
-        // fonctionne pas, ni avec !preg_match, ni avec false... test regExp sur regex101 ct bon
-        if(preg_match($regExp ,$this->data[$key])==0){
-            $this->addError($key, 'tel');
-        }
-        return $this;
-    }
+    //     // fonctionne pas, ni avec !preg_match, ni avec false... test regExp sur regex101 ct bon
+    //     // if(preg_match($regExp ,$this->data[$key])==0){
+    //     //     $this->addError($key, 'tel');
+    //     // }
+    //     return $this;
+    // }
 
     /**
      * enregistre ds tab les erreurs, fonctionne avec le ValidatorError

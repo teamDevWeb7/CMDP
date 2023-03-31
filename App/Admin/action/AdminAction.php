@@ -82,11 +82,23 @@ class AdminAction{
         return $this->renderer->render('@admin/accueilAdmin');
     }
 
+    /**
+     * afficher la liste des prospects
+     *
+     * @param ServerRequest $request
+     * @return void
+     */
     public function prospects(ServerRequest $request){
         $prospects=$this->prospectsRepo->findAll();
         return $this->renderer->render('@admin/prospectsView', ["prospects"=>$prospects]);
     }
 
+    /**
+     * affiche toutes les infos d'un prospect selon sin ID
+     *
+     * @param ServerRequest $request
+     * @return void
+     */
     public function prospect(ServerRequest $request){
         $id=$request->getAttribute('id');
         $prospect=$this->prospectsRepo->find($id);
@@ -96,13 +108,43 @@ class AdminAction{
         return $this->renderer->render('@admin/prospectView', ["prospect"=>$prospect]);
     }
 
+
+
+
+
     public function pageDevis(ServerRequest $request){
         $devis=$this->pdfRepo->findAll();
         return $this->renderer->render('@admin/devis', ["devis"=>$devis]);
     }
 
+
+
+    
+
+    /**
+     * render la page pageMessage
+     *
+     * @param ServerRequest $request
+     * @return void
+     */
     public function pageMessages(ServerRequest $request){
         $messages=$this->messageRepo->findAll();
         return $this->renderer->render('@admin/messages', ["messages"=>$messages]);
+    }
+
+    /**
+     * fonction qui permet à l'admin de supprimer un message depuis pageMessage
+     *
+     * @param ServerRequest $request
+     * @return void
+     */
+    public function deleteMess(ServerRequest $request){
+        $id=$request->getAttribute('id');
+        $message=$this->messageRepo->find($id);
+        $this->manager->remove($message);
+        $this->manager->flush();
+        $this->toaster->makeToast('Message supprimé avec succès', Toaster::SUCCESS);
+    
+        return $this->redirect('pageMessages');
     }
 }
