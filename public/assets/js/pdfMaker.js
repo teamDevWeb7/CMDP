@@ -48,7 +48,7 @@ function pdfMaker(){
     // 1 margin left
     // 2 margin top
 
-    // textarea et ttes proprietes
+    // textarea et ttes proprietés
     console.log(doc);
     // doc.save("devisCmydesignprojets.pdf");
     // check comment recup pdf 
