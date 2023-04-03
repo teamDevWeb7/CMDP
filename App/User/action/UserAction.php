@@ -12,7 +12,9 @@ use Core\Framework\Renderer\RendererInterface;
 use Core\Framework\Validator\Validator;
 use GuzzleHttp\Psr7\ServerRequest;
 use Model\Entity\Message;
+use Model\Entity\Pdf;
 use Model\Entity\Prospect;
+use Spipu\Html2Pdf\Html2Pdf;
 
 class UserAction{
 
@@ -122,13 +124,100 @@ class UserAction{
     public function devis(ServerRequest $request){
         $method=$request->getMethod();
         if($method=='POST'){
-            // return $this->redirect('pdf');
+            $data=$request->getParsedBody();
+            
+            // pot de miel
+            if(!empty($data['sujet'])){
+                return $this->redirect('devis');
+            }else{
+                // captcha
+                // clé secrète donnée par google
+                $cle='6LfpX-ckAAAAAN9NuwK9BKuWBfPekgenk1TinPU6';
+                $response = $_POST['g-recaptcha-response'];
+
+                $gapi = 'https://www.google.com/recaptcha/api/siteverify?secret='.$cle.'&response='.$response;
+
+                $json = json_decode(file_get_contents($gapi), true);
+
+                // if captcha pas sélectionné
+                if(!$json['success']){
+                    $this->toaster->makeToast("La validation du captcha est nécessaire à l'envoi", Toaster::ERROR);
+                    return $this->redirect('devis');
+                // captcha ok
+                }else{
+                    $validator=new Validator($data);
+                    // check ts champs ok
+                    $errors=$validator
+                                    // ->required('nom', 'prenom', 'mail', 'tel')
+                                    // ->email('mail')
+                                    // pb 1 seule erreur
+                                    ->getErrors();
+                    // si champs pas remplis ou input !value demandée, renvoie toast+redirect
+                    if($errors){
+                        foreach($errors as $error){
+                            $this->toaster->makeToast($error->toString(), Toaster::ERROR);
+                            return $this->redirect('devis');
+                        }
+                    }
+
+                    $monBien=$_POST['monBien'];
+                    $mesBesoins=$_POST['mesBesoins'];
+                    $monMessage=$_POST['monMessage'];
+
+                    $content='
+                    
+                        <h1 style="width:100%; text-align:center; font-size:25px; margin: 30px 0">Récapitulatif de votre demande de devis</h1>
+                    
+                    
+                        <h2 style="font-size:20px; font-weight:400; margin-top:60px; margin-bottom:-20px">Votre bien à rénover :</h2>
+                        <p style="font-size:20px; font-weight:400">'.$monBien.'</p>
+                        <h2 style="font-size:20px; font-weight:400; margin-bottom:-20px">Les services dont vous pensez avoir besoin :</h2>
+                        <p style="font-size:20px; font-weight:400">'.$mesBesoins.'</p>
+                        <h2 style="font-size:20px; font-weight:400; margin-bottom:-20px">Votre description du projet :</h2>
+                        <p style="font-size:20px; font-weight:400">'.$monMessage.'</p>
+                    
+                    <p style="font-size:20px; font-weight:400; margin-top:60px; width:100%; text-align:center">Produit par Cmydesignprojets</p>
+                    ';
+
+                    $html2pdf= new Html2Pdf('P', 'A4', 'fr');
+                    
+                    $html2pdf->writeHTML($content);
+                    
+                    // pdfs s'écrasent
+
+                    // server local + affiche chez client
+                    $html2pdf->output(dirname(__DIR__, 2). DIRECTORY_SEPARATOR .'Admin'. DIRECTORY_SEPARATOR.'pdfs'. DIRECTORY_SEPARATOR.'CmydesignprojetsDemandeDevis.pdf','FI');
+                    
+
+
+
+                    // $prospect=$this->userRepo->findOneBy(['mail' => $data['mail']]);
+                    // $pdf= new Pdf;
+                    // // $pdf->setPdfPath();
+
+                    // if($prospect){
+                    //     $prospect->addPdf($pdf);
+                    //     $pdf->setProspect($prospect);
+                    // }
+                    // else{
+                    //     $prosp= new Prospect;
+                    //     $prosp->setNom($data['nom'])
+                    //             ->setPrenom($data['prenom'])
+                    //             ->setMail($data['mail'])
+                    //             ->setPhone($data['tel'])
+                    //             ->addPdf($pdf);
+                    //             $pdf->setProspect($prosp);
+                    //     $this->manager->persist($prosp);
+                    // }
+                    // $this->manager->persist($pdf);
+                    // $this->manager->flush();
+
+                    $this->toaster->makeToast("Votre demande de devis a bien été envoyée", Toaster::SUCCESS);
+                    return $this->redirect('devis');
+                }
+            }    
         }
         return $this->renderer->render('@user/devis', ['siteName' => 'Cmydesignprojets']);
-    }
-
-    public function pdf(ServerRequest $request){
-        return $this->renderer->render('@user/pdf');
     }
 
     public function faq(ServerRequest $request){

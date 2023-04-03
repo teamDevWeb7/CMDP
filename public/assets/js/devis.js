@@ -248,6 +248,8 @@ p[13].addEventListener(
 
 // page 3, prospect explique son projet
 
+var mess=document.querySelector('#descriptionProjet').textContent;
+
 
 
 
