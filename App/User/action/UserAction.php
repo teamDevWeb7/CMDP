@@ -2,19 +2,20 @@
 
 namespace App\User\action;
 
+use Model\Entity\Pdf;
 use Core\toaster\Toaster;
+use Model\Entity\Message;
+use Model\Entity\Prospect;
+use Spipu\Html2Pdf\Html2Pdf;
+use GuzzleHttp\Psr7\Response;
 use Doctrine\ORM\EntityManager;
 use Core\Framework\Router\Router;
 use Core\Session\SessionInterface;
+use GuzzleHttp\Psr7\ServerRequest;
 use Psr\Container\ContainerInterface;
+use Core\Framework\Validator\Validator;
 use Core\Framework\Router\RedirectTrait;
 use Core\Framework\Renderer\RendererInterface;
-use Core\Framework\Validator\Validator;
-use GuzzleHttp\Psr7\ServerRequest;
-use Model\Entity\Message;
-use Model\Entity\Pdf;
-use Model\Entity\Prospect;
-use Spipu\Html2Pdf\Html2Pdf;
 
 class UserAction{
 
@@ -122,6 +123,7 @@ class UserAction{
     }
 
     public function devis(ServerRequest $request){
+        // header('Location: http://localhost:8000/App/User/action/UserAction.php');
         $method=$request->getMethod();
         if($method=='POST'){
             $data=$request->getParsedBody();
@@ -145,6 +147,7 @@ class UserAction{
                     return $this->redirect('devis');
                 // captcha ok
                 }else{
+                    
                     $validator=new Validator($data);
                     // check ts champs ok
                     $errors=$validator
@@ -160,9 +163,18 @@ class UserAction{
                         }
                     }
 
-                    $monBien=$_POST['monBien'];
-                    $mesBesoins=$_POST['mesBesoins'];
-                    $monMessage=$_POST['monMessage'];
+                    // header("Access-Control-Allow-Origin: localhost:8000");
+
+
+                    // var_dump($_POST['monBien']);
+                    // $monBien=$_POST['monBien'];
+                    // $mesBesoins=$_POST['mesBesoins'];
+                    // $monMessage=$_POST['monMessage'];
+
+                    var_dump($_GET['monBien']);
+                    $monBien=$_GET['monBien'];
+                    $mesBesoins=$_GET['mesBesoins'];
+                    $monMessage=$_GET['monMessage'];
 
                     $content='
                     
@@ -214,6 +226,7 @@ class UserAction{
 
                     $this->toaster->makeToast("Votre demande de devis a bien été envoyée", Toaster::SUCCESS);
                     return $this->redirect('devis');
+                    
                 }
             }    
         }

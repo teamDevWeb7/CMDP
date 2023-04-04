@@ -19,7 +19,7 @@ function sendData() {
 
     //👇 set the PHP page you want to send data to
     // xhr.open("GET", ".../App/User/action/UserAction"+data, true);
-    let url=".../App/User/action/UserAction?var="+data;
+    let url="devis";
     xhr.open("GET",url, true);
     // xhr.open("GET","devis"+data, true);
     xhr.setRequestHeader("Content-Type", "application/json");
@@ -28,7 +28,7 @@ function sendData() {
     // xhr.send(JSON.stringify(data));
     xhr.send();
 
-
+    console.log(data);
 
 
     // PB ds console url commence tjrs par user/

@@ -8,7 +8,8 @@
 //     }
 // });
 
-axios.post('http://localhost:8000/user/devis', {
+
+axios.get('http://localhost:8000/user/devis', {
   params: {
     monBien: Q1,
     mesBesoins: besoins,
