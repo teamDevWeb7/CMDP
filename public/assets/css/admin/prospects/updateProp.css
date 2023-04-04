@@ -33,3 +33,13 @@ input:last-child{
     cursor: pointer;
     border-radius: 10px;
 }
+
+img{
+    width: 20px;
+    margin: 0 1vw;
+}
+#retour{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}

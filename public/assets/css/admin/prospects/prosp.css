@@ -58,3 +58,12 @@ section thead{
     background-color: rgb(161, 161, 161);
     text-transform: uppercase;
 }
+img{
+    width: 20px;
+    margin: 0 1vw;
+}
+#retour{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
