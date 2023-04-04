@@ -1,7 +1,7 @@
 {% extends 'admin.layout.html.twig' %}
 
 {% block stylesheet %}
-    <link rel="stylesheet" href="{{ assets('/assets/css/chantiers/chantiers.css') }}">
+    <link rel="stylesheet" href="{{ assets('/assets/css/admin/chantiers/chantiers.css') }}">
 {% endblock %}
 
 {% block title %}
@@ -9,5 +9,29 @@
 {% endblock %}
 
 {% block body %}
+    {# <a href="{{path('prospect', {id: prospect.id})}}" id="retour"><img src="{{ assets('/assets/imgs/icone/left-arrow.png') }}" alt="flèche retour"> Retour au prospect</a> #}
+    <section>
+        <h1>Tous mes chantiers</h1>
+        <a href="{{path('addChantier')}}">Ajouter un chantier</a>
+        <p><span>Attention</span> la suppression ou la modification d'un chantier est définitive.</p>
+        <section>
+            {% for chantier in chantiers %}
+            <article>
+                <img src="{{assets('/assets/imgs/chantiers/'~ chantier.getImgPathChantier()) }}" style="width: 50px">
+                <div>
+                    <p>{{chantier.nomChantier}}</p>
+                    <p>{{chantier.dateChantier}}</p>
+                    <p>{{chantier.lieu}}</p>
+                    <p>{{chantier.desc}}</p>
+                    <a href="{{path('adminChantier', {id: chantier.id})}}">Voir le chantier</a>
+                    <a href="{{path('updateChantier', {id: chantier.id})}}">Modifier le chantier</a>
+                    <a href="{{path('updatePresChantier', {id: chantier.id})}}">Modifier la présentation du chantier</a>
+                    <a href="{{path('deleteChantier', {id: chantier.id})}}">Supprimer</a>
+                </div>
+            </article>
+            {% endfor %}
+        </section>
+        
+    </section>
 
 {% endblock %}
