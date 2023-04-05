@@ -136,7 +136,80 @@ class ChantierAction{
         $id=$request->getAttribute('id');
         $chantier=$this->chantiersRepo->find($id);
         $photos=$this->photoRepo->findBy(array('chantier'=>$id));
+
+        $method=$request->getMethod();
+
+        if($method=='POST'){
+            $data=$request->getParsedBody();
+            $file=$request->getUploadedFiles()['img'];
+
+            $validator=new Validator($data);
+            $errors=$validator->required('txt')->getErrors();
+            if($errors){
+                foreach($errors as $error){
+                    $this->toaster->makeToast($error->toString(), Toaster::ERROR);
+                }
+                return $this->redirect('adminChantiers');
+            }
+
+            // traitement img
+            $error=$this->fileGuard($file);
+            if($error !== true){
+                return $error;
+            }
+
+            $fileName=$file->getClientFileName();
+
+            $ttesPhotos=$this->photoRepo->findAll();
+            foreach($ttesPhotos as $photo){
+                if($photo->getImgPath()==$fileName){
+                    $this->toaster->makeToast('La photo, identifiée par le nom que vous lui avez donné est déjà sur le serveur', Toaster::ERROR);
+                    return $this->redirect('adminChantiers');
+                }
+            }
+
+            $imgPath=$this->container->get('img.basePath').$fileName;
+            $file->moveTo($imgPath);
+            if(!$file->isMoved()){
+                $this->toaster->makeToast("Une erreur s'est produite",Toaster::ERROR);
+                return $this->redirect('adminChantiers');
+            }
+
+            $img=new Photo;
+            $img->setImgPath($fileName)->setDescImg($data['txt'])->setChantier($chantier);
+            $chantier->addPhoto($img);
+            $this->manager->persist($chantier);
+            $this->manager->persist($img);
+            $this->manager->flush();
+
+            $this->toaster->makeToast("Votre photo a bien été ajoutée", Toaster::SUCCESS);
+                    return $this->redirect('adminChantiers');
+
+        }
+
         return $this->renderer->render('@chantier/updateChantier', ["chantier"=>$chantier, "photos"=>$photos]);
+    }
+
+    public function updatePhoto(ServerRequest $request){
+        $id=$request->getAttribute('id');
+        $photo=$this->photoRepo->find($id);
+
+        $method=$request->getMethod();
+
+        if($method=='POST'){
+
+        }
+
+        return $this->renderer->render('@chantier/updatePhoto', ["photo"=>$photo]);
+    }
+
+    public function deletePhoto(ServerRequest $request){
+        $id=$request->getAttribute('id');
+        $photo=$this->photoRepo->find($id);
+        $this->manager->remove($photo);
+        $this->manager->flush();
+        $this->toaster->makeToast('Photo supprimée avec succès', Toaster::SUCCESS);
+        return $this->redirect('chantierAdmin');
     }
 
     public function updatePresChantier(ServerRequest $request){
@@ -150,6 +223,14 @@ class ChantierAction{
         $chantier=$this->chantiersRepo->find($id);
         $this->manager->remove($chantier);
         $this->manager->flush();
+
+        // probleme -> supprime chantier et bonne photo mais erreur = 
+        // C:\wamp64\www\proj_CMDP/public//assets/imgs/chantiers$filename+1
+        // ->pas de slash et pas photo associée au bon chantier
+        $vieillePhoto=$chantier->getImgPathChantier();
+        $oldPath=$this->container->get('img.basePath').$vieillePhoto;
+        unlink($oldPath);
+
         $this->toaster->makeToast('Chantier supprimé avec succès', Toaster::SUCCESS);
     
         return $this->redirect('chantiers');

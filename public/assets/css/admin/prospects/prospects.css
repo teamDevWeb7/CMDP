@@ -30,4 +30,7 @@ thead{
     background-color: rgb(161, 161, 161);
     text-transform: uppercase;
 }
+table a:hover{
+    font-weight: bold;
+}
 

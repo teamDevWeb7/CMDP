@@ -31,7 +31,12 @@ input:last-child{
     margin-top: 7vh;
     margin-left: 41%;
     cursor: pointer;
-    border-radius: 10px;
+    border-radius: 5px;
+    background-color: rgb(216, 216, 216);
+}
+input:last-child:hover{
+    background-color: grey;
+    color: white;
 }
 
 img{

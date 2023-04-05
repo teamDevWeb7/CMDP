@@ -13,6 +13,7 @@
 {% endblock %}
 
 {% block body %}
+    <a href="{{path('adminChantiers')}}" id="retour"><img src="{{ assets('/assets/imgs/icone/left-arrow.png') }}" alt="flèche retour"> Retour aux chantiers</a>
     <h1>{{chantier.nomChantier}}</h1>
     <p>{{chantier.dateChantier}} ~ {{chantier.lieu}}</p>
 

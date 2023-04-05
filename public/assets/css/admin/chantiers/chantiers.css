@@ -12,6 +12,10 @@ h1{
     margin-left: 44%;
 
 }
+#add:hover{
+    background-color: grey;
+    color: white;
+}
 /* phrase  */
 #att{
     width: 100%;
@@ -35,13 +39,27 @@ section section{
 }
 article{
     width: 48.5%;
+    height: 31vh;
     border: red 1px solid;
     display: flex;
     align-items: center;
     margin-right: 1vw;
     margin-bottom: 2vh;
+    font-size: 0.9rem;
 }
-article img{
+.img{
     width: 35%;
     margin-right: 2vw;
+}
+.img img{
+    width: 100%;
+}
+.txt{
+    width: 65%;
+}
+.txt a:hover{
+    font-weight: bold;
+}
+.txt p:nth-child(4){
+    text-align: justify;
 }

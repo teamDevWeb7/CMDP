@@ -1,0 +1,39 @@
+{% extends 'admin.layout.html.twig' %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="{{ assets('/assets/css/admin/chantiers/infosChantier.css') }}">
+{% endblock %}
+
+{% block title %}
+    <title>Nos chantiers</title>
+{% endblock %}
+
+{% block body %}
+    
+    <a href="{{path('adminChantiers')}}" id="retour"><img src="{{ assets('/assets/imgs/icone/left-arrow.png') }}" alt="flèche retour"> Retour aux chantiers</a>
+
+    <h1>Chantier {{chantier.nomChantier}}</h1>
+    <a href="{{path('updateChantier', {id: chantier.id})}}" class="opts">Ajouter une photo</a>
+    <a href="{{path('addChantier', {id: chantier.id})}}" class="opts">Supprimer le chantier</a>
+    <p id="att"><span>Attention</span> la suppression ou la modification d'un chantier est définitive.</p>
+
+    <section>
+        {% for photo in photos %}
+        <article>
+            <div class="img">
+                <img src="{{assets('/assets/imgs/chantiers/'~ photo.getImgPath()) }}">
+            </div>
+            <div class="txt">
+                <p>{{photo.descImg}}</p>
+                
+                <a href="{{path('updatePhoto', {id: photo.id})}}">Modifier la photo</a>
+                <a href="{{path('deletePhoto', {id: photo.id})}}">Supprimer la photo</a>
+            </div>
+            
+        </article>
+        
+    {% endfor %}
+    </section>
+
+
+{% endblock %}

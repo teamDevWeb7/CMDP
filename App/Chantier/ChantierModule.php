@@ -42,6 +42,13 @@ class ChantierModule extends AbstractModule{
         // modifier mon chantier || le remplir qd tt nv
         $this->router->get('/admin/updateChantier/{id:[\d]+}', [$chantierAction, 'updateChantier'], 'updateChantier');
         $this->router->post('/admin/updateChantier/{id:[\d]+}', [$chantierAction, 'updateChantier']);
+
+        // supprimer une photo
+        $this->router->get('/admin/deletePhoto/{id:[\d]+}', [$chantierAction, 'deletePhoto'], 'deletePhoto');
+        // modif une photo
+        $this->router->get('/admin/updatePhoto/{id:[\d]+}', [$chantierAction, 'updatePhoto'], 'updatePhoto');
+        $this->router->post('/admin/updatePhoto/{id:[\d]+}', [$chantierAction, 'updatePhoto']);
+
         // mofifier la présentation du chantier
         $this->router->get('/admin/updatePresentationChantier/{id:[\d]+}', [$chantierAction, 'updatePresChantier'], 'updatePresChantier');
         $this->router->post('/admin/updatePresentationChantier/{id:[\d]+}', [$chantierAction, 'updatePresChantier']);
