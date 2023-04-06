@@ -35,17 +35,19 @@ section section{
     flex-wrap: wrap;
     width: 96%;
     margin-left: 3%;
-    border: 1px solid black;
+    /* border: 1px solid black; */
 }
 article{
     width: 48.5%;
     height: 31vh;
-    border: red 1px solid;
+    border: grey 1px solid;
+    border-radius: 5px;
     display: flex;
     align-items: center;
     margin-right: 1vw;
     margin-bottom: 2vh;
     font-size: 0.9rem;
+    padding-right: 5px;
 }
 .img{
     width: 35%;

@@ -1,0 +1,32 @@
+{% extends 'admin.layout.html.twig' %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="{{ assets('/assets/css/admin/chantiers/updPresChantier.css') }}">
+{% endblock %}
+
+{% block title %}
+    <title>Nos chantiers</title>
+{% endblock %}
+
+{% block body %}
+    <a href="{{path('adminChantiers')}}" id="retour"><img src="{{ assets('/assets/imgs/icone/left-arrow.png') }}" alt="flèche retour"> Retour au chantier</a>
+
+    <h1>Modifier les informations de présentation du chantier {{chantier.nomChantier}}</h1>
+    <p id="att"><span>Attention</span> toute modification est définitive.</p>
+
+    <p>Les images doivent être de type png, jpeg ou jpg et d'une taille maximale de 2MO.</p>
+    <form method="POST" enctype="multipart/form-data">
+        <label for="title">Nom du chantier</label>
+        <input type="text" name="title" value="{{chantier.nomChantier}}">
+        <label for="date">Date du chantier</label>
+        <input type="text" name="date" value="{{chantier.dateChantier}}">
+        <label for="lieu">Lieu du chantier</label>
+        <input type="text" name="lieu" value="{{chantier.lieu}}">
+        <label for="desc">Description du chantier</label>
+        <textarea name="desc" maxlength="210" rows="5">{{chantier.desc}}</textarea>
+        <label for="img">Image</label>
+        <input name="img" type="file">
+        <input type="submit" value="Modifier">
+    </form>
+
+{% endblock %}

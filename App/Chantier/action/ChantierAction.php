@@ -60,12 +60,23 @@ class ChantierAction{
     }
 
 
-    // admin
+    /**
+     * premet l'affichage de tous les chantiers côté admin
+     *
+     * @param ServerRequest $request
+     * @return void
+     */
     public function adminChantiers(ServerRequest $request){
         $chantiers=$this->chantiersRepo->findAll();
         return $this->renderer->render('@chantier/chantiersAdmin', ["chantiers"=>$chantiers]);
     }
 
+    /**
+     * permet de voir un chantier selon son ID
+     *
+     * @param ServerRequest $request
+     * @return void
+     */
     public function adminChantier(ServerRequest $request){
         $id=$request->getAttribute('id');
         $chantier=$this->chantiersRepo->find($id);
@@ -76,6 +87,12 @@ class ChantierAction{
         return $this->renderer->render('@chantier/chantierAdmin', ["chantier"=>$chantier, "photos"=>$photos]);
     }
 
+    /**
+     * ajouter un chantier -> présentation avec 1photo, nom, lieu, date, desc
+     *
+     * @param ServerRequest $request
+     * @return void
+     */
     public function addChantier(ServerRequest $request){
         $method=$request->getMethod();
 
@@ -107,6 +124,16 @@ class ChantierAction{
             }
 
             $fileName=$file->getClientFileName();
+
+            $ttesPhotos=$this->photoRepo->findAll();
+            foreach($ttesPhotos as $photo){
+                if($photo->getImgPath()==$fileName){
+                    $this->toaster->makeToast('La photo, identifiée par le nom que vous lui avez donné est déjà sur le serveur', Toaster::ERROR);
+                    return $this->redirect('addChantier');
+                }
+            }
+
+            
             $imgPath=$this->container->get('img.basePath').$fileName;
             $file->moveTo($imgPath);
             if(!$file->isMoved()){
@@ -132,6 +159,12 @@ class ChantierAction{
         return $this->renderer->render('@chantier/addChantier');
     }
 
+    /**
+     * Sert à ajouter une photo au chantier
+     *
+     * @param ServerRequest $request
+     * @return void
+     */
     public function updateChantier(ServerRequest $request){
         $id=$request->getAttribute('id');
         $chantier=$this->chantiersRepo->find($id);
@@ -190,6 +223,12 @@ class ChantierAction{
         return $this->renderer->render('@chantier/updateChantier', ["chantier"=>$chantier, "photos"=>$photos]);
     }
 
+    /**
+     * modifier mon image -> modif la desc
+     *
+     * @param ServerRequest $request
+     * @return void
+     */
     public function updatePhoto(ServerRequest $request){
         $id=$request->getAttribute('id');
         $photo=$this->photoRepo->find($id);
@@ -197,12 +236,39 @@ class ChantierAction{
         $method=$request->getMethod();
 
         if($method=='POST'){
+            $data=$request->getParsedBody();
+            
+            $validator=new Validator($data);
+            $errors=$validator->required('txt')->getErrors();
+            if($errors){
+                foreach($errors as $error){
+                    $this->toaster->makeToast($error->toString(), Toaster::ERROR);
+                }
+                return $this->redirect('adminChantiers');
+            }
 
+            if($data['txt']==$photo->getDescImg()){
+                $this->toaster->makeToast("Aucune modification n'a été envoyée", Toaster::ERROR);
+                    return $this->redirect('adminChantiers');
+            }
+
+            $photo->setDescImg($data['txt']);
+            $this->manager->persist($photo);
+            $this->manager->flush();
+
+            $this->toaster->makeToast("La modification de la description de la photo a bien été prise en compte", Toaster::SUCCESS);
+                    return $this->redirect('adminChantiers');
         }
 
         return $this->renderer->render('@chantier/updatePhoto', ["photo"=>$photo]);
     }
 
+    /**
+     * dans chantier, permet supprimer une photo et sa desc
+     *
+     * @param ServerRequest $request
+     * @return void
+     */
     public function deletePhoto(ServerRequest $request){
         $id=$request->getAttribute('id');
         $photo=$this->photoRepo->find($id);
@@ -212,30 +278,110 @@ class ChantierAction{
         return $this->redirect('chantierAdmin');
     }
 
+    /**
+     * Modifier les infos globales du chantier ->nom, date, lieu, img, description
+     *
+     * @param ServerRequest $request
+     * @return void
+     */
     public function updatePresChantier(ServerRequest $request){
         $id=$request->getAttribute('id');
         $chantier=$this->chantiersRepo->find($id);
+
+        $method=$request->getMethod();
+        if($method=='POST'){
+            $data=$request->getParsedBody();
+
+            $file=$request->getUploadedFiles()['img'];
+
+            $validator=new Validator($data);
+            $errors=$validator->required('title', 'desc')->getErrors();
+            if($errors){
+                foreach($errors as $error){
+                    $this->toaster->makeToast($error->toString(), Toaster::ERROR);
+                }
+                return $this->redirect('adminChantiers');
+            }
+
+
+            // traitement img
+            $error=$this->fileGuard($file);
+            if($error !== true){
+                return $error;
+            }
+
+            $fileName=$file->getClientFileName();
+
+            $ttesPhotos=$this->photoRepo->findAll();
+            foreach($ttesPhotos as $photo){
+                if($photo->getImgPath()==$fileName){
+                    $this->toaster->makeToast('La photo, identifiée par le nom que vous lui avez donné est déjà sur le serveur', Toaster::ERROR);
+                    return $this->redirect('adminChantiers');
+                }
+            }
+
+            
+            $imgPath=$this->container->get('img.basePath').$fileName;
+            $file->moveTo($imgPath);
+            if(!$file->isMoved()){
+                $this->toaster->makeToast("Une erreur s'est produite",Toaster::ERROR);
+                return $this->redirect('adminChantiers');
+            }
+            $vieillePhoto=$chantier->getImgPathChantier();
+            $oldPath=$this->container->get('img.basePath').$vieillePhoto;
+            unlink($oldPath);
+
+
+            $chantier->setNomChantier($data['title'])
+                            ->setDateChantier($data['date'])
+                            ->setLieu($data['lieu'])
+                            ->setDesc($data['desc'])
+                            ->setImgPathChantier($fileName);
+
+            $this->manager->persist($chantier);
+            $this->manager->flush();
+
+            $this->toaster->makeToast('Chantier modifié avec succès', Toaster::SUCCESS);
+            return $this->redirect('adminChantiers');
+        }
+
         return $this->renderer->render('@chantier/updatePresChantier', ["chantier"=>$chantier]);
     }
 
+    /**
+     * permet de supprimer un chantier
+     *
+     * @param ServerRequest $request
+     * @return void
+     */
     public function deleteChantier(ServerRequest $request){
         $id=$request->getAttribute('id');
         $chantier=$this->chantiersRepo->find($id);
+
+        $vieillePhoto=$chantier->getImgPathChantier();
+        $oldPath=$this->container->get('img.basePath').$vieillePhoto;
+        unlink($oldPath);
+
         $this->manager->remove($chantier);
         $this->manager->flush();
 
         // probleme -> supprime chantier et bonne photo mais erreur = 
-        // C:\wamp64\www\proj_CMDP/public//assets/imgs/chantiers$filename+1
+        // C:\wamp64\www\proj_CMDP/public//assets/imgs/chantiers$filename(mauvais $filename)
         // ->pas de slash et pas photo associée au bon chantier
-        $vieillePhoto=$chantier->getImgPathChantier();
-        $oldPath=$this->container->get('img.basePath').$vieillePhoto;
-        unlink($oldPath);
+        // mais suppression fonctionne
+
 
         $this->toaster->makeToast('Chantier supprimé avec succès', Toaster::SUCCESS);
     
         return $this->redirect('chantiers');
     }
 
+    /**
+     * check si le file ajouté respecte bien ma volonté, taille, type etc
+     *
+     * @param UploadedFile $file
+     * @return void
+     */
     public function fileGuard(UploadedFile $file){
         if($file->getError()===4){
             $this->toaster->makeToast("Une erreur est survenue lors du chargement", Toaster::ERROR);
