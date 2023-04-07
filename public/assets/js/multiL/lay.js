@@ -83,10 +83,17 @@ var arrLang={
         // contact
         'mess':'Votre message : ',
         'day':'Du lundi au vendredi',
-        'hour':'de 9h à 19h'
+        'hour':'de 9h à 19h',
 
 
 
+        // toasts
+        'captcha':'La validation du captcha est nécessaire à l\'envoi',
+        'sendMess':'Votre message a bien été envoyé',
+        'email':'Le champs email doit contenir un email valide',
+        'required':'Tous les champs sont obligatoires',
+        'devisSend':'Votre demande de devis a bien été envoyée',
+        'chantier':'Aucun chantier ne correspond'
 
 
     },
@@ -174,8 +181,15 @@ var arrLang={
         // contact
         'mess':'Your message : ',
         'day':'Monday to friday',
-        'hour':'from 9am to 7pm'
+        'hour':'from 9am to 7pm',
 
+        // toasts
+        'captcha':'You must activate the captcha before sending',
+        'sendMess':'Your message had been sucessfully send',
+        'email':'You must enter a valid email adress',
+        'required':'No input should be blank when sending',
+        'devisSend':'Your estimation was sent',
+        'chantier':'No work site was found'
 
     }
 }

@@ -3,7 +3,6 @@ namespace App\Chantier\action;
 
 use Core\toaster\Toaster;
 use Model\Entity\Chantier;
-use GuzzleHttp\Psr7\Response;
 use Doctrine\ORM\EntityManager;
 use Core\Framework\Router\Router;
 use Core\Session\SessionInterface;
@@ -59,7 +58,8 @@ class ChantierAction{
         // je veux recup l id du chantier pour get les photos qui lui sont attachées
         $photos=$this->photoRepo->findBy(array('chantier'=>$id));
         if(!$chantier){
-            return new Response(404,[], 'Aucun chantier ne correspond');
+            $this->toaster->makeToast('<my-p class="lang" key="chantier">Aucun chantier ne correspond</my-p>', Toaster::ERROR);
+            return $this->redirect('chantiers');
         }
         return $this->renderer->render('@chantier/infosChantierUser', ["chantier"=>$chantier, "photos"=>$photos, "siteName"=>'Cmydesignprojets']);
     }
@@ -87,7 +87,8 @@ class ChantierAction{
         $chantier=$this->chantiersRepo->find($id);
         $photos=$this->photoRepo->findBy(array('chantier'=>$id));
         if(!$chantier){
-            return new Response(404,[], 'Aucun chantier ne correspond');
+            $this->toaster->makeToast('Aucun chantier ne correspond', Toaster::ERROR);
+            return $this->redirect('chantiers');
         }
         return $this->renderer->render('@chantier/chantierAdmin', ["chantier"=>$chantier, "photos"=>$photos]);
     }

@@ -71,7 +71,7 @@ class UserAction{
 
                 // if captcha pas sélectionné
                 if(!$json['success']){
-                    $this->toaster->makeToast("La validation du captcha est nécessaire à l'envoi", Toaster::ERROR);
+                    $this->toaster->makeToast("<my-p class='lang' key='captcha'>La validation du captcha est nécessaire à l'envoi</my-p>", Toaster::ERROR);
                     return $this->redirect('contact');
                 // captcha ok
                 }else{
@@ -111,7 +111,7 @@ class UserAction{
                     $this->manager->persist($message);
                     $this->manager->flush();
 
-                    $this->toaster->makeToast("Votre message a bien été envoyé", Toaster::SUCCESS);
+                    $this->toaster->makeToast("<my-p class='lang' key='sendMess'>Votre message a bien été envoyé</my-p>", Toaster::SUCCESS);
                     return $this->redirect('contact');
                 }  
             }
@@ -143,7 +143,7 @@ class UserAction{
 
                 // if captcha pas sélectionné
                 if(!$json['success']){
-                    $this->toaster->makeToast("La validation du captcha est nécessaire à l'envoi", Toaster::ERROR);
+                    $this->toaster->makeToast("<my-p class='lang' key='captcha'>La validation du captcha est nécessaire à l'envoi</my-p>", Toaster::ERROR);
                     return $this->redirect('devis');
                 // captcha ok
                 }else{
@@ -224,7 +224,7 @@ class UserAction{
                     // $this->manager->persist($pdf);
                     // $this->manager->flush();
 
-                    $this->toaster->makeToast("Votre demande de devis a bien été envoyée", Toaster::SUCCESS);
+                    $this->toaster->makeToast("<my-p class='lang' key='devisSend'>Votre demande de devis a bien été envoyée</my-p>", Toaster::SUCCESS);
                     return $this->redirect('devis');
                     
                 }

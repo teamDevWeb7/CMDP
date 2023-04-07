@@ -7,8 +7,8 @@ class ValidatorError{
     private string $rule;
 
     private array $message=[
-        'required'=>"Le champs '%s' est requis",
-        'email'=>"Le champs '%s' doit être un email valide",
+        'required'=>"<my-p class='lang' key='required'>Le champs '%s' est requis</my-p>",
+        'email'=>"<my-p class='lang' key='email'>Le champs '%s' doit être un email valide</my-p>",
         'tel'=>"Le champs '%s' doit être un numéro valide provenant de France ou du Luxembourg"
     ];
 
