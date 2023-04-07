@@ -171,10 +171,14 @@ class UserAction{
                     // $mesBesoins=$_POST['mesBesoins'];
                     // $monMessage=$_POST['monMessage'];
 
-                    var_dump($_GET['monBien']);
-                    $monBien=$_GET['monBien'];
-                    $mesBesoins=$_GET['mesBesoins'];
-                    $monMessage=$_GET['monMessage'];
+                    // var_dump($_GET['monBien']);
+                    // $monBien=$_GET['monBien'];
+                    // $mesBesoins=$_GET['mesBesoins'];
+                    // $monMessage=$_GET['monMessage'];
+
+                    $monBien='cacahuete';
+                    $mesBesoins='chocolatine';
+                    $monMessage='coucou';
 
                     $content='
                     
@@ -195,10 +199,11 @@ class UserAction{
                     
                     $html2pdf->writeHTML($content);
                     
-                    // pdfs s'écrasent
 
+
+                    $date=date("F_j_Y_g-i_a");
                     // server local + affiche chez client
-                    $html2pdf->output(dirname(__DIR__, 2). DIRECTORY_SEPARATOR .'Admin'. DIRECTORY_SEPARATOR.'pdfs'. DIRECTORY_SEPARATOR.'CmydesignprojetsDemandeDevis.pdf','FI');
+                    $html2pdf->output(dirname(__DIR__, 2). DIRECTORY_SEPARATOR .'Admin'. DIRECTORY_SEPARATOR.'pdfs'. DIRECTORY_SEPARATOR.'CmydesignprojetsDemandeDevis_'.$date.'.pdf','FD');
                     
 
 

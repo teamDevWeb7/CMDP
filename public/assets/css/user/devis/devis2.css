@@ -132,7 +132,7 @@ form{
 #labPrenom1{
     position: absolute;
     left: 0vh;
-    top: 8vh;
+    top: 8.5vh;
     padding: 10px 0;
     pointer-events: none;
     font-size: 1em;
@@ -145,7 +145,7 @@ form{
 /* deco, le i qui s'étend*/
 #iPrenom1{
     position: absolute;
-    bottom: 31.5vh;
+    bottom: 31vh;
     left: 0vh;
     width: 100%;
     height: 3px;
@@ -187,7 +187,7 @@ form{
 /* deco, le i qui s'étend*/
 #iMail1{
     position: absolute;
-    bottom: 23.75vh;
+    bottom: 23vh;
     width: 100%;
     left:0vh;
     height: 3px;
@@ -231,7 +231,7 @@ form{
 /* deco, le i qui s'étend*/
 #iTel1{
     position: absolute;
-    bottom: 16vh;
+    bottom: 15vh;
     left: 0vh;
     width: 100%;
     height: 3px;
