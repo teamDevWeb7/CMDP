@@ -13,19 +13,28 @@
 {% endblock %}
 
 {% block body %}
+
     <h1>Tous nos chantiers</h1>
-    {% for chantier in chantiers %}
-    <article>
-        <div><img src="{{assets('/assets/imgs/chantiers'~chantier.imgPathChantier) }}"></div>
-        <div>
-            <h2>{{chantier.nomChantier}}</h2>
-            <p>{{chantier.dateChantier}}</p>
-            <p>{{chantier.lieu}}</p>
-            <p>{{chantier.desc}}</p>
-            <a href="{{path('chantier', {id: chantier.id})}}">En savoir plus</a>
-        </div>
-    </article>
-    {% endfor %}
+    
+    <section class="chantiers">
+        {% for chantier in chantiers %}
+        <article>
+            <div>
+                <a href="{{path('chantier', {id: chantier.id})}}">
+                    <img src="{{assets('/assets/imgs/chantiers/'~chantier.imgPathChantier) }}" alt="image représentant du chantier">
+                </a>
+            </div>
+            <div>
+                <h2>{{chantier.nomChantier}}</h2>
+                <p>{{chantier.dateChantier}}</p>
+                <p>{{chantier.lieu}}</p>
+                <p>{{chantier.desc}}</p>
+                <a href="{{path('chantier', {id: chantier.id})}}">En savoir plus <img src="{{ assets('/assets/imgs/icone/chevron.png') }}" alt="fleche"></a>
+            </div>
+        </article>
+        {% endfor %}
+    </section>
+
 
 
 {% endblock %}

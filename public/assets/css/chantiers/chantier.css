@@ -1,0 +1,74 @@
+/* fleche retour */
+#retour img{
+    width: 20px;
+    margin: 0 1vw;
+}
+#retour{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    margin-top: 3vh;
+}
+
+h1, main p{
+    width: 100%;
+    text-align: center;
+    margin: 5vh 0;
+}
+main section{
+    display: flex;
+    flex-wrap: wrap;
+    width: 96%;
+    margin-left: 3%;
+    margin-top: 10vh;
+    border: 1px red solid;
+    margin-bottom: 12vh;
+}
+article{
+    width: 48%;
+    height: 60vh;
+    border: green solid 1px;
+    margin-right: 1.5vw;
+    margin-bottom: 3vh;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+
+}
+article img{
+    max-height: 60vh;
+    max-width: 100%;
+    position: relative;
+    z-index: 1;
+}
+article div{
+    position: absolute;
+    top: 13%;
+    left: 13%;
+    height: 74%;
+    width: 74%;
+    background-color: rgba(255, 255, 255, 0.479);
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 50px;
+    z-index: 0;
+    border: none;
+    border-radius: 20px;
+    /* display: none; */
+}
+article div p{
+    text-align: justify;
+}
+article:hover div{
+    z-index: 3;
+}
+article:hover img{
+    filter: blur(5px);
+}
+/* article div:focus-visible{
+    background-color: green;
+} */

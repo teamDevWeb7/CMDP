@@ -23,6 +23,7 @@
 </style>
 <body>
     <header>
+
         <nav>
             {# en js faire un set attribute pour bold la class active ? #}
             <a href="{{path('accueil')}}"><img src="{{ assets('/assets/imgs/logo/logo.svg') }}" id="logo" alt="Logo de l'entreprise"></a>
@@ -51,11 +52,13 @@
             {% endfor %}
         {% endif %}
         {% block body %}
+            
         <!-- inserer page ici -->
         {% endblock %}
     </main>
 
     <footer>
+
         <div id="scroll_to_top"> 
             <a href="#top"> <img src="{{ assets('/assets/imgs/icone/arrowTop.png') }}" alt="icone pour remonter en haut de la page"></a>
         </div>

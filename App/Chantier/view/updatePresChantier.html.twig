@@ -17,11 +17,11 @@
     <p>Les images doivent être de type png, jpeg ou jpg et d'une taille maximale de 2MO.</p>
     <form method="POST" enctype="multipart/form-data">
         <label for="title">Nom du chantier</label>
-        <input type="text" name="title" value="{{chantier.nomChantier}}">
+        <input type="text" name="title" value="{{chantier.nomChantier}}" maxlength="45">
         <label for="date">Date du chantier</label>
-        <input type="text" name="date" value="{{chantier.dateChantier}}">
+        <input type="text" name="date" value="{{chantier.dateChantier}}" maxlength="45">
         <label for="lieu">Lieu du chantier</label>
-        <input type="text" name="lieu" value="{{chantier.lieu}}">
+        <input type="text" name="lieu" value="{{chantier.lieu}}" maxlength="45">
         <label for="desc">Description du chantier</label>
         <textarea name="desc" maxlength="210" rows="5">{{chantier.desc}}</textarea>
         <label for="img">Image</label>

@@ -13,15 +13,22 @@
 {% endblock %}
 
 {% block body %}
-    <a href="{{path('adminChantiers')}}" id="retour"><img src="{{ assets('/assets/imgs/icone/left-arrow.png') }}" alt="flèche retour"> Retour aux chantiers</a>
+    <a href="{{path('chantiers')}}" id="retour"><img src="{{ assets('/assets/imgs/icone/left-arrow.png') }}" alt="flèche retour"> Retour aux chantiers</a>
+
     <h1>{{chantier.nomChantier}}</h1>
     <p>{{chantier.dateChantier}} ~ {{chantier.lieu}}</p>
 
-    {% for photo in photos %}
-    <article>
-        <img src="{{assets('/assets/imgs/chantiers'~chantier.imgPath) }}">
-        <p>{{photo.descImg}}</p>
-    </article>
-    {% endfor %}
+    <section>
+        {% for photo in photos %}
+        <article>
+            <img src="{{assets('/assets/imgs/chantiers/'~ photo.imgPath) }}">
+            <div>
+                <p>{{photo.descImg}}</p>
+            </div>
+        </article>
+        {% endfor %}
+    </section>
+
 
 {% endblock %}
+

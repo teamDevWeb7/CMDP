@@ -45,7 +45,8 @@ class ChantierAction{
     // client
     public function chantiers(ServerRequest $request){
         $chantiers=$this->chantiersRepo->findAll();
-        return $this->renderer->render('@chantier/chantiersUser', ["chantiers"=>$chantiers]);
+        // $tsChantiers=array_slice($chantiers, -10000, 10000);
+        return $this->renderer->render('@chantier/chantiersUser', ["chantiers"=>$chantiers, "siteName"=>'Cmydesignprojets']);
     }
 
     public function chantier(ServerRequest $request){
@@ -56,7 +57,7 @@ class ChantierAction{
         if(!$chantier){
             return new Response(404,[], 'Aucun chantier ne correspond');
         }
-        return $this->renderer->render('@chantier/infosChantierUser', ["chantier"=>$chantier, "photos"=>$photos]);
+        return $this->renderer->render('@chantier/infosChantierUser', ["chantier"=>$chantier, "photos"=>$photos, "siteName"=>'Cmydesignprojets']);
     }
 
 
@@ -134,7 +135,7 @@ class ChantierAction{
             }
 
             
-            $imgPath=$this->container->get('img.basePath').$fileName;
+            $imgPath=$this->container->get('img.basePath'). DIRECTORY_SEPARATOR .$fileName;
             $file->moveTo($imgPath);
             if(!$file->isMoved()){
                 $this->toaster->makeToast("Une erreur s'est produite",Toaster::ERROR);
@@ -321,7 +322,7 @@ class ChantierAction{
             }
 
             
-            $imgPath=$this->container->get('img.basePath').$fileName;
+            $imgPath=$this->container->get('img.basePath'). DIRECTORY_SEPARATOR .$fileName;
             $file->moveTo($imgPath);
             if(!$file->isMoved()){
                 $this->toaster->makeToast("Une erreur s'est produite",Toaster::ERROR);
@@ -362,18 +363,21 @@ class ChantierAction{
         $oldPath=$this->container->get('img.basePath').$vieillePhoto;
         unlink($oldPath);
 
+        // trouver ttes photos liées au chantier et suppr
+        $photos=$this->photoRepo->findBy(array('chantier'=>$id));
+
+        foreach($photos as $photo){
+            $img=$photo->getImgPath();
+            $oldPath=$this->container->get('img.basePath').$img;
+            unlink($oldPath);
+        }
+
         $this->manager->remove($chantier);
         $this->manager->flush();
 
-        // probleme -> supprime chantier et bonne photo mais erreur = 
-        // C:\wamp64\www\proj_CMDP/public//assets/imgs/chantiers$filename(mauvais $filename)
-        // ->pas de slash et pas photo associée au bon chantier
-        // mais suppression fonctionne
-
-
         $this->toaster->makeToast('Chantier supprimé avec succès', Toaster::SUCCESS);
     
-        return $this->redirect('chantiers');
+        return $this->redirect('adminChantiers');
     }
 
     /**
