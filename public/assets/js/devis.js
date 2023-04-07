@@ -16,7 +16,7 @@ p[2].addEventListener(
             span[1].setAttribute("class", "R");
             span[2].setAttribute("class", "R");
             Q1=span[0].textContent;
-            alert(Q1);
+            // alert(Q1);
         }else{
             span[0].setAttribute("class", "R");
             Q1='';
