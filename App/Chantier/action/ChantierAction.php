@@ -45,7 +45,11 @@ class ChantierAction{
     // client
     public function chantiers(ServerRequest $request){
         $chantiers=$this->chantiersRepo->findAll();
-        // $tsChantiers=array_slice($chantiers, -10000, 10000);
+        // $size=sizeof($chantiers);
+        // $ranges=[];
+        // foreach($chantiers as $chantier){
+        //     $ranges=array_unshift($chantier);
+        // }
         return $this->renderer->render('@chantier/chantiersUser', ["chantiers"=>$chantiers, "siteName"=>'Cmydesignprojets']);
     }
 

@@ -21,14 +21,13 @@
     <section>
         {% for photo in photos %}
         <article>
-            <img src="{{assets('/assets/imgs/chantiers/'~ photo.imgPath) }}">
+            <img src="{{assets('/assets/imgs/chantiers/'~ photo.imgPath) }}" alt="Photo provenant du chantier">
             <div>
                 <p>{{photo.descImg}}</p>
             </div>
         </article>
         {% endfor %}
     </section>
-
-
 {% endblock %}
+
 
