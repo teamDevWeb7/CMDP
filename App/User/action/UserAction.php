@@ -201,7 +201,7 @@ class UserAction{
                     
 
 
-                    $date=date("F_j_Y_g-i_a");
+                    $date=date("m-d-y_H\hm.s");
                     // server local + affiche chez client
                     $html2pdf->output(dirname(__DIR__, 2). DIRECTORY_SEPARATOR .'Admin'. DIRECTORY_SEPARATOR.'pdfs'. DIRECTORY_SEPARATOR.'CmydesignprojetsDemandeDevis_'.$date.'.pdf','FD');
                     
