@@ -50,6 +50,12 @@ class UserAction{
         return $this->renderer->render('@user/aPropos', ['siteName' => 'Cmydesignprojets']);
     }
 
+    /**
+     * get->affichage, post->range mess + prospect en BDD
+     *
+     * @param ServerRequest $request
+     * @return void
+     */
     public function contact(ServerRequest $request){
         $method=$request->getMethod();
 
