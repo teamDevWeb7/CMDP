@@ -141,7 +141,9 @@ class UserAction{
                 // captcha
                 // clé secrète donnée par google
                 $cle='6LfpX-ckAAAAAN9NuwK9BKuWBfPekgenk1TinPU6';
-                $response = $_POST['g-recaptcha-response'];
+                $post=json_decode(file_get_contents('php://input'));
+                $response = $post->g_recaptcha_response;
+                var_dump($response);
 
                 $gapi = 'https://www.google.com/recaptcha/api/siteverify?secret='.$cle.'&response='.$response;
 
@@ -150,7 +152,7 @@ class UserAction{
                 // if captcha pas sélectionné
                 if(!$json['success']){
                     $this->toaster->makeToast("<my-p class='lang' key='captcha'>La validation du captcha est nécessaire à l'envoi</my-p>", Toaster::ERROR);
-                    return $this->redirect('devis');
+                    // return $this->redirect('devis');
                 // captcha ok
                 }else{
                     
@@ -165,12 +167,15 @@ class UserAction{
                     if($errors){
                         foreach($errors as $error){
                             $this->toaster->makeToast($error->toString(), Toaster::ERROR);
-                            return $this->redirect('devis');
+                            // return $this->redirect('devis');
                         }
                     }
 
                     // header("Access-Control-Allow-Origin: localhost:8000");
 
+                    $varJS=$request->getAttributes();
+                    var_dump($varJS);
+                    die();
 
                     // var_dump($_POST['monBien']);
                     // $monBien=$_POST['monBien'];
@@ -207,9 +212,9 @@ class UserAction{
                     
 
 
-                    $date=date("m-d-y_H\hm.s");
+                    // $date=date("m-d-y_H\hm.s");
                     // server local + affiche chez client
-                    $html2pdf->output(dirname(__DIR__, 2). DIRECTORY_SEPARATOR .'Admin'. DIRECTORY_SEPARATOR.'pdfs'. DIRECTORY_SEPARATOR.'CmydesignprojetsDemandeDevis_'.$date.'.pdf','FD');
+                    // $html2pdf->output(dirname(__DIR__, 2). DIRECTORY_SEPARATOR .'Admin'. DIRECTORY_SEPARATOR.'pdfs'. DIRECTORY_SEPARATOR.'CmydesignprojetsDemandeDevis_'.$date.'.pdf','FD');
                     
 
 
@@ -235,8 +240,9 @@ class UserAction{
                     // $this->manager->persist($pdf);
                     // $this->manager->flush();
 
-                    $this->toaster->makeToast("<my-p class='lang' key='devisSend'>Votre demande de devis a bien été envoyée</my-p>", Toaster::SUCCESS);
-                    return $this->redirect('devis');
+                    // $this->toaster->makeToast("<my-p class='lang' key='devisSend'>Votre demande de devis a bien été envoyée</my-p>", Toaster::SUCCESS);
+                    // return $this->redirect('devis');
+                    echo true;
                     
                 }
             }    

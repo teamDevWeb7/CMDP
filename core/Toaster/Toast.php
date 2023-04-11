@@ -1,5 +1,5 @@
 <?php
-namespace Core\toaster;
+namespace Core\Toaster;
 
 class Toast{
     public function success(string $message):string{

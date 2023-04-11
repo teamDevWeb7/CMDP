@@ -81,7 +81,7 @@
         </section>
         <section id="p4" class="left">
 
-            <form action="#" method="POST">
+            <form action="#" method="POST" onsubmit="sendData(event)" >
                 <input type="text" id="nom1" name="nom" required="required">
                 <label for="nom" id="labNom1"><my-p class="lang" key="name">Votre nom : </my-p><span class="red">*</span></label>
                 <i id="iNom1"></i>
@@ -105,7 +105,7 @@
                 <div class="g-recaptcha" data-sitekey="6LfpX-ckAAAAAFgQUFqEEzZe9E2TlH_jFr8WLxVI"></div>
 
                 <input type="submit" value="OK" id="btn1" 
-                {# onclick="sendData()" #}
+                 
                 {# onclick="pdfMaker()"> #}
                 >
             </form>
@@ -125,7 +125,7 @@
 {% block scripts %}
     <script src="{{ assets('/assets/js/devis.js') }}"></script>
     <script src="{{ assets('/assets/js/swipe.js') }}"></script>
-    <script src="{{ assets('/assets/js/axios.js') }}"></script>
+    {# // <script src="{{ assets('/assets/js/axios.js') }}"></script> #}
     <script src="{{ assets('/assets/js/ajax.js') }}"></script>
     {# // <script src="{{ assets('/assets/js/pdfMaker.js') }}"></script> #}
     <script src="https://www.google.com/recaptcha/api.js" async></script>

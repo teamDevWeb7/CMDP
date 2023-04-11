@@ -1,7 +1,7 @@
 <?php
-namespace Core\toaster;
+namespace Core\Toaster;
 
-use Core\toaster\Toast;
+use Core\Toaster\Toast;
 use Core\Session\SessionInterface;
 
 // gere toast en s'appuant sur session
