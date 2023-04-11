@@ -1,7 +1,9 @@
 #anim{
     height: 91vh;
+    position: relative;
+    overflow: hidden;
 }
-#anim div{
+/* #anim div{
     width: 50px;
     height: 50px;
     background-color: blue;
@@ -12,7 +14,44 @@
 }
 #anim .right{
     transform: translateX(500px);
+} */
+.boot{
+    position: absolute;
+    height: 13vh;
 }
+#leftShoe{
+    bottom: 4vh;
+    left: -7vw;
+}
+#rightShoe{
+    bottom: 2vh;
+    left: -7vw;
+}
+.animShoe{
+    animation-name: goBanana;
+    animation-duration: 15s;
+    animation-fill-mode: forwards;
+    animation-timing-function: linear;
+}
+/* classList.add pr mettre en pause */
+.pause{
+    animation-play-state: paused;
+}
+.cache{
+    visibility: hidden;
+}
+@keyframes goBanana{
+    from{
+        left:-7vw
+    }to{
+        left:110vw
+    }
+}
+
+
+
+
+
 
 /* container img gauche + text et liens gauche */
 #intro{

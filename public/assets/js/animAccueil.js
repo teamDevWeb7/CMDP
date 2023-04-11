@@ -23,6 +23,195 @@ let movee=function(){
     }, 4000)
 }
 requestAnimationFrame(movee);
+
+let leftShoe=document.querySelector('#leftShoe');
+
+let goBanana=function(){
+    leftShoe.classList.add('animShoe');
+    leftShoe.classList.add('cache');
+
+    window.setTimeout(function(){
+        requestAnimationFrame(function(){
+            leftShoe.classList.add('pause');
+            leftShoe.classList.remove('cache');
+        })
+        window.setTimeout(function(){
+            requestAnimationFrame(function(){
+                leftShoe.classList.remove('pause');
+                leftShoe.classList.add('cache');
+            })
+        }, 1500)
+
+        window.setTimeout(function(){
+            requestAnimationFrame(function(){
+                leftShoe.classList.add('pause');
+                leftShoe.classList.remove('cache');
+            })
+            window.setTimeout(function(){
+                requestAnimationFrame(function(){
+                    leftShoe.classList.remove('pause');
+                    leftShoe.classList.add('cache');
+                })
+            }, 1500)
+
+            window.setTimeout(function(){
+                requestAnimationFrame(function(){
+                    leftShoe.classList.add('pause');
+                    leftShoe.classList.remove('cache');
+                })
+                window.setTimeout(function(){
+                    requestAnimationFrame(function(){
+                        leftShoe.classList.remove('pause');
+                        leftShoe.classList.add('cache');
+                    })
+                }, 1500)
+
+
+                window.setTimeout(function(){
+                    requestAnimationFrame(function(){
+                        leftShoe.classList.add('pause');
+                        leftShoe.classList.remove('cache');
+                    })
+                    window.setTimeout(function(){
+                        requestAnimationFrame(function(){
+                            leftShoe.classList.remove('pause');
+                            leftShoe.classList.add('cache');
+                        })
+                    }, 1500)
+                    
+
+                    window.setTimeout(function(){
+                        requestAnimationFrame(function(){
+                            leftShoe.classList.add('pause');
+                            leftShoe.classList.remove('cache');
+                        })
+                        window.setTimeout(function(){
+                            requestAnimationFrame(function(){
+                                leftShoe.classList.remove('pause');
+                                leftShoe.classList.add('cache');
+                            })
+                        }, 3000)
+                        
+                        window.setTimeout(function(){
+                            requestAnimationFrame(function(){
+                                leftShoe.classList.add('pause');
+                                leftShoe.classList.remove('cache');
+                            })
+                            window.setTimeout(function(){
+                                requestAnimationFrame(function(){
+                                    leftShoe.classList.remove('pause');
+                                    leftShoe.classList.add('cache');
+                                })
+                            }, 1500)
+                            
+    
+                            
+                        }, 4500)
+                        
+                    }, 3700)
+                }, 3600)
+            }, 3500)
+        }, 3400)
+    }, 1500)
+
+}
+requestAnimationFrame(goBanana);
+
+let rightShoe=document.querySelector('#rightShoe');
+
+let goBanana1=function(){
+    rightShoe.classList.add('animShoe');
+    rightShoe.classList.add('cache');
+
+    window.setTimeout(function(){
+        requestAnimationFrame(function(){
+            rightShoe.classList.add('pause');
+            rightShoe.classList.remove('cache');
+        })
+        window.setTimeout(function(){
+            requestAnimationFrame(function(){
+                rightShoe.classList.remove('pause');
+                rightShoe.classList.add('cache');
+            })
+        }, 1500)
+
+        window.setTimeout(function(){
+            requestAnimationFrame(function(){
+                rightShoe.classList.add('pause');
+                rightShoe.classList.remove('cache');
+            })
+            window.setTimeout(function(){
+                requestAnimationFrame(function(){
+                    rightShoe.classList.remove('pause');
+                    rightShoe.classList.add('cache');
+                })
+            }, 1500)
+
+            window.setTimeout(function(){
+                requestAnimationFrame(function(){
+                    rightShoe.classList.add('pause');
+                    rightShoe.classList.remove('cache');
+                })
+                window.setTimeout(function(){
+                    requestAnimationFrame(function(){
+                        rightShoe.classList.remove('pause');
+                        rightShoe.classList.add('cache');
+                    })
+                }, 1500)
+
+
+                window.setTimeout(function(){
+                    requestAnimationFrame(function(){
+                        rightShoe.classList.add('pause');
+                        rightShoe.classList.remove('cache');
+                    })
+                    window.setTimeout(function(){
+                        requestAnimationFrame(function(){
+                            rightShoe.classList.remove('pause');
+                            rightShoe.classList.add('cache');
+                        })
+                    }, 1500)
+                    
+
+                    window.setTimeout(function(){
+                        requestAnimationFrame(function(){
+                            rightShoe.classList.add('pause');
+                            rightShoe.classList.remove('cache');
+                        })
+                        window.setTimeout(function(){
+                            requestAnimationFrame(function(){
+                                rightShoe.classList.remove('pause');
+                                rightShoe.classList.add('cache');
+                            })
+                        }, 3000)
+                        
+                        window.setTimeout(function(){
+                            requestAnimationFrame(function(){
+                                rightShoe.classList.add('pause');
+                                rightShoe.classList.remove('cache');
+                            })
+                            window.setTimeout(function(){
+                                requestAnimationFrame(function(){
+                                    rightShoe.classList.remove('pause');
+                                    rightShoe.classList.add('cache');
+                                })
+                            }, 1500)
+                            
+    
+                            
+                        }, 4300)
+                        
+                    }, 3200)
+                }, 3400)
+            }, 3300)
+        }, 3200)
+    }, 1300)
+
+}
+requestAnimationFrame(goBanana1);
+
+// decalage entre les 2
+
 // nav gere mieux lancement anim et tourne pas si change onglet
 // ne peut pas specifier temps, donc faut creeer une function avec params
 
