@@ -19,7 +19,7 @@
 
     {# animation #}
     <section id="anim">
-
+        <div></div>
     </section>
     <section id="intro">
         <img src="{{ assets('/assets/imgs/photos/paint-brush.jpg') }}" alt="Image décorative représentant des outils de peinture">
@@ -51,4 +51,8 @@
     <button id="dev"><a href="{{path('devis')}}" class="lang" key="btnDevis">Demander un devis</a></button>
     
 
+{% endblock %}
+
+{% block scripts %}
+    <script src="{{ assets('/assets/js/animAccueil.js') }}"></script>
 {% endblock %}
