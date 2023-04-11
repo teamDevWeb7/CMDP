@@ -8,7 +8,7 @@
     position: absolute;
     left: 0;
     top: 10vh;
-    transition: transform 10s;
+    transition: transform 5s;
 }
 #anim .right{
     transform: translateX(500px);

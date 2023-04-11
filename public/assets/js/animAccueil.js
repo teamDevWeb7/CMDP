@@ -14,12 +14,13 @@ let movee=function(){
         requestAnimationFrame(function(){
             // retire classe ->retourne etat initial
             div.classList.remove('right');
+            
             // rappel function ->recommence etat initial, deplace, etc
             window.setTimeout(function(){
                 requestAnimationFrame(movee);
-            })
+            }, 4000)
         })
-    }, 3000)
+    }, 4000)
 }
 requestAnimationFrame(movee);
 // nav gere mieux lancement anim et tourne pas si change onglet
@@ -44,3 +45,5 @@ requestAnimationFrame(movee);
 //     peinture coule
 //     nom ent se rajoute, anim logo deplace gauche pour que E soit centré
 //     effet apparition texte opacity ou overflow hidden et translate qq chose
+
+
