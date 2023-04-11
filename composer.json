@@ -1,6 +1,6 @@
 {
     "name": "suray/proj_cmdp",
-    "description": "projet c my deisgn projets full objects",
+    "description": "projet Cmydesignprojets full objects",
     "license": "MIT",
     "authors": [
         {
@@ -17,7 +17,8 @@
         "doctrine/orm": "^2.13",
         "doctrine/dbal": "^3.4",
         "doctrine/annotations": "^2.0",
-        "symfony/cache": "^5.4"
+        "symfony/cache": "^5.4",
+        "spipu/html2pdf": "^5.2"
     },
     "autoload": {
         "psr-4": {

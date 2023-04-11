@@ -8,7 +8,8 @@
     <link rel="stylesheet" href="{{ assets('/assets/css/user/devis/devis.css') }}">
     <link rel="stylesheet" href="{{ assets('/assets/css/user/devis/devis1.css') }}">
     <link rel="stylesheet" href="{{ assets('/assets/css/user/devis/devis2.css') }}">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    {# <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script> #}
 {% endblock %}
 
 {% block title %}
@@ -41,7 +42,7 @@
         <section id="p1" class="left0">
                 <h3 class="lang" key="myReno">Je souhaite rénover :</h3>
                 <div id="Q1">
-                    <p class="choix"><img src="{{ assets('/assets/imgs/icone/devis/app.png') }}" alt="Image d'un appartement"><span class="R" ><my-p class="lang" key="app">Un appartement</my-p></span></p>
+                    <p class="choix"><img src="{{ assets('/assets/imgs/icone/devis/app.png') }}" alt="Image d'un appartement"><span class="R"><my-p class="lang" key="app">Un appartement</my-p></span></p>
                     
                         
                     <p class="choix"><img src="{{ assets('/assets/imgs/icone/devis/home.png') }}" alt="Image d'une maison"><span class="R"><my-p class="lang" key="house">Une maison</my-p></span></p>
@@ -80,7 +81,7 @@
         </section>
         <section id="p4" class="left">
 
-            <form action="#" method="POST">
+            <form action="#" method="POST" onsubmit="sendData(event)" >
                 <input type="text" id="nom1" name="nom" required="required">
                 <label for="nom" id="labNom1"><my-p class="lang" key="name">Votre nom : </my-p><span class="red">*</span></label>
                 <i id="iNom1"></i>
@@ -103,7 +104,10 @@
 
                 <div class="g-recaptcha" data-sitekey="6LfpX-ckAAAAAFgQUFqEEzZe9E2TlH_jFr8WLxVI"></div>
 
-                <input type="submit" value="OK" id="btn1" onclick="pdfMaker()">
+                <input type="submit" value="OK" id="btn1" 
+                 
+                {# onclick="pdfMaker()"> #}
+                >
             </form>
 
             <p>
@@ -121,6 +125,8 @@
 {% block scripts %}
     <script src="{{ assets('/assets/js/devis.js') }}"></script>
     <script src="{{ assets('/assets/js/swipe.js') }}"></script>
-    <script src="{{ assets('/assets/js/pdfMaker.js') }}"></script>
+    {# // <script src="{{ assets('/assets/js/axios.js') }}"></script> #}
+    <script src="{{ assets('/assets/js/ajax.js') }}"></script>
+    {# // <script src="{{ assets('/assets/js/pdfMaker.js') }}"></script> #}
     <script src="https://www.google.com/recaptcha/api.js" async></script>
 {% endblock %}

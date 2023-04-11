@@ -1,5 +1,5 @@
 <?php
-namespace Core\toaster;
+namespace Core\Toaster;
 
 use Twig\TwigFunction;
 use Core\toaster\Toaster;

@@ -2,17 +2,20 @@
 
 namespace App\User\action;
 
+use Model\Entity\Pdf;
 use Core\toaster\Toaster;
+use Model\Entity\Message;
+use Model\Entity\Prospect;
+use Spipu\Html2Pdf\Html2Pdf;
+use GuzzleHttp\Psr7\Response;
 use Doctrine\ORM\EntityManager;
 use Core\Framework\Router\Router;
 use Core\Session\SessionInterface;
+use GuzzleHttp\Psr7\ServerRequest;
 use Psr\Container\ContainerInterface;
+use Core\Framework\Validator\Validator;
 use Core\Framework\Router\RedirectTrait;
 use Core\Framework\Renderer\RendererInterface;
-use Core\Framework\Validator\Validator;
-use GuzzleHttp\Psr7\ServerRequest;
-use Model\Entity\Message;
-use Model\Entity\Prospect;
 
 class UserAction{
 
@@ -47,6 +50,12 @@ class UserAction{
         return $this->renderer->render('@user/aPropos', ['siteName' => 'Cmydesignprojets']);
     }
 
+    /**
+     * get->affichage, post->range mess + prospect en BDD
+     *
+     * @param ServerRequest $request
+     * @return void
+     */
     public function contact(ServerRequest $request){
         $method=$request->getMethod();
 
@@ -68,7 +77,7 @@ class UserAction{
 
                 // if captcha pas sélectionné
                 if(!$json['success']){
-                    $this->toaster->makeToast("La validation du captcha est nécessaire à l'envoi", Toaster::ERROR);
+                    $this->toaster->makeToast("<my-p class='lang' key='captcha'>La validation du captcha est nécessaire à l'envoi</my-p>", Toaster::ERROR);
                     return $this->redirect('contact');
                 // captcha ok
                 }else{
@@ -77,8 +86,6 @@ class UserAction{
                     $errors=$validator
                                     ->required('nom', 'prenom', 'mail', 'tel', 'message')
                                     ->email('mail')
-                                    // pb tel
-                                    // ->tel('tel')
                                     // pb 1 seule erreur
                                     ->getErrors();
                     // si champs pas remplis ou input !value demandée, renvoie toast+redirect
@@ -89,15 +96,13 @@ class UserAction{
                         }
                     }
 
-                    // laver message ?
-
-                    $prospect=$this->userRepo->find($data['mail']);
+                    $prospect=$this->userRepo->findOneBy(['mail' => $data['mail']]);
                     $message= new Message;
                     $message->setMessage($data['message']);
 
                     if($prospect){
                         $prospect->addMessage($message);
-                        $this->manager->persist($prospect);
+                        $message->setProspect($prospect);
                     }
                     else{
                         $prosp= new Prospect;
@@ -106,14 +111,13 @@ class UserAction{
                                 ->setMail($data['mail'])
                                 ->setPhone($data['tel'])
                                 ->addMessage($message);
+                                $message->setProspect($prosp);
                         $this->manager->persist($prosp);
                     }
                     $this->manager->persist($message);
                     $this->manager->flush();
 
-                    // ds ts les cas, nv Prospect et message n'a pas la clé etrangere du prospect
-
-                    $this->toaster->makeToast("Votre message a bien été envoyé", Toaster::SUCCESS);
+                    $this->toaster->makeToast("<my-p class='lang' key='sendMess'>Votre message a bien été envoyé</my-p>", Toaster::SUCCESS);
                     return $this->redirect('contact');
                 }  
             }
@@ -125,15 +129,125 @@ class UserAction{
     }
 
     public function devis(ServerRequest $request){
+        // header('Location: http://localhost:8000/App/User/action/UserAction.php');
         $method=$request->getMethod();
         if($method=='POST'){
-            // return $this->redirect('pdf');
+            $data=$request->getParsedBody();
+            
+            // pot de miel
+            if(!empty($data['sujet'])){
+                return $this->redirect('devis');
+            }else{
+                // captcha
+                // clé secrète donnée par google
+                $cle='6LfpX-ckAAAAAN9NuwK9BKuWBfPekgenk1TinPU6';
+                $post=json_decode(file_get_contents('php://input'));
+                $response = $post->g_recaptcha_response;
+                var_dump($response);
+
+                $gapi = 'https://www.google.com/recaptcha/api/siteverify?secret='.$cle.'&response='.$response;
+
+                $json = json_decode(file_get_contents($gapi), true);
+
+                // if captcha pas sélectionné
+                if(!$json['success']){
+                    $this->toaster->makeToast("<my-p class='lang' key='captcha'>La validation du captcha est nécessaire à l'envoi</my-p>", Toaster::ERROR);
+                    // return $this->redirect('devis');
+                // captcha ok
+                }else{
+                    
+                    $validator=new Validator($data);
+                    // check ts champs ok
+                    $errors=$validator
+                                    // ->required('nom', 'prenom', 'mail', 'tel')
+                                    // ->email('mail')
+                                    // pb 1 seule erreur
+                                    ->getErrors();
+                    // si champs pas remplis ou input !value demandée, renvoie toast+redirect
+                    if($errors){
+                        foreach($errors as $error){
+                            $this->toaster->makeToast($error->toString(), Toaster::ERROR);
+                            // return $this->redirect('devis');
+                        }
+                    }
+
+                    // header("Access-Control-Allow-Origin: localhost:8000");
+
+                    $varJS=$request->getAttributes();
+                    var_dump($varJS);
+                    die();
+
+                    // var_dump($_POST['monBien']);
+                    // $monBien=$_POST['monBien'];
+                    // $mesBesoins=$_POST['mesBesoins'];
+                    // $monMessage=$_POST['monMessage'];
+
+                    // var_dump($_GET['monBien']);
+                    // $monBien=$_GET['monBien'];
+                    // $mesBesoins=$_GET['mesBesoins'];
+                    // $monMessage=$_GET['monMessage'];
+
+                    $monBien='cacahuete';
+                    $mesBesoins='chocolatine';
+                    $monMessage='coucou';
+
+                    $content='
+                    
+                        <h1 style="width:100%; text-align:center; font-size:25px; margin: 30px 0">Récapitulatif de votre demande de devis</h1>
+                    
+                    
+                        <h2 style="font-size:20px; font-weight:400; margin-top:60px; margin-bottom:-20px">Votre bien à rénover :</h2>
+                        <p style="font-size:20px; font-weight:400">'.$monBien.'</p>
+                        <h2 style="font-size:20px; font-weight:400; margin-bottom:-20px">Les services dont vous pensez avoir besoin :</h2>
+                        <p style="font-size:20px; font-weight:400">'.$mesBesoins.'</p>
+                        <h2 style="font-size:20px; font-weight:400; margin-bottom:-20px">Votre description du projet :</h2>
+                        <p style="font-size:20px; font-weight:400">'.$monMessage.'</p>
+                    
+                    <p style="font-size:20px; font-weight:400; margin-top:60px; width:100%; text-align:center">Produit par Cmydesignprojets</p>
+                    ';
+
+                    $html2pdf= new Html2Pdf('P', 'A4', 'fr');
+                    
+                    $html2pdf->writeHTML($content);
+                    
+
+
+                    // $date=date("m-d-y_H\hm.s");
+                    // server local + affiche chez client
+                    // $html2pdf->output(dirname(__DIR__, 2). DIRECTORY_SEPARATOR .'Admin'. DIRECTORY_SEPARATOR.'pdfs'. DIRECTORY_SEPARATOR.'devis_'.$date.'.pdf','FD');
+                    
+
+
+
+                    // $prospect=$this->userRepo->findOneBy(['mail' => $data['mail']]);
+                    // $pdf= new Pdf;
+                    // // $pdf->setPdfPath();
+
+                    // if($prospect){
+                    //     $prospect->addPdf($pdf);
+                    //     $pdf->setProspect($prospect);
+                    // }
+                    // else{
+                    //     $prosp= new Prospect;
+                    //     $prosp->setNom($data['nom'])
+                    //             ->setPrenom($data['prenom'])
+                    //             ->setMail($data['mail'])
+                    //             ->setPhone($data['tel'])
+                    //             ->addPdf($pdf);
+                    //             $pdf->setProspect($prosp);
+                    //     $this->manager->persist($prosp);
+                    // }
+                    // $this->manager->persist($pdf);
+                    // $this->manager->flush();
+
+                    // $this->toaster->makeToast("<my-p class='lang' key='devisSend'>Votre demande de devis a bien été envoyée</my-p>", Toaster::SUCCESS);
+                    // return $this->redirect('devis');
+                    echo true;
+                    
+                }
+            }    
         }
         return $this->renderer->render('@user/devis', ['siteName' => 'Cmydesignprojets']);
-    }
-
-    public function pdf(ServerRequest $request){
-        return $this->renderer->render('@user/pdf');
     }
 
     public function faq(ServerRequest $request){

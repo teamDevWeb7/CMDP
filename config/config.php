@@ -22,6 +22,7 @@ return [
 
     // chemin default des views
     "config.viewPath"=>dirname(__DIR__).DIRECTORY_SEPARATOR.'view',
+    'img.basePath'=>dirname(__DIR__).DIRECTORY_SEPARATOR.'public'. DIRECTORY_SEPARATOR. 'assets' . DIRECTORY_SEPARATOR.'imgs'. DIRECTORY_SEPARATOR.'chantiers' . DIRECTORY_SEPARATOR,
     "twig.extensions"=>[
         RouterTwigExtension::class,
         ToasterTwigExtension::class,

@@ -1,0 +1,33 @@
+{% extends 'admin.layout.html.twig' %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="{{ assets('/assets/css/admin/chantiers/addChantier.css') }}">
+{% endblock %}
+
+{% block title %}
+    <title>Nos chantiers</title>
+{% endblock %}
+
+{% block body %}
+    <a href="{{path('adminChantiers')}}" id="retour"><img src="{{ assets('/assets/imgs/icone/left-arrow.png') }}" alt="flèche retour"> Retour aux chantiers</a>
+
+    <h1>Ajouter un chantier</h1>
+
+    <p>Le nom du chantier, sa description et l'image sont obligatoires et doivent être uniques.<br>
+    Les images doivent être de type png, jpeg ou jpg et d'une taille maximale de 2MO.</p>
+    <form method="POST" enctype="multipart/form-data">
+        <label for="title">Nom du chantier</label>
+        <input type="text" name="title" maxlength="45">
+        <label for="date">Date du chantier</label>
+        <input type="text" name="date" maxlength="45">
+        <label for="lieu">Lieu du chantier</label>
+        <input type="text" name="lieu" maxlength="45">
+        <label for="desc">Description du chantier</label>
+        <textarea name="desc" maxlength="210" rows="5"></textarea>
+        <label for="img">Image</label>
+        <input name="img" type="file">
+        <input type="submit" value="Ajouter">
+
+    </form>
+
+{% endblock %}

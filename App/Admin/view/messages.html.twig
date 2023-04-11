@@ -11,12 +11,13 @@
 {% block body %}
     <section>
         <h1>Liste des messages</h1>
+        <p>Pour le bien être de votre site, supprimez vos messages une fois traités</p>
 
         <table>
             <thead>
                 <tr>
-                    <th>Nom du client</th>
-                    <th>Prénom du client</th>
+                    <th>Nom du prospect</th>
+                    <th>Prénom du prospect</th>
                     <th>Message</th>
                     <th>Action</th>
                 </tr>
@@ -24,11 +25,13 @@
             <tbody>
                 {% for message in messages %}
                     <tr>
-                        <td>{{ message.prospect.nom }}</td>
-                        <td>{{ message.prospect.prenom }}</td>
-                        <td>{{ message}}</td>
+                        <td>{{message.prospect.nom}}</td>
+                        <td>{{message.prospect.prenom}}</td>
+                        <td>{{message.message}}</td>
                         <td>
-                            <a href="{{path('message.delete', {id: message.id})}}">Supprimer</a>
+                            <a href="{{path('deleteMess', {id: message.id})}}">Supprimer</a><br>
+                            <a href="{{path('prospect', {id: message.prospect.id})}}">Voir prospect</a>
+                            
                         </td>
                     </tr>
                 {% endfor %}

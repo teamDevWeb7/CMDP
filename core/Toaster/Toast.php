@@ -1,19 +1,19 @@
 <?php
-namespace Core\toaster;
+namespace Core\Toaster;
 
 class Toast{
     public function success(string $message):string{
-        return "<div class=' toast successToast'>$message</div>";
+        return "<my-div class=' toast successToast'>$message</my-div>";
     }
 
 
     public function error(string $message):string{
-        return "<div class='toast errorToast'>$message</div>";
+        return "<my-div class='toast errorToast'>$message</my-div>";
     }
 
 
     public function warning(string $message):string{
-        return "<div class='toast warningToast'>$message</div>";
+        return "<my-div class='toast warningToast'>$message</my-div>";
     }
 }
 

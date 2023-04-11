@@ -47,7 +47,12 @@ function pdfMaker(){
     doc.text(65, 290, 'Produit par Cmydesignprojets');
     // 1 margin left
     // 2 margin top
-    doc.save("devisCmydesignprojets.pdf");
+
+    // textarea et ttes proprietés
+    console.log(doc);
+    // doc.save("devisCmydesignprojets.pdf");
+    // check comment recup pdf 
+
 }
 
 

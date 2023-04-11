@@ -82,27 +82,123 @@ class AdminAction{
         return $this->renderer->render('@admin/accueilAdmin');
     }
 
+    /**
+     * afficher la liste des prospects
+     *
+     * @param ServerRequest $request
+     * @return void
+     */
     public function prospects(ServerRequest $request){
         $prospects=$this->prospectsRepo->findAll();
         return $this->renderer->render('@admin/prospectsView', ["prospects"=>$prospects]);
     }
 
+    /**
+     * affiche toutes les infos d'un prospect selon sin ID
+     *
+     * @param ServerRequest $request
+     * @return void
+     */
     public function prospect(ServerRequest $request){
+        $id=$request->getAttribute('id');
+        $prospect=$this->prospectsRepo->find($id);
+        $messages=$this->messageRepo->findBy(array('prospect'=>$id));
+        if(!$prospect){
+            return new Response(404,[], 'Aucun prospect ne correspond');
+        }
+        return $this->renderer->render('@admin/prospectView', ["prospect"=>$prospect, "messages"=>$messages]);
+    }
+
+    /**
+     * Permet la suppression d'un prospect grâce à son ID
+     *
+     * @param ServerRequest $request
+     * @return void
+     */
+    public function deleteProspect(ServerRequest $request){
+        $id=$request->getAttribute('id');
+        $prospect=$this->prospectsRepo->find($id);
+        $this->manager->remove($prospect);
+        $this->manager->flush();
+        $this->toaster->makeToast('Prospect supprimé avec succès', Toaster::SUCCESS);
+    
+        return $this->redirect('prospects');
+    }
+
+    /**
+     * Permet de modifier le nom, prénom, mail, téléphone du prospect
+     *
+     * @param ServerRequest $request
+     * @return void
+     */
+    public function updateProspect(ServerRequest $request){
         $id=$request->getAttribute('id');
         $prospect=$this->prospectsRepo->find($id);
         if(!$prospect){
             return new Response(404,[], 'Aucun prospect ne correspond');
         }
-        return $this->renderer->render('@admin/prospectView', ["prospect"=>$prospect]);
+
+        $method=$request->getMethod();
+        if($method==='POST'){
+            $data=$request->getParsedBody();
+            if(($data['nom']===$prospect->getNom()) 
+                && ($data['prenom']===$prospect->getPrenom())
+                && ($data['mail']===$prospect->getMail())
+                && ($data['tel']===$prospect->getPhone())){
+                $this->toaster->makeToast('Aucune modification n\'a été renseignée donc aucune valeur n\'a été modifiée', Toaster::ERROR);
+                    return $this->redirect('prospects');
+            }
+
+            $prospect->setNom($data['nom'])
+                    ->setPrenom($data['prenom'])
+                    ->setMail($data['mail'])
+                    ->setPhone($data['tel']);
+
+            $this->manager->flush();
+            $this->toaster->makeToast('Prospect modifié avec succès', Toaster::SUCCESS);
+            return $this->redirect('prospects');
+        }
+        
+        return $this->renderer->render('@admin/updateProsp', ["prospect"=>$prospect]);
     }
+
+
+
+
 
     public function pageDevis(ServerRequest $request){
         $devis=$this->pdfRepo->findAll();
         return $this->renderer->render('@admin/devis', ["devis"=>$devis]);
     }
 
+
+
+
+
+    /**
+     * render la page pageMessage
+     *
+     * @param ServerRequest $request
+     * @return void
+     */
     public function pageMessages(ServerRequest $request){
         $messages=$this->messageRepo->findAll();
         return $this->renderer->render('@admin/messages', ["messages"=>$messages]);
+    }
+
+    /**
+     * fonction qui permet à l'admin de supprimer un message depuis pageMessage
+     *
+     * @param ServerRequest $request
+     * @return void
+     */
+    public function deleteMess(ServerRequest $request){
+        $id=$request->getAttribute('id');
+        $message=$this->messageRepo->find($id);
+        $this->manager->remove($message);
+        $this->manager->flush();
+        $this->toaster->makeToast('Message supprimé avec succès', Toaster::SUCCESS);
+    
+        return $this->redirect('pageMessages');
     }
 }
