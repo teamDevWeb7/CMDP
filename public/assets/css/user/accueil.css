@@ -3,18 +3,8 @@
     position: relative;
     overflow: hidden;
 }
-/* #anim div{
-    width: 50px;
-    height: 50px;
-    background-color: blue;
-    position: absolute;
-    left: 0;
-    top: 10vh;
-    transition: transform 5s;
-}
-#anim .right{
-    transform: translateX(500px);
-} */
+
+/* chaussures */
 .boot{
     position: absolute;
     height: 13vh;
@@ -28,6 +18,8 @@
     bottom: 2vh;
     left: -12vw;
 }
+
+/* seau V2 */
 #handBucket{
     position: absolute;
     bottom: -8.5vh;
@@ -35,7 +27,7 @@
     height: 50vh;
     z-index: 1;
 }
-
+/* seau v1 */
 #bucket{
     position: absolute;
     bottom: 2vh;
@@ -43,6 +35,7 @@
     height: 15vh;
     z-index: 1;
 }
+/* tache laissée par le seau */
 #dirt{
     position: absolute;
     bottom: -17.25vh;
@@ -52,7 +45,7 @@
     z-index: 0;
     /* transform: rotate3d(1,5,1, 15deg); */
 }
-
+/* placement logo, vue finale */
 #logo_titre{
     position: absolute;
     bottom: 28vh;
@@ -98,6 +91,7 @@
     transform: rotate(45deg);
 }
 
+/* appeler animation remplacer tache par logo */
 .aufWierdesehen{
     animation-name: aufWierdesehen;
     animation-duration: 2s;
@@ -112,6 +106,7 @@
 }
 
 /* animations */
+/* fait se déplacer les chaussures */
 @keyframes goBanana{
     from{
         left:-12vw
@@ -119,7 +114,7 @@
         left:110vw
     }
 }
-
+/* fait se deplacer le seau */
 @keyframes swaggiSwag{
     from{
         left: 36.5vw;
@@ -131,6 +126,7 @@
         bottom: 7vh;
     }
 }
+/* met droite la tache et le positionne */
 @keyframes peinturlurer{
     from{
         bottom: -17.25vh;
@@ -144,6 +140,7 @@
         height: 115vh;
     }
 }
+/* fait disparaitre la tache */
 @keyframes aufWiedersehen{
     from{
         opacity: 1;
@@ -151,6 +148,7 @@
         opacity:0
     }
 }
+/* fait apparaitre le titre avec logo */
 @keyframes hallo{
     from{
         opacity: 0;
@@ -161,7 +159,9 @@
 
 
 
+/* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
 
+/* deuxieme partie de la page */
 
 /* container img gauche + text et liens gauche */
 #intro{
