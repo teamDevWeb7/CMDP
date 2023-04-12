@@ -21,33 +21,142 @@
 }
 #leftShoe{
     bottom: 4vh;
-    left: -7vw;
+    left: -12vw;
+    opacity: 0.8;
 }
 #rightShoe{
     bottom: 2vh;
-    left: -7vw;
+    left: -12vw;
 }
-.animShoe{
-    animation-name: goBanana;
-    animation-duration: 15s;
+#handBucket{
+    position: absolute;
+    bottom: -8.5vh;
+    left: 36.5vw;
+    height: 50vh;
+    z-index: 1;
+}
+
+#bucket{
+    position: absolute;
+    bottom: 2vh;
+    left: 50%;
+    height: 15vh;
+    z-index: 1;
+}
+#dirt{
+    position: absolute;
+    bottom: -17.25vh;
+    left: 37vw;
+    height: 45vh;
+    transform : rotateX(300deg);
+    z-index: 0;
+    /* transform: rotate3d(1,5,1, 15deg); */
+}
+
+#logo_titre{
+    position: absolute;
+    bottom: 28vh;
+    left: 25vw;
+    height: 40vh;
+    opacity: 0;
+}
+
+/* classes qui rajoutent animations */
+/* seau */
+.animBucket{
+    animation-name: swaggiSwag;
+    animation-duration: 9s;
     animation-fill-mode: forwards;
     animation-timing-function: linear;
 }
+/* shoes */
+.animShoe{
+    animation-name: goBanana;
+    animation-duration: 11s;
+    animation-fill-mode: forwards;
+    animation-timing-function: linear;
+}
+/* dirt */
+.dirt{
+    animation-name: peinturlurer;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+    animation-timing-function: linear;
+}
+
+
+
 /* classList.add pr mettre en pause */
 .pause{
     animation-play-state: paused;
 }
+/* hidden */
 .cache{
     visibility: hidden;
 }
+/* effet marche */
+.rotate{
+    transform: rotate(45deg);
+}
+
+.aufWierdesehen{
+    animation-name: aufWierdesehen;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+    animation-timing-function: linear;
+}
+.hallo{
+    animation-name: hallo;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+    animation-timing-function: linear;
+}
+
+/* animations */
 @keyframes goBanana{
     from{
-        left:-7vw
+        left:-12vw
     }to{
         left:110vw
     }
 }
-
+@keyframes swaggiSwag{
+    from{
+        left: 36.5vw;
+    }10%{
+        bottom: 7vh;
+    }to{
+        left: 110vw;
+        bottom: 7vh;
+    }
+}
+@keyframes peinturlurer{
+    from{
+        bottom: -17.25vh;
+        left: 37vw;
+        transform : rotateX(300deg);
+        height: 45vh;
+    }to{
+        bottom: -9.5vh;
+        left: -8.75vw;
+        transform : rotateX(360deg);
+        height: 115vh;
+    }
+}
+@keyframes aufWiedersehen{
+    from{
+        opacity: 1;
+    }to{
+        opacity:0
+    }
+}
+@keyframes hallo{
+    from{
+        opacity: 0;
+    }to{
+        opacity: 1;
+    }
+}
 
 
 

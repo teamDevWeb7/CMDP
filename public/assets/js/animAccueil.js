@@ -130,10 +130,16 @@ let goBanana1=function(){
         })
         window.setTimeout(function(){
             requestAnimationFrame(function(){
-                rightShoe.classList.remove('pause');
-                rightShoe.classList.add('cache');
+                rightShoe.classList.add('rotate');
             })
-        }, 1500)
+            window.setTimeout(function(){
+                requestAnimationFrame(function(){
+                    rightShoe.classList.remove('pause');
+                    rightShoe.classList.remove('rotate');
+                    rightShoe.classList.add('cache');
+                })
+            }, 500)
+        }, 1000)
 
         window.setTimeout(function(){
             requestAnimationFrame(function(){
@@ -142,10 +148,16 @@ let goBanana1=function(){
             })
             window.setTimeout(function(){
                 requestAnimationFrame(function(){
-                    rightShoe.classList.remove('pause');
-                    rightShoe.classList.add('cache');
+                    rightShoe.classList.add('rotate');
                 })
-            }, 1500)
+                window.setTimeout(function(){
+                    requestAnimationFrame(function(){
+                        rightShoe.classList.remove('pause');
+                        rightShoe.classList.remove('rotate');
+                        rightShoe.classList.add('cache');
+                    })
+                }, 500)
+            }, 1000)
 
             window.setTimeout(function(){
                 requestAnimationFrame(function(){
@@ -154,10 +166,16 @@ let goBanana1=function(){
                 })
                 window.setTimeout(function(){
                     requestAnimationFrame(function(){
-                        rightShoe.classList.remove('pause');
-                        rightShoe.classList.add('cache');
+                        rightShoe.classList.add('rotate');
                     })
-                }, 1500)
+                    window.setTimeout(function(){
+                        requestAnimationFrame(function(){
+                            rightShoe.classList.remove('pause');
+                            rightShoe.classList.remove('rotate');
+                            rightShoe.classList.add('cache');
+                        })
+                    }, 500)
+                }, 1000)
 
 
                 window.setTimeout(function(){
@@ -167,11 +185,19 @@ let goBanana1=function(){
                     })
                     window.setTimeout(function(){
                         requestAnimationFrame(function(){
-                            rightShoe.classList.remove('pause');
-                            rightShoe.classList.add('cache');
+                            rightShoe.classList.add('rotate');
                         })
-                    }, 1500)
+                        window.setTimeout(function(){
+                            requestAnimationFrame(function(){
+                                rightShoe.classList.remove('pause');
+                                rightShoe.classList.remove('rotate');
+                                rightShoe.classList.add('cache');
+                            })
+                        }, 500)
+                    }, 1000)
                     
+
+                    // ajout rotate
 
                     window.setTimeout(function(){
                         requestAnimationFrame(function(){
@@ -209,6 +235,42 @@ let goBanana1=function(){
 
 }
 requestAnimationFrame(goBanana1);
+
+let buck=document.querySelector('#bucket');
+let bucket=document.querySelector('#handBucket');
+
+let swaggiSwag=function(){
+    bucket.classList.add('cache');
+    window.setTimeout(function(){
+        buck.classList.add('cache');
+        bucket.classList.remove('cache');
+        bucket.classList.add('animBucket');
+        
+    }, 10000)
+
+}
+requestAnimationFrame(swaggiSwag);
+
+let dirt=document.querySelector('#dirt');
+
+let peinturlurer=function(){
+    window.setTimeout(function(){
+        dirt.classList.add('dirt');
+        
+    }, 12000)
+}
+requestAnimationFrame(peinturlurer);
+
+let logo_titre=document.querySelector('#logo_titre');
+
+let tadaaaa=function(){
+    window.setTimeout(function(){
+        dirt.classList.add('aufWierdesen');
+        logo_titre.classList.add('hallo');
+        
+    }, 14000)
+}
+requestAnimationFrame(tadaaaa);
 
 // decalage entre les 2
 

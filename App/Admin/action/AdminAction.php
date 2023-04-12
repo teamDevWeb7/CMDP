@@ -135,7 +135,8 @@ class AdminAction{
         $id=$request->getAttribute('id');
         $prospect=$this->prospectsRepo->find($id);
         if(!$prospect){
-            return new Response(404,[], 'Aucun prospect ne correspond');
+            $this->toaster->makeToast('Aucun prospect ne correspond', Toaster::ERROR);
+            return $this->redirect('prospects');
         }
 
         $method=$request->getMethod();
@@ -146,7 +147,7 @@ class AdminAction{
                 && ($data['mail']===$prospect->getMail())
                 && ($data['tel']===$prospect->getPhone())){
                 $this->toaster->makeToast('Aucune modification n\'a été renseignée donc aucune valeur n\'a été modifiée', Toaster::ERROR);
-                    return $this->redirect('prospects');
+                return $this->redirect('prospects');
             }
 
             $prospect->setNom($data['nom'])

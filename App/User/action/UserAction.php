@@ -92,8 +92,9 @@ class UserAction{
                     if($errors){
                         foreach($errors as $error){
                             $this->toaster->makeToast($error->toString(), Toaster::ERROR);
-                            return $this->redirect('contact');
+                            
                         }
+                        return $this->redirect('contact');
                     }
 
                     $prospect=$this->userRepo->findOneBy(['mail' => $data['mail']]);
@@ -167,8 +168,8 @@ class UserAction{
                     if($errors){
                         foreach($errors as $error){
                             $this->toaster->makeToast($error->toString(), Toaster::ERROR);
-                            // return $this->redirect('devis');
                         }
+                    // return $this->redirect('devis');
                     }
 
                     // header("Access-Control-Allow-Origin: localhost:8000");
