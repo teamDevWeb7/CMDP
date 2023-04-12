@@ -37,10 +37,16 @@ let goBanana=function(){
         })
         window.setTimeout(function(){
             requestAnimationFrame(function(){
-                leftShoe.classList.remove('pause');
-                leftShoe.classList.add('cache');
+                leftShoe.classList.add('rotate');
             })
-        }, 1500)
+            window.setTimeout(function(){
+                requestAnimationFrame(function(){
+                    leftShoe.classList.remove('pause');
+                    leftShoe.classList.remove('rotate');
+                    leftShoe.classList.add('cache');
+                })
+            }, 500)
+        }, 1000)
 
         window.setTimeout(function(){
             requestAnimationFrame(function(){
@@ -49,10 +55,16 @@ let goBanana=function(){
             })
             window.setTimeout(function(){
                 requestAnimationFrame(function(){
-                    leftShoe.classList.remove('pause');
-                    leftShoe.classList.add('cache');
+                    leftShoe.classList.add('rotate');
                 })
-            }, 1500)
+                window.setTimeout(function(){
+                    requestAnimationFrame(function(){
+                        leftShoe.classList.remove('pause');
+                        leftShoe.classList.remove('rotate');
+                        leftShoe.classList.add('cache');
+                    })
+                }, 500)
+            }, 2500)
 
             window.setTimeout(function(){
                 requestAnimationFrame(function(){
@@ -61,57 +73,39 @@ let goBanana=function(){
                 })
                 window.setTimeout(function(){
                     requestAnimationFrame(function(){
-                        leftShoe.classList.remove('pause');
-                        leftShoe.classList.add('cache');
-                    })
-                }, 1500)
-
-
-                window.setTimeout(function(){
-                    requestAnimationFrame(function(){
-                        leftShoe.classList.add('pause');
-                        leftShoe.classList.remove('cache');
+                        leftShoe.classList.add('rotate');
                     })
                     window.setTimeout(function(){
                         requestAnimationFrame(function(){
                             leftShoe.classList.remove('pause');
+                            leftShoe.classList.remove('rotate');
                             leftShoe.classList.add('cache');
                         })
-                    }, 1500)
-                    
+                    }, 500)
+                }, 600)
 
-                    window.setTimeout(function(){
-                        requestAnimationFrame(function(){
-                            leftShoe.classList.add('pause');
-                            leftShoe.classList.remove('cache');
-                        })
-                        window.setTimeout(function(){
-                            requestAnimationFrame(function(){
-                                leftShoe.classList.remove('pause');
-                                leftShoe.classList.add('cache');
-                            })
-                        }, 3000)
-                        
-                        window.setTimeout(function(){
-                            requestAnimationFrame(function(){
-                                leftShoe.classList.add('pause');
-                                leftShoe.classList.remove('cache');
-                            })
-                            window.setTimeout(function(){
-                                requestAnimationFrame(function(){
-                                    leftShoe.classList.remove('pause');
-                                    leftShoe.classList.add('cache');
-                                })
-                            }, 1500)
-                            
+                // window.setTimeout(function(){
+                //     requestAnimationFrame(function(){
+                //         leftShoe.classList.add('pause');
+                //         leftShoe.classList.remove('cache');
+                //     })
+                //     window.setTimeout(function(){
+                //         requestAnimationFrame(function(){
+                //             leftShoe.classList.add('rotate');
+                //         })
+                //         window.setTimeout(function(){
+                //             requestAnimationFrame(function(){
+                //                 leftShoe.classList.remove('pause');
+                //                 leftShoe.classList.remove('rotate');
+                //                 leftShoe.classList.add('cache');
+                //             })
+                //         }, 500)
+                //     }, 1000)
     
-                            
-                        }, 4500)
-                        
-                    }, 3700)
-                }, 3600)
-            }, 3500)
-        }, 3400)
+    
+                // }, 2600)
+            }, 4600)
+        }, 2250)
     }, 1500)
 
 }
@@ -157,7 +151,7 @@ let goBanana1=function(){
                         rightShoe.classList.add('cache');
                     })
                 }, 500)
-            }, 1000)
+            }, 2000)
 
             window.setTimeout(function(){
                 requestAnimationFrame(function(){
@@ -175,7 +169,7 @@ let goBanana1=function(){
                             rightShoe.classList.add('cache');
                         })
                     }, 500)
-                }, 1000)
+                }, 600)
 
 
                 window.setTimeout(function(){
@@ -194,44 +188,31 @@ let goBanana1=function(){
                                 rightShoe.classList.add('cache');
                             })
                         }, 500)
-                    }, 1000)
-                    
+                    }, 600)
 
-                    // ajout rotate
-
-                    window.setTimeout(function(){
-                        requestAnimationFrame(function(){
-                            rightShoe.classList.add('pause');
-                            rightShoe.classList.remove('cache');
-                        })
-                        window.setTimeout(function(){
-                            requestAnimationFrame(function(){
-                                rightShoe.classList.remove('pause');
-                                rightShoe.classList.add('cache');
-                            })
-                        }, 3000)
+                    // window.setTimeout(function(){
+                    //     requestAnimationFrame(function(){
+                    //         rightShoe.classList.add('pause');
+                    //         rightShoe.classList.remove('cache');
+                    //     })
+                    //     window.setTimeout(function(){
+                    //         requestAnimationFrame(function(){
+                    //             rightShoe.classList.add('rotate');
+                    //         })
+                    //         window.setTimeout(function(){
+                    //             requestAnimationFrame(function(){
+                    //                 rightShoe.classList.remove('pause');
+                    //                 rightShoe.classList.remove('rotate');
+                    //                 rightShoe.classList.add('cache');
+                    //             })
+                    //         }, 500)
+                    //     }, 1000)
                         
-                        window.setTimeout(function(){
-                            requestAnimationFrame(function(){
-                                rightShoe.classList.add('pause');
-                                rightShoe.classList.remove('cache');
-                            })
-                            window.setTimeout(function(){
-                                requestAnimationFrame(function(){
-                                    rightShoe.classList.remove('pause');
-                                    rightShoe.classList.add('cache');
-                                })
-                            }, 1500)
-                            
-    
-                            
-                        }, 4300)
-                        
-                    }, 3200)
-                }, 3400)
-            }, 3300)
-        }, 3200)
-    }, 1300)
+                    // }, 2700)
+                }, 4500)
+            }, 3500)
+        }, 2900)
+    }, 800)
 
 }
 requestAnimationFrame(goBanana1);
@@ -246,7 +227,7 @@ let swaggiSwag=function(){
         bucket.classList.remove('cache');
         bucket.classList.add('animBucket');
         
-    }, 10000)
+    }, 5000)
 
 }
 requestAnimationFrame(swaggiSwag);
@@ -257,7 +238,7 @@ let peinturlurer=function(){
     window.setTimeout(function(){
         dirt.classList.add('dirt');
         
-    }, 12000)
+    }, 8000)
 }
 requestAnimationFrame(peinturlurer);
 
@@ -268,7 +249,7 @@ let tadaaaa=function(){
         dirt.classList.add('aufWierdesen');
         logo_titre.classList.add('hallo');
         
-    }, 14000)
+    }, 10000)
 }
 requestAnimationFrame(tadaaaa);
 

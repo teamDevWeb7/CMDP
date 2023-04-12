@@ -22,7 +22,7 @@
 #leftShoe{
     bottom: 4vh;
     left: -12vw;
-    opacity: 0.8;
+    opacity: 0.6;
 }
 #rightShoe{
     bottom: 2vh;
@@ -65,14 +65,14 @@
 /* seau */
 .animBucket{
     animation-name: swaggiSwag;
-    animation-duration: 9s;
+    animation-duration: 8s;
     animation-fill-mode: forwards;
     animation-timing-function: linear;
 }
 /* shoes */
 .animShoe{
     animation-name: goBanana;
-    animation-duration: 11s;
+    animation-duration: 5s;
     animation-fill-mode: forwards;
     animation-timing-function: linear;
 }
@@ -83,7 +83,6 @@
     animation-fill-mode: forwards;
     animation-timing-function: linear;
 }
-
 
 
 /* classList.add pr mettre en pause */
@@ -120,11 +119,13 @@
         left:110vw
     }
 }
+
 @keyframes swaggiSwag{
     from{
         left: 36.5vw;
     }10%{
         bottom: 7vh;
+        left: 36.5vw;
     }to{
         left: 110vw;
         bottom: 7vh;
