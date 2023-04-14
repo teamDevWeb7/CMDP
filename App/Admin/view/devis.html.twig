@@ -28,7 +28,9 @@
                         <td>{{ devi.prospect.prenom }}</td>
                         <td>{{ devi.pdfPath }}</td>
                         <td>
-                            <a href="{{path('pdf.delete', {id: pdf.id})}}">Supprimer</a>
+                            <a href="{{path('voirDevis', {id: pdf.id})}}">Voir</a>
+                            <a href="{{path('deleteDevis', {id: pdf.id})}}">Supprimer</a>
+                            <a href="/pdfs/{{devi.pdfPath}}">Voir</a>
                         </td>
                     </tr>
                 {% endfor %}

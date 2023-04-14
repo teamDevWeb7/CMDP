@@ -172,6 +172,36 @@ class AdminAction{
         return $this->renderer->render('@admin/devis', ["devis"=>$devis]);
     }
 
+    public function voirDevis(ServerRequest $request){
+        $id=$request->getAttribute('id');
+        $devis=$this->pdfRepo->find($id);
+        $chemin='./pdfs/'.$devis->getPdfPath();
+        // $pdf = require $devis->getPdfPath();
+        $pdf=$chemin;
+
+        var_dump($chemin);
+        var_dump($pdf);
+
+        // header('Content-type: application/pdf');
+        // header('Content-Length:'.filesize($chemin));
+        // readfile($chemin);
+
+        return $this->renderer->render('@admin/devisPDF', ["devis"=>$devis, 'chemin'=>$chemin]);
+
+
+        // pdf path-> la passe ds render -> ds vue ->iframe ->path = pdfPath
+    }
+
+    public function deleteDevis(ServerRequest $request){
+        $id=$request->getAttribute('id');
+        $devis=$this->pdfRepo->find($id);
+        $this->manager->remove($devis);
+        $this->manager->flush();
+        $this->toaster->makeToast('Devis supprimé avec succès', Toaster::SUCCESS);
+    
+        return $this->redirect('pageDevis');
+    }
+
 
 
 

@@ -133,8 +133,6 @@ class UserAction{
         // header('Location: http://localhost:8000/App/User/action/UserAction.php');
         $method=$request->getMethod();
         if($method=='POST'){
-            $data=$request->getParsedBody();
-            
             // pot de miel
             if(!empty($data['sujet'])){
                 return $this->redirect('devis');
@@ -144,7 +142,6 @@ class UserAction{
                 $cle='6LfpX-ckAAAAAN9NuwK9BKuWBfPekgenk1TinPU6';
                 $post=json_decode(file_get_contents('php://input'));
                 $response = $post->g_recaptcha_response;
-                var_dump($response);
 
                 $gapi = 'https://www.google.com/recaptcha/api/siteverify?secret='.$cle.'&response='.$response;
 
@@ -153,93 +150,112 @@ class UserAction{
                 // if captcha pas sélectionné
                 if(!$json['success']){
                     $this->toaster->makeToast("<my-p class='lang' key='captcha'>La validation du captcha est nécessaire à l'envoi</my-p>", Toaster::ERROR);
-                    // return $this->redirect('devis');
+                    return $this->redirect('devis');
                 // captcha ok
                 }else{
+                    $nom=strip_tags(htmlentities($post->votreNom));
+                    $prenom=strip_tags(htmlentities($post->votrePrenom));
+                    $mail=strip_tags(htmlentities($post->votreMail));
+                    $tel=strip_tags(htmlentities($post->votreTel));
+
+                    $data=array(
+                        'nom'=>$nom,
+                        'prenom'=>$prenom,
+                        'mail'=>$mail,
+                        'tel'=>$tel
+                    );
                     
                     $validator=new Validator($data);
                     // check ts champs ok
                     $errors=$validator
+                                    // inchallah mais check si ok
                                     // ->required('nom', 'prenom', 'mail', 'tel')
                                     // ->email('mail')
-                                    // pb 1 seule erreur
                                     ->getErrors();
                     // si champs pas remplis ou input !value demandée, renvoie toast+redirect
                     if($errors){
                         foreach($errors as $error){
                             $this->toaster->makeToast($error->toString(), Toaster::ERROR);
                         }
-                    // return $this->redirect('devis');
+                    return $this->redirect('devis');
                     }
 
-                    // header("Access-Control-Allow-Origin: localhost:8000");
 
-                    $varJS=$request->getAttributes();
-                    var_dump($varJS);
-                    die();
 
-                    // var_dump($_POST['monBien']);
-                    // $monBien=$_POST['monBien'];
-                    // $mesBesoins=$_POST['mesBesoins'];
-                    // $monMessage=$_POST['monMessage'];
+                    $monBien=$post->monBien;
+                    $mesBesoins=$post->mesBesoins;
+                    $monMessage=$post->monMessage;
 
-                    // var_dump($_GET['monBien']);
-                    // $monBien=$_GET['monBien'];
-                    // $mesBesoins=$_GET['mesBesoins'];
-                    // $monMessage=$_GET['monMessage'];
+                    $analyseBesoins='';
+                    $size=sizeof($mesBesoins);
 
-                    $monBien='cacahuete';
-                    $mesBesoins='chocolatine';
-                    $monMessage='coucou';
+                    // var_dump($mesBesoins);
+
+                    for($i=0; $i<$size; $i++){
+                        if($i>= ($size-1)){
+                            $analyseBesoins.=$mesBesoins[$i].'';
+                        }else{
+                            $analyseBesoins.=$mesBesoins[$i].', ';
+                        }
+                    }
+
+                    date_default_timezone_set('Europe/Paris');
+                    $date=date("d-m-Y_H\hi\ms\s");
 
                     $content='
                     
-                        <h1 style="width:100%; text-align:center; font-size:25px; margin: 30px 0">Récapitulatif de votre demande de devis</h1>
+                        <h1 style="width:100%; text-align:center; font-size:25px; margin: 30px 0">Récapitulatif de la demande de devis</h1>
                     
-                    
-                        <h2 style="font-size:20px; font-weight:400; margin-top:60px; margin-bottom:-20px">Votre bien à rénover :</h2>
+                        <h3 style="width:100%; text-align:center; font-size:25px; margin: 30px 0, font-weight:400">'.$nom.' '.$prenom.' le '.$date.'</h3>
+
+                        <h2 style="font-size:20px; font-weight:400; margin-top:60px; margin-bottom:-20px">Le bien à rénover :</h2>
                         <p style="font-size:20px; font-weight:400">'.$monBien.'</p>
-                        <h2 style="font-size:20px; font-weight:400; margin-bottom:-20px">Les services dont vous pensez avoir besoin :</h2>
-                        <p style="font-size:20px; font-weight:400">'.$mesBesoins.'</p>
-                        <h2 style="font-size:20px; font-weight:400; margin-bottom:-20px">Votre description du projet :</h2>
+                        <h2 style="font-size:20px; font-weight:400; margin-bottom:-20px">Les besoins exprimés :</h2>
+                        <p style="font-size:20px; font-weight:400">'.$analyseBesoins.'</p>
+                        <h2 style="font-size:20px; font-weight:400; margin-bottom:-20px">La description du projet :</h2>
                         <p style="font-size:20px; font-weight:400">'.$monMessage.'</p>
                     
-                    <p style="font-size:20px; font-weight:400; margin-top:60px; width:100%; text-align:center">Produit par Cmydesignprojets</p>
                     ';
 
                     $html2pdf= new Html2Pdf('P', 'A4', 'fr');
                     
                     $html2pdf->writeHTML($content);
+
+
+                    $pdfName='devis_'.$date.'_'.$nom.'.pdf';
+                    $pdfPath=dirname(__DIR__, 2). DIRECTORY_SEPARATOR .'Admin'. DIRECTORY_SEPARATOR.'pdfs'. DIRECTORY_SEPARATOR.$pdfName;
+
+                    // enregistre server local si force download client FD
+                    // $html2pdf->output(dirname(__DIR__, 2). DIRECTORY_SEPARATOR .'Admin'. DIRECTORY_SEPARATOR.'pdfs'. DIRECTORY_SEPARATOR.'devis_'.$date.'_'.$nom.'.pdf','F');
+
+                    $html2pdf->output($pdfPath,'F');
+
                     
 
-
-                    // $date=date("m-d-y_H\hm.s");
-                    // server local + affiche chez client
-                    // $html2pdf->output(dirname(__DIR__, 2). DIRECTORY_SEPARATOR .'Admin'. DIRECTORY_SEPARATOR.'pdfs'. DIRECTORY_SEPARATOR.'devis_'.$date.'.pdf','FD');
-                    
+                    var_dump($pdfPath);
 
 
 
-                    // $prospect=$this->userRepo->findOneBy(['mail' => $data['mail']]);
-                    // $pdf= new Pdf;
-                    // // $pdf->setPdfPath();
+                    $prospect=$this->userRepo->findOneBy(['mail' => $data['mail']]);
+                    $pdf= new Pdf;
+                    $pdf->setPdfPath($pdfName);
 
-                    // if($prospect){
-                    //     $prospect->addPdf($pdf);
-                    //     $pdf->setProspect($prospect);
-                    // }
-                    // else{
-                    //     $prosp= new Prospect;
-                    //     $prosp->setNom($data['nom'])
-                    //             ->setPrenom($data['prenom'])
-                    //             ->setMail($data['mail'])
-                    //             ->setPhone($data['tel'])
-                    //             ->addPdf($pdf);
-                    //             $pdf->setProspect($prosp);
-                    //     $this->manager->persist($prosp);
-                    // }
-                    // $this->manager->persist($pdf);
-                    // $this->manager->flush();
+                    if($prospect){
+                        $prospect->addPdf($pdf);
+                        $pdf->setProspect($prospect);
+                    }
+                    else{
+                        $prosp= new Prospect;
+                        $prosp->setNom($data['nom'])
+                                ->setPrenom($data['prenom'])
+                                ->setMail($data['mail'])
+                                ->setPhone($data['tel'])
+                                ->addPdf($pdf);
+                                $pdf->setProspect($prosp);
+                        $this->manager->persist($prosp);
+                    }
+                    $this->manager->persist($pdf);
+                    $this->manager->flush();
 
                     // $this->toaster->makeToast("<my-p class='lang' key='devisSend'>Votre demande de devis a bien été envoyée</my-p>", Toaster::SUCCESS);
                     // return $this->redirect('devis');
