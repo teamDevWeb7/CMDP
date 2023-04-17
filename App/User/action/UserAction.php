@@ -230,11 +230,7 @@ class UserAction{
 
                     $html2pdf->output($pdfPath,'F');
 
-                    
-
-                    var_dump($pdfPath);
-
-
+                    // var_dump($pdfPath);
 
                     $prospect=$this->userRepo->findOneBy(['mail' => $data['mail']]);
                     $pdf= new Pdf;
@@ -257,8 +253,6 @@ class UserAction{
                     $this->manager->persist($pdf);
                     $this->manager->flush();
 
-                    // $this->toaster->makeToast("<my-p class='lang' key='devisSend'>Votre demande de devis a bien été envoyée</my-p>", Toaster::SUCCESS);
-                    // return $this->redirect('devis');
                     echo true;
                     
                 }

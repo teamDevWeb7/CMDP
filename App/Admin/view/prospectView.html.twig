@@ -63,7 +63,16 @@
                 </tr>
             </thead>
             <tbody>
-                
+                {% for devi in devis %}
+                    <tr>
+                        <td>{{devi.pdfPath}}</td>
+                        <td>
+                            <a href="{{path('affichePdf')}}">Voir</a>
+                            <a href="{{path('deleteDevis', {id: message.id})}}">Supprimer</a>
+                        </td>
+                        
+                    </tr>
+                {% endfor %}
             </tbody>
             
         </table>

@@ -2,6 +2,8 @@
 
 namespace App\Admin\action;
 
+require_once '../vendor/autoload.php';
+
 use Model\Entity\Pdf;
 use Core\toaster\Toaster;
 use Model\Entity\Message;
@@ -17,6 +19,8 @@ use Psr\Container\ContainerInterface;
 use Core\Framework\Validator\Validator;
 use Core\Framework\Router\RedirectTrait;
 use Core\Framework\Renderer\RendererInterface;
+use Zend\Diactoros\Response\FileResponse;
+
 
 class AdminAction{
     use RedirectTrait;
@@ -103,10 +107,11 @@ class AdminAction{
         $id=$request->getAttribute('id');
         $prospect=$this->prospectsRepo->find($id);
         $messages=$this->messageRepo->findBy(array('prospect'=>$id));
+        $devis=$this->pdfRepo->findBy(array('prospect'=>$id));
         if(!$prospect){
             return new Response(404,[], 'Aucun prospect ne correspond');
         }
-        return $this->renderer->render('@admin/prospectView', ["prospect"=>$prospect, "messages"=>$messages]);
+        return $this->renderer->render('@admin/prospectView', ["prospect"=>$prospect, "messages"=>$messages, "devis"=>$devis]);
     }
 
     /**
@@ -172,24 +177,33 @@ class AdminAction{
         return $this->renderer->render('@admin/devis', ["devis"=>$devis]);
     }
 
-    public function voirDevis(ServerRequest $request){
-        $id=$request->getAttribute('id');
-        $devis=$this->pdfRepo->find($id);
-        $chemin='./pdfs/'.$devis->getPdfPath();
-        // $pdf = require $devis->getPdfPath();
-        $pdf=$chemin;
+    // public function voirDevis(ServerRequest $request){
+    //     $id=$request->getAttribute('id');
+    //     $devis=$this->pdfRepo->find($id);
+    //     $chemin='./pdfs/'.$devis->getPdfPath();
+    //     // $pdf = require $devis->getPdfPath();
+    //     $pdf=$chemin;
 
-        var_dump($chemin);
-        var_dump($pdf);
+    //     var_dump($chemin);
+    //     var_dump($pdf);
 
-        // header('Content-type: application/pdf');
-        // header('Content-Length:'.filesize($chemin));
-        // readfile($chemin);
+    //     // header('Content-type: application/pdf');
+    //     // header('Content-Length:'.filesize($chemin));
+    //     // readfile($chemin);
 
-        return $this->renderer->render('@admin/devisPDF', ["devis"=>$devis, 'chemin'=>$chemin]);
+    //     return $this->renderer->render('@admin/devisPDF', ["devis"=>$devis, 'chemin'=>$chemin]);
 
 
-        // pdf path-> la passe ds render -> ds vue ->iframe ->path = pdfPath
+    //     // pdf path-> la passe ds render -> ds vue ->iframe ->path = pdfPath
+    // }
+
+    public function affichePdf(ServerRequest $request){
+        $filename=$request->getAttribute('filename');
+        if(!file_exists('./pdfs/'.$filename)){
+            $this->toaster->makeToast('Aucun fichier n\'a été trouvé', Toaster::ERROR);
+            return $this->redirect('pageDevis');
+        }
+        return new FileResponse('./pdfs/'.$filename,'application/pdf');
     }
 
     public function deleteDevis(ServerRequest $request){
