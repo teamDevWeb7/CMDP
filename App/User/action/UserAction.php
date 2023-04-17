@@ -246,6 +246,10 @@ class UserAction{
                     $this->manager->flush();
 
                     echo true;
+                    if(true){
+                        $this->toaster->makeToast("<my-p class='lang' key='devisSend'>Votre demande de devis a bien été envoyée</my-p>", Toaster::SUCCESS);
+                    return $this->redirect('devis');
+                    }
                     
                 }
             }    
