@@ -25,6 +25,11 @@
         <my-alert class="hideAlert">
             <my-p key="alert2" class="lang">Merci de sélectionner au moins une proposition</my-p>
             <button onclick="fermer1()">OK</button>
+        </my-alert >
+        <my-alert class="hideAlert">
+            <my-div></my-div>
+
+            <button onclick="fermer2()">OK</button>
         </my-alert>
         <section class="chemin">
             <div class="trait"></div>
@@ -105,7 +110,7 @@
                 <div class="g-recaptcha" data-sitekey="6LfpX-ckAAAAAFgQUFqEEzZe9E2TlH_jFr8WLxVI"></div>
 
                 <input type="submit" value="OK" id="btn1" 
-                 
+                 onclick="checkErreurs()"
                 {# onclick="pdfMaker()"> #}
                 >
             </form>
@@ -125,7 +130,7 @@
 {% block scripts %}
     <script src="{{ assets('/assets/js/devis.js') }}"></script>
     <script src="{{ assets('/assets/js/swipe.js') }}"></script>
-    {# // <script src="{{ assets('/assets/js/axios.js') }}"></script> #}
+    <script src="{{ assets('/assets/js/devisCheckErrors.js') }}"></script>
     <script src="{{ assets('/assets/js/ajax.js') }}"></script>
     {# // <script src="{{ assets('/assets/js/pdfMaker.js') }}"></script> #}
     <script src="https://www.google.com/recaptcha/api.js" async></script>

@@ -153,6 +153,18 @@ class UserAction{
                     return $this->redirect('devis');
                 // captcha ok
                 }else{
+                    if((!isset($post->votreNom)||$post->votreNom='')||
+                    (!isset($post->votrePrenom)||$post->votrePrenom='')||
+                    (!isset($post->votreMail)||$post->votreMail='')||
+                    (!isset($post->votreTel)||$post->votreTel='')){
+                        echo false;
+                        die;
+                    }
+                    if(!filter_var($post->votreMail, FILTER_VALIDATE_EMAIL)){
+                        echo false;
+                        die;
+                    }
+
                     $nom=strip_tags(htmlentities($post->votreNom));
                     $prenom=strip_tags(htmlentities($post->votrePrenom));
                     $mail=strip_tags(htmlentities($post->votreMail));
@@ -165,23 +177,6 @@ class UserAction{
                         'tel'=>$tel
                     );
                     
-                    $validator=new Validator($data);
-                    // check ts champs ok
-                    $errors=$validator
-                                    // inchallah mais check si ok
-                                    // ->required('nom', 'prenom', 'mail', 'tel')
-                                    // ->email('mail')
-                                    ->getErrors();
-                    // si champs pas remplis ou input !value demandée, renvoie toast+redirect
-                    if($errors){
-                        foreach($errors as $error){
-                            $this->toaster->makeToast($error->toString(), Toaster::ERROR);
-                        }
-                    return $this->redirect('devis');
-                    }
-
-
-
                     $monBien=$post->monBien;
                     $mesBesoins=$post->mesBesoins;
                     $monMessage=$post->monMessage;
@@ -224,9 +219,6 @@ class UserAction{
 
                     $pdfName='devis_'.$date.'_'.$nom.'.pdf';
                     $pdfPath=dirname(__DIR__, 2). DIRECTORY_SEPARATOR .'Admin'. DIRECTORY_SEPARATOR.'pdfs'. DIRECTORY_SEPARATOR.$pdfName;
-
-                    // enregistre server local si force download client FD
-                    // $html2pdf->output(dirname(__DIR__, 2). DIRECTORY_SEPARATOR .'Admin'. DIRECTORY_SEPARATOR.'pdfs'. DIRECTORY_SEPARATOR.'devis_'.$date.'_'.$nom.'.pdf','F');
 
                     $html2pdf->output($pdfPath,'F');
 

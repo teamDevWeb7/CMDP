@@ -15,6 +15,11 @@ function sendData(e) {
         'g_recaptcha_response': recaptcha_response
     };
 
+
+
+
+
+
     var xhr = new XMLHttpRequest();
     // var array = {'g_recaptcha_response': recaptcha_response};
     // array['g-recaptcha-response']= recaptcha_response;

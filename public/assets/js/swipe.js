@@ -13,6 +13,8 @@ let pBalise=document.querySelectorAll('p');
 
 let alerte=document.querySelectorAll('my-alert');
 
+let avance=document.querySelector('.chemin');
+
 // suivant
 function swip(){
     // si je suis sur page 1 et que je vais sur page 2
@@ -21,6 +23,7 @@ function swip(){
     if(Q1==null || Q1==''){
         alerte[0].removeAttribute('class');
         para1.style.filter='blur(3px)';
+        avance.style.filter='blur(3px)';
         die;
     }
 
@@ -39,10 +42,17 @@ function swip(){
 function fermer(){
     alerte[0].setAttribute('class', 'hideAlert');
     para1.style.filter='none';
+    avance.style.filter='none';
 }
 function fermer1(){
     alerte[1].setAttribute('class', 'hideAlert');
     para2.style.filter='none';
+    avance.style.filter='none';
+}
+function fermer2(){
+    alerte[2].classList.add('hideAlert');
+    para4.style.filter='none';
+    avance.style.filter='none';
 }
 
 // retour en arriere
@@ -63,6 +73,7 @@ function swipo(){
         alerte[1].removeAttribute('class');
         
         para2.style.filter='blur(3px)';
+        avance.style.filter='blur(3px)';
         die;
         
     }
