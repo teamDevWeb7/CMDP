@@ -50,7 +50,7 @@ $app=new App($container, $modules);
 // middlewares
 $app->linkFirst(new TrailingSlashMiddleware())
     ->linkWith(new RouterMiddleware($container))
-    // ->linkWith(new AdminAuthMiddleware($container))
+    ->linkWith(new AdminAuthMiddleware($container))
     ->linkWith(new RouterDispatcherMiddleware())
     ->linkWith(new NotFoundMiddleware());
 
