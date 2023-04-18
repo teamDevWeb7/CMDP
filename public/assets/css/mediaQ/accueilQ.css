@@ -1,0 +1,43 @@
+@media screen and (max-width:992px){
+    #anim{
+        display: none;
+    }
+    #intro{
+        flex-direction: column;
+        width: 100%;
+        margin: 0;
+        height: 170vh;
+        overflow: hidden;
+    }
+    h1, h2{
+        margin: 2vh 0;
+    }
+    #intro img:first-child{
+        display: none;
+    }
+    .mediaQ{
+        display: block;
+    }
+
+    #img2{
+        border-radius: 0;
+        height: 100vh;
+        margin: 0;
+    }
+
+    #intro div{
+        width: 96%;
+        margin-left: 2%;
+    }
+
+    #blo{
+        width: 100%;
+        padding-right: 10px;
+        margin-bottom: 2vh;
+    }
+
+    #dev{
+        width: 70%;
+        margin-left: 15%;
+    }
+}
