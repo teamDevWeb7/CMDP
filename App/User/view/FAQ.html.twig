@@ -6,6 +6,7 @@
 
 {% block stylesheet %}
     <link rel="stylesheet" href="{{ assets('/assets/css/user/faq.css') }}">
+    <link rel="stylesheet" href="{{ assets('/assets/css/mediaQ/FAQQ.css') }}">
 {% endblock %}
 
 {% block title %}
@@ -13,6 +14,47 @@
 {% endblock %}
 
 {% block body %}
+    <my-div onclick="questions()"><img src="{{ assets('/assets/imgs/icone/left-arrow.png') }}" > Voir les questions</my-div>
+    <my-div id="quests">
+        <p onclick="closeded()"><img src="{{ assets('/assets/imgs/icone/plus.png') }}" alt="croix pour fermer" ></p>
+
+        <details>
+            <summary>Thème 1 </summary>
+            <p onclick="rep()">Quest 1</p>
+                <hr>
+                <p onclick="rep1()">Quest 2</p>
+                <hr>
+                <p>dfgh</p>
+                <hr>
+                <p>fghjk</p>
+                <hr>
+                <p>fgh</p>
+        </details>
+        <details>
+            <summary>Thème 1 </summary>
+            <p onclick="rep()">Quest 1</p>
+                <hr>
+                <p onclick="rep1()">Quest 2</p>
+                <hr>
+                <p>dfgh</p>
+                <hr>
+                <p>fghjk</p>
+                <hr>
+                <p>fgh</p>
+        </details>
+        <details>
+            <summary>Thème 1 </summary>
+            <p onclick="rep()">Quest 1</p>
+                <hr>
+                <p onclick="rep1()">Quest 2</p>
+                <hr>
+                <p>dfgh</p>
+                <hr>
+                <p>fghjk</p>
+                <hr>
+                <p>fgh</p>
+        </details>
+    </my-div>
     <div id="prems">
         <section id="quest">
             <button type="button" onclick="showNhide()">Thème 1 <img src="{{ assets('/assets/imgs/icone/plus.png') }}" alt="décoration pour inviter à cliquer"></button>
@@ -76,4 +118,5 @@
 {% endblock %}
 {% block scripts %}
     <script src="{{ assets('/assets/js/faq.js') }}"></script>
+    <script src="{{ assets('/assets/js/faqQ.js') }}"></script>
 {% endblock %}

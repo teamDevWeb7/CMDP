@@ -6,6 +6,7 @@
 
 {% block stylesheet %}
     <link rel="stylesheet" href="{{ assets('/assets/css/chantiers/chantier.css') }}">
+    <link rel="stylesheet" href="{{ assets('/assets/css/mediaQ/chantierQ.css') }}">
 {% endblock %}
 
 {% block title %}
@@ -22,9 +23,10 @@
         {% for photo in photos %}
         <article>
             <img src="{{assets('/assets/imgs/chantiers/'~ photo.imgPath) }}" alt="Photo provenant du chantier">
-            <div>
+            <details>
+                <summary>En savoir plus</summary>
                 <p>{{photo.descImg}}</p>
-            </div>
+            </details>
         </article>
         {% endfor %}
     </section>

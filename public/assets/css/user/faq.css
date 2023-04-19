@@ -3,6 +3,13 @@
     min-height: 70vh;
     position: relative;
 }
+/* only responsive */
+my-div:first-child{
+    display: none;
+}
+#quests{
+    display: none;
+}
 /* zone de réponse, à droite */
 #rep{
     width: 65%;

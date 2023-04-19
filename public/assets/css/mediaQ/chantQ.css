@@ -1,0 +1,29 @@
+@media screen and (max-width:992px){
+
+    h1{
+        margin-bottom: 7vh;
+    }
+    article{
+        flex-direction: column;
+        width: 96%;
+        height: 60vh;
+    }
+    article div:nth-child(1){
+        height: 40%;
+        width: 96%;
+        /* border: black 1px solid; */
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    article div:nth-child(2){
+        width: 96%;
+        /* border: black solid 1px; */
+        height: 60%;
+    }
+    .chantiers{
+        margin-bottom: 7vh;
+    }
+
+}

@@ -1,0 +1,33 @@
+#container{
+    flex-direction: column;
+}
+aside{
+    width: 100%;
+    height: auto;
+}
+aside section{
+    flex-direction: column;
+    display: block;
+}
+aside section div{
+    /* border: 1px black solid; */
+    font-size: 1.2rem;
+    margin: 5vh 0;
+}
+aside section div a{
+    font-size: 1.3rem;
+}
+
+iframe{
+    width: 96%;
+    margin-left: 2%;
+}
+
+#formu{
+    width: 96%;
+    margin-left: 2%;
+}
+form{
+    width: 100%;
+    height: 80vh;
+}
