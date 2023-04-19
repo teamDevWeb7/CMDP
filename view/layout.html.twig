@@ -44,9 +44,11 @@
             <button type="button" class="langue" id="en"><img src="{{ assets('/assets/imgs/icone/royaume-uni.png') }}" alt="drapeau anglais"></button>
         </div>
 
+        <my-p id="titre"></my-p>
+
         {# burger #}
         <section id="burger">
-            <img src="{{ assets('/assets/imgs/icone/burg.png') }}" alt="barre du menu burger">
+            <img src="{{ assets('/assets/imgs/icone/burg.png') }}" alt="barre du menu burger" class="">
             <img src="{{ assets('/assets/imgs/icone/burg.png') }}" alt="barre du menu burger">
             <img src="{{ assets('/assets/imgs/icone/burg.png') }}" alt="barre du menu burger">
         </section>
@@ -55,23 +57,23 @@
     {# burger #}
     <section id="menuBurg" class="cacheToi">
         <ul>
-            <li><a href="{{path('accueil')}}" key="accueil"  class="lang" >accueil</a></li>
+            <li><a href="{{path('accueil')}}" key="accueil"  class="lang" >Accueil</a></li>
             <hr>
-            <li><a href="{{path('aPropos')}}"  class="lang" key="aProp">à propos</a></li>
+            <li><a href="{{path('aPropos')}}"  class="lang" key="aProp">À propos</a></li>
             <hr>
             <li><a href="{{path('chantiers')}}"  class="lang" key="chantiers">Nos chantiers</a></li>
             <hr>
-            <li><a href="{{path('devis')}}"  class="lang" key="devis">devis en ligne</a></li>
+            <li><a href="{{path('devis')}}"  class="lang" key="devis">Devis en ligne</a></li>
             <hr>
             <li><a href="{{path('faq')}}"  class="lang" key="faq">FAQ</a></li>
             <hr>
-            <li ><a href="{{path('contact')}}" class="lang" key="contact">contact</a></li>
+            <li ><a href="{{path('contact')}}" class="lang" key="contact">Contact</a></li>
         </ul>
-        <div>
+        <my-div>
             <button type="button" class="langue" id="fr"><img src="{{ assets('/assets/imgs/icone/france.png') }}" alt="drapeau français"></button>
-            <p>|</p>
+            <my-p>|</my-p>
             <button type="button" class="langue" id="en"><img src="{{ assets('/assets/imgs/icone/royaume-uni.png') }}" alt="drapeau anglais"></button>
-        </div>
+        </my-div>
     </section>
 
     <main>
