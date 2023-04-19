@@ -47,6 +47,7 @@
     header{
         height: 8vh;
     }
+    /* les 3 barres */
     #burger{
         display: block;
         width: 20%;
@@ -58,15 +59,34 @@
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
-        border: solid 1px black;
+        /* border: solid 1px black; */
     }
     header>section img{
         width: 100%;
     }
+    /* le menu avec a */
     #menuBurg{
-        /* position: fixed; */
+        /* position: fixed;
+        background-color: white; */
+        /* position: sticky; */
         height: 57vh;
+        background-color: white;
+        position: absolute;
+        left: 0;
+        bottom: 0vh;
+        box-shadow: 2px 2px 5px rgb(221, 221, 221);
+        overflow: hidden;
     }
+    #menuBurg a{
+        color: rgb(68, 68, 68);
+
+    }
+    #menuBurg ul{
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+    }
+    
     .cacheToi{
         /* display: none; */
         /* height: 0vh; */
@@ -78,6 +98,7 @@
     .salut{
         animation-name: wesh; 
         animation-duration: .5s;
+        animation-fill-mode: forwards;
         display: block;
         /* transition: height 2s; */
         /* height: 100%; */
@@ -85,15 +106,19 @@
     @keyframes wesh{
         from{
             height: 0vh;
+            bottom: 0;
         }to{
             height: 57vh;
+            bottom: -57vh;
         }
     }
     @keyframes natchav{
         from{
             height: 57vh;
+            bottom: -57vh;
         }to{
             height: 0vh;
+            bottom: 0;
         }
     }
 
@@ -102,7 +127,7 @@
         width: 80%;
         color: white;
         font-weight: bold;
-        font-size: 1.2rem;
+        font-size: 1.5rem;
     }
     #menuBurg hr{
         border: none;
