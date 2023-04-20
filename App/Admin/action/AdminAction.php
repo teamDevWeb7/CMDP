@@ -2,7 +2,6 @@
 
 namespace App\Admin\action;
 
-require_once '../vendor/autoload.php';
 
 use Model\Entity\Pdf;
 use Core\toaster\Toaster;
@@ -19,6 +18,7 @@ use Psr\Container\ContainerInterface;
 use Core\Framework\Validator\Validator;
 use Core\Framework\Router\RedirectTrait;
 use Core\Framework\Renderer\RendererInterface;
+use GuzzleHttp\Psr7\Stream;
 use Zend\Diactoros\Response\FileResponse;
 
 
@@ -93,7 +93,9 @@ class AdminAction{
      * @return void
      */
     public function prospects(ServerRequest $request){
-        $prospects=$this->prospectsRepo->findAll();
+        $prospects=$this->prospectsRepo->findBy([],[
+            'id' => 'DESC'
+        ]);
         return $this->renderer->render('@admin/prospectsView', ["prospects"=>$prospects]);
     }
 
@@ -106,8 +108,12 @@ class AdminAction{
     public function prospect(ServerRequest $request){
         $id=$request->getAttribute('id');
         $prospect=$this->prospectsRepo->find($id);
-        $messages=$this->messageRepo->findBy(array('prospect'=>$id));
-        $devis=$this->pdfRepo->findBy(array('prospect'=>$id));
+        $messages=$this->messageRepo->findBy(array('prospect'=>$id),[
+            'id' => 'DESC'
+        ]);
+        $devis=$this->pdfRepo->findBy(array('prospect'=>$id),[
+            'id' => 'DESC'
+        ]);
         if(!$prospect){
             return new Response(404,[], 'Aucun prospect ne correspond');
         }
@@ -173,7 +179,9 @@ class AdminAction{
 
 
     public function pageDevis(ServerRequest $request){
-        $devis=$this->pdfRepo->findAll();
+        $devis=$this->pdfRepo->findBy([],[
+            'id' => 'DESC'
+        ]);
         return $this->renderer->render('@admin/devis', ["devis"=>$devis]);
     }
 
@@ -198,19 +206,47 @@ class AdminAction{
     // }
 
     public function affichePdf(ServerRequest $request){
-        $filename=$request->getAttribute('filename');
-        if(!file_exists('./pdfs/'.$filename)){
-            $this->toaster->makeToast('Aucun fichier n\'a été trouvé', Toaster::ERROR);
-            return $this->redirect('pageDevis');
-        }
-        return new FileResponse('./pdfs/'.$filename,'application/pdf');
+        // $filename=$request->getAttribute('filename');
+        // if(!file_exists('./pdfs/'.$filename)){
+        //     $this->toaster->makeToast('Aucun fichier n\'a été trouvé', Toaster::ERROR);
+        //     return $this->redirect('pageDevis');
+        // }
+        // return new FileResponse('./pdfs/'.$filename,'application/pdf');
+        $filePdf = $request->getAttribute('filename').'.pdf'; 
+        $path = '../App/Admin/pdfs'.DIRECTORY_SEPARATOR.$filePdf;
+
+        $res = new Response();
+        $res->withStatus(200);
+        // $res->withHeader('Content-Type', 'application/pdf')
+        //     ->withHeader('Content-Disposition', 'inline; filename="' . $filePdf . '"')
+        //     ->withHeader('Content-Transfer-Encoding', 'binary')
+        //     ->withHeader('Content-Length', filesize($path))
+        //     ->withHeader('Accept-Ranges', 'bytes');
+
+
+
+        $data = fopen($path, 'a+');
+        $data = new Stream($data);
+
+        return '<iframe src="https://docs.google.com/gview?url=http://localhost:8000/'.$path.'&embedded=true" style="width:600px; height:500px;" frameborder="0"></iframe>';
+
     }
 
     public function deleteDevis(ServerRequest $request){
         $id=$request->getAttribute('id');
         $devis=$this->pdfRepo->find($id);
+        $devisASuppr=$devis->getPdfPath();
+
+        var_dump($devisASuppr);
+        die;
+        
         $this->manager->remove($devis);
         $this->manager->flush();
+        
+        
+        $chemin=$this->container->get('pdf.basePath').$devisASuppr;
+        unlink($chemin);
+
         $this->toaster->makeToast('Devis supprimé avec succès', Toaster::SUCCESS);
     
         return $this->redirect('pageDevis');
@@ -227,7 +263,9 @@ class AdminAction{
      * @return void
      */
     public function pageMessages(ServerRequest $request){
-        $messages=$this->messageRepo->findAll();
+        $messages=$this->messageRepo->findBy([],[
+            'id' => 'DESC'
+        ]);
         return $this->renderer->render('@admin/messages', ["messages"=>$messages]);
     }
 

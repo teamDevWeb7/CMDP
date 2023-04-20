@@ -63,6 +63,10 @@ form{
     margin-top: 3vh;
 }
 
+#formu p{
+    display: none;
+}
+
 /* faire les floating placeholder */
 
 

@@ -5,6 +5,7 @@ use Core\Framework\Renderer\TwigRendererFactory;
 use Core\Framework\Router\Router;
 use Core\Framework\Renderer\RendererInterface;
 use Core\Framework\Router\RouterTwigExtension;
+use Core\Framework\security\CSRFTwigExtension;
 use Core\Framework\TwigExtensions\AssetsTwigExtension;
 use Core\Session\PHPSession;
 use Doctrine\ORM\EntityManager;
@@ -23,10 +24,12 @@ return [
     // chemin default des views
     "config.viewPath"=>dirname(__DIR__).DIRECTORY_SEPARATOR.'view',
     'img.basePath'=>dirname(__DIR__).DIRECTORY_SEPARATOR.'public'. DIRECTORY_SEPARATOR. 'assets' . DIRECTORY_SEPARATOR.'imgs'. DIRECTORY_SEPARATOR.'chantiers' . DIRECTORY_SEPARATOR,
+    'pdf.basePath'=>dirname(__DIR__).DIRECTORY_SEPARATOR.'App'.DIRECTORY_SEPARATOR.'Admin'.DIRECTORY_SEPARATOR.'pdfs'.DIRECTORY_SEPARATOR ,
     "twig.extensions"=>[
         RouterTwigExtension::class,
         ToasterTwigExtension::class,
-        AssetsTwigExtension::class
+        AssetsTwigExtension::class,
+        CSRFTwigExtension::class
     ],
     Router::class=>\DI\create(),//instancie si pas instance sinon redonne instance deja existante
     RendererInterface::class=>\DI\factory(TwigRendererFactory::class),

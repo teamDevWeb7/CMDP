@@ -58,8 +58,14 @@
 
                 <div class="g-recaptcha" data-sitekey="6LfpX-ckAAAAAFgQUFqEEzZe9E2TlH_jFr8WLxVI"></div>
 
+                {{ csrf() }}
+
                 <input type="submit" value="OK" id="btn">
             </form>
+            <p><my-p class="lang" key="data">En cliquant sur envoyer, vous acceptez que vos données soient traitées informatiquement par</my-p> {{siteName}}.
+            
+                <my-p class="lang" key="more">Pour en savoir plus : </my-p><a href="https://www.cnil.fr/fr/reglement-europeen-protection-donnees"><my-p class="lang" key="rgpd">Cliquez ici</my-p></a>
+            </p>
         </section>
     </section>
 

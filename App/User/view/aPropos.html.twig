@@ -42,11 +42,17 @@
 
     <section id="rea">
         <h2 ><a href="{{path('chantiers')}}" class="lang" key="rea">Nos réalisations</a></h2>
-        <h3 class="lang" key="lastProj">Notre dernier projet</h3>
+        <h3 class="lang" key="lastProj">Nos derniers projets</h3>
         <section id="blur">
-            <div id="n1"><img src="{{ assets('/assets/imgs/photos/narf1.jpg') }}" alt="icone représentant une entreprise et ses employés"></div>
-            <div id="n2"><img src="{{ assets('/assets/imgs/photos/narf2.jpg') }}" alt="icone représentant une entreprise et ses employés"></div>
-            <div id="n3"><img src="{{ assets('/assets/imgs/photos/narf3.jpg') }}" alt="icone représentant une entreprise et ses employés"></div>
+            {% for chantier in chantiers %}
+                <article>
+                    
+                        <a href="{{path('chantier', {id: chantier.id})}}">
+                            <img src="{{assets('/assets/imgs/chantiers/'~chantier.imgPathChantier) }}" alt="image représentant du chantier">
+                        </a>
+                    
+                </article>
+            {% endfor %}
         </section>
     </section>
     

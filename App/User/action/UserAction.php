@@ -5,12 +5,14 @@ namespace App\User\action;
 use Model\Entity\Pdf;
 use Core\toaster\Toaster;
 use Model\Entity\Message;
+use Model\Entity\Chantier;
 use Model\Entity\Prospect;
 use Spipu\Html2Pdf\Html2Pdf;
 use GuzzleHttp\Psr7\Response;
 use Doctrine\ORM\EntityManager;
 use Core\Framework\Router\Router;
 use Core\Session\SessionInterface;
+use Doctrine\ORM\EntityRepository;
 use GuzzleHttp\Psr7\ServerRequest;
 use Psr\Container\ContainerInterface;
 use Core\Framework\Validator\Validator;
@@ -27,8 +29,9 @@ class UserAction{
     private Router $router;
     private SessionInterface $session;
     private EntityManager $manager;
-    private $userRepo;
-    private $messRepo;
+    private EntityRepository $chantiersRepo;
+    private EntityRepository $userRepo;
+    private EntityRepository $messRepo;
 
     public function __construct(ContainerInterface $container){
         $this->container=$container;
@@ -39,6 +42,7 @@ class UserAction{
         $this->manager=$container->get(EntityManager::class);
         $this->userRepo=$container->get(EntityManager::class)->getRepository(Prospect::class);
         $this->messRepo=$container->get(EntityManager::class)->getRepository(Message::class);
+        $this->chantiersRepo=$container->get(EntityManager::class)->getRepository(Chantier::class);
     }
 
     // rendre les vues correspondantes aux noms des pages
@@ -47,7 +51,10 @@ class UserAction{
     }
 
     public function aPropos(ServerRequest $request){
-        return $this->renderer->render('@user/aPropos', ['siteName' => 'Cmydesignprojets']);
+        $chantiers=$this->chantiersRepo->findBy([], [
+            'id' => 'DESC'
+        ], 3);
+        return $this->renderer->render('@user/aPropos', ['siteName' => 'Cmydesignprojets', 'chantiers'=>$chantiers]);
     }
 
     /**
@@ -211,6 +218,7 @@ class UserAction{
                         <p style="font-size:20px; font-weight:400">'.$monMessage.'</p>
                     
                     ';
+                    var_dump($content);
 
                     $html2pdf= new Html2Pdf('P', 'A4', 'fr');
                     

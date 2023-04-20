@@ -29,9 +29,8 @@
                         <td>{{ devi.pdfPath }}</td>
                         <td>
                             {# <a href="{{path('voirDevis', {id: pdf.id})}}">Voir</a> #}
-                            <a href="{{path('affichePdf')}}">Voir</a>
+                            <a href="{{path('affichePdf', {filename: devi.pdfPath})}}">Voir</a>
                             <a href="{{path('deleteDevis', {id: pdf.id})}}">Supprimer</a>
-                            <a href="/pdfs/{{devi.pdfPath}}">Voir</a>
                         </td>
                     </tr>
                 {% endfor %}

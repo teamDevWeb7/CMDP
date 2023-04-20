@@ -32,7 +32,7 @@ var arrLang={
         'entSuivi':'Un suivi personnalisé',
         'entSuiv':'Parce que chaque projet est unique, nos designs le sont aussi. Notre équipe commerciale assure un suivi complet de votre projet afin de vous assurer une réalisation sur mesure de vos idées. Des conseils ciblés et une disponibilité à tout instant, nous faisons de nos clients notre priorité.',
         'rea':'Nos réalisations',
-        'lastProj':'Notre dernier projet',
+        'lastProj':'Nos derniers projets',
 
         // nos chantiers
 
@@ -130,7 +130,7 @@ var arrLang={
         'entSuivi':'A personalized follow-up',
         'entSuiv':'Because each project is unique, our designs are too. Our sales team ensures a complete follow-up of your project in order to ensure a tailor-made realization of your ideas. Targeted advice and availability at all times, we make our customers our priority.',
         'rea':'Our realisations',
-        'lastProj':'Our last project',
+        'lastProj':'Our last projects',
 
         // nos chantiers
 
