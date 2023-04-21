@@ -61,18 +61,26 @@ form{
     width: 75%;
     height: 65vh;
     margin-top: 3vh;
+    display: flex;
+    flex-direction: column;
 }
 
+/* pour responsive */
 #formu p{
     display: none;
 }
 
 /* faire les floating placeholder */
 
+form div{
+    position: relative;
+    height: 8vh;
+    /* border: 1px solid black; */
+}
 
-/* NOM */
-/* input */
-#nom{
+
+/* inputs */
+form div input{
     position: relative;
     padding: 8px 10px;
     width: 80%;
@@ -85,8 +93,8 @@ form{
     margin-top: 1.5vh;
 }
 
-/* label pour le nom */
-#labNom{
+/* labels */
+form div label{
     position: absolute;
     left: 0;
     top: 0;
@@ -101,9 +109,9 @@ form{
 
 
 /* deco, le i qui s'étend*/
-#iNom{
+form div i{
     position: absolute;
-    bottom: 58vh;
+    bottom: 0.5vh;
     left: 0;
     width: 80%;
     height: 3px;
@@ -128,7 +136,7 @@ form{
 #tel:focus ~ #labTel
 {
     font-size: 0.80rem;
-    transform: translateY(-19px);
+    transform: translateY(-15px);
 }
 /* idem ts i */
 #nom:valid ~ #iNom,
@@ -143,141 +151,6 @@ form{
     height: 5vh;
 }
 
-
-
-#prenom{
-    margin-top: 1.7vh;
-    position: relative;
-    padding: 8px 10px;
-    width: 80%;
-    border: none;
-    outline: none;
-    background-color: transparent;
-    font-size: 1.25rem;
-    letter-spacing: 0.05rem;
-    z-index: 3;
-}
-
-/* label pour le prenom */
-#labPrenom{
-    position: absolute;
-    left: 0;
-    top: 8vh;
-    padding: 10px 0;
-    pointer-events: none;
-    font-size: 1em;
-    transition: 0.5s;
-    color: #333;
-    letter-spacing: 0.05rem;
-    z-index: 2;
-}
-
-/* deco, le i qui s'étend*/
-#iPrenom{
-    position: absolute;
-    bottom: 49.75vh;
-    left: 0;
-    width: 80%;
-    height: 3px;
-    background-color: rgb(224, 224, 224);
-    transition: 0.5s;
-    z-index: 2;
-    border-radius: 15px;
-    pointer-events: none;
-}
-
-
-
-
-
-/* input mail */
-#mail{
-    margin-top: 1.7vh;
-    position: relative;
-    padding: 8px 10px;
-    width: 80%;
-    border: none;
-    outline: none;
-    background-color: transparent;
-    font-size: 1.25rem;
-    letter-spacing: 0.05rem;
-    z-index: 3;
-}
-
-/* label pour le mail */
-#labMail{
-    position: absolute;
-    left: 0;
-    top: 16.25vh;
-    padding: 10px 0;
-    pointer-events: none;
-    font-size: 1em;
-    transition: 0.5s;
-    color: #333;
-    letter-spacing: 0.05rem;
-    z-index: 2;
-}
-
-/* deco, le i qui s'étend*/
-#iMail{
-    position: absolute;
-    bottom: 41.75vh;
-    left: 0;
-    width: 80%;
-    height: 3px;
-    background-color: rgb(224, 224, 224);
-    transition: 0.5s;
-    z-index: 2;
-    border-radius: 15px;
-    pointer-events: none;
-}
-
-
-
-
-
-
-/* input tel */
-#tel{
-    margin-top: 1.7vh;
-    position: relative;
-    padding: 8px 10px;
-    width: 80%;
-    border: none;
-    outline: none;
-    background-color: transparent;
-    font-size: 1.25rem;
-    letter-spacing: 0.05rem;
-    z-index: 3;
-}
-
-/* label pour le tel */
-#labTel{
-    position: absolute;
-    left: 0;
-    top: 24.25vh;
-    padding: 10px 0;
-    pointer-events: none;
-    font-size: 1em;
-    transition: 0.5s;
-    color: #333;
-    letter-spacing: 0.05rem;
-    z-index: 2;
-}
-
-/* deco, le i qui s'étend*/
-#iTel{
-    position: absolute;
-    bottom: 33.75vh;
-    left: 0;
-    width: 80%;
-    height: 3px;
-    background-color: rgb(224, 224, 224);
-    transition: 0.5s;
-    z-index: 2;
-    border-radius: 15px;
-    pointer-events: none;
-}
 
 
 
@@ -305,11 +178,7 @@ form{
 
 }
 
-#message:valid ~ #labMess,
-#message:focus ~ #labMess
-{
-    font-size: 0.80rem;
-}
+
 
 .red{
     color: rgb(180, 3, 3);
@@ -340,8 +209,8 @@ form{
     display: none;
 }
 
-.g-recaptcha{
+form .g-recaptcha{
     position: absolute;
-    bottom: -5vh;
+    bottom: 0vh;
     left: 0;
 }

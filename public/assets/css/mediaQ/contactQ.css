@@ -1,40 +1,58 @@
-#container{
-    flex-direction: column;
-}
-aside{
-    width: 100%;
-    height: auto;
-}
-aside section{
-    flex-direction: column;
-    display: block;
-}
-aside section div{
-    /* border: 1px black solid; */
-    font-size: 1.2rem;
-    margin: 5vh 0;
-}
-aside section div a{
-    font-size: 1.3rem;
+@media screen and (max-width:992px){
+    /* tte page */
+    #container{
+        flex-direction: column;
+    }
+    /* maps et coordonnées */
+    aside{
+        width: 100%;
+        height: auto;
+    }
+    aside section{
+        flex-direction: column;
+        display: block;
+    }
+    aside section div{
+        /* border: 1px black solid; */
+        font-size: 1.2rem;
+        margin: 5vh 0;
+    }
+    aside section div a{
+        font-size: 1.3rem;
+    }
+    aside>p{
+        display: none;
+    }
+
+    /* maps */
+    iframe{
+        width: 96%;
+        margin-left: 2%;
+    }
+    /* section avec form */
+    #formu{
+        width: 96%;
+        margin-left: 2%;
+    }
+
+    form{
+        width: 100%;
+        height: 80vh;
+    }
+
+    /* phrase legale */
+    #formu p{
+        display: block;
+        text-align: justify;
+    }
+
+    form .g-recaptcha{
+        bottom:13vh;
+        left: 7%;
+    }
+
+    form #btn{
+        
+    }
 }
 
-iframe{
-    width: 96%;
-    margin-left: 2%;
-}
-
-#formu{
-    width: 96%;
-    margin-left: 2%;
-}
-form{
-    width: 100%;
-    height: 80vh;
-}
-aside>p{
-    display: none;
-}
-#formu p{
-    display: block;
-    text-align: justify;
-}
