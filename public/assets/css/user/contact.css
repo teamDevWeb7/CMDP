@@ -74,7 +74,7 @@ form{
 
 form div{
     position: relative;
-    height: 8vh;
+    height: 50px;
     /* border: 1px solid black; */
 }
 
@@ -90,14 +90,14 @@ form div input{
     font-size: 1.25rem;
     letter-spacing: 0.05rem;
     z-index: 3;
-    margin-top: 1.5vh;
+    margin-top: 12px;
 }
 
 /* labels */
 form div label{
     position: absolute;
     left: 0;
-    top: 0;
+    top: 5px;
     padding: 10px 0;
     pointer-events: none;
     font-size: 1em;
@@ -111,7 +111,7 @@ form div label{
 /* deco, le i qui s'étend*/
 form div i{
     position: absolute;
-    bottom: 0.5vh;
+    bottom: 0;
     left: 0;
     width: 80%;
     height: 3px;
@@ -148,7 +148,7 @@ form div i{
 #tel:valid ~ #iTel,
 #tel:focus ~ #iTel
 {
-    height: 5vh;
+    height: 65%;
 }
 
 

@@ -1,4 +1,4 @@
-@media screen and (max-width:600px){
+@media screen and (max-width:992px){
     #anim{
         display: none;
     }
@@ -6,7 +6,7 @@
         flex-direction: column;
         width: 100%;
         margin: 0;
-        height: 170vh;
+        height: 150vh;
         overflow: hidden;
     }
     h1, h2{
@@ -17,6 +17,7 @@
     }
     .mediaQ{
         display: block;
+        width: 100%;
     }
 
     #img2{
@@ -37,7 +38,24 @@
     }
 
     #dev{
-        width: 70%;
-        margin-left: 15%;
+        width: 30%;
+        margin-left: 35%;
+        margin-top: -70vh;
+        margin-bottom: 5vh;
+    }
+}
+
+@media screen and (max-width:600px){
+    .mediaQ{
+        width: auto;
+    }
+    #intro{
+        height: 162vh;
+    }
+    #dev{
+        margin-bottom: 5vh;
+        margin-top: 0vh;
+        width: 50%;
+        margin-left: 25%;
     }
 }

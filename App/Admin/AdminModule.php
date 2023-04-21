@@ -44,8 +44,8 @@ class AdminModule extends AbstractModule{
         $this->router->get('/admin/tousMesDevis', [$adminAction, 'pageDevis'], 'pageDevis');
         $this->router->get('/admin/devis/delete/{id:[\d]+}', [$adminAction, 'deleteDevis'], 'deleteDevis');
         // $this->router->get('/admin/devis/{id:[\d]+}', [$adminAction, 'voirDevis'], 'voirDevis');
-        // soluc gpt
-         $this->router->get('/admin/pdf/{filename:[\da-zA-Z\.\-\_]+}',[$adminAction, 'affichePdf'], 'affichePdf');
+        // afficher pdfs
+        $this->router->get('/admin/pdf/{filename:[\da-zA-Z\.\-\_]+}',[$adminAction, 'affichePdf'], 'affichePdf');
 
         // messagesconnectAdmin
         $this->router->get('/admin/tousMesMessages', [$adminAction, 'pageMessages'], 'pageMessages');

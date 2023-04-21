@@ -32,6 +32,9 @@ h1, h2, h2 a{
     justify-content: space-between;
     color: rgb(68, 68, 68);
 }
+#rea h2{
+    margin-left: 0;
+}
 
 #values article{
     width: 30%;

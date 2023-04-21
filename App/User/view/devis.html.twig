@@ -8,8 +8,7 @@
     <link rel="stylesheet" href="{{ assets('/assets/css/user/devis/devis.css') }}">
     <link rel="stylesheet" href="{{ assets('/assets/css/user/devis/devis1.css') }}">
     <link rel="stylesheet" href="{{ assets('/assets/css/user/devis/devis2.css') }}">
-        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    {# <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script> #}
+
 {% endblock %}
 
 {% block title %}
@@ -61,16 +60,16 @@
         <section id="p2" class="left">
                 <h3 class="lang" key="needs">De quoi pensez vous avoir besoin ?</h3>
                 <div id="grid">
-                    <p><img src="{{ assets('/assets/imgs/icone/devis/roul.png') }}" alt="Image d'un rouleau à peinture" class="tooMuch"><span class="R2"><my-p class="lang" key="revet">Revêtements sols et murs</my-p></span></p>
-                    <p ><img src="{{ assets('/assets/imgs/icone/devis/fenetre.png') }}" alt="Image d'une fenêtre"><span class="R2"><my-p class="lang" key="menui">Menuiseries</my-p></span></p>
+                    <p><img src="{{ assets('/assets/imgs/icone/devis/roul.png') }}" alt="Image d'un rouleau à peinture" class="tooMuch"><span class="R2"><my-p class="lang" key="revet">Revêtements</my-p></span></p>
                     <p><img src="{{ assets('/assets/imgs/icone/devis/maisFroid.png') }}" alt="Image d'une maison avec une écharpe"><span class="R2"><my-p class="lang" key="iso">Isolation</my-p></span></p>
                     <p><img src="{{ assets('/assets/imgs/icone/devis/toit.png') }}" alt="Image d'une maison avec un toit en construction"><span class="R2"><my-p class="lang" key="toit">Toiture</my-p></span></p>
-                    <p><img src="{{ assets('/assets/imgs/icone/devis/mur.png') }}" alt="Image d'un mur en construction" class="tooMuch"><span class="R2"><my-p class="lang" key="constr">Travaux de construction</my-p></span></p>
+                    <p><img src="{{ assets('/assets/imgs/icone/devis/mur.png') }}" alt="Image d'un mur en construction" class="tooMuch"><span class="R2"><my-p class="lang" key="constr">Construction</my-p></span></p>
                     <p><img src="{{ assets('/assets/imgs/icone/devis/sdb.png') }}" alt="Image d'une salle de bain"><span class="R2"><my-p class="lang" key="sdb">Salle de bain</my-p></span></p>
                     <p><img src="{{ assets('/assets/imgs/icone/devis/jardin.png') }}" alt="Image d'un jardin"><span class="R2"><my-p class="lang" key="exte">Extérieur</my-p></span></p>
                     <p><img src="{{ assets('/assets/imgs/icone/devis/cuisine.png') }}" alt="Image d'une cuisine"><span class="R2"><my-p class="lang" key="cuisi">Cuisine</my-p></span></p>
+                    <p><img src="{{ assets('/assets/imgs/icone/devis/outils.png') }}" alt="Image d'outils"><span class="R2"><my-p class="lang" key="else">Autre</my-p></span></p>
                 </div>
-                <p id="g1"><img src="{{ assets('/assets/imgs/icone/devis/outils.png') }}" alt="Image d'outils"><span class="R2"><my-p class="lang" key="else">Autre</my-p></span></p>
+                
                 <button type="button" class="preced" id="pre2" onclick="swi()"><my-p class="lang" key="preced">Précédent</my-p></button>
                 <button type="button" class="suivant" id="s2" onclick="swipo()"><my-p class="lang" key="next">Suivant</my-p></button>
         </section>

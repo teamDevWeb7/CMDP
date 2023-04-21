@@ -1,4 +1,7 @@
-@media screen and (max-width:600px){
+@media screen and (max-width:992px){
+    *{
+        /* border: 1px red solid; */
+    }
     /* tte page */
     #container{
         flex-direction: column;
@@ -16,6 +19,8 @@
         /* border: 1px black solid; */
         font-size: 1.2rem;
         margin: 5vh 0;
+        display: flex;
+        justify-content: space-around;
     }
     aside section div a{
         font-size: 1.3rem;
@@ -26,24 +31,37 @@
 
     /* maps */
     iframe{
-        width: 96%;
-        margin-left: 2%;
+        width: 70%;
+        margin-left: 15%;
     }
     /* section avec form */
     #formu{
-        width: 96%;
+        width: 86%;
         margin-left: 2%;
     }
 
     form{
+        width: 80%;
+        margin-left: 10%;
+        /* height: 60vh; */
+        height: auto;
+    }
+    form div, #labMess{
+        margin-left: 10%;
         width: 100%;
-        height: 80vh;
+    }
+
+    form div i{
+        bottom: 0;
+        width: 90%;
     }
 
     /* phrase legale */
     #formu p{
         display: block;
         text-align: justify;
+        width: 100%;
+        margin-left: 5%;
     }
 
     form .g-recaptcha{
@@ -56,5 +74,75 @@
         left: 33vw;
         bottom: 2vh;
     }
+
+    /* style zone de texte */
+#labMess{
+    font-size: 1rem;
+    position: static;
+    margin: 1vh 0;
+    margin-left: 10%;
+}
+
+#message{
+    /* position: absolute; */
+    /* top: 36.5vh;
+    left: 0; */
+    position: static;
+    width: 90%;
+    margin-left: 10%;
+    height: 20vh;
+    border: none;
+    border-radius: 15px;
+    background-color: rgb(224, 224, 224);
+    padding: 8px 5px;
+    font-size: 0.9rem;
+}
+
+form .g-recaptcha{
+    position: static;
+    margin-top: 2vh;
+    /* border: 1px black solid; */
+    margin-left: -9%;
+    height: auto;
+    width: fit-content;
+}
+
+form #btn{
+    bottom: 5%;
+    left: 48vw;
+    width: 20%;
+    font-size: 1.3rem;
+}
+
+
+}
+
+@media screen and (max-width:600px){
+        /* maps */
+    iframe{
+        width: 96%;
+        margin-left: 2%;
+    }
+    aside section div{
+        display: block;
+    }
+    form{
+        width: 100%;
+        height: auto;
+        margin-left: 10%;
+    }
+    #message, form div, #labMess{
+        margin-left: 0;
+    }
+
+    form .g-recaptcha{
+        margin-left: 0;
+    }
+    form #btn{
+        position: static;
+        width: 30%;
+        margin: 2vh 30%;
+    }
+
 }
 

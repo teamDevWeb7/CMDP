@@ -24,7 +24,7 @@ function sendData(e) {
     // var array = {'g_recaptcha_response': recaptcha_response};
     // array['g-recaptcha-response']= recaptcha_response;
 
-    //👇 set the PHP page you want to send data to
+    //url->comme vue passe par routeur passe par controleur
     let url=window.location.origin+'/user/devis';
     xhr.open("POST",url, true);
     xhr.setRequestHeader("Content-Type", "application/json");
