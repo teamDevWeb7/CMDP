@@ -12,4 +12,16 @@
         width: 100%;
         margin-bottom: 8vh;
     }
+    #blur{
+        flex-direction: column;
+        align-items: center;
+        margin-top: 5vh;
+        margin-bottom: 5vh;
+        height: auto;
+    }
+    #blur article{
+        /* border: 1px solid black; */
+        width: 80%;
+        margin-bottom: 5vh;
+    }
 }
