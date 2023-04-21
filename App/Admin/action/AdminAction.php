@@ -19,6 +19,7 @@ use Core\Framework\Validator\Validator;
 use Core\Framework\Router\RedirectTrait;
 use Core\Framework\Renderer\RendererInterface;
 use GuzzleHttp\Psr7\Stream;
+use Spipu\Html2Pdf\Html2Pdf;
 use Zend\Diactoros\Response\FileResponse;
 
 
@@ -206,30 +207,18 @@ class AdminAction{
     // }
 
     public function affichePdf(ServerRequest $request){
-        // $filename=$request->getAttribute('filename');
-        // if(!file_exists('./pdfs/'.$filename)){
-        //     $this->toaster->makeToast('Aucun fichier n\'a été trouvé', Toaster::ERROR);
-        //     return $this->redirect('pageDevis');
-        // }
-        // return new FileResponse('./pdfs/'.$filename,'application/pdf');
+
         $filePdf = $request->getAttribute('filename').'.pdf'; 
         $path = '../App/Admin/pdfs'.DIRECTORY_SEPARATOR.$filePdf;
 
-        $res = new Response();
-        $res->withStatus(200);
-        // $res->withHeader('Content-Type', 'application/pdf')
-        //     ->withHeader('Content-Disposition', 'inline; filename="' . $filePdf . '"')
-        //     ->withHeader('Content-Transfer-Encoding', 'binary')
-        //     ->withHeader('Content-Length', filesize($path))
-        //     ->withHeader('Accept-Ranges', 'bytes');
+        if(!file_exists($path)){
+            $this->toaster->makeToast('Aucun fichier n\'a été trouvé', Toaster::ERROR);
+            return $this->redirect('pageDevis');
+        }
 
+        $stream = new Stream(fopen($path, 'r'));
 
-
-        $data = fopen($path, 'a+');
-        $data = new Stream($data);
-
-        return '<iframe src="https://docs.google.com/gview?url=http://localhost:8000/'.$path.'&embedded=true" style="width:600px; height:500px;" frameborder="0"></iframe>';
-
+        return $stream->getContents();
     }
 
     public function deleteDevis(ServerRequest $request){
