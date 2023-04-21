@@ -217,6 +217,14 @@ class AdminAction{
         }
 
         $stream = new Stream(fopen($path, 'r'));
+        $pdf = new Html2Pdf();
+
+        try {
+            $pdf->output($filePdf.'.pdf', 'I');
+        } catch (\Exception $e) {
+            $this->toaster->makeToast('Une erreur s\'est produite lors de l\'ouverture du fichier', Toaster::ERROR);
+            return $this->redirect('pageDevis');
+        }
 
         return $stream->getContents();
     }
