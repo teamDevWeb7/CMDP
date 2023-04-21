@@ -225,7 +225,7 @@ class UserAction{
                     $html2pdf->writeHTML($content);
 
 
-                    $pdfName='devis_'.$date.'_'.$nom.'.pdf';
+                    $pdfName='devis_'.$date.'_'.$nom;
                     $pdfPath=dirname(__DIR__, 2). DIRECTORY_SEPARATOR .'Admin'. DIRECTORY_SEPARATOR.'pdfs'. DIRECTORY_SEPARATOR.$pdfName;
 
                     $html2pdf->output($pdfPath,'F');

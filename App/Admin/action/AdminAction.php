@@ -209,8 +209,10 @@ class AdminAction{
     public function affichePdf(ServerRequest $request){
 
         $filePdf = $request->getAttribute('filename').'.pdf'; 
+        // part de l'index dans public
         $path = '../App/Admin/pdfs'.DIRECTORY_SEPARATOR.$filePdf;
 
+        // check si existe
         if(!file_exists($path)){
             $this->toaster->makeToast('Aucun fichier n\'a été trouvé', Toaster::ERROR);
             return $this->redirect('pageDevis');
@@ -220,12 +222,14 @@ class AdminAction{
         $pdf = new Html2Pdf();
 
         try {
+            // on va ouvrir un pdf
             $pdf->output($filePdf.'.pdf', 'I');
         } catch (\Exception $e) {
             $this->toaster->makeToast('Une erreur s\'est produite lors de l\'ouverture du fichier', Toaster::ERROR);
             return $this->redirect('pageDevis');
         }
 
+        // on injecte le contenu dans le pdf
         return $stream->getContents();
     }
 
