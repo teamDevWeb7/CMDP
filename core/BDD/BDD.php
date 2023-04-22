@@ -15,7 +15,7 @@ class BDD{
     // singleton ->objet qui s'assure tt le tps que lui même n'existe qu'une seule fois
     // si pas d'instance on en fait 1 sinon on renvoit celle qui existe
 
-    // je mets un anti slash car endroit fichier a bouger a cause composer, donc antishlash pour ramener àà la racine de php ou se trouve PDO
+    // je mets un anti slash car endroit fichier a bouger a cause composer, donc antishlash pour ramener à la racine de php ou se trouve PDO
     public \PDO $connection;
 
     public static BDD $instance;
@@ -31,9 +31,9 @@ class BDD{
         try {
             //connection appartient à l'instance
             $this->connection=new \PDO("mysql:host={$this->host};
-                                        dbname={$this->dbname};
-                                        charset={$this->char}", 
-                                        $this->user, $this->mdp);
+                            dbname={$this->dbname};
+                            charset={$this->char}", 
+                            $this->user, $this->mdp);
         }catch(\PDOException $e){
             echo "[ERREUR]=>{$e->getMessage()}";
             die;
