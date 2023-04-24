@@ -33,4 +33,8 @@ thead{
 table a:hover{
     font-weight: bold;
 }
+form{
+    margin-bottom: 5vh;
+}
+
 

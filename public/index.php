@@ -2,6 +2,7 @@
 
 use App\Admin\AdminModule;
 use App\Chantier\ChantierModule;
+use App\Search\SearchModule;
 use App\User\UserModule;
 use Core\App;
 use DI\ContainerBuilder;
@@ -22,7 +23,8 @@ require dirname(__DIR__)."/vendor/autoload.php";
 $modules = [
     UserModule::class,
     ChantierModule::class,
-    AdminModule::class
+    AdminModule::class,
+    SearchModule::class
 
 ];
 

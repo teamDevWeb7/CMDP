@@ -27,6 +27,8 @@
             <li><a href="{{path('prospects')}}">Mes prospects</a></li>
             <li><a href="{{path('adminChantiers')}}">Mes chantiers</a></li>
             <li><a href="{{path('deco')}}">Déconnexion</a></li>
+
+
         </ul>
     </header>
     <main>
@@ -45,3 +47,6 @@
 </html>
 <script src="{{ assets('/assets/js/activeAdmin.js') }}"></script>
 <script src="{{ assets('/assets/js/toasts.js') }}"></script>
+{% block scripts %}
+
+{% endblock %}
