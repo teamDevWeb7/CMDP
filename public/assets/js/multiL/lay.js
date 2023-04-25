@@ -6,6 +6,7 @@ var arrLang={
         'devis':'Devis en ligne',
         'faq':'FAQ',
         'contact':'Contact',
+        'useJS':'Merci d\'activer Javascript si vous souhaitez envoyer une demande de devis ou profiter d\'une expérience utilisateur optimale : carousel, loader etc',
 
         // page accueil
         'h1Acc':'Pourquoi choisir ',
@@ -104,6 +105,7 @@ var arrLang={
         'devis':'Estimation',
         'faq':'FAQ',
         'contact':'Contact',
+        'useJS':'If you want to have an optimale experience on this site you must activate Javascript. Indeed it will allow you to send an estimation request, enjoy the animations etc',
 
         // page accueil
         'h1Acc':'Why should you chose ',

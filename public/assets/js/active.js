@@ -35,3 +35,18 @@ window.addEventListener(
       })
    } 
 )
+
+
+
+
+
+// cacher message activer JS svp
+// si user a desactivé js le message s'affiche ->pck display none donné en JS
+// si js activé on est en display none automatiquement
+let svp=document.querySelector('#useJS');
+window.addEventListener('onload', ()=>{
+   svp.style.display='none';
+})
+window.addEventListener('load', ()=>{
+   svp.style.display='none';
+})
