@@ -2,6 +2,7 @@
 
 use App\Admin\AdminModule;
 use App\Chantier\ChantierModule;
+use App\Search\SearchModule;
 use App\User\UserModule;
 use Core\App;
 use DI\ContainerBuilder;
@@ -10,6 +11,7 @@ use GuzzleHttp\Psr7\ServerRequest;
 use Core\Framework\Middleware\RouterMiddleware;
 use Core\Framework\Middleware\NotFoundMiddleware;
 use Core\Framework\Middleware\AdminAuthMiddleware;
+use Core\Framework\Middleware\CSRFMiddleware;
 use Core\Framework\Middleware\TrailingSlashMiddleware;
 use Core\Framework\Middleware\RouterDispatcherMiddleware;
 
@@ -21,7 +23,8 @@ require dirname(__DIR__)."/vendor/autoload.php";
 $modules = [
     UserModule::class,
     ChantierModule::class,
-    AdminModule::class
+    AdminModule::class,
+    SearchModule::class
 
 ];
 
@@ -30,15 +33,6 @@ $modules = [
 $builder= new ContainerBuilder();
 // ajout feuille def principale ds dossier racine
 $builder->addDefinitions(dirname(__DIR__).DIRECTORY_SEPARATOR.'config'.DIRECTORY_SEPARATOR.'config.php');
-
-
-// verif a def et si oui la prend 
-// foreach($modules as $module){
-//     if(!is_null($module::DEFINITIONS)){
-//         // si modules possedent une feuille de config perso, on l ajoute aussi
-//         $builder->addDefinitions($module::DEFINITIONS);
-//     }
-// }
 
 // recup instance container de dep
 $container=$builder->build();
@@ -50,7 +44,10 @@ $app=new App($container, $modules);
 // middlewares
 $app->linkFirst(new TrailingSlashMiddleware())
     ->linkWith(new RouterMiddleware($container))
-    // ->linkWith(new AdminAuthMiddleware($container))
+    ->linkWith(new CSRFMiddleware($container,[
+        '/user/devis'
+    ]))
+    ->linkWith(new AdminAuthMiddleware($container))
     ->linkWith(new RouterDispatcherMiddleware())
     ->linkWith(new NotFoundMiddleware());
 

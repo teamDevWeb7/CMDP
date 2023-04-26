@@ -20,7 +20,7 @@ body{
 
 }
 ::-webkit-scrollbar-thumb{
-    background-color: rgb(169, 143, 46);
+    background-color: rgb(185, 177, 177);
     border-radius: 5px;
     width: 10px;
 }
@@ -42,14 +42,20 @@ header{
     padding-left: 3vh;
 }
 
-
+#burger{
+    display:none;
+}
+.cacheToi{
+    display: none;
+}
+#titre{
+    display: none;
+}
 
 #logo{
     filter: 5px 5px 5px rgba(71, 71, 71, 0.527);
     -webkit-filter: drop-shadow(3px 3px 5px #525151c5);
-    /* filter: 5px 5px 5px rgba(255, 255, 255, 0.527);
-    -webkit-filter: drop-shadow(3px 3px 5px #ffffffda); */
-
+    max-height: 10vh;
 }
 
 header nav>a{
@@ -131,7 +137,6 @@ header p{
     font-size: 1.5rem;
     margin-bottom: 6px;
 }
-
 
 
 

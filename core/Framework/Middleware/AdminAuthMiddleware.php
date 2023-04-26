@@ -31,10 +31,11 @@ class AdminAuthMiddleware extends AbstractMiddleware{
             $auth=$this->container->get(AdminAuth::class);
             // on check si est bien un admin
             if($auth->isAdmin()==false){
-                $this->toaster->makeToast("Vous ne passerez pas !", Toaster::ERROR); 
+                $this->toaster->makeToast("Vous ne passerez pas !", Toaster::ERROR);
+                return (new Response())
+                    ->withHeader('Location', '/');
             }
-            return (new Response())
-                    ->withHeader('Location', '/admin/accueil');
+            
         
         }
         return parent::process($request);

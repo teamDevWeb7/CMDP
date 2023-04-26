@@ -5,12 +5,14 @@ namespace App\User\action;
 use Model\Entity\Pdf;
 use Core\toaster\Toaster;
 use Model\Entity\Message;
+use Model\Entity\Chantier;
 use Model\Entity\Prospect;
 use Spipu\Html2Pdf\Html2Pdf;
 use GuzzleHttp\Psr7\Response;
 use Doctrine\ORM\EntityManager;
 use Core\Framework\Router\Router;
 use Core\Session\SessionInterface;
+use Doctrine\ORM\EntityRepository;
 use GuzzleHttp\Psr7\ServerRequest;
 use Psr\Container\ContainerInterface;
 use Core\Framework\Validator\Validator;
@@ -27,8 +29,9 @@ class UserAction{
     private Router $router;
     private SessionInterface $session;
     private EntityManager $manager;
-    private $userRepo;
-    private $messRepo;
+    private EntityRepository $chantiersRepo;
+    private EntityRepository $userRepo;
+    private EntityRepository $messRepo;
 
     public function __construct(ContainerInterface $container){
         $this->container=$container;
@@ -39,6 +42,7 @@ class UserAction{
         $this->manager=$container->get(EntityManager::class);
         $this->userRepo=$container->get(EntityManager::class)->getRepository(Prospect::class);
         $this->messRepo=$container->get(EntityManager::class)->getRepository(Message::class);
+        $this->chantiersRepo=$container->get(EntityManager::class)->getRepository(Chantier::class);
     }
 
     // rendre les vues correspondantes aux noms des pages
@@ -47,7 +51,10 @@ class UserAction{
     }
 
     public function aPropos(ServerRequest $request){
-        return $this->renderer->render('@user/aPropos', ['siteName' => 'Cmydesignprojets']);
+        $chantiers=$this->chantiersRepo->findBy([], [
+            'id' => 'DESC'
+        ], 3);
+        return $this->renderer->render('@user/aPropos', ['siteName' => 'Cmydesignprojets', 'chantiers'=>$chantiers]);
     }
 
     /**
@@ -133,8 +140,6 @@ class UserAction{
         // header('Location: http://localhost:8000/App/User/action/UserAction.php');
         $method=$request->getMethod();
         if($method=='POST'){
-            $data=$request->getParsedBody();
-            
             // pot de miel
             if(!empty($data['sujet'])){
                 return $this->redirect('devis');
@@ -144,7 +149,6 @@ class UserAction{
                 $cle='6LfpX-ckAAAAAN9NuwK9BKuWBfPekgenk1TinPU6';
                 $post=json_decode(file_get_contents('php://input'));
                 $response = $post->g_recaptcha_response;
-                var_dump($response);
 
                 $gapi = 'https://www.google.com/recaptcha/api/siteverify?secret='.$cle.'&response='.$response;
 
@@ -153,97 +157,107 @@ class UserAction{
                 // if captcha pas sélectionné
                 if(!$json['success']){
                     $this->toaster->makeToast("<my-p class='lang' key='captcha'>La validation du captcha est nécessaire à l'envoi</my-p>", Toaster::ERROR);
-                    // return $this->redirect('devis');
+                    return $this->redirect('devis');
                 // captcha ok
                 }else{
-                    
-                    $validator=new Validator($data);
-                    // check ts champs ok
-                    $errors=$validator
-                                    // ->required('nom', 'prenom', 'mail', 'tel')
-                                    // ->email('mail')
-                                    // pb 1 seule erreur
-                                    ->getErrors();
-                    // si champs pas remplis ou input !value demandée, renvoie toast+redirect
-                    if($errors){
-                        foreach($errors as $error){
-                            $this->toaster->makeToast($error->toString(), Toaster::ERROR);
-                        }
-                    // return $this->redirect('devis');
+                    if((!isset($post->votreNom)||$post->votreNom='')||
+                    (!isset($post->votrePrenom)||$post->votrePrenom='')||
+                    (!isset($post->votreMail)||$post->votreMail='')||
+                    (!isset($post->votreTel)||$post->votreTel='')){
+                        echo false;
+                        die;
+                    }
+                    if(!filter_var($post->votreMail, FILTER_VALIDATE_EMAIL)){
+                        echo false;
+                        die;
                     }
 
-                    // header("Access-Control-Allow-Origin: localhost:8000");
+                    $nom=strip_tags(htmlentities($post->votreNom));
+                    $prenom=strip_tags(htmlentities($post->votrePrenom));
+                    $mail=strip_tags(htmlentities($post->votreMail));
+                    $tel=strip_tags(htmlentities($post->votreTel));
 
-                    $varJS=$request->getAttributes();
-                    var_dump($varJS);
-                    die();
+                    $data=array(
+                        'nom'=>$nom,
+                        'prenom'=>$prenom,
+                        'mail'=>$mail,
+                        'tel'=>$tel
+                    );
+                    
+                    $monBien=$post->monBien;
+                    $mesBesoins=$post->mesBesoins;
+                    $monMessage=$post->monMessage;
 
-                    // var_dump($_POST['monBien']);
-                    // $monBien=$_POST['monBien'];
-                    // $mesBesoins=$_POST['mesBesoins'];
-                    // $monMessage=$_POST['monMessage'];
+                    $analyseBesoins='';
+                    $size=sizeof($mesBesoins);
 
-                    // var_dump($_GET['monBien']);
-                    // $monBien=$_GET['monBien'];
-                    // $mesBesoins=$_GET['mesBesoins'];
-                    // $monMessage=$_GET['monMessage'];
+                    // var_dump($mesBesoins);
 
-                    $monBien='cacahuete';
-                    $mesBesoins='chocolatine';
-                    $monMessage='coucou';
+                    for($i=0; $i<$size; $i++){
+                        if($i>= ($size-1)){
+                            $analyseBesoins.=$mesBesoins[$i].'';
+                        }else{
+                            $analyseBesoins.=$mesBesoins[$i].', ';
+                        }
+                    }
+
+                    date_default_timezone_set('Europe/Paris');
+                    $date=date("d-m-Y_H\hi\ms\s");
 
                     $content='
                     
-                        <h1 style="width:100%; text-align:center; font-size:25px; margin: 30px 0">Récapitulatif de votre demande de devis</h1>
+                        <h1 style="width:100%; text-align:center; font-size:25px; margin: 30px 0">Récapitulatif de la demande de devis</h1>
                     
-                    
-                        <h2 style="font-size:20px; font-weight:400; margin-top:60px; margin-bottom:-20px">Votre bien à rénover :</h2>
+                        <h3 style="width:100%; text-align:center; font-size:25px; margin: 30px 0, font-weight:400">'.$nom.' '.$prenom.' le '.$date.'</h3>
+
+                        <h2 style="font-size:20px; font-weight:400; margin-top:60px; margin-bottom:-20px">Le bien à rénover :</h2>
                         <p style="font-size:20px; font-weight:400">'.$monBien.'</p>
-                        <h2 style="font-size:20px; font-weight:400; margin-bottom:-20px">Les services dont vous pensez avoir besoin :</h2>
-                        <p style="font-size:20px; font-weight:400">'.$mesBesoins.'</p>
-                        <h2 style="font-size:20px; font-weight:400; margin-bottom:-20px">Votre description du projet :</h2>
+                        <h2 style="font-size:20px; font-weight:400; margin-bottom:-20px">Les besoins exprimés :</h2>
+                        <p style="font-size:20px; font-weight:400">'.$analyseBesoins.'</p>
+                        <h2 style="font-size:20px; font-weight:400; margin-bottom:-20px">La description du projet :</h2>
                         <p style="font-size:20px; font-weight:400">'.$monMessage.'</p>
                     
-                    <p style="font-size:20px; font-weight:400; margin-top:60px; width:100%; text-align:center">Produit par Cmydesignprojets</p>
                     ';
+                    var_dump($content);
 
                     $html2pdf= new Html2Pdf('P', 'A4', 'fr');
                     
                     $html2pdf->writeHTML($content);
-                    
 
 
-                    // $date=date("m-d-y_H\hm.s");
-                    // server local + affiche chez client
-                    // $html2pdf->output(dirname(__DIR__, 2). DIRECTORY_SEPARATOR .'Admin'. DIRECTORY_SEPARATOR.'pdfs'. DIRECTORY_SEPARATOR.'devis_'.$date.'.pdf','FD');
-                    
+                    $pdfName='devis_'.$date.'_'.$nom;
+                    $pdfPath=dirname(__DIR__, 2). DIRECTORY_SEPARATOR .'Admin'. DIRECTORY_SEPARATOR.'pdfs'. DIRECTORY_SEPARATOR.$pdfName;
 
+                    $html2pdf->output($pdfPath,'F');
 
+                    // var_dump($pdfPath);
 
-                    // $prospect=$this->userRepo->findOneBy(['mail' => $data['mail']]);
-                    // $pdf= new Pdf;
-                    // // $pdf->setPdfPath();
+                    $prospect=$this->userRepo->findOneBy(['mail' => $data['mail']]);
+                    $pdf= new Pdf;
+                    $pdf->setPdfPath($pdfName);
 
-                    // if($prospect){
-                    //     $prospect->addPdf($pdf);
-                    //     $pdf->setProspect($prospect);
-                    // }
-                    // else{
-                    //     $prosp= new Prospect;
-                    //     $prosp->setNom($data['nom'])
-                    //             ->setPrenom($data['prenom'])
-                    //             ->setMail($data['mail'])
-                    //             ->setPhone($data['tel'])
-                    //             ->addPdf($pdf);
-                    //             $pdf->setProspect($prosp);
-                    //     $this->manager->persist($prosp);
-                    // }
-                    // $this->manager->persist($pdf);
-                    // $this->manager->flush();
+                    if($prospect){
+                        $prospect->addPdf($pdf);
+                        $pdf->setProspect($prospect);
+                    }
+                    else{
+                        $prosp= new Prospect;
+                        $prosp->setNom($data['nom'])
+                                ->setPrenom($data['prenom'])
+                                ->setMail($data['mail'])
+                                ->setPhone($data['tel'])
+                                ->addPdf($pdf);
+                                $pdf->setProspect($prosp);
+                        $this->manager->persist($prosp);
+                    }
+                    $this->manager->persist($pdf);
+                    $this->manager->flush();
 
-                    // $this->toaster->makeToast("<my-p class='lang' key='devisSend'>Votre demande de devis a bien été envoyée</my-p>", Toaster::SUCCESS);
-                    // return $this->redirect('devis');
                     echo true;
+                    if(true){
+                        $this->toaster->makeToast("<my-p class='lang' key='devisSend'>Votre demande de devis a bien été envoyée</my-p>", Toaster::SUCCESS);
+                    return $this->redirect('devis');
+                    }
                     
                 }
             }    

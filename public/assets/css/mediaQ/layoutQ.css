@@ -1,0 +1,279 @@
+@media screen and (max-width:992px){
+
+    /* footer et fleche scroll */
+    footer nav ul, #infosContact{
+        display: none;
+    }
+    #fb{
+        width: 40%;
+        margin-left: 60%;
+    }
+    footer a img{
+        margin-left: 0;
+        width: 70%;
+        margin-top: 5%;
+    }
+    footer{
+        height: 10vh;
+    }
+
+    #copyrigth{
+        left: 30%;
+        bottom: 30%;
+        font-size: 1.5rem;
+    }
+
+    #scroll_to_top{
+        right: 2vw;
+        bottom: 11vh;
+        width: 10vw;
+        height: 10vh;
+    }
+    #scroll_to_top:hover{
+        right: 2vw;
+        bottom: 9vh;
+        width: 10vw;
+        height: 10vh;
+    }
+    footer img:hover{
+        margin-left: 0;
+        width: 80%;
+    }
+
+
+    /* header */
+    header>nav, header>div{
+        display: none;
+    }
+    header{
+        height: 8vh;
+    }
+    /* les 3 barres */
+    #burger{
+        display: block;
+        width: 20%;
+        height: 100%;
+        position: absolute;
+        right: 0;
+        top: 0;
+        padding: 1px 5px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        /* border: solid 1px black; */
+    }
+    header>section img{
+        width: 60%;
+    }
+    /* le menu avec a */
+    #menuBurg{
+        /* position: fixed;
+        background-color: white; */
+        /* position: sticky; */
+        height: 57vh;
+        width: 60%;
+        background-color: white;
+        position: absolute;
+        right: 0;
+        bottom: 0vh;
+        box-shadow: 2px 2px 5px rgb(221, 221, 221);
+        overflow: hidden;
+    }
+    #menuBurg a{
+        color: rgb(68, 68, 68);
+    }
+
+    #menuBurg ul{
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        margin-bottom: 3vh;
+    }
+    #menuBurg ul li a{
+        font-size: 2rem;
+    }
+
+    
+    .cacheToi{
+        /* display: none; */
+        /* height: 0vh; */
+        /* transition: height 2s; */
+        animation-name: natchav; 
+        animation-duration: .5s;
+    }
+
+    .salut{
+        animation-name: wesh; 
+        animation-duration: .5s;
+        animation-fill-mode: forwards;
+        display: block;
+        /* transition: height 2s; */
+        /* height: 100%; */
+    }
+    @keyframes wesh{
+        from{
+            height: 0vh;
+            bottom: 0;
+        }to{
+            height: 57vh;
+            bottom: -57vh;
+        }
+    }
+    @keyframes natchav{
+        from{
+            height: 57vh;
+            bottom: -57vh;
+        }to{
+            height: 0vh;
+            bottom: 0;
+        }
+    }
+
+    #titre{
+        display: block;
+        width: 80%;
+        color: white;
+        font-weight: bold;
+        font-size: 2.2rem;
+    }
+    #menuBurg hr{
+        border: none;
+        height: 2px;
+        background-color: rgb(213,180,61);
+        width: 88%;
+        margin: 2vh 5%;
+    }
+    #menuBurg li a{
+        text-decoration: none;
+        margin-left: 7vw;
+        font-size: 1.2rem;
+    }
+    #menuBurg li:first-child{
+        padding-top: 3vh;
+    }
+
+    /* partie choic langues */
+    #menuBurg my-div{
+        /* border: black solid 1px; */
+        display: flex;
+        width: 40%;
+        margin: 2vh 30%;
+        
+    }
+
+    #menuBurg my-div my-p{
+        font-size: 2rem;
+
+    }
+
+
+
+    /* animations barres du menu burger */
+    .rotation{
+        animation-name: rotation;
+        animation-duration: .5s;
+        animation-fill-mode: forwards;
+    }
+    @keyframes rotation{
+        from{
+            transform: rotate(0deg);
+            margin-top: 0;
+        }to{
+            transform: rotate(45deg);
+            margin-top: 0vh;
+        }
+    }
+    .rotation1{
+        animation-name: rotation1;
+        animation-duration: .5s;
+        animation-fill-mode: forwards;
+    }
+    @keyframes rotation1{
+        from{
+            transform: rotate(0deg);
+            margin-top: 0;
+        }to{
+            transform: rotate(135deg);
+            margin-top: -4.5vh;
+        }
+    }
+    .shutD{
+        animation-name: shutD;
+        animation-duration: .5s;
+        animation-fill-mode: forwards;
+    }
+    @keyframes shutD{
+        from{
+            transform: rotate(45deg);
+            margin-top: 0;
+        }to{
+            transform: rotate(0deg);
+            margin-top: 0vh;
+        }
+    }
+    .shutD1{
+        animation-name: shutD;
+        animation-duration: .5s;
+        animation-fill-mode: forwards;
+    }
+    @keyframes shutD1{
+        from{
+            transform: rotate(135deg);
+            margin-top: -4.5vh;
+        }to{
+            transform: rotate(0deg);
+            margin-top: 0vh;
+        }
+    }
+    .yo{
+        animation-name: yo;
+        animation-duration: .5s;
+        animation-fill-mode: forwards;
+    }
+    @keyframes yo{
+        from{
+            display: none;
+            opacity: 0;
+        }to{
+            display: block;
+            opacity: 1;
+        }
+    }
+    .yop{
+        display: none;
+    }
+}
+
+@media screen and (max-width:600px){
+    #fb{
+        width: 60%;
+        margin-left: 60%;
+    }
+    #copyrigth{
+        left: 20%;
+        bottom: 30%;
+        font-size: 1rem;
+    }
+    #scroll_to_top{
+        bottom: 9vh;
+    }
+    header>section img{
+        width: 100%;
+    }
+    #menuBurg{
+        width: 100%;
+    }
+    #menuBurg ul li a{
+        font-size: 1.2rem;
+    }
+    #menuBurg ul{
+        margin-bottom: 5vh;
+    }
+    #menuBurg my-div my-p{
+        font-size: 1.2rem;
+        margin-top: 4%;
+    }
+    #titre{
+        font-size: 1.5rem;
+    }
+}

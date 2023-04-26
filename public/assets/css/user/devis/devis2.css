@@ -58,21 +58,24 @@
     font-size: 0.7rem;
     text-align: justify;
     width: 50%;
+    margin-top: 3vh;
 }
 
 form{
     position: relative;
     /* border: black 1px solid; */
     width: 50%;
-    height: 50vh;
+    height: 35vh;
     margin-top: 2vh;
 
 }
-
-
-/* NOM */
-/* input */
-#nom1{
+form div{
+    position: relative;
+    height: 50px;
+    margin-bottom: 2vh;
+}
+/* inputs */
+form div input{
     position: relative;
     padding: 8px 10px;
     width: 100%;
@@ -82,14 +85,14 @@ form{
     font-size: 1.25rem;
     letter-spacing: 0.05rem;
     z-index: 3;
-    margin-top: 1vh;
+    margin-top: 12px;
 }
 
-/* label pour le nom */
-#labNom1{
+/* labels */
+form div label{
     position: absolute;
-    left: 0vh;
-    top: 0.5vh;
+    left: 0;
+    top: 5px;
     padding: 10px 0;
     pointer-events: none;
     font-size: 1em;
@@ -98,55 +101,11 @@ form{
     letter-spacing: 0.05rem;
     z-index: 2;
 }
-
-
 /* deco, le i qui s'étend*/
-#iNom1{
+form div i{
     position: absolute;
-    bottom: 39vh;
-    left: 0vh;
-    width: 100%;
-    height: 3px;
-    background-color:rgb(224, 224, 224);
-    transition: 0.5s;
-    z-index: 2;
-    border-radius: 15px;
-    pointer-events: none;
-}
-
-
-#prenom1{
-    margin-top: 1.5vh;
-    position: relative;
-    padding: 8px 10px;
-    width: 100%;
-    border: none;
-    outline: none;
-    background-color: transparent;
-    font-size: 1.25rem;
-    letter-spacing: 0.05rem;
-    z-index: 3;
-}
-
-/* label pour le prenom */
-#labPrenom1{
-    position: absolute;
-    left: 0vh;
-    top: 8.5vh;
-    padding: 10px 0;
-    pointer-events: none;
-    font-size: 1em;
-    transition: 0.5s;
-    color: #333;
-    letter-spacing: 0.05rem;
-    z-index: 2;
-}
-
-/* deco, le i qui s'étend*/
-#iPrenom1{
-    position: absolute;
-    bottom: 31vh;
-    left: 0vh;
+    bottom: 0;
+    left: 0;
     width: 100%;
     height: 3px;
     background-color: rgb(224, 224, 224);
@@ -155,96 +114,6 @@ form{
     border-radius: 15px;
     pointer-events: none;
 }
-
-/* input mail */
-#mail1{
-    margin-top: 1.7vh;
-    position: relative;
-    padding: 8px 10px;
-    width: 100%;
-    border: none;
-    outline: none;
-    background-color: transparent;
-    font-size: 1.25rem;
-    letter-spacing: 0.05rem;
-    z-index: 3;
-}
-
-/* label pour le mail */
-#labMail1{
-    position: absolute;
-    left: 0vh;
-    top: 16vh;
-    padding: 10px 0;
-    pointer-events: none;
-    font-size: 1em;
-    transition: 0.5s;
-    color: #333;
-    letter-spacing: 0.05rem;
-    z-index: 2;
-}
-
-/* deco, le i qui s'étend*/
-#iMail1{
-    position: absolute;
-    bottom: 23vh;
-    width: 100%;
-    left:0vh;
-    height: 3px;
-    background-color: rgb(224, 224, 224);
-    transition: 0.5s;
-    z-index: 2;
-    border-radius: 15px;
-    pointer-events: none;
-}
-
-
-
-/* input tel */
-#tel1{
-    margin-top: 1.7vh;
-    position: relative;
-    padding: 8px 10px;
-    width: 100%;
-    border: none;
-    outline: none;
-    background-color: transparent;
-    font-size: 1.25rem;
-    letter-spacing: 0.05rem;
-    z-index: 3;
-}
-
-/* label pour le tel */
-#labTel1{
-    position: absolute;
-    left: 0vh;
-    top: 24vh;
-    padding: 10px 0;
-    pointer-events: none;
-    font-size: 1em;
-    transition: 0.5s;
-    color: #333;
-    letter-spacing: 0.05rem;
-    z-index: 2;
-}
-
-/* deco, le i qui s'étend*/
-#iTel1{
-    position: absolute;
-    bottom: 15vh;
-    left: 0vh;
-    width: 100%;
-    height: 3px;
-    background-color: rgb(224, 224, 224);
-    transition: 0.5s;
-    z-index: 2;
-    border-radius: 15px;
-    pointer-events: none;
-}
-
-
-
-/* COMMUNS A TOUS */
 /* faire remonter le label */
 #nom1:valid ~ #labNom1,
 #nom1:focus ~ #labNom1,
@@ -256,7 +125,7 @@ form{
 #tel1:focus ~ #labTel1
 {
     font-size: 0.80rem;
-    transform: translateY(-19px);
+    transform: translateY(-15px);
 }
 /* idem ts i */
 #nom1:valid ~ #iNom1,
@@ -268,7 +137,7 @@ form{
 #tel1:valid ~ #iTel1,
 #tel1:focus ~ #iTel1
 {
-    height: 5vh;
+    height: 65%;
 }
 
 /* les * pr obligatoire */

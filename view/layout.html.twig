@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ assets('/assets/css/layout.css') }}">
     <link rel="stylesheet" href="{{ assets('/assets/css/toasts.css') }}">
+    <link rel="stylesheet" href="{{ assets('/assets/css/mediaQ/layoutQ.css') }}">
     <link rel="shortcut icon" href="{{ assets('/assets/imgs/logo/logo.svg') }}" />
     {% block meta %}
 
@@ -43,7 +44,41 @@
             <button type="button" class="langue" id="en"><img src="{{ assets('/assets/imgs/icone/royaume-uni.png') }}" alt="drapeau anglais"></button>
         </div>
 
+        <my-p id="titre"></my-p>
+
+        {# burger #}
+        <section id="burger">
+            <img src="{{ assets('/assets/imgs/icone/burg.png') }}" alt="barre du menu burger" class="">
+            <img src="{{ assets('/assets/imgs/icone/burg.png') }}" alt="barre du menu burger">
+            <img src="{{ assets('/assets/imgs/icone/burg.png') }}" alt="barre du menu burger">
+        </section>
+
+            {# burger #}
+    <section id="menuBurg" class="cacheToi">
+        <ul>
+            <li><a href="{{path('accueil')}}" key="accueil"  class="lang" >Accueil</a></li>
+            <hr>
+            <li><a href="{{path('aPropos')}}"  class="lang" key="aProp">À propos</a></li>
+            <hr>
+            <li><a href="{{path('chantiers')}}"  class="lang" key="chantiers">Nos chantiers</a></li>
+            <hr>
+            <li><a href="{{path('devis')}}"  class="lang" key="devis">Devis en ligne</a></li>
+            <hr>
+            <li><a href="{{path('faq')}}"  class="lang" key="faq">FAQ</a></li>
+            <hr>
+            <li ><a href="{{path('contact')}}" class="lang" key="contact">Contact</a></li>
+        </ul>
+        <my-div>
+            <button type="button" class="langue" id="fr"><img src="{{ assets('/assets/imgs/icone/france.png') }}" alt="drapeau français"></button>
+            <my-p>|</my-p>
+            <button type="button" class="langue" id="en"><img src="{{ assets('/assets/imgs/icone/royaume-uni.png') }}" alt="drapeau anglais"></button>
+        </my-div>
+    </section>
+    
     </header>
+
+    
+    {% include "loader.html.twig" %}
 
     <main>
         {% if hasToast() %}
@@ -95,7 +130,7 @@
     <script src="{{ assets('/assets/js/toasts.js') }}"></script>
     <script src="{{ assets('/assets/js/multiL/lay.js') }}"></script>
     <script src="{{ assets('/assets/js/multiL/function.js') }}"></script>
+    <script src="{{ assets('/assets/js/burger.js') }}"></script>
+    <script src="{{ assets('/assets/js/loader.js') }}"></script>
 </body>
 </html>
-{# alt <gr></gr>
-<7></7> #}

@@ -6,6 +6,7 @@
 
 {% block stylesheet %}
     <link rel="stylesheet" href="{{ assets('/assets/css/user/contact.css') }}">
+    <link rel="stylesheet" href="{{ assets('/assets/css/mediaQ/contactQ.css') }}">
 {% endblock %}
 
 {% block title %}
@@ -33,22 +34,31 @@
         <section id="formu">
             <form action="#" method="POST">
     
-                <input type="text" id="nom" name="nom" maxlength="20"  required="required">
-                <label for="nom" id="labNom"><my-p class="lang" key="name">Votre nom : </my-p><span class="red">*</span></label>
-                <i id="iNom"></i>
+                <div>
+                    <input type="text" id="nom" name="nom" maxlength="20"  required="required">
+                    <label for="nom" id="labNom"><my-p class="lang" key="name">Votre nom : </my-p><span class="red">*</span></label>
+                    <i id="iNom"></i>
+                </div>
+
+                <div>
+                    <input type="text" id="prenom" name="prenom" required="required" maxlength="15">
+                    <label for="prenom" id="labPrenom"><my-p class="lang" key="sname">Votre prénom : </my-p><span class="red">*</span></label>
+                    <i id="iPrenom"></i>
+                </div>
+
+                <div>
+                    <input type="text" id="mail" name="mail" required="required">
+                    <label for="mail" id="labMail"><my-p class="lang" key="mail">Votre addresse mail : </my-p><span class="red">*</span></label>
+                    <i id="iMail"></i>
+                </div>
+
+                <div>
+                    <input type="text" id="tel" name="tel" required="required" maxlength="15">
+                    {# ^(0|\+33)[1-9]([-. ]?[0-9]{2}){4}$ #}
+                    <label for="tel" id="labTel"><my-p class="lang" key="tel">Votre numéro de téléphone : </my-p><span class="red">*</span></label>
+                    <i id="iTel"></i>
+                </div>
     
-                <input type="text" id="prenom" name="prenom" required="required" maxlength="15">
-                <label for="prenom" id="labPrenom"><my-p class="lang" key="sname">Votre prénom : </my-p><span class="red">*</span></label>
-                <i id="iPrenom"></i>
-    
-                <input type="text" id="mail" name="mail" required="required">
-                <label for="mail" id="labMail"><my-p class="lang" key="mail">Votre addresse mail : </my-p><span class="red">*</span></label>
-                <i id="iMail"></i>
-    
-                <input type="text" id="tel" name="tel" required="required" maxlength="15">
-                {# ^(0|\+33)[1-9]([-. ]?[0-9]{2}){4}$ #}
-                <label for="tel" id="labTel"><my-p class="lang" key="tel">Votre numéro de téléphone : </my-p><span class="red">*</span></label>
-                <i id="iTel"></i>
 
                 <input type="hidden" id="sujet" name="sujet">
     
@@ -57,8 +67,14 @@
 
                 <div class="g-recaptcha" data-sitekey="6LfpX-ckAAAAAFgQUFqEEzZe9E2TlH_jFr8WLxVI"></div>
 
+                {{ csrf() }}
+
                 <input type="submit" value="OK" id="btn">
             </form>
+            <p><my-p class="lang" key="data">En cliquant sur envoyer, vous acceptez que vos données soient traitées informatiquement par</my-p> {{siteName}}.
+            
+                <my-p class="lang" key="more">Pour en savoir plus : </my-p><a href="https://www.cnil.fr/fr/reglement-europeen-protection-donnees"><my-p class="lang" key="rgpd">Cliquez ici</my-p></a>
+            </p>
         </section>
     </section>
 

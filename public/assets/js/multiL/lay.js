@@ -6,6 +6,7 @@ var arrLang={
         'devis':'Devis en ligne',
         'faq':'FAQ',
         'contact':'Contact',
+        'useJS':'Merci d\'activer Javascript si vous souhaitez envoyer une demande de devis ou profiter d\'une expérience utilisateur optimale : carousel, loader etc',
 
         // page accueil
         'h1Acc':'Pourquoi choisir ',
@@ -32,7 +33,7 @@ var arrLang={
         'entSuivi':'Un suivi personnalisé',
         'entSuiv':'Parce que chaque projet est unique, nos designs le sont aussi. Notre équipe commerciale assure un suivi complet de votre projet afin de vous assurer une réalisation sur mesure de vos idées. Des conseils ciblés et une disponibilité à tout instant, nous faisons de nos clients notre priorité.',
         'rea':'Nos réalisations',
-        'lastProj':'Notre dernier projet',
+        'lastProj':'Nos derniers projets',
 
         // nos chantiers
 
@@ -53,11 +54,11 @@ var arrLang={
         'next':'Suivant',
 
         'needs':'De quoi pensez vous avoir besoin ?',
-        'revet':'Revêtements sols et murs',
+        'revet':'Revêtements',
         'menui':'Menuiseries',
         'iso':'Isolation',
         'toit':'Toiture',
-        'constr':'Travaux de construction',
+        'constr':'Construction',
         'sdb':'Salle de bain',
         'exte':'Extérieur',
         'cuisi':'Cuisine',
@@ -104,6 +105,7 @@ var arrLang={
         'devis':'Estimation',
         'faq':'FAQ',
         'contact':'Contact',
+        'useJS':'If you want to have an optimale experience on this site you must activate Javascript. Indeed it will allow you to send an estimation request, enjoy the animations etc',
 
         // page accueil
         'h1Acc':'Why should you chose ',
@@ -130,7 +132,7 @@ var arrLang={
         'entSuivi':'A personalized follow-up',
         'entSuiv':'Because each project is unique, our designs are too. Our sales team ensures a complete follow-up of your project in order to ensure a tailor-made realization of your ideas. Targeted advice and availability at all times, we make our customers our priority.',
         'rea':'Our realisations',
-        'lastProj':'Our last project',
+        'lastProj':'Our last projects',
 
         // nos chantiers
 
@@ -151,11 +153,11 @@ var arrLang={
         'next':'Next',
 
         'needs':'What do you think you need ?',
-        'revet':'Floor and wall coverings',
+        'revet':'Coverings',
         'menui':'Carpentry',
         'iso':'Isolation',
         'toit':'Rooftop',
-        'constr':'Construction\'s work',
+        'constr':'Construction',
         'sdb':'Bathroom',
         'exte':'Outside',
         'cuisi':'Kitchen',

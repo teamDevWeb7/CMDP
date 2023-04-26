@@ -22,6 +22,7 @@
     <form method="POST" enctype="multipart/form-data">
         <label for="txt">Ajouter la description :</label>
         <textarea name="txt" maxlength="210" rows="5">{{photo.descImg}}</textarea>
+        {{csrf()}}
         <input type="submit">
     </form>
     

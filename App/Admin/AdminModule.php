@@ -7,6 +7,7 @@ use Psr\Container\ContainerInterface;
 use Core\Framework\Renderer\RendererInterface;
 use Core\Framework\AbstractClass\AbstractModule;
 
+
 class AdminModule extends AbstractModule{
     public const DEFINITIONS = __DIR__ . DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR . 'Config.php';
 
@@ -41,6 +42,10 @@ class AdminModule extends AbstractModule{
 
         // devis
         $this->router->get('/admin/tousMesDevis', [$adminAction, 'pageDevis'], 'pageDevis');
+        $this->router->get('/admin/devis/delete/{id:[\d]+}', [$adminAction, 'deleteDevis'], 'deleteDevis');
+        // $this->router->get('/admin/devis/{id:[\d]+}', [$adminAction, 'voirDevis'], 'voirDevis');
+        // afficher pdfs
+        $this->router->get('/admin/pdf/{filename:[\da-zA-Z\.\-\_]+}',[$adminAction, 'affichePdf'], 'affichePdf');
 
         // messagesconnectAdmin
         $this->router->get('/admin/tousMesMessages', [$adminAction, 'pageMessages'], 'pageMessages');

@@ -8,6 +8,7 @@
 
 {% block stylesheet %}
     <link rel="stylesheet" href="{{ assets('/assets/css/user/accueil.css') }}">
+    <link rel="stylesheet" href="{{ assets('/assets/css/mediaQ/accueilQ.css') }}">
 {% endblock %}
 
 {% block title %}
@@ -19,7 +20,7 @@
 
     {# animation #}
     <section id="anim">
-        {# <div></div> #}
+        
         <img src="{{ assets('/assets/imgs/icone/boot.png') }}" alt="icone représentant une chaussure de chantier" class="boot" id="leftShoe">
         <img src="{{ assets('/assets/imgs/icone/boot.png') }}" alt="icone représentant une chaussure de chantier" class="boot" id="rightShoe">
         <img src="{{ assets('/assets/imgs/icone/bucket.png') }}" alt="icone représentant un seau de peinture" id="bucket">
@@ -28,10 +29,14 @@
         <img src="{{ assets('/assets/imgs/logo/logo_titre.png') }}" alt="image du logo avec le nom de l'entreprise" id="logo_titre">
 
     </section>
+    <section id="useJS">
+        <my-p class="lang" key="useJS">Merci d'activer Javascript si vous souhaitez envoyer une demande de devis ou profiter d'une expérience utilisateur optimale : carousel, loader etc</my-p>
+    </section>
     <section id="intro">
         <img src="{{ assets('/assets/imgs/photos/paint-brush.jpg') }}" alt="Image décorative représentant des outils de peinture">
+        <img src="{{ assets('/assets/imgs/photos/portableA.jpg') }}" alt="Image décorative représentant des outils" class="mediaQ" id="img2">
         <div>
-            <h1><my-p  class="lang" key="h1Acc">Pourquoi choisir </my-p>{{siteName}} ?</h1>
+            <h1><my-p  class="lang" key="h1Acc">Pourquoi choisir</my-p>{{siteName}} ?</h1>
             <p id="blo" class="lang" key="blo">Pour tous vos projets de rénovation, nous vous proposerons un design unique, un suivi rigoureux, avec une attention particulière à votre satisfaction.<br>N'attendez plus, il n'y a qu'un pas entre vos rêves et vous.</p>
             <ol>
                 <li><a href="{{path('aPropos')}}" class="lang" key="aPropos">À propos de nous </a><img src="{{ assets('/assets/imgs/icone/chevron.png') }}" alt="flèche"></li>

@@ -12,6 +12,12 @@
     <section>
         <h1>Liste des prospects</h1>
 
+        {# <form>
+            <input type="text" id="search" onkeyup="searcher()" placeholder="Rechercher...">
+            <button type="submit" id="btnSearch">OK</button>
+            <div id="azerty"></div>
+        </form> #}
+
         <p><span>Attention</span> la suppression ou la modification d'un prospect est définitive.</p>
 
         <table>
@@ -46,7 +52,8 @@
     </section>
 
 
+{% endblock %}
 
-
-
+{% block scripts %}
+    <script src="{{ assets('/assets/js/search.js') }}"></script>
 {% endblock %}

@@ -43,12 +43,9 @@ class ChantierAction{
 
     // client
     public function chantiers(ServerRequest $request){
-        $chantiers=$this->chantiersRepo->findAll();
-        // $size=sizeof($chantiers);
-        // $ranges=[];
-        // foreach($chantiers as $chantier){
-        //     $ranges=array_unshift($chantier);
-        // }
+        $chantiers=$this->chantiersRepo->findBy([],[
+            'id' => 'DESC'
+        ]);
         return $this->renderer->render('@chantier/chantiersUser', ["chantiers"=>$chantiers, "siteName"=>'Cmydesignprojets']);
     }
 
@@ -56,13 +53,22 @@ class ChantierAction{
         $id=$request->getAttribute('id');
         $chantier=$this->chantiersRepo->find($id);
         // je veux recup l id du chantier pour get les photos qui lui sont attachées
-        $photos=$this->photoRepo->findBy(array('chantier'=>$id));
+        $photos=$this->photoRepo->findBy(array('chantier'=>$id),[
+            'id' => 'DESC'
+        ]);
         if(!$chantier){
             $this->toaster->makeToast('<my-p class="lang" key="chantier">Aucun chantier ne correspond</my-p>', Toaster::ERROR);
             return $this->redirect('chantiers');
         }
         return $this->renderer->render('@chantier/infosChantierUser', ["chantier"=>$chantier, "photos"=>$photos, "siteName"=>'Cmydesignprojets']);
     }
+
+    // public function aPropos(ServerRequest $request){
+    //     $chantiers=$this->chantiersRepo->findBy([], [
+    //         'id' => 'DESC'
+    //     ], 3);
+    //     return $this->renderer->render('@user/aPropos', ['siteName' => 'Cmydesignprojets', 'chantiers'=>$chantiers]);
+    // }
 
 
     /**
@@ -72,7 +78,9 @@ class ChantierAction{
      * @return void
      */
     public function adminChantiers(ServerRequest $request){
-        $chantiers=$this->chantiersRepo->findAll();
+        $chantiers=$this->chantiersRepo->findBy([],[
+            'id' => 'DESC'
+        ]);
         return $this->renderer->render('@chantier/chantiersAdmin', ["chantiers"=>$chantiers]);
     }
 
@@ -85,7 +93,9 @@ class ChantierAction{
     public function adminChantier(ServerRequest $request){
         $id=$request->getAttribute('id');
         $chantier=$this->chantiersRepo->find($id);
-        $photos=$this->photoRepo->findBy(array('chantier'=>$id));
+        $photos=$this->photoRepo->findBy(array('chantier'=>$id),[
+            'id' => 'DESC'
+        ]);
         if(!$chantier){
             $this->toaster->makeToast('Aucun chantier ne correspond', Toaster::ERROR);
             return $this->redirect('chantiers');
@@ -280,8 +290,13 @@ class ChantierAction{
         $photo=$this->photoRepo->find($id);
         $this->manager->remove($photo);
         $this->manager->flush();
+        $photoASuppr=$photo->getImgPath();
+        $chemin=$this->container->get('img.basePath').$photoASuppr;
+
+        unlink($chemin);
+
         $this->toaster->makeToast('Photo supprimée avec succès', Toaster::SUCCESS);
-        return $this->redirect('chantierAdmin');
+        return $this->redirect('adminChantiers');
     }
 
     /**

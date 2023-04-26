@@ -1,0 +1,61 @@
+@media screen and (max-width:992px){
+    #anim{
+        display: none;
+    }
+    #intro{
+        flex-direction: column;
+        width: 100%;
+        margin: 0;
+        height: 150vh;
+        overflow: hidden;
+    }
+    h1, h2{
+        margin: 2vh 0;
+    }
+    #intro img:first-child{
+        display: none;
+    }
+    .mediaQ{
+        display: block;
+        width: 100%;
+    }
+
+    #img2{
+        border-radius: 0;
+        height: 100vh;
+        margin: 0;
+    }
+
+    #intro div{
+        width: 96%;
+        margin-left: 2%;
+    }
+
+    #blo{
+        width: 100%;
+        padding-right: 10px;
+        margin-bottom: 2vh;
+    }
+
+    #dev{
+        width: 30%;
+        margin-left: 35%;
+        margin-top: -70vh;
+        margin-bottom: 5vh;
+    }
+}
+
+@media screen and (max-width:600px){
+    .mediaQ{
+        width: auto;
+    }
+    #intro{
+        height: 162vh;
+    }
+    #dev{
+        margin-bottom: 5vh;
+        margin-top: 0vh;
+        width: 50%;
+        margin-left: 25%;
+    }
+}

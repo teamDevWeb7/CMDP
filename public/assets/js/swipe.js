@@ -13,6 +13,8 @@ let pBalise=document.querySelectorAll('p');
 
 let alerte=document.querySelectorAll('my-alert');
 
+let avance=document.querySelector('.chemin');
+
 // suivant
 function swip(){
     // si je suis sur page 1 et que je vais sur page 2
@@ -21,11 +23,12 @@ function swip(){
     if(Q1==null || Q1==''){
         alerte[0].removeAttribute('class');
         para1.style.filter='blur(3px)';
+        avance.style.filter='blur(3px)';
         die;
     }
 
         para1.removeAttribute('class');
-        para1.style.left='-100vw';
+        para1.style.left='-150vw';
 
         para2.removeAttribute('class');
         // para2.setAttribute('class', 'left0');
@@ -39,17 +42,24 @@ function swip(){
 function fermer(){
     alerte[0].setAttribute('class', 'hideAlert');
     para1.style.filter='none';
+    avance.style.filter='none';
 }
 function fermer1(){
     alerte[1].setAttribute('class', 'hideAlert');
     para2.style.filter='none';
+    avance.style.filter='none';
+}
+function fermer2(){
+    alerte[2].classList.add('hideAlert');
+    para4.style.filter='none';
+    avance.style.filter='none';
 }
 
 // retour en arriere
 function swi(){
     // si je suis sur page 2 et que je retourne sur page 1
         para1.style.left="0";
-        para2.style.left="-100vw";
+        para2.style.left="-150vw";
 
         div[4].removeAttribute('class');
         div[4].setAttribute('class', 'pts2');
@@ -63,11 +73,12 @@ function swipo(){
         alerte[1].removeAttribute('class');
         
         para2.style.filter='blur(3px)';
+        avance.style.filter='blur(3px)';
         die;
         
     }
     para2.removeAttribute('class');
-    para2.style.left='-100vw';
+    para2.style.left='-150vw';
 
     para3.removeAttribute('class');
     // para3.setAttribute('class', 'cc');
@@ -85,7 +96,7 @@ function swipo(){
 function sw(){
     // si je suis sur page 3 et que je retourne sur page 2
         para2.style.left="0";
-        para3.style.left="-100vw";
+        para3.style.left="-150vw";
 
         div[5].removeAttribute('class');
         div[5].setAttribute('class', 'pts3');
@@ -96,7 +107,7 @@ function sw(){
 function swopo(){
 
     para3.removeAttribute('class');
-    para3.style.left='-100vw';
+    para3.style.left='-150vw';
 
     para4.removeAttribute('class');
     // para3.setAttribute('class', 'cc');
@@ -112,7 +123,7 @@ function swopo(){
 function swa(){
     // si je suis sur page 3 et que je retourne sur page 2
         para3.style.left="0";
-        para4.style.left="-100vw";
+        para4.style.left="-150vw";
 
         div[6].removeAttribute('class');
         div[6].setAttribute('class', 'pts4');

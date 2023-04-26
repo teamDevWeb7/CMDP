@@ -32,6 +32,9 @@ h1, h2, h2 a{
     justify-content: space-between;
     color: rgb(68, 68, 68);
 }
+#rea h2{
+    margin-left: 0;
+}
 
 #values article{
     width: 30%;
@@ -53,64 +56,27 @@ h3{
     margin-left: 25%;
 }
 
-/* section nos réalisation avec les img blur */
-#rea section{
-    margin-bottom: 93vh;
-    margin-top: 7vh;
-    position: relative;
-    width: 80%;
-    margin-left: 6%;
-}
+/* section nos réalisation*/
+#blur{
+    display: flex;
+    justify-content: space-evenly;
+    height: 60vh;
+    /* border: 1px red solid; */
+    /* background-color:  rgba(213, 180, 61, 0.89); */
 
-/* on force les img à prendre la taille que je veux */
-#rea div{
-    width: 50%;
-    /* height: 70vh; */
-    position: absolute;
+    /* background: linear-gradient(to left,white,rgb(213,180,61),white); */
+    margin-bottom: 15vh;
+    margin-top: 10vh;
 }
-#rea img{
+#blur article{
+    width: 30%;
+    /* border: black solid 1px; */
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+#blur img{
     width: 100%;
-    height: 100%;
-
-}
-
-/* positionnement etc et effets blur, avec blur.js */
-#n1{
-    top: 5px;
-    left: 0;
-    z-index: 2;
-    filter: blur(3px);
-    height: 69vh;
-}
-#n1:hover, #n3:hover{
-    z-index: 4;
-    filter: none;
-    height: 70vh;
-    top: 0;
-}
-
-#n2{
-    top: 0;
-    left: 30%;
-    z-index: 3;
-    height: 70vh;
-}
-
-#n3{
-    top: 5px;
-    left: 60%;
-    z-index: 2;
-    filter: blur(3px);
-    height: 69vh;
-}
-
-.blur{
-    z-index: 2;
-    filter: blur(3px);
-}
-
-.norm{
-    filter: none;
 }
 
 

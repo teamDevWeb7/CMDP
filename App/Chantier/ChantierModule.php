@@ -54,6 +54,7 @@ class ChantierModule extends AbstractModule{
         $this->router->post('/admin/updatePresentationChantier/{id:[\d]+}', [$chantierAction, 'updatePresChantier']);
 
         $this->router->get('/admin/deleteChantier/{id:[\d]+}', [$chantierAction, 'deleteChantier'], 'deleteChantier');
+
         
     }
 }
