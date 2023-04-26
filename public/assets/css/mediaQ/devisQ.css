@@ -134,10 +134,14 @@
         height: 50vh;
     }
 
+    form div{
+        margin-bottom: 2vh;
+    }
     .g-recaptcha{
         position: relative;
         display: flex;
         justify-content: center;
+        margin-top: 6vh;
     }
 
     #btn1{
@@ -255,7 +259,7 @@
     }
 
     .g-recaptcha{
-        margin-top: 2%;
+        margin-top: 5vh;
     }
 
 

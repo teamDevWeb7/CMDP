@@ -1,7 +1,7 @@
 function checkErreurs(){
     const inputs=document.querySelectorAll('input');
 
-        validation(inputs);
+    return validation(inputs);
 }
 // verif champs
 function afficheErreur(erreur){
@@ -22,13 +22,29 @@ function checkMail(votreMail){
 }
 function validation(inputs){
     let mail=inputs[2].value;
+    let res;
     if(!checkMail(mail)){
         let pbmail="<my-p class='lang' key='email'>Le champs email doit contenir un email valide</my-p>";
         afficheErreur(pbmail);
+        res = false
     }
     if(inputs[0].value===''|| inputs[1].value===''||inputs[2].value===''||inputs[3].value===''){
         let pbChamps="<my-p class='lang' key='required'>Tous les champs sont obligatoires</my-p>";
         afficheErreur(pbChamps);
+        res = false
+    }
+    if(res != false){
+        return true 
+    } else {
+        return res
     }
 
+}
+
+function sender(e){
+    e.preventDefault()
+    let error = checkErreurs()
+    if (error === true) {
+        sendData()
+    }
 }

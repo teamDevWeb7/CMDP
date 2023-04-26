@@ -1,5 +1,4 @@
-function sendData(e) {
-    e.preventDefault();
+function sendData() {
     const g_recaptcha = document.querySelector('#g-recaptcha-response');
     const recaptcha_response=g_recaptcha.value;
     let inputs=document.querySelectorAll('input');
@@ -14,11 +13,6 @@ function sendData(e) {
         monMessage: mess,
         'g_recaptcha_response': recaptcha_response
     };
-
-
-
-
-
 
     var xhr = new XMLHttpRequest();
     // var array = {'g_recaptcha_response': recaptcha_response};
