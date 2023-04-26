@@ -24,22 +24,31 @@ class SearchModule extends AbstractModule{
         $this->router->get('/ajax/prospect/{needle}', [$this, 'findMesProspects'], 'ajaxProsp');
     }
 
-    public function findMesProspects(ServerRequest $request){
-        $data=$request->getAttribute('needle');
-        // coucou=alias
-        $results=$this->prospRepo->createQueryBuilder('coucou')
-        // LIKE DQL
-                                    ->where('coucou.nom LIKE :needle')
-                                    ->setParameter(':needle', '%'.$data.'%')
-                                    ->getQuery()
-                                    ->getResult();
 
-        $reponse='';
-        $results=array_unique($results, SORT_REGULAR);
-        foreach($results as $result){
-            $reponse .= '<p>'.$result->getNom().'</p>';
 
-        }
-        return $reponse;
-    }
+    // public function findMesProspects(ServerRequest $request){
+    //     $data=$request->getAttribute('needle');
+    //     // coucou=alias
+    //     $results=$this->prospRepo->createQueryBuilder('coucou')
+    //     // LIKE DQL
+    //                                 ->where('coucou.nom LIKE :needle')
+    //                                 ->setParameter(':needle', '%'.$data.'%')
+    //                                 ->getQuery()
+    //                                 ->getResult();
+
+    //     $reponse='';
+    //     $results=array_unique($results, SORT_REGULAR);
+    //     foreach($results as $result){
+    //         $prospIds=$result->ProspIds();
+    //         // $reponse .= '<p><a href="'.$this->router->generateUri('prospect', ['id'=>$id]).">".$result->getNom().'</a></p>';
+    //         foreach($prospIds as $id){
+    //             $reponse .= '<p><a href="'.$this->router->generateUri('prospect', ['id'=>$id]).">".$result->getNom().'</a></p>';
+    //         }
+
+
+    //     }
+    //     return $reponse;
+    // }
+
+
 }

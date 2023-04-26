@@ -41,20 +41,17 @@ p span{
 
 section{
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
 }
 section table{
-    width: 44%;
+    width: 60%;
     text-align: center;
 }
 section table:nth-child(1) td:nth-child(1){
     text-align: justify;
     width: 70%;
 }
-/* qd aura des devis je pourrai supprimer la partie avec th */
-section table:nth-child(2) td:nth-child(2), table:nth-child(2) th:nth-child(2){
-    width: 30%;
-}
+
 
 section tbody tr:nth-child(even){
     background-color: rgb(238, 238, 238);

@@ -1,3 +1,264 @@
 @media screen and (max-width:992px){
+
+    my-alert{
+        width: 70%;
+        left: 15%;
+    }
+    my-alert button{
+        width: 15%;
+    }
+
+    #swipe{
+        height: 82vh;
+        width: 100%;
+    }
+    .chemin{
+        width: 90%;
+        margin-left: 5%;
+        height: 15%;
+    }
+
+    .pts1, .pts2, .pts3, .pts4{
+        height: 0.9vh;
+    }
+    .trait{
+        height: 2px;
+        top: 33%;
+    }
+    .bigger{
+        top: 28%;
+        height: 1.3vh;
+        width: 2vw;
+    }
+    .pts1{
+        left: 14%;
+    }
+
+
+
+
+    #p1{
+        height: 60vh;
+    }
+
+    #Q1{
+        flex-wrap: wrap;
+        margin-top: 5vh;
+    }
+
+    .choix{
+        height: 15vh;
+        width: 35vw;
+        margin:0;
+    }
+
+    .choix img{
+        width: 75%;
+    }
+
+    .suivant, .preced{
+        z-index: 5;
+        width: 20vw;
+        height: 5vh;
+    }
+
+    #s1{
+        bottom: 0vh;
+        right: -8vw;
+    }
+    .selected{
+        width: 20vw;
+    }
+    .R{
+        width: 20vw;
+    }
+
+    .choix:first-child img, .choix:last-child img {
+        margin-bottom: 0;
+    }
+    .choix:first-child, .choix:last-child{
+        margin-top: 0;
+    }
+
+
+
+
+    #p2{
+        width: 100%;
+        margin-left: 0;
+    }
+    #grid{
+        width: 85%;
+    }
+    .R2{
+        width: 13vw;
+    }
+    .selecte{
+        width: 13vw;
+    }
+    #pre2{
+        bottom: -2vh;
+        left: 7vw;
+    }
+    #s2{
+        bottom: -2vh;
+        right: 7vw;
+    }
+
+
+    #p3{
+        height: 55vh;
+        top: 17.75vh;
+        width: 100%;
+        margin-left: 0;
+        justify-content: space-between;
+        padding-bottom: 3vh;
+    }
+
+    #descriptionProjet{
+        height: 70%;
+        width: 70%;
+    }
+
+    #s3{
+        bottom: -5.25vh;
+        right: 7vw;
+    }
+    #pre3{
+        bottom: -5.25vh;
+        left: 7vw;
+    }
+
+    form{
+        width: 75%;
+        height: 50vh;
+    }
+
+    .g-recaptcha{
+        position: relative;
+        display: flex;
+        justify-content: center;
+    }
+
+    #btn1{
+        width: 20%;
+        left: 40%;
+    }
+
+    #p4 p{
+        width: 75%;
+    }
+
+    #pre4{
+        bottom: -8vw;
+        left: -8vw;
+    }
+
     
+}
+@media screen and (max-width:600px){
+
+    my-alert{
+        width: 90%;
+        left: 5%;
+        z-index: 10;
+    }
+    my-alert button{
+        width: 15%;
+    }
+
+    .chemin{
+        display: none;
+    }
+    #p1, #p2, #p3, #p4{
+        height: 70vh;
+        width: 100%;
+        top: 0;
+        margin-left: 0;
+        z-index: 3;
+        background-color: white;
+    }
+    #Q1{
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    #p1 img{
+        width: 50%;
+    }
+    .choix{
+        height: auto;
+        margin: 0;
+        margin-bottom: 3vh;
+    }
+    .selected{
+        width: 40vw;
+    }
+    .R{
+        width: 40vw;
+    }
+
+    #s1, #s2, #s3{
+        bottom: -9vh;
+        right: 5vw;
+    }
+
+    .suivant, .preced{
+        z-index: 5;
+        width: 30vw;
+        height: 6vh;
+    }
+
+    #p2 h3{
+        margin-top: 5vh;
+    }
+
+    #grid{
+        height: 90%;
+        width: 90%;
+        margin-top: 3%;
+    }
+    #grid p{
+        width: 50%;
+        height: 25%;
+    }
+    .R2{
+        width: 35vw;
+    }
+    .selecte{
+        width: 35vw;
+    }
+
+    #pre2, #pre3, #pre4{
+        bottom: -9vh;
+        left: 5vw;
+    }
+
+    #p3{
+        justify-content: flex-start;
+    }
+
+    #descriptionProjet{
+        margin-top: 5%;
+        width: 80%;
+    }
+
+    form{
+        margin-top: 5vh;
+        width: 90%;
+        height: 75%;
+        /* border: black solid 1px; */
+    }
+
+    #p4 p{
+        width: 95%;
+    }
+
+    .g-recaptcha{
+        margin-top: 2%;
+    }
+
+
+
+
 }

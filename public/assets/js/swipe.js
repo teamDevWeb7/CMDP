@@ -28,7 +28,7 @@ function swip(){
     }
 
         para1.removeAttribute('class');
-        para1.style.left='-100vw';
+        para1.style.left='-150vw';
 
         para2.removeAttribute('class');
         // para2.setAttribute('class', 'left0');
@@ -59,7 +59,7 @@ function fermer2(){
 function swi(){
     // si je suis sur page 2 et que je retourne sur page 1
         para1.style.left="0";
-        para2.style.left="-100vw";
+        para2.style.left="-150vw";
 
         div[4].removeAttribute('class');
         div[4].setAttribute('class', 'pts2');
@@ -78,7 +78,7 @@ function swipo(){
         
     }
     para2.removeAttribute('class');
-    para2.style.left='-100vw';
+    para2.style.left='-150vw';
 
     para3.removeAttribute('class');
     // para3.setAttribute('class', 'cc');
@@ -96,7 +96,7 @@ function swipo(){
 function sw(){
     // si je suis sur page 3 et que je retourne sur page 2
         para2.style.left="0";
-        para3.style.left="-100vw";
+        para3.style.left="-150vw";
 
         div[5].removeAttribute('class');
         div[5].setAttribute('class', 'pts3');
@@ -107,7 +107,7 @@ function sw(){
 function swopo(){
 
     para3.removeAttribute('class');
-    para3.style.left='-100vw';
+    para3.style.left='-150vw';
 
     para4.removeAttribute('class');
     // para3.setAttribute('class', 'cc');
@@ -123,7 +123,7 @@ function swopo(){
 function swa(){
     // si je suis sur page 3 et que je retourne sur page 2
         para3.style.left="0";
-        para4.style.left="-100vw";
+        para4.style.left="-150vw";
 
         div[6].removeAttribute('class');
         div[6].setAttribute('class', 'pts4');
