@@ -20,7 +20,6 @@ use Core\Framework\Router\RedirectTrait;
 use Core\Framework\Renderer\RendererInterface;
 use GuzzleHttp\Psr7\Stream;
 use Spipu\Html2Pdf\Html2Pdf;
-use Zend\Diactoros\Response\FileResponse;
 
 
 class AdminAction{
@@ -186,25 +185,6 @@ class AdminAction{
         return $this->renderer->render('@admin/devis', ["devis"=>$devis]);
     }
 
-    // public function voirDevis(ServerRequest $request){
-    //     $id=$request->getAttribute('id');
-    //     $devis=$this->pdfRepo->find($id);
-    //     $chemin='./pdfs/'.$devis->getPdfPath();
-    //     // $pdf = require $devis->getPdfPath();
-    //     $pdf=$chemin;
-
-    //     var_dump($chemin);
-    //     var_dump($pdf);
-
-    //     // header('Content-type: application/pdf');
-    //     // header('Content-Length:'.filesize($chemin));
-    //     // readfile($chemin);
-
-    //     return $this->renderer->render('@admin/devisPDF', ["devis"=>$devis, 'chemin'=>$chemin]);
-
-
-    //     // pdf path-> la passe ds render -> ds vue ->iframe ->path = pdfPath
-    // }
 
     public function affichePdf(ServerRequest $request){
 

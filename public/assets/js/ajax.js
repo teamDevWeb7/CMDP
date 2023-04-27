@@ -28,7 +28,7 @@ function sendData() {
     console.log(data);
 
     //👇 what to do when you receive a response
-    xhr.onload = function () {
-            console.log(xhr.response);
-    };
+    // xhr.onload = function () {
+    //         console.log(xhr.response);
+    // };
 }

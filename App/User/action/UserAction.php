@@ -8,7 +8,6 @@ use Model\Entity\Message;
 use Model\Entity\Chantier;
 use Model\Entity\Prospect;
 use Spipu\Html2Pdf\Html2Pdf;
-use GuzzleHttp\Psr7\Response;
 use Doctrine\ORM\EntityManager;
 use Core\Framework\Router\Router;
 use Core\Session\SessionInterface;
@@ -93,13 +92,11 @@ class UserAction{
                     $errors=$validator
                                     ->required('nom', 'prenom', 'mail', 'tel', 'message')
                                     ->email('mail')
-                                    // pb 1 seule erreur
                                     ->getErrors();
                     // si champs pas remplis ou input !value demandée, renvoie toast+redirect
                     if($errors){
                         foreach($errors as $error){
                             $this->toaster->makeToast($error->toString(), Toaster::ERROR);
-                            
                         }
                         return $this->redirect('contact');
                     }
@@ -138,7 +135,6 @@ class UserAction{
     }
 
     public function devis(ServerRequest $request){
-        // header('Location: http://localhost:8000/App/User/action/UserAction.php');
         $method=$request->getMethod();
         if($method=='POST'){
             // pot de miel
@@ -161,29 +157,30 @@ class UserAction{
                     return $this->redirect('devis');
                 // captcha ok
                 }else{
-                    if((!isset($post->votreNom)||$post->votreNom='')||
-                    (!isset($post->votrePrenom)||$post->votrePrenom='')||
-                    (!isset($post->votreMail)||$post->votreMail='')||
-                    (!isset($post->votreTel)||$post->votreTel='')){
-                        echo false;
-                        die;
-                    }
-                    if(!filter_var($post->votreMail, FILTER_VALIDATE_EMAIL)){
-                        echo false;
-                        die;
-                    }
+                    // if((!isset($post->votreNom)||$post->votreNom='')||
+                    // (!isset($post->votrePrenom)||$post->votrePrenom='')||
+                    // (!isset($post->votreMail)||$post->votreMail='')||
+                    // (!isset($post->votreTel)||$post->votreTel='')){
+                    //     echo false;
+                    //     var_dump('0');
+                        
+                    // }
+                    // if(!filter_var($post->votreMail, FILTER_VALIDATE_EMAIL)){
+                    //     echo false;
+                    //     var_dump('5');
+                    //     // je tombe dedans
+                        
+                    // }
+
+                    // $datas=$post->data;
+                    // var_dump($datas);
+                    // $data=json_decode($datas, true);
+                    // var_dump($data);
 
                     $nom=strip_tags(htmlentities($post->votreNom));
                     $prenom=strip_tags(htmlentities($post->votrePrenom));
                     $mail=strip_tags(htmlentities($post->votreMail));
                     $tel=strip_tags(htmlentities($post->votreTel));
-
-                    $data=array(
-                        'nom'=>$nom,
-                        'prenom'=>$prenom,
-                        'mail'=>$mail,
-                        'tel'=>$tel
-                    );
                     
                     $monBien=$post->monBien;
                     $mesBesoins=$post->mesBesoins;
@@ -193,6 +190,7 @@ class UserAction{
                     $size=sizeof($mesBesoins);
 
                     // var_dump($mesBesoins);
+                    
 
                     for($i=0; $i<$size; $i++){
                         if($i>= ($size-1)){
@@ -219,23 +217,42 @@ class UserAction{
                         <p style="font-size:20px; font-weight:400">'.$monMessage.'</p>
                     
                     ';
-                    var_dump($content);
+                    // var_dump($content);
+                    
 
                     $html2pdf= new Html2Pdf('P', 'A4', 'fr');
                     
                     $html2pdf->writeHTML($content);
 
+                    // ok
+
 
                     $pdfName='devis_'.$date.'_'.$nom;
-                    $pdfPath=dirname(__DIR__, 2). DIRECTORY_SEPARATOR .'Admin'. DIRECTORY_SEPARATOR.'pdfs'. DIRECTORY_SEPARATOR.$pdfName;
+                    // var_dump($pdfName);
 
+                    // pb ->$pdfName->redirection->je perds mes headers et contenu
+
+
+                    $pdfPath=dirname(__DIR__, 2). DIRECTORY_SEPARATOR .'Admin'. DIRECTORY_SEPARATOR.'pdfs'. DIRECTORY_SEPARATOR.$pdfName.'.pdf';
+                    var_dump($pdfPath);
+                    var_dump($nom);
+                    var_dump($prenom);
+                    die;
+                    
+
+                    // $html2pdf->output($pdfName,'F');
                     $html2pdf->output($pdfPath,'F');
 
-                    // var_dump($pdfPath);
+                    // pb par ici
+                    
 
-                    $prospect=$this->userRepo->findOneBy(['mail' => $data['mail']]);
+
+                    // var_dump($mail);
+
+                    $prospect=$this->userRepo->findOneBy(['mail' => $mail]);
                     $pdf= new Pdf;
                     $pdf->setPdfPath($pdfName);
+                    $pdf->setVu(0);
 
                     if($prospect){
                         $prospect->addPdf($pdf);
@@ -243,10 +260,10 @@ class UserAction{
                     }
                     else{
                         $prosp= new Prospect;
-                        $prosp->setNom($data['nom'])
-                                ->setPrenom($data['prenom'])
-                                ->setMail($data['mail'])
-                                ->setPhone($data['tel'])
+                        $prosp->setNom($nom)
+                                ->setPrenom($prenom)
+                                ->setMail($mail)
+                                ->setPhone($tel)
                                 ->addPdf($pdf);
                                 $pdf->setProspect($prosp);
                         $this->manager->persist($prosp);
@@ -257,8 +274,9 @@ class UserAction{
                     echo true;
                     if(true){
                         $this->toaster->makeToast("<my-p class='lang' key='devisSend'>Votre demande de devis a bien été envoyée</my-p>", Toaster::SUCCESS);
-                    return $this->redirect('devis');
+                        return $this->redirect('devis');
                     }
+
                     
                 }
             }    
