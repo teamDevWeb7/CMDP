@@ -28,6 +28,13 @@ class Pdf{
     private string $pdfPath;
 
     /**
+     * @ORM\Column(type="boolean", length="1")
+     *
+     * @var boolean
+     */
+    private bool $vu;
+
+    /**
      * @ORM\ManyToOne(targetEntity="Prospect", inversedBy="pdf")
      * @ORM\JoinColumn(name="prospect_id", referencedColumnName="id", onDelete="CASCADE")
      * @var Prospect
@@ -92,5 +99,29 @@ class Pdf{
     public function getProspect()
     {
         return $this->prospect;
+    }
+
+    /**
+     * Set vu.
+     *
+     * @param bool $vu
+     *
+     * @return Pdf
+     */
+    public function setVu($vu)
+    {
+        $this->vu = $vu;
+
+        return $this;
+    }
+
+    /**
+     * Get vu.
+     *
+     * @return bool
+     */
+    public function getVu()
+    {
+        return $this->vu;
     }
 }

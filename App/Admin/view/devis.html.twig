@@ -28,11 +28,18 @@
                         <td>{{ devi.prospect.nom }}</td>
                         <td>{{ devi.prospect.prenom }}</td>
                         <td>{{ devi.pdfPath }}</td>
-                        {# <td>{{ devi.traite}}</td> #}
+                        <td class="etat">
+                            {% if devi.getVu is same as false %}
+                            0
+                            {% endif %}
+                            {% if devi.getVu is same as true %}
+                            1
+                            {% endif %}
+                        </td>
                         <td>
-                            {# <a href="{{path('voirDevis', {id: pdf.id})}}">Voir</a> #}
-                            <a href="{{path('affichePdf', {filename: devi.pdfPath})}}">Voir</a>
-                            <a href="{{path('deleteDevis', {id: pdf.id})}}">Supprimer</a>
+                            <a href="{{path('affichePdf', {filename: devi.pdfPath})}}">Voir</a><br>
+                            <a href="{{path('deleteDevis', {id: pdf.id})}}">Supprimer</a><br>
+                            <a href="{{path('switchVu', {id: devi.id})}}">Switch état</a>
                         </td>
                     </tr>
                 {% endfor %}
@@ -42,4 +49,7 @@
     </section>
 
 
+{% endblock %}
+{% block scripts %}
+    <script src="{{ assets('/assets/js/lisible.js') }}"></script>
 {% endblock %}

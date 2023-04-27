@@ -43,8 +43,7 @@ class AdminModule extends AbstractModule{
         // devis
         $this->router->get('/admin/tousMesDevis', [$adminAction, 'pageDevis'], 'pageDevis');
         $this->router->get('/admin/devis/delete/{id:[\d]+}', [$adminAction, 'deleteDevis'], 'deleteDevis');
-        // $this->router->get('/admin/devis/{id:[\d]+}', [$adminAction, 'voirDevis'], 'voirDevis');
-        // afficher pdfs
+        $this->router->get('/admin/tousMesDevis/switch/{id:[\d]+}', [$adminAction, 'switchVu'], 'switchVu');
         $this->router->get('/admin/pdf/{filename:[\da-zA-Z\.\-\_]+}',[$adminAction, 'affichePdf'], 'affichePdf');
 
         // messagesconnectAdmin

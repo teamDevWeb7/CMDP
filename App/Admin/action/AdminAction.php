@@ -253,6 +253,19 @@ class AdminAction{
         return $this->redirect('pageDevis');
     }
 
+    public function switchVu(ServerRequest $request){
+        $id=$request->getAttribute('id');
+        $pdf=$this->pdfRepo->find($id);
+        if($pdf->getVu()==false){
+            $pdf->setVu(true);
+        }else{
+            $pdf->setVu(false);
+        }
+        $this->manager->persist($pdf);
+        $this->manager->flush();
+        return $this->redirect('pageDevis');
+    }
+
 
 
 
