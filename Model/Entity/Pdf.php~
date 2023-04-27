@@ -7,9 +7,9 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="message")
+ * @ORM\Table(name="pdf")
  */
-class Message{
+class Pdf{
 
     /**
      * @ORM\Id
@@ -21,20 +21,14 @@ class Message{
 
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", length="50")
      *
      * @var string
      */
-    private string $message;
+    private string $pdfPath;
 
     /**
-     * @ORM\Column(type="boolean", length="1")
-     * @var boolean
-     */
-    private bool $traite;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="Prospect", inversedBy="message")
+     * @ORM\ManyToOne(targetEntity="Prospect", inversedBy="pdf")
      * @ORM\JoinColumn(name="prospect_id", referencedColumnName="id", onDelete="CASCADE")
      * @var Prospect
      */
@@ -53,27 +47,27 @@ class Message{
     }
 
     /**
-     * Set message.
+     * Set pdfPath.
      *
-     * @param string $message
+     * @param string $pdfPath
      *
-     * @return Message
+     * @return Pdf
      */
-    public function setMessage($message)
+    public function setPdfPath($pdfPath)
     {
-        $this->message = $message;
+        $this->pdfPath = $pdfPath;
 
         return $this;
     }
 
     /**
-     * Get message.
+     * Get pdfPath.
      *
      * @return string
      */
-    public function getMessage()
+    public function getPdfPath()
     {
-        return $this->message;
+        return $this->pdfPath;
     }
 
     /**
@@ -81,7 +75,7 @@ class Message{
      *
      * @param \Model\Entity\Prospect|null $prospect
      *
-     * @return Message
+     * @return Pdf
      */
     public function setProspect(\Model\Entity\Prospect $prospect = null)
     {
@@ -98,29 +92,5 @@ class Message{
     public function getProspect()
     {
         return $this->prospect;
-    }
-
-    /**
-     * Set traite.
-     *
-     * @param bool $traite
-     *
-     * @return Message
-     */
-    public function setTraite($traite)
-    {
-        $this->traite = $traite;
-
-        return $this;
-    }
-
-    /**
-     * Get traite.
-     *
-     * @return bool
-     */
-    public function getTraite()
-    {
-        return $this->traite;
     }
 }

@@ -107,6 +107,7 @@ class UserAction{
                     $prospect=$this->userRepo->findOneBy(['mail' => $data['mail']]);
                     $message= new Message;
                     $message->setMessage($data['message']);
+                    $message->setTraite(0);
 
                     if($prospect){
                         $prospect->addMessage($message);

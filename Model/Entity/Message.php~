@@ -99,28 +99,4 @@ class Message{
     {
         return $this->prospect;
     }
-
-    /**
-     * Set traite.
-     *
-     * @param bool $traite
-     *
-     * @return Message
-     */
-    public function setTraite($traite)
-    {
-        $this->traite = $traite;
-
-        return $this;
-    }
-
-    /**
-     * Get traite.
-     *
-     * @return bool
-     */
-    public function getTraite()
-    {
-        return $this->traite;
-    }
 }

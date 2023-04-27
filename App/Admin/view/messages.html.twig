@@ -19,6 +19,7 @@
                     <th>Nom du prospect</th>
                     <th>Prénom du prospect</th>
                     <th>Message</th>
+                    <th>Etat</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -28,10 +29,19 @@
                         <td>{{message.prospect.nom}}</td>
                         <td>{{message.prospect.prenom}}</td>
                         <td>{{message.message}}</td>
+                        <td class="etat">
+                            {% if message.getTraite is same as false %}
+                            0
+                            {% endif %}
+                            {% if message.getTraite is same as true %}
+                            1
+                            {% endif %}
+                            
+                        </td>
                         <td>
                             <a href="{{path('deleteMess', {id: message.id})}}">Supprimer</a><br>
-                            <a href="{{path('prospect', {id: message.prospect.id})}}">Voir prospect</a>
-                            
+                            <a href="{{path('prospect', {id: message.prospect.id})}}">Voir prospect</a><br>
+                            <a href="{{path('switchEtat', {id: message.id})}}">Switch état</a>
                         </td>
                     </tr>
                 {% endfor %}
@@ -41,4 +51,7 @@
     </section>
 
 
+{% endblock %}
+{% block scripts %}
+    <script src="{{ assets('/assets/js/lisible.js') }}"></script>
 {% endblock %}

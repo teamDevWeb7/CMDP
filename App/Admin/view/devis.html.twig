@@ -18,6 +18,7 @@
                     <th>Nom du client</th>
                     <th>Prénom du client</th>
                     <th>PDF</th>
+                    <th>Etat</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -27,6 +28,7 @@
                         <td>{{ devi.prospect.nom }}</td>
                         <td>{{ devi.prospect.prenom }}</td>
                         <td>{{ devi.pdfPath }}</td>
+                        {# <td>{{ devi.traite}}</td> #}
                         <td>
                             {# <a href="{{path('voirDevis', {id: pdf.id})}}">Voir</a> #}
                             <a href="{{path('affichePdf', {filename: devi.pdfPath})}}">Voir</a>

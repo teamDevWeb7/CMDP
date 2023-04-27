@@ -27,6 +27,19 @@ thead{
     text-transform: uppercase;
 }
 tbody tr td:nth-child(3){
-    width: 50%;
+    width: 45%;
     text-align: justify;
+}
+tbody tr td:nth-child(4){
+    width: 10%;
+}
+tbody td a:nth-child(5){
+    padding: 2px;
+    font-size: 0.9rem;
+    background-color: grey;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
 }

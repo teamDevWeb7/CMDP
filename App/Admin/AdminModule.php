@@ -50,5 +50,6 @@ class AdminModule extends AbstractModule{
         // messagesconnectAdmin
         $this->router->get('/admin/tousMesMessages', [$adminAction, 'pageMessages'], 'pageMessages');
         $this->router->get('/admin/tousMesMessages/delete/{id:[\d]+}', [$adminAction, 'deleteMess'], 'deleteMess');
+        $this->router->get('/admin/tousMesMessages/switch/{id:[\d]+}', [$adminAction, 'switchEtat'], 'switchEtat');
     } 
 }

@@ -270,6 +270,19 @@ class AdminAction{
         return $this->renderer->render('@admin/messages', ["messages"=>$messages]);
     }
 
+    public function switchEtat(ServerRequest $request){
+        $id=$request->getAttribute('id');
+        $message=$this->messageRepo->find($id);
+        if($message->getTraite()==false){
+            $message->setTraite(true);
+        }else{
+            $message->setTraite(false);
+        }
+        $this->manager->persist($message);
+        $this->manager->flush();
+        return $this->redirect('pageMessages');
+    }
+
     /**
      * fonction qui permet à l'admin de supprimer un message depuis pageMessage
      *
