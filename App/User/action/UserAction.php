@@ -134,6 +134,10 @@ class UserAction{
 
     }
 
+    public function toasto(){
+        return "<my-p class='lang' key='devisSend'>Votre demande de devis a bien été envoyée</my-p>";
+    }
+
     public function devis(ServerRequest $request){
         $method=$request->getMethod();
         if($method=='POST'){
@@ -157,26 +161,6 @@ class UserAction{
                     return $this->redirect('devis');
                 // captcha ok
                 }else{
-                    // if((!isset($post->votreNom)||$post->votreNom='')||
-                    // (!isset($post->votrePrenom)||$post->votrePrenom='')||
-                    // (!isset($post->votreMail)||$post->votreMail='')||
-                    // (!isset($post->votreTel)||$post->votreTel='')){
-                    //     echo false;
-                    //     var_dump('0');
-                        
-                    // }
-                    // if(!filter_var($post->votreMail, FILTER_VALIDATE_EMAIL)){
-                    //     echo false;
-                    //     var_dump('5');
-                    //     // je tombe dedans
-                        
-                    // }
-
-                    // $datas=$post->data;
-                    // var_dump($datas);
-                    // $data=json_decode($datas, true);
-                    // var_dump($data);
-
                     $nom=strip_tags(htmlentities($post->votreNom));
                     $prenom=strip_tags(htmlentities($post->votrePrenom));
                     $mail=strip_tags(htmlentities($post->votreMail));
@@ -188,9 +172,6 @@ class UserAction{
 
                     $analyseBesoins='';
                     $size=sizeof($mesBesoins);
-
-                    // var_dump($mesBesoins);
-                    
 
                     for($i=0; $i<$size; $i++){
                         if($i>= ($size-1)){
@@ -217,37 +198,16 @@ class UserAction{
                         <p style="font-size:20px; font-weight:400">'.$monMessage.'</p>
                     
                     ';
-                    // var_dump($content);
-                    
 
                     $html2pdf= new Html2Pdf('P', 'A4', 'fr');
                     
                     $html2pdf->writeHTML($content);
 
-                    // ok
-
-
                     $pdfName='devis_'.$date.'_'.$nom;
-                    // var_dump($pdfName);
-
-                    // pb ->$pdfName->redirection->je perds mes headers et contenu
-
 
                     $pdfPath=dirname(__DIR__, 2). DIRECTORY_SEPARATOR .'Admin'. DIRECTORY_SEPARATOR.'pdfs'. DIRECTORY_SEPARATOR.$pdfName.'.pdf';
-                    var_dump($pdfPath);
-                    var_dump($nom);
-                    var_dump($prenom);
-                    die;
-                    
 
-                    // $html2pdf->output($pdfName,'F');
                     $html2pdf->output($pdfPath,'F');
-
-                    // pb par ici
-                    
-
-
-                    // var_dump($mail);
 
                     $prospect=$this->userRepo->findOneBy(['mail' => $mail]);
                     $pdf= new Pdf;
@@ -271,11 +231,18 @@ class UserAction{
                     $this->manager->persist($pdf);
                     $this->manager->flush();
 
-                    echo true;
-                    if(true){
-                        $this->toaster->makeToast("<my-p class='lang' key='devisSend'>Votre demande de devis a bien été envoyée</my-p>", Toaster::SUCCESS);
-                        return $this->redirect('devis');
-                    }
+                    // dans preview j'ai mon truc mais pas dans la page
+                    // askip je ne peux pas echo php ds page php
+                    // faudrait reurn un truc
+                    // style toastinette dans layout.css
+                    
+                    $retour=$this->toasto();
+                    var_dump($retour);
+                    echo $retour;
+                    // if(true){
+                    //     $this->toaster->makeToast("<my-p class='lang' key='devisSend'>Votre demande de devis a bien été envoyée</my-p>", Toaster::SUCCESS);
+                    //     return $this->redirect('devis');
+                    // }
 
                     
                 }

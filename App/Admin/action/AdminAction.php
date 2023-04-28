@@ -218,15 +218,11 @@ class AdminAction{
         $devis=$this->pdfRepo->find($id);
         $devisASuppr=$devis->getPdfPath();
 
-        var_dump($devisASuppr);
-        die;
+        $chemin=$this->container->get('pdf.basePath').$devisASuppr.'.pdf';
+        unlink($chemin);
         
         $this->manager->remove($devis);
         $this->manager->flush();
-        
-        
-        $chemin=$this->container->get('pdf.basePath').$devisASuppr;
-        unlink($chemin);
 
         $this->toaster->makeToast('Devis supprimé avec succès', Toaster::SUCCESS);
     
