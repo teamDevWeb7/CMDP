@@ -20,7 +20,6 @@ use Core\Framework\Router\RedirectTrait;
 use Core\Framework\Renderer\RendererInterface;
 use GuzzleHttp\Psr7\Stream;
 use Spipu\Html2Pdf\Html2Pdf;
-use Zend\Diactoros\Response\FileResponse;
 
 
 class AdminAction{
@@ -186,25 +185,6 @@ class AdminAction{
         return $this->renderer->render('@admin/devis', ["devis"=>$devis]);
     }
 
-    // public function voirDevis(ServerRequest $request){
-    //     $id=$request->getAttribute('id');
-    //     $devis=$this->pdfRepo->find($id);
-    //     $chemin='./pdfs/'.$devis->getPdfPath();
-    //     // $pdf = require $devis->getPdfPath();
-    //     $pdf=$chemin;
-
-    //     var_dump($chemin);
-    //     var_dump($pdf);
-
-    //     // header('Content-type: application/pdf');
-    //     // header('Content-Length:'.filesize($chemin));
-    //     // readfile($chemin);
-
-    //     return $this->renderer->render('@admin/devisPDF', ["devis"=>$devis, 'chemin'=>$chemin]);
-
-
-    //     // pdf path-> la passe ds render -> ds vue ->iframe ->path = pdfPath
-    // }
 
     public function affichePdf(ServerRequest $request){
 
@@ -238,18 +218,27 @@ class AdminAction{
         $devis=$this->pdfRepo->find($id);
         $devisASuppr=$devis->getPdfPath();
 
-        var_dump($devisASuppr);
-        die;
+        $chemin=$this->container->get('pdf.basePath').$devisASuppr.'.pdf';
+        unlink($chemin);
         
         $this->manager->remove($devis);
         $this->manager->flush();
-        
-        
-        $chemin=$this->container->get('pdf.basePath').$devisASuppr;
-        unlink($chemin);
 
         $this->toaster->makeToast('Devis supprimé avec succès', Toaster::SUCCESS);
     
+        return $this->redirect('pageDevis');
+    }
+
+    public function switchVu(ServerRequest $request){
+        $id=$request->getAttribute('id');
+        $pdf=$this->pdfRepo->find($id);
+        if($pdf->getVu()==false){
+            $pdf->setVu(true);
+        }else{
+            $pdf->setVu(false);
+        }
+        $this->manager->persist($pdf);
+        $this->manager->flush();
         return $this->redirect('pageDevis');
     }
 
@@ -268,6 +257,19 @@ class AdminAction{
             'id' => 'DESC'
         ]);
         return $this->renderer->render('@admin/messages', ["messages"=>$messages]);
+    }
+
+    public function switchEtat(ServerRequest $request){
+        $id=$request->getAttribute('id');
+        $message=$this->messageRepo->find($id);
+        if($message->getTraite()==false){
+            $message->setTraite(true);
+        }else{
+            $message->setTraite(false);
+        }
+        $this->manager->persist($message);
+        $this->manager->flush();
+        return $this->redirect('pageMessages');
     }
 
     /**

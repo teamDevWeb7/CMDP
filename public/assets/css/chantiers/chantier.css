@@ -23,7 +23,21 @@ main section{
     margin-top: 10vh;
     /* border: 1px red solid; */
     margin-bottom: 12vh;
+    min-height: 27.5vh;
 }
+/* 3 partie gauche photo grande
+droite autres photo 
+en bas description*/
+/* section 50%
+article img en dessous descp
+section 50% ttes photos ->for photo in photos ->img src -> js tableau obj -> celle cliquée va a gauche, carousel */
+
+
+
+
+
+
+
 article{
     width: 48%;
     height: 60vh;

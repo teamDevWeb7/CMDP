@@ -8,7 +8,6 @@ use Model\Entity\Message;
 use Model\Entity\Chantier;
 use Model\Entity\Prospect;
 use Spipu\Html2Pdf\Html2Pdf;
-use GuzzleHttp\Psr7\Response;
 use Doctrine\ORM\EntityManager;
 use Core\Framework\Router\Router;
 use Core\Session\SessionInterface;
@@ -93,13 +92,11 @@ class UserAction{
                     $errors=$validator
                                     ->required('nom', 'prenom', 'mail', 'tel', 'message')
                                     ->email('mail')
-                                    // pb 1 seule erreur
                                     ->getErrors();
                     // si champs pas remplis ou input !value demandée, renvoie toast+redirect
                     if($errors){
                         foreach($errors as $error){
                             $this->toaster->makeToast($error->toString(), Toaster::ERROR);
-                            
                         }
                         return $this->redirect('contact');
                     }
@@ -107,6 +104,7 @@ class UserAction{
                     $prospect=$this->userRepo->findOneBy(['mail' => $data['mail']]);
                     $message= new Message;
                     $message->setMessage($data['message']);
+                    $message->setTraite(0);
 
                     if($prospect){
                         $prospect->addMessage($message);
@@ -136,8 +134,12 @@ class UserAction{
 
     }
 
+    public function toasto(){
+        $this->toaster->makeToast("<my-p class='lang' key='devisSend'>Votre demande de devis a bien été envoyée</my-p>", Toaster::SUCCESS);
+        return $this->redirect('devis');
+    }
+
     public function devis(ServerRequest $request){
-        // header('Location: http://localhost:8000/App/User/action/UserAction.php');
         $method=$request->getMethod();
         if($method=='POST'){
             // pot de miel
@@ -160,29 +162,10 @@ class UserAction{
                     return $this->redirect('devis');
                 // captcha ok
                 }else{
-                    if((!isset($post->votreNom)||$post->votreNom='')||
-                    (!isset($post->votrePrenom)||$post->votrePrenom='')||
-                    (!isset($post->votreMail)||$post->votreMail='')||
-                    (!isset($post->votreTel)||$post->votreTel='')){
-                        echo false;
-                        die;
-                    }
-                    if(!filter_var($post->votreMail, FILTER_VALIDATE_EMAIL)){
-                        echo false;
-                        die;
-                    }
-
                     $nom=strip_tags(htmlentities($post->votreNom));
                     $prenom=strip_tags(htmlentities($post->votrePrenom));
                     $mail=strip_tags(htmlentities($post->votreMail));
                     $tel=strip_tags(htmlentities($post->votreTel));
-
-                    $data=array(
-                        'nom'=>$nom,
-                        'prenom'=>$prenom,
-                        'mail'=>$mail,
-                        'tel'=>$tel
-                    );
                     
                     $monBien=$post->monBien;
                     $mesBesoins=$post->mesBesoins;
@@ -190,8 +173,6 @@ class UserAction{
 
                     $analyseBesoins='';
                     $size=sizeof($mesBesoins);
-
-                    // var_dump($mesBesoins);
 
                     for($i=0; $i<$size; $i++){
                         if($i>= ($size-1)){
@@ -218,23 +199,21 @@ class UserAction{
                         <p style="font-size:20px; font-weight:400">'.$monMessage.'</p>
                     
                     ';
-                    var_dump($content);
 
                     $html2pdf= new Html2Pdf('P', 'A4', 'fr');
                     
                     $html2pdf->writeHTML($content);
 
-
                     $pdfName='devis_'.$date.'_'.$nom;
-                    $pdfPath=dirname(__DIR__, 2). DIRECTORY_SEPARATOR .'Admin'. DIRECTORY_SEPARATOR.'pdfs'. DIRECTORY_SEPARATOR.$pdfName;
+
+                    $pdfPath=dirname(__DIR__, 2). DIRECTORY_SEPARATOR .'Admin'. DIRECTORY_SEPARATOR.'pdfs'. DIRECTORY_SEPARATOR.$pdfName.'.pdf';
 
                     $html2pdf->output($pdfPath,'F');
 
-                    // var_dump($pdfPath);
-
-                    $prospect=$this->userRepo->findOneBy(['mail' => $data['mail']]);
+                    $prospect=$this->userRepo->findOneBy(['mail' => $mail]);
                     $pdf= new Pdf;
                     $pdf->setPdfPath($pdfName);
+                    $pdf->setVu(0);
 
                     if($prospect){
                         $prospect->addPdf($pdf);
@@ -242,10 +221,10 @@ class UserAction{
                     }
                     else{
                         $prosp= new Prospect;
-                        $prosp->setNom($data['nom'])
-                                ->setPrenom($data['prenom'])
-                                ->setMail($data['mail'])
-                                ->setPhone($data['tel'])
+                        $prosp->setNom($nom)
+                                ->setPrenom($prenom)
+                                ->setMail($mail)
+                                ->setPhone($tel)
                                 ->addPdf($pdf);
                                 $pdf->setProspect($prosp);
                         $this->manager->persist($prosp);
@@ -253,11 +232,20 @@ class UserAction{
                     $this->manager->persist($pdf);
                     $this->manager->flush();
 
-                    echo true;
-                    if(true){
-                        $this->toaster->makeToast("<my-p class='lang' key='devisSend'>Votre demande de devis a bien été envoyée</my-p>", Toaster::SUCCESS);
-                    return $this->redirect('devis');
-                    }
+                    // dans preview j'ai mon truc mais pas dans la page
+                    // askip je ne peux pas echo php ds page php
+                    // faudrait reurn un truc
+                    // style toastinette dans layout.css
+                    
+                    $retour=$this->toasto();
+                    var_dump($retour);
+                    // mon toast a ete envoyé quand j'ai changé de page ->page accueil admin ???
+                    echo $retour;
+                    // if(true){
+                    //     $this->toaster->makeToast("<my-p class='lang' key='devisSend'>Votre demande de devis a bien été envoyée</my-p>", Toaster::SUCCESS);
+                    //     return $this->redirect('devis');
+                    // }
+
                     
                 }
             }    
@@ -270,7 +258,7 @@ class UserAction{
     }
 
     public function mentionsLeg(ServerRequest $request){
-        return $this->renderer->render('@user/ML', ['siteName' => 'Cmydesignprojets']);
+        return $this->renderer->render('@user/ML', ['siteName' => 'Cmydesignprojets', 'mail'=>'bureau.mdpc@gmail.com']);
     }
 
     public function page(ServerRequest $request){

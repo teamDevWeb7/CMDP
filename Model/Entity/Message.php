@@ -28,6 +28,12 @@ class Message{
     private string $message;
 
     /**
+     * @ORM\Column(type="boolean", length="1")
+     * @var boolean
+     */
+    private bool $traite;
+
+    /**
      * @ORM\ManyToOne(targetEntity="Prospect", inversedBy="message")
      * @ORM\JoinColumn(name="prospect_id", referencedColumnName="id", onDelete="CASCADE")
      * @var Prospect
@@ -92,5 +98,29 @@ class Message{
     public function getProspect()
     {
         return $this->prospect;
+    }
+
+    /**
+     * Set traite.
+     *
+     * @param bool $traite
+     *
+     * @return Message
+     */
+    public function setTraite($traite)
+    {
+        $this->traite = $traite;
+
+        return $this;
+    }
+
+    /**
+     * Get traite.
+     *
+     * @return bool
+     */
+    public function getTraite()
+    {
+        return $this->traite;
     }
 }

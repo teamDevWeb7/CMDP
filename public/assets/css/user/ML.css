@@ -1,0 +1,22 @@
+main{
+    padding: 5vh 3vw;
+}
+h1, h2, h3{
+    color: rgb(213,180,61);
+}
+h1{
+    width: 100%;
+    text-align: center;
+    padding-top: 5vh;
+    margin-bottom: 10vh;
+}
+h2{
+    margin-top: 5vh;
+    margin-bottom: 3vh;
+}
+p{
+    text-align: justify;
+}
+h3{
+    margin: 2vh 0;
+}

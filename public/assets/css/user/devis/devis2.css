@@ -63,16 +63,14 @@
 
 form{
     position: relative;
-    /* border: black 1px solid; */
     width: 50%;
-    height: 35vh;
+    height: 50vh;
     margin-top: 2vh;
 
 }
 form div{
     position: relative;
     height: 50px;
-    margin-bottom: 2vh;
 }
 /* inputs */
 form div input{
@@ -166,7 +164,7 @@ form div i{
 
 .g-recaptcha{
     position: absolute;
-    bottom: 0vh;
+    bottom: 3vh;
     left: 0vw;
 }
 

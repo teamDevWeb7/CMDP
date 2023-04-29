@@ -38,6 +38,7 @@
             <thead>
                 <tr>
                     <th>Messages(s)</th>
+                    <th>Etat</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -45,6 +46,7 @@
                 {% for message in messages %}
                     <tr>
                         <td>{{message.message}}</td>
+                        <td class="etat">{{message.traite}}</td>
                         <td>
                             <a href="{{path('deleteMess', {id: message.id})}}">Supprimer</a>
                         </td>
@@ -52,10 +54,13 @@
                     </tr>
                 {% endfor %}
             </tbody>
-            
         </table>
+        
 
     </section>
 
 
+{% endblock %}
+{% block scripts %}
+    <script src="{{ assets('/assets/js/lisible.js') }}"></script>
 {% endblock %}

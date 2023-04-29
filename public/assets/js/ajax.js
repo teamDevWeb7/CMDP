@@ -1,5 +1,4 @@
-function sendData(e) {
-    e.preventDefault();
+function sendData() {
     const g_recaptcha = document.querySelector('#g-recaptcha-response');
     const recaptcha_response=g_recaptcha.value;
     let inputs=document.querySelectorAll('input');
@@ -15,11 +14,6 @@ function sendData(e) {
         'g_recaptcha_response': recaptcha_response
     };
 
-
-
-
-
-
     var xhr = new XMLHttpRequest();
     // var array = {'g_recaptcha_response': recaptcha_response};
     // array['g-recaptcha-response']= recaptcha_response;
@@ -34,7 +28,7 @@ function sendData(e) {
     console.log(data);
 
     //👇 what to do when you receive a response
-    xhr.onload = function () {
-            console.log(xhr.response);
-    };
+    // xhr.onload = function () {
+    //         console.log(xhr.response);
+    // };
 }

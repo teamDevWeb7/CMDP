@@ -13,8 +13,8 @@ table{
     border-collapse: collapse;
 }
 table th, table td{
-    width: 25%;
-    border: 1px solid black;
+    width: 20%;
+    text-align: center;
 
 }
 table th{
@@ -26,4 +26,15 @@ tr:nth-child(even){
 
 tr td:last-child a{
     margin-left: 1vw;
+}
+
+tbody td a:nth-child(5){
+    padding: 2px;
+    font-size: 0.9rem;
+    background-color: grey;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
 }
