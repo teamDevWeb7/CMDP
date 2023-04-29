@@ -135,7 +135,8 @@ class UserAction{
     }
 
     public function toasto(){
-        return "<my-p class='lang' key='devisSend'>Votre demande de devis a bien été envoyée</my-p>";
+        $this->toaster->makeToast("<my-p class='lang' key='devisSend'>Votre demande de devis a bien été envoyée</my-p>", Toaster::SUCCESS);
+        return $this->redirect('devis');
     }
 
     public function devis(ServerRequest $request){
@@ -238,6 +239,7 @@ class UserAction{
                     
                     $retour=$this->toasto();
                     var_dump($retour);
+                    // mon toast a ete envoyé quand j'ai changé de page ->page accueil admin ???
                     echo $retour;
                     // if(true){
                     //     $this->toaster->makeToast("<my-p class='lang' key='devisSend'>Votre demande de devis a bien été envoyée</my-p>", Toaster::SUCCESS);
@@ -256,7 +258,7 @@ class UserAction{
     }
 
     public function mentionsLeg(ServerRequest $request){
-        return $this->renderer->render('@user/ML', ['siteName' => 'Cmydesignprojets']);
+        return $this->renderer->render('@user/ML', ['siteName' => 'Cmydesignprojets', 'mail'=>'bureau.mdpc@gmail.com']);
     }
 
     public function page(ServerRequest $request){
