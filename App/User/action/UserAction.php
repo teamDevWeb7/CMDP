@@ -74,7 +74,7 @@ class UserAction{
             }else{
                 // captcha
                 // clé secrète donnée par google
-                $cle='6LfpX-ckAAAAAN9NuwK9BKuWBfPekgenk1TinPU6';
+                $cle=$_ENV['GOOGLE_SECRET_KEY'];
                 $response = $_POST['g-recaptcha-response'];
 
                 $gapi = 'https://www.google.com/recaptcha/api/siteverify?secret='.$cle.'&response='.$response;
@@ -129,7 +129,7 @@ class UserAction{
             }
         }
         else{
-            return $this->renderer->render('@user/contact', ['siteName' => 'Cmydesignprojets']);
+            return $this->renderer->render('@user/contact', ['siteName' => 'Cmydesignprojets', 'gg_key'=>$_ENV['GOOGLE_KEY']]);
         };
 
     }
@@ -148,7 +148,7 @@ class UserAction{
             }else{
                 // captcha
                 // clé secrète donnée par google
-                $cle='6LfpX-ckAAAAAN9NuwK9BKuWBfPekgenk1TinPU6';
+                $cle=$_ENV['GOOGLE_SECRET_KEY'];
                 $post=json_decode(file_get_contents('php://input'));
                 $response = $post->g_recaptcha_response;
 
@@ -250,7 +250,7 @@ class UserAction{
                 }
             }    
         }
-        return $this->renderer->render('@user/devis', ['siteName' => 'Cmydesignprojets']);
+        return $this->renderer->render('@user/devis', ['siteName' => 'Cmydesignprojets', 'gg_key'=>$_ENV['GOOGLE_KEY']]);
     }
 
     public function faq(ServerRequest $request){

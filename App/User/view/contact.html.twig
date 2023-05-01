@@ -65,9 +65,7 @@
                 <label for="message" id="labMess"><my-p class="lang" key="mess">Votre message : </my-p><span class="red">*</span></label>
                 <textarea id="message" name="message" rows="10" cols="30" required="required" maxlength="400"></textarea>
 
-                <div class="g-recaptcha" data-sitekey=<?php  $_ENV['GOOGLE_KEY']?>
-                    
-                </div>
+                <div class="g-recaptcha" data-sitekey={{gg_key}}></div>
 
                 {{ csrf() }}
 
