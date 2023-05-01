@@ -34,6 +34,9 @@ $builder= new ContainerBuilder();
 // ajout feuille def principale ds dossier racine
 $builder->addDefinitions(dirname(__DIR__).DIRECTORY_SEPARATOR.'config'.DIRECTORY_SEPARATOR.'config.php');
 
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
+
 // recup instance container de dep
 $container=$builder->build();
 
