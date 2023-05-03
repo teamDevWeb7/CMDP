@@ -17,7 +17,11 @@
 {% endblock %}
 
 {% block body %}
+    
     <div id="swipe">
+        <my-div>
+            <my-p class='lang' key='devisSend'>Votre demande de devis a bien été envoyée</my-p>
+        </my-div>
         <my-alert class="hideAlert">
             <p key="alert1" class="lang">Merci de sélectionner une proposition</p>
             <button onclick="fermer()">OK</button>
@@ -31,6 +35,7 @@
 
             <button onclick="fermer2()">OK</button>
         </my-alert>
+        
         <section class="chemin">
             <div class="trait"></div>
             <div class="pts1 bigger"></div>
@@ -85,6 +90,7 @@
 
         </section>
         <section id="p4" class="left">
+            
 
             <form action="#" method="POST" onsubmit="sender(event)" >
                 <div>

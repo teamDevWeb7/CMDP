@@ -49,6 +49,12 @@ class UserAction{
         return $this->renderer->render('@user/accueil', ['siteName' => 'Cmydesignprojets']);
     }
 
+    /**
+     * rend vue+ affiche 3 derniers chantiers
+     *
+     * @param ServerRequest $request
+     * @return void
+     */
     public function aPropos(ServerRequest $request){
         $chantiers=$this->chantiersRepo->findBy([], [
             'id' => 'DESC'
@@ -134,11 +140,12 @@ class UserAction{
 
     }
 
-    public function toasto(){
-        $this->toaster->makeToast("<my-p class='lang' key='devisSend'>Votre demande de devis a bien été envoyée</my-p>", Toaster::SUCCESS);
-        return $this->redirect('devis');
-    }
-
+    /**
+     * en get affichage page, recup données js avec ajax, enregistre un pdf ds serveur, enregistre prospect en bdd
+     *
+     * @param ServerRequest $request
+     * @return void
+     */
     public function devis(ServerRequest $request){
         $method=$request->getMethod();
         if($method=='POST'){
@@ -232,24 +239,7 @@ class UserAction{
                     $this->manager->persist($pdf);
                     $this->manager->flush();
 
-                    // dans preview j'ai mon truc mais pas dans la page
-                    // askip je ne peux pas echo php ds page php
-                    // faudrait reurn un truc
-                    // style toastinette dans layout.css
-                    
-                    
-                    // mon toast a ete envoyé quand j'ai changé de page ->page accueil admin ???
-                    // si fait des trucs après echo ca ne fait rien
-                    echo true;
-
-                    $retour=$this->toasto();
-                    var_dump($retour);
-                    // if(true){
-                    //     $this->toaster->makeToast("<my-p class='lang' key='devisSend'>Votre demande de devis a bien été envoyée</my-p>", Toaster::SUCCESS);
-                    //     return $this->redirect('devis');
-                    // }
-
-                    
+                    echo true; 
                 }
             }    
         }
