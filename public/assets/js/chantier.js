@@ -1,92 +1,32 @@
-let art=document.querySelectorAll('section div article');
-let imgs=document.querySelectorAll('section div article img');
+let mini=document.querySelectorAll('aside article');
+let gd=document.querySelectorAll('section div article');
 let aside=document.querySelector('aside');
-let outer=[];
-let tab=[];
 
-
-// imgs.forEach(element=>outer+=element.outerHTML);
-// console.log(outer);
-// console.log(imgs);
-
-
-// let chaine=outer.split('<');
-// console.log('<'+chaine[1]);
-
+/**
+ * lors du click sur aside, recup id target, fais boucle ttes gdes imgs, qd egalité, imgs opacité 1
+ */
 aside.addEventListener(
     'click',
     (event)=>{
-        // check égal obj va pas pck check instance->va retourner false
+        gd.forEach(element=>element.style.opacity='0');
 
+        // recu id parent de la target
+        let targete=event.target.parentNode.id;
+        // eneleve 5 prems caract pr laisser que nbrs
+        let nbrs=targete.slice(5);
 
+        let idd=[];
 
-        // art.forEach(element=>element.style.opacity='0');
-        let targete=event.target;
-        // targete.toString();
-        console.log(targete);
-        // console.log(imgs[1]);
-        // console.log(targete.currentSrc);
-        // console.log(targete.src);
-        // let targo=JSON.stringify(targete);
+        // rempli tab avec que nbr des ids des gds imgs
+        gd.forEach(element=>idd.push(element.getAttribute('id').slice(3)));
 
-
-        let size=imgs.length;
-
-        // imgs.forEach(element=>tab+=JSON.stringify(element));
+        let size=idd.length;
         
-        // for(let i=0; i<size; i++){
-        //     if(tab[i]===targo){
-        //         console.log('salut');
-        //     }
-        // }
-
-
+        // boucle->qd id target ==id gd img->cette img apparait
         for(let i=0; i<size; i++){
-            if(_.isEqual(imgs[i], targete)){
-                console.log('matinée');
-            }else{
-                console.log('chocolatine');
+            if(nbrs==idd[i]){
+                gd[i].style.opacity='1';
             }
         }
-
-
-        // console.log(size);
-
-        // for(let i=0; i<size; i++){
-        //     if(targete=='<'+chaine[i]){
-        //         console.log('ca marche');
-        //     }
-        // }
-
-        // for(let j=0; j<size; j++){
-        //     if(targete==imgs[j]){
-        //         art[j].style.opacity='1';
-        //         console.log('wesh');
-        //     }
-        // }
-
-        // for(let i=0; i<size; i++){
-        //     if(imgs[i]==targete){
-        //         art[i].classList.remove('derriere');
-        //         art[i].classList.add('devant');
-        //     }else{
-                
-        //         art[i].classList.add('derriere');
-        //         art[i].classList.remove('devant');
-        //     }
-        // }
-
-        // for(let i=0; i<size; i++){
-        //     if(imgs[i]!=targete){
-        //         console.log('cc');
-        //         console.log('a'+imgs[i]+'a');
-                
-        //     }else{
-        //         // art[i].style.filter='blur(4px)';
-        //         // art[i].style.display='none';
-        //         console.log(imgs[i]);
-        //     }
-        // }
     }
 )
-

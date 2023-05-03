@@ -237,10 +237,13 @@ class UserAction{
                     // faudrait reurn un truc
                     // style toastinette dans layout.css
                     
+                    
+                    // mon toast a ete envoyé quand j'ai changé de page ->page accueil admin ???
+                    // si fait des trucs après echo ca ne fait rien
+                    echo true;
+
                     $retour=$this->toasto();
                     var_dump($retour);
-                    // mon toast a ete envoyé quand j'ai changé de page ->page accueil admin ???
-                    echo $retour;
                     // if(true){
                     //     $this->toaster->makeToast("<my-p class='lang' key='devisSend'>Votre demande de devis a bien été envoyée</my-p>", Toaster::SUCCESS);
                     //     return $this->redirect('devis');

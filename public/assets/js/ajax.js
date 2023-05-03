@@ -31,4 +31,8 @@ function sendData() {
     // xhr.onload = function () {
     //         console.log(xhr.response);
     // };
+
+
+
+    // gestion toast js
 }

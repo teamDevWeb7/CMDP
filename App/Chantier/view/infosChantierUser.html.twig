@@ -22,7 +22,7 @@
     <section>
         <div>
             {% for photo in photos %}
-            <article>
+            <article class="grand" id="gd_{{photo.id}}">
                 <img src="{{assets('/assets/imgs/chantiers/'~ photo.imgPath) }}" alt="Photo provenant du chantier">
                 <div>
                     <p>{{photo.descImg}}</p>
@@ -35,7 +35,7 @@
 
         <aside>
             {% for photo in photos %}
-            <article>
+            <article class="miniature"  id="mini_{{photo.id}}">
                 <img src="{{assets('/assets/imgs/chantiers/'~ photo.imgPath) }}" alt="Photo provenant du chantier">
             </article>
             {% endfor %}
