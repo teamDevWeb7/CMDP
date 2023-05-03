@@ -35,4 +35,9 @@ function sendData() {
 
 
     // gestion toast js
+    let devisSend=document.querySelector('#devisSend');
+    let chemin=document.querySelector('.chemin');
+    chemin.style.opacity='0';
+    devisSend.style.display='block';
+    devisSend.style.opacity='1';
 }
