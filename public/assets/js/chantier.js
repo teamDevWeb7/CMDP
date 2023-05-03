@@ -1,6 +1,8 @@
-let mini=document.querySelectorAll('aside article');
 let gd=document.querySelectorAll('section div article');
 let aside=document.querySelector('aside');
+let img1=document.querySelector('#img1');
+
+gd.forEach(element=>element.style.opacity='0');
 
 /**
  * lors du click sur aside, recup id target, fais boucle ttes gdes imgs, qd egalité, imgs opacité 1
@@ -8,6 +10,7 @@ let aside=document.querySelector('aside');
 aside.addEventListener(
     'click',
     (event)=>{
+        img1.style.opacity='0';
         gd.forEach(element=>element.style.opacity='0');
 
         // recu id parent de la target

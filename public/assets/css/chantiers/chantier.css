@@ -25,21 +25,24 @@ main section{
     width: 100%;
     overflow: hidden;
     height: 90vh;
-    margin-bottom: 5vh;
+    margin-bottom: 10vh;
 
 }
 aside{
-    width: 30%;
+    width: 29%;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
     align-items: center;
     overflow: auto;
+    border: rgba(128, 128, 128, 0.6) 1px solid;
+    border-radius: 5px;
+    margin-left: 0.5vw;
 }
 aside article{
     width: 45%;
     height: 25vh;
-    border: 1px solid grey;
+    border: rgba(128, 128, 128, 0.6) 1px solid;
     overflow: hidden;
     display: flex;
     justify-content: center;
@@ -57,6 +60,9 @@ main>section>div{
     width: 70%;
     overflow: hidden;
     position: relative;
+    display: flex;
+    justify-content:center;
+    align-items: center;
 }
 main div article{
     position: absolute;
@@ -90,14 +96,6 @@ main div article div p{
 }
 aside article img:hover{
     scale: 1.1;
-}
-
-.derriere{
-    z-index: 1;
-}
-
-.devant{
-    z-index: 5;
 }
 
 
