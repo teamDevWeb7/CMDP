@@ -17,7 +17,9 @@
 {% endblock %}
 
 {% block body %}
+    
     <div id="swipe">
+        
         <my-alert class="hideAlert">
             <p key="alert1" class="lang">Merci de sélectionner une proposition</p>
             <button onclick="fermer()">OK</button>
@@ -31,6 +33,7 @@
 
             <button onclick="fermer2()">OK</button>
         </my-alert>
+        
         <section class="chemin">
             <div class="trait"></div>
             <div class="pts1 bigger"></div>
@@ -41,7 +44,9 @@
             <h2 key="myProject"  class="lang">Mon projet</h2>
             <div class="pts4"></div>
             <h2 key="myInfos"  class="lang">Mes coordonnées</h2>
+            
         </section>
+        
 
 
         <section id="p1" class="left0">
@@ -85,6 +90,9 @@
 
         </section>
         <section id="p4" class="left">
+            <my-div>
+                <my-p class='lang' key='devisSend' id="devisSend">Votre demande de devis a bien été envoyée</my-p>
+            </my-div>
 
             <form action="#" method="POST" onsubmit="sender(event)" >
                 <div>
@@ -117,7 +125,7 @@
 
                 
 
-                <div class="g-recaptcha" data-sitekey="6LfpX-ckAAAAAFgQUFqEEzZe9E2TlH_jFr8WLxVI"></div>
+                <div class="g-recaptcha" data-sitekey={{gg_key}}></div>
 
                 <input type="submit" value="OK" id="btn1" 
                  {# onclick="checkErreurs()" #}

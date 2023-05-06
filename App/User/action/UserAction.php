@@ -49,6 +49,12 @@ class UserAction{
         return $this->renderer->render('@user/accueil', ['siteName' => 'Cmydesignprojets']);
     }
 
+    /**
+     * rend vue+ affiche 3 derniers chantiers
+     *
+     * @param ServerRequest $request
+     * @return void
+     */
     public function aPropos(ServerRequest $request){
         $chantiers=$this->chantiersRepo->findBy([], [
             'id' => 'DESC'
@@ -74,7 +80,7 @@ class UserAction{
             }else{
                 // captcha
                 // clé secrète donnée par google
-                $cle='6LfpX-ckAAAAAN9NuwK9BKuWBfPekgenk1TinPU6';
+                $cle=$_ENV['GOOGLE_SECRET_KEY'];
                 $response = $_POST['g-recaptcha-response'];
 
                 $gapi = 'https://www.google.com/recaptcha/api/siteverify?secret='.$cle.'&response='.$response;
@@ -129,16 +135,17 @@ class UserAction{
             }
         }
         else{
-            return $this->renderer->render('@user/contact', ['siteName' => 'Cmydesignprojets']);
+            return $this->renderer->render('@user/contact', ['siteName' => 'Cmydesignprojets', 'gg_key'=>$_ENV['GOOGLE_KEY']]);
         };
 
     }
 
-    public function toasto(){
-        $this->toaster->makeToast("<my-p class='lang' key='devisSend'>Votre demande de devis a bien été envoyée</my-p>", Toaster::SUCCESS);
-        return $this->redirect('devis');
-    }
-
+    /**
+     * en get affichage page, recup données js avec ajax, enregistre un pdf ds serveur, enregistre prospect en bdd
+     *
+     * @param ServerRequest $request
+     * @return void
+     */
     public function devis(ServerRequest $request){
         $method=$request->getMethod();
         if($method=='POST'){
@@ -148,7 +155,7 @@ class UserAction{
             }else{
                 // captcha
                 // clé secrète donnée par google
-                $cle='6LfpX-ckAAAAAN9NuwK9BKuWBfPekgenk1TinPU6';
+                $cle=$_ENV['GOOGLE_SECRET_KEY'];
                 $post=json_decode(file_get_contents('php://input'));
                 $response = $post->g_recaptcha_response;
 
@@ -232,25 +239,11 @@ class UserAction{
                     $this->manager->persist($pdf);
                     $this->manager->flush();
 
-                    // dans preview j'ai mon truc mais pas dans la page
-                    // askip je ne peux pas echo php ds page php
-                    // faudrait reurn un truc
-                    // style toastinette dans layout.css
-                    
-                    $retour=$this->toasto();
-                    var_dump($retour);
-                    // mon toast a ete envoyé quand j'ai changé de page ->page accueil admin ???
-                    echo $retour;
-                    // if(true){
-                    //     $this->toaster->makeToast("<my-p class='lang' key='devisSend'>Votre demande de devis a bien été envoyée</my-p>", Toaster::SUCCESS);
-                    //     return $this->redirect('devis');
-                    // }
-
-                    
+                    echo true; 
                 }
             }    
         }
-        return $this->renderer->render('@user/devis', ['siteName' => 'Cmydesignprojets']);
+        return $this->renderer->render('@user/devis', ['siteName' => 'Cmydesignprojets', 'gg_key'=>$_ENV['GOOGLE_KEY']]);
     }
 
     public function faq(ServerRequest $request){

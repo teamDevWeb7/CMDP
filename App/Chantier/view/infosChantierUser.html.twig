@@ -20,16 +20,34 @@
     <p>{{chantier.dateChantier}} ~ {{chantier.lieu}}</p>
 
     <section>
-        {% for photo in photos %}
-        <article>
-            <img src="{{assets('/assets/imgs/chantiers/'~ photo.imgPath) }}" alt="Photo provenant du chantier">
-            <details>
-                <summary>En savoir plus</summary>
-                <p>{{photo.descImg}}</p>
-            </details>
-        </article>
-        {% endfor %}
+        <div>
+            {% for photo in photos %}
+            <article class="grand" id="gd_{{photo.id}}">
+                <img src="{{assets('/assets/imgs/chantiers/'~ photo.imgPath) }}" alt="Photo provenant du chantier">
+                <div>
+                    <p>{{photo.descImg}}</p>
+                </div>
+            </article>
+            {% endfor %}
+
+            <img src="{{assets('/assets/imgs/chantiers/'~chantier.imgPathChantier) }}" alt="image représentant du chantier" id="img1">
+
+        </div>
+        
+
+
+        <aside>
+            {% for photo in photos %}
+            <article class="miniature"  id="mini_{{photo.id}}">
+                <img src="{{assets('/assets/imgs/chantiers/'~ photo.imgPath) }}" alt="Photo provenant du chantier">
+            </article>
+            {% endfor %}
+        </aside>
     </section>
+
+{% endblock %}
+{% block scripts %}
+    <script src="{{ assets('/assets/js/chantier.js') }}"></script>
 {% endblock %}
 
 
