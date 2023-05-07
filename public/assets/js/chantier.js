@@ -10,7 +10,8 @@ gd.forEach(element=>element.style.opacity='0');
 aside.addEventListener(
     'click',
     (event)=>{
-        if(event.target.tagName!='ASIDE'){
+        if(event.target.tagName=='IMG'){
+            console.log(event.target.tagName)
             img1.style.opacity='0';
             gd.forEach(element=>element.style.opacity='0');
     

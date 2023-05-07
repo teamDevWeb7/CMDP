@@ -1,24 +1,27 @@
 @media screen and (max-width:992px){
+    main p:nth-child(1){
+        margin-bottom: 2vh;
+        color: red;
+    }
     main section{
         flex-direction: column;
-        height: auto;
+        height: 67vh;
+        margin-bottom: 2vh;
     }
     main>section>div{
         width: 100%;
         height: 50vh;
-        border: 2px solid red;
     }
     main div article{
-        border: green 2px solid;
         height: 100%;
     }
     main div article div{
         width: 100%;
-        height: 10vh;
+        height: 5vh;
         bottom: 0;
     }
-    aside article{
-        width: 200px;
+    section aside article{
+        width: 40vw !important; 
         height: 15vh;
         margin-left: 1vw;
         margin-top: 0.5vh;
@@ -26,12 +29,13 @@
        
     }
     aside{
-        flex-wrap: nowrap;
         width: 100%;
         margin-left: 0;
         padding-right: 1vw;
         margin-top: 1vh;
         margin-bottom: -8vh;
+        height: 18vh;
+        padding-bottom: 3vh;
     }
 
 }
