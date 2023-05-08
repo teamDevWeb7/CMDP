@@ -1,12 +1,13 @@
 @media screen and (max-width:992px){
-    main p:nth-child(1){
-        margin-bottom: 2vh;
-        color: red;
+    main>p{
+        margin-bottom: 1vh;
     }
     main section{
         flex-direction: column;
-        height: 67vh;
-        margin-bottom: 2vh;
+        height: 68vh;
+        margin-bottom: 0;
+        padding-bottom: 9vh;
+        
     }
     main>section>div{
         width: 100%;
@@ -21,21 +22,28 @@
         bottom: 0;
     }
     section aside article{
-        width: 40vw !important; 
-        height: 15vh;
+        width: 40vw; 
+        height: 17.5vh;
         margin-left: 1vw;
         margin-top: 0.5vh;
         margin-bottom: 0.5vh;
        
     }
     aside{
-        width: 100%;
-        margin-left: 0;
+        width: 96%;
+        margin-left: 2%;
         padding-right: 1vw;
         margin-top: 1vh;
         margin-bottom: -8vh;
-        height: 18vh;
-        padding-bottom: 3vh;
+        height: 20vh;
+        padding-bottom: 1vh;
     }
 
+}
+
+@media screen and (max-width:600px){
+    main div article div{
+        height: 8.35vh;
+        font-size: 0.8rem;
+    }
 }
