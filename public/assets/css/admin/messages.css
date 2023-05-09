@@ -14,6 +14,7 @@ p{
 table{
     width: 75%;
     border-collapse: collapse;
+    margin-bottom: 10vh;
 }
 tbody td{
     text-align: center;
@@ -42,4 +43,30 @@ tbody td a:nth-child(5){
     border-radius: 5px;
     cursor: pointer;
     text-decoration: none;
+}
+
+tbody tr td:last-child{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+}
+tr a{
+    text-decoration: none;
+}
+tr a:hover, tbody tr td:last-child p:hover{
+    font-weight: bold;
+}
+tbody tr td:last-child p{
+    cursor: pointer;
+    font-style: normal;
+    font-size: 1rem;
+    margin-bottom: 0;
+}
+section section p{
+    font-style: normal;
+    font-size: 1rem;
+    margin-bottom: 0;
 }
