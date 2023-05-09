@@ -42,7 +42,13 @@ p span{
 }
 .opts:nth-child(3){
     margin-left: 37%;
-    margin-right: 2%;
+
+}
+.opts:nth-child(4){
+    width: 15%;
+    margin-left: 50%;
+    margin-top: -4vh;
+    cursor: pointer;
 }
 .opts:hover{
     background-color: grey;
