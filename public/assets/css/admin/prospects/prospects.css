@@ -2,6 +2,7 @@ section{
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding-bottom: 10vh;
 }
 h1{
     margin: 5vh 0;
@@ -35,6 +36,15 @@ table a:hover{
 }
 form{
     margin-bottom: 5vh;
+}
+tbody tr td:last-child p{
+    cursor: pointer;
+    font-style: normal;
+    font-size: 1rem;
+}
+tbody tr td:last-child p:hover{
+    color: rgb(180, 17, 17);
+    font-weight: bold;
 }
 
 

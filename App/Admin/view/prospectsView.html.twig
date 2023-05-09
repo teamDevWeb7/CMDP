@@ -2,6 +2,7 @@
 
 {% block stylesheet %}
     <link rel="stylesheet" href="{{ assets('/assets/css/admin/prospects/prospects.css') }}">
+    <link rel="stylesheet" href="{{ assets('/assets/css/admin/suppr.css') }}">
 {% endblock %}
 
 {% block title %}
@@ -39,10 +40,15 @@
                         <td>
                             <a href="{{path('prospect', {id: prospect.id})}}">Voir</a>
                             <a href="{{path('updateProspect', {id: prospect.id})}}">Modifier</a>
-                            <a href="{{path('deleteProspect', {id: prospect.id})}}">Supprimer</a>
+                            <p class="suppress">Supprimer</p>
                             
                         </td>
                     </tr>
+                    <section class="suppr agentDormant">
+                        <p>Confirmez-vous la suppression du prospect ?</p>
+                        <a href="{{path('deleteProspect', {id: prospect.id})}}">Supprimer</a>
+                        <button onclick="shutDown(event)">Annuler</button>
+                    </section>
                 {% endfor %}
             </tbody>
             
@@ -55,4 +61,5 @@
 
 {% block scripts %}
     <script src="{{ assets('/assets/js/search.js') }}"></script>
+    <script src="{{ assets('/assets/js/suppr.js') }}"></script>
 {% endblock %}

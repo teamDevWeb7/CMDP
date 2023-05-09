@@ -3,6 +3,7 @@ let modale=document.querySelectorAll('.suppr');
 let trSize=p.length;
 let btnSpr=document.querySelectorAll('main button');
 let table=document.querySelector('table');
+let main=document.querySelector('main');
 
 console.log(modale);
 console.log(p)
@@ -31,6 +32,7 @@ function shutDown(e){
             modale[i].classList.add('agentDormant');
             table.classList.remove('blur');
             table.classList.add('normal');
+
         }
     }
 }

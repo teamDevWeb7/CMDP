@@ -15,7 +15,12 @@ p span{
     font-weight: bold;
     color: rgb(179, 22, 22);
 }
+.opts{
+    display: flex;
+    justify-content: center;
+}
 .opts a{
+    cursor: pointer;
     font-style: normal;
     font-size: 1rem;
     margin-bottom: 5vh;
@@ -23,11 +28,14 @@ p span{
     background-color: rgb(216, 216, 216);
     padding: 5px  10px;
     border-radius: 5px;
+    width: 15%;
+    text-align: center;
 }
+
 .opts a:nth-child(1){
     margin-right: 2vw;
 }
-.opts a:hover{
+.opts a:hover, .opts p:hover{
     background-color: grey;
     color: white;
 }
@@ -47,9 +55,17 @@ section table{
     width: 60%;
     text-align: center;
 }
-section table:nth-child(1) td:nth-child(1){
+section table:nth-child(2) td:nth-child(1){
     text-align: justify;
     width: 70%;
+}
+section table:nth-child(2) p{
+    font-style: normal;
+    font-size: 1rem;
+    cursor: pointer;
+}
+section table:nth-child(2) p:hover{
+    font-weight: bold;
 }
 
 
@@ -68,4 +84,9 @@ img{
     display: flex;
     align-items: center;
     text-decoration: none;
+}
+
+.suppr p{
+    font-size: 1rem;
+    font-style: normal;
 }

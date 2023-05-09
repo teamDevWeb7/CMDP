@@ -12,6 +12,7 @@ tbody{
     left:0;
     z-index: 3;
     background-color: white;
+    filter: none;
 }
 .suppr p{
     width: 100%;
