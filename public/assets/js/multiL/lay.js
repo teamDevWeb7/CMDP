@@ -37,7 +37,9 @@ var arrLang={
 
         // nos chantiers
 
-
+        'chants':'Tous nos chantiers',
+        'know':'En savoir plus',
+        'goBack':'Retour aux chantiers',
 
 
         // devis
@@ -136,7 +138,9 @@ var arrLang={
 
         // nos chantiers
 
-
+        'chants':'Our work',
+        'know':'More informations',
+        'goBack':'Go back',
 
 
         // devis

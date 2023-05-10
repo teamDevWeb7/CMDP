@@ -63,8 +63,8 @@ function shutDown(e){
                 h2.forEach(element=>element.classList.remove('blur'));
                 opts.forEach(element=>element.classList.remove('blur'));
             }else{
-                table.classList.remove('normal');
-                table.classList.add('blur');
+                table.classList.add('normal');
+                table.classList.remove('blur');
 
             }
 

@@ -15,7 +15,7 @@
 
 {% block body %}
 
-    <h1>Tous nos chantiers</h1>
+    <h1 class="lang" key="chants">Tous nos chantiers</h1>
     
     <section class="chantiers">
         {% for chantier in chantiers %}
@@ -30,7 +30,7 @@
                 <p>{{chantier.dateChantier}}</p>
                 <p>{{chantier.lieu}}</p>
                 <p>{{chantier.desc}}</p>
-                <a href="{{path('chantier', {id: chantier.id})}}">En savoir plus <img src="{{ assets('/assets/imgs/icone/chevron.png') }}" alt="fleche"></a>
+                <a href="{{path('chantier', {id: chantier.id})}}"><span class="lang" key="know">En savoir plus</span> <img src="{{ assets('/assets/imgs/icone/chevron.png') }}" alt="fleche"></a>
             </div>
         </article>
         {% endfor %}
