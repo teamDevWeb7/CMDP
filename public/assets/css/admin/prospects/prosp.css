@@ -19,7 +19,7 @@ p span{
     display: flex;
     justify-content: center;
 }
-.opts a{
+.opts a, .opts p{
     cursor: pointer;
     font-style: normal;
     font-size: 1rem;

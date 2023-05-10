@@ -33,8 +33,13 @@
     
     <div class="opts">
         <a href="{{path('updateProspect', {id: prospect.id})}}">Modifier le prospect</a>
-        <a href="{{path('deleteProspect', {id: prospect.id})}}">Supprimer le prospect</a>
+        <p class="suppresse">Supprimer</p>
     </div>
+    <section class="suppre agentDormant">
+        <p>Confirmez-vous la suppression du prospect ?</p>
+        <a href="{{path('deleteProspect', {id: prospect.id})}}">Supprimer</a>
+        <p onclick="shutDowne()">Annuler</p>
+    </section>
 
     
     

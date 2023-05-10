@@ -93,6 +93,10 @@ article{
 .txt p{
     text-align: justify;
 }
-.txt a:hover{
+.txt p:last-child{
+    text-decoration: underline;
+    cursor: pointer;
+}
+.txt a:hover, .txt p:last-child:hover{
     font-weight: bold;
 }

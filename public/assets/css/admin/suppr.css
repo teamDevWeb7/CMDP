@@ -1,7 +1,7 @@
 tbody{
     position: relative;
 }
-.suppr{
+.suppr, .suppre{
     border: 1px grey solid;
     border-radius: 15px;
     width: 36%;
@@ -14,12 +14,14 @@ tbody{
     background-color: white;
     filter: none;
 }
-.suppr p{
+.suppr p, .suppre p:first-child{
     width: 100%;
     text-align: center;
     margin-top: 2vh;
+    font-style: normal;
+    font-size: 1rem;
 }
-.suppr a{
+.suppr a, .suppre a{
     position: absolute;
     bottom: 2vh;
     left: 7vw;
@@ -30,8 +32,14 @@ tbody{
     right: 7vw;
     cursor: pointer;
 }
+.suppre p:last-child{
+    width: fit-content;
+    margin-left: 55%;
+    cursor: pointer;
+    font-style: normal;
+}
 
-.suppr a, .suppr button{
+.suppr a, .suppr button, .suppre a, .suppre p:last-child{
     border: none;
     background-color: rgb(216, 216, 216);
     border-radius: 5px;
@@ -40,12 +48,12 @@ tbody{
     text-decoration: none;
 }
 
-.suppr button:hover{
+.suppr button:hover, .suppre p:last-child:hover{
     background-color: grey;
     color: white;
 }
 
-.suppr a:hover{
+.suppr a:hover, .suppre a:hover{
     background-color: rgb(180, 17, 17);
     color: white;
 }
