@@ -34,17 +34,18 @@ burger.addEventListener('click',
     })
 
 // page affichée dans nav
-let A=document.querySelectorAll('#menuBurg a');
+let A=document.querySelectorAll('header li a');
 let destination=document.querySelector('#titre');
 
 const arrayA={
-    "/":A[0].textContent,
-    "/user/aPropos":A[1].textContent,
-    "/user/chantiers":A[2].textContent,
-    "/user/devis":A[3].textContent,
-    "/user/FAQ":A[4].textContent,
-    "/user/contact":A[5].textContent
+    "/":A[0],
+    "/user/aPropos":A[1],
+    "/user/chantiers":A[2],
+    "/user/devis":A[3],
+    "/user/FAQ":A[4],
+    "/user/contact":A[5]
  }
+
 
  let chemin1 = window.location.pathname;
 
@@ -52,7 +53,7 @@ const arrayA={
      'load',
      (event)=>{
     for(let key in arrayA){
-        let valeur=arrayA[key];
+        let valeur=arrayA[key].innerHTML;
 
         if(key==chemin1){
             destination.innerHTML=valeur;
