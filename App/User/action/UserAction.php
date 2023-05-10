@@ -64,7 +64,7 @@ class UserAction{
     }
 
     /**
-     * get->affichage, post->range mess + prospect en BDD
+     * get->affichage, post->range mess + prospect en BDD +mail
      *
      * @param ServerRequest $request
      * @return void
@@ -172,7 +172,7 @@ class UserAction{
     }
 
     /**
-     * en get affichage page, recup données js avec ajax, enregistre un pdf ds serveur, enregistre prospect en bdd
+     * en get affichage page, recup données js avec ajax, enregistre un pdf ds serveur, enregistre prospect en bdd + mail
      *
      * @param ServerRequest $request
      * @return void

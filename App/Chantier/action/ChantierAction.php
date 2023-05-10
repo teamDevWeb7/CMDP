@@ -63,12 +63,6 @@ class ChantierAction{
         return $this->renderer->render('@chantier/infosChantierUser', ["chantier"=>$chantier, "photos"=>$photos, "siteName"=>'Cmydesignprojets']);
     }
 
-    // public function aPropos(ServerRequest $request){
-    //     $chantiers=$this->chantiersRepo->findBy([], [
-    //         'id' => 'DESC'
-    //     ], 3);
-    //     return $this->renderer->render('@user/aPropos', ['siteName' => 'Cmydesignprojets', 'chantiers'=>$chantiers]);
-    // }
 
 
     /**
