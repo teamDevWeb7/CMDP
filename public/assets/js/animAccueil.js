@@ -1,5 +1,5 @@
 // animation sur lapage d'accueil
-if(window.innerWidth>992){
+if((window.innerWidth>1250) && window.innerHeight>550){
     let leftShoe=document.querySelector('#leftShoe');
     let rightShoe=document.querySelector('#rightShoe');
     let buck=document.querySelector('#bucket');
@@ -196,6 +196,9 @@ if(window.innerWidth>992){
     }
     requestAnimationFrame(goBanana1);
     
+}else if((window.innerWidth>993 && window.innerWidth<1250)&&(window.innerHeight<550)){
+    document.querySelector('#anim div').innerHTML='<p>Merci de mettre la fenêtre en plein écran pour profiter de l\'animation ;)</p>';
+    window.setInterval(function(){location.reload()},2500);
 }
 
 
