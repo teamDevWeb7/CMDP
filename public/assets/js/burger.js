@@ -54,6 +54,8 @@ const arrayA={
      (event)=>{
     for(let key in arrayA){
         let valeur=arrayA[key].innerHTML;
+        console.log(valeur);
+
 
         if(key==chemin1){
             destination.innerHTML=valeur;
