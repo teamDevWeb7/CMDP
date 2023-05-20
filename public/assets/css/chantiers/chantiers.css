@@ -63,3 +63,33 @@ article a{
     text-decoration: underline;
 }
 
+/* pagination */
+
+.pagination-container {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  bottom: 15vh;
+  width: 100%;
+  justify-content: center;
+}
+.pagination-number,
+.pagination-button{
+  font-size: 1.2rem;
+  background-color: transparent;
+  border: none;
+  margin: 0.25rem 0.25rem;
+  cursor: pointer;
+  height: 2.5rem;
+  width: 2.5rem;
+  border-radius: .2rem;
+  color: grey;
+}
+.pagination-number:hover,
+.pagination-button:not(.disabled):hover {
+  background: rgb(248, 248, 248);
+}
+.pagination-number.active {
+  color: rgb(68, 68, 68);
+}
+
