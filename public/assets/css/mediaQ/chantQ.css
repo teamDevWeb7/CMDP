@@ -27,6 +27,12 @@
     .chantiers{
         margin-bottom: 7vh;
     }
+    main{
+        min-height: 77vh;
+    }
+    .pagination-container{
+        bottom: 12vh;
+    }
 
 }
 @media screen and (max-width:600px){

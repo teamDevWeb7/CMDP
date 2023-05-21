@@ -2,6 +2,7 @@
 
 {% block stylesheet %}
     <link rel="stylesheet" href="{{ assets('/assets/css/admin/chantiers/infosChantier.css') }}">
+    <link rel="stylesheet" href="{{ assets('/assets/css/admin/suppr.css') }}">
 {% endblock %}
 
 {% block title %}
@@ -14,10 +15,16 @@
 
     <h1>Chantier {{chantier.nomChantier}}</h1>
     <a href="{{path('updateChantier', {id: chantier.id})}}" class="opts">Ajouter une photo</a>
-    <a href="{{path('addChantier', {id: chantier.id})}}" class="opts">Supprimer le chantier</a>
+    <p class="opts" onclick="supprChan()">Supprimer le chantier</p>
     <p id="att"><span>Attention</span> la suppression ou la modification d'un chantier est définitive.</p>
 
-    <section>
+    <section class="suppr agentDormant" id="supprChan">
+        <p>Confirmez-vous la suppression du chantier ?</p>
+        <a href="{{path('deleteChantier', {id: chantier.id})}}">Supprimer</a>
+        <button onclick="shutDown2()">Annuler</button>
+    </section>
+
+    <section id="tof">
         {% for photo in photos %}
         <article>
             <div class="img">
@@ -27,13 +34,22 @@
                 <p>{{photo.descImg}}</p>
                 
                 <a href="{{path('updatePhoto', {id: photo.id})}}">Modifier la photo</a>
-                <a href="{{path('deletePhoto', {id: photo.id})}}">Supprimer la photo</a>
+                <p class="suppress">Supprimer</p>
+                
             </div>
             
         </article>
+        <section class="suppr agentDormant">
+            <p>Confirmez-vous la suppression de la photo ?</p>
+            <a href="{{path('deletePhoto', {id: photo.id})}}">Supprimer la photo</a>
+            <button onclick="shutDown3(event)">Annuler</button>
+        </section>
         
     {% endfor %}
     </section>
 
 
+{% endblock %}
+{% block scripts %}
+    <script src="{{ assets('/assets/js/supprChan.js') }}"></script>
 {% endblock %}

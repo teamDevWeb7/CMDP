@@ -253,9 +253,4 @@ class Prospect{
         return $this->pdf;
     }
 
-    // public function ProspIds(){
-    //     $repo=$this->id;
-    //     $ids=[];
-    //     $ids[].=$repo;
-    // }
 }

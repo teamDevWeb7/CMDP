@@ -3,61 +3,42 @@
 let endroit=document.getElementById('rep');
 
 // div qui contient quest 
-let div=document.querySelectorAll('div');
+let div=document.querySelectorAll('#quest div');
 
-// tableau ttes img, commence ds le header
+// tableau img
 let img=document.querySelectorAll('#quest img');
 
+let faqBtn=document.querySelectorAll('#quest button');
+let quest=document.querySelector('#quest');
+let faqSize=faqBtn.length;
 
+quest.addEventListener(
+    'click',
+    (e)=>{
+        if(e.target.tagName=='BUTTON'|| e.target.tagName=='IMG'){
+            console.log(e.target.tagName)
+            for(let i=0; i<faqSize; i++){
+                
+                if(faqBtn[i]==e.target || img[i]==e.target){
+                        if(div[i].className=='hide'){
+                        img.forEach(element=>element.style.rotate='0deg');
+                        div.forEach(element=>element.classList.remove('show'));
+                        div.forEach(element=>element.classList.add('hide'));
+                        img[i].style.rotate='45deg';
+                        div[i].classList.remove('hide');
+                        div[i].classList.add('show');
 
-// fonctions showNhide pour afficher et cacher les questions inside les thèmes
-function showNhide(){
-    if(div[2].getAttribute('class')==="hide"){
-        div[2].setAttribute('class', 'show');
-        img[0].style.rotate="45deg";
-        // refermer les autres
-        div[4].setAttribute("class", "hide");
-        img[1].style.rotate="0deg";
-        div[3].setAttribute("class", "hide");
-        img[2].style.rotate="0deg";
+                        }else{
+                        img[i].style.rotate='0deg';
+                        div[i].classList.remove('show');
+                        div[i].classList.add('hide');
+                    }
+                }
+            }
+        }
     }
-    else{
-        div[2].setAttribute("class", "hide");
-        img[0].style.rotate="0deg";
-    }
-}
+)
 
-function showNhide2(){
-    if(div[3].getAttribute('class')==="hide"){
-        div[3].setAttribute('class', 'show');
-        img[1].style.rotate="45deg";
-        // refermer les autres
-        div[2].setAttribute("class", "hide");
-        img[0].style.rotate="0deg";
-        div[4].setAttribute("class", "hide");
-        img[2].style.rotate="0deg";
-    }
-    else{
-        div[3].setAttribute("class", "hide");
-        img[1].style.rotate="0deg";
-    }
-}
-
-function showNhide3(){
-    if(div[4].getAttribute('class')==="hide"){
-        div[4].setAttribute('class', 'show');
-        img[2].style.rotate="45deg";
-        // refermer les autres
-        div[2].setAttribute("class", "hide");
-        img[0].style.rotate="0deg";
-        div[3].setAttribute("class", "hide");
-        img[1].style.rotate="0deg";
-    }
-    else{
-        div[4].setAttribute("class", "hide");
-        img[2].style.rotate="0deg";
-    }
-}
 
 
 // fonctions rep pour injecter le texte de la réponse

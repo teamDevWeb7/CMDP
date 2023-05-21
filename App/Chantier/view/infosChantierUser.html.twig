@@ -14,7 +14,7 @@
 {% endblock %}
 
 {% block body %}
-    <a href="{{path('chantiers')}}" id="retour"><img src="{{ assets('/assets/imgs/icone/left-arrow.png') }}" alt="flèche retour"> Retour aux chantiers</a>
+    <a href="{{path('chantiers')}}" id="retour"><img src="{{ assets('/assets/imgs/icone/left-arrow.png') }}" alt="flèche retour"> <span class="lang" key="goBack">Retour aux chantiers</span></a>
 
     <h1>{{chantier.nomChantier}}</h1>
     <p>{{chantier.dateChantier}} ~ {{chantier.lieu}}</p>
@@ -30,7 +30,7 @@
             </article>
             {% endfor %}
 
-            <img src="{{assets('/assets/imgs/chantiers/'~chantier.imgPathChantier) }}" alt="image représentant du chantier" id="img1">
+            <img src="{{assets('/assets/imgs/chantiers/'~chantier.imgPathChantier) }}" alt="image représentant du chantier" id="img1" style="opacity:1">
 
         </div>
         

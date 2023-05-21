@@ -148,6 +148,9 @@ header p{
     top: 15vh;
     left:0;
 }
+.capi{
+    text-transform: capitalize;
+}
 
 
 

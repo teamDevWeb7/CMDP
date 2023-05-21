@@ -2,6 +2,8 @@ let gd=document.querySelectorAll('section div article');
 let aside=document.querySelector('aside');
 let img1=document.querySelector('#img1');
 
+let previous;
+
 gd.forEach(element=>element.style.opacity='0');
 
 /**
@@ -10,13 +12,17 @@ gd.forEach(element=>element.style.opacity='0');
 aside.addEventListener(
     'click',
     (event)=>{
-        if(event.target.tagName!='ASIDE'){
-            img1.style.opacity='0';
-            gd.forEach(element=>element.style.opacity='0');
+        if(event.target.tagName=='IMG'){
+            if(img1.style.opacity=='1'){
+                img1.style.opacity='0';
+            }else{
+                previous.style.opacity='0';
+            }
     
             // recu id parent de la target
             let targete=event.target.parentNode.id;
             // eneleve 5 prems caract pr laisser que nbrs
+            
             let nbrs=targete.slice(5);
     
             let idd=[];
@@ -29,7 +35,8 @@ aside.addEventListener(
             // boucle->qd id target ==id gd img->cette img apparait
             for(let i=0; i<size; i++){
                 if(nbrs==idd[i]){
-                    gd[i].style.opacity='1';
+                    previous=gd[i];
+                    previous.style.opacity='1';
                 }
             }
         }

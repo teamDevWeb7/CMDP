@@ -99,4 +99,7 @@
     details p{
         margin: 2vh 0;
     }
+    main{
+        min-height: 79vh;
+    }
 }

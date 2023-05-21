@@ -229,6 +229,12 @@ class AdminAction{
         return $this->redirect('pageDevis');
     }
 
+    /**
+     * fonction pour gérer l'état du pdf du devis -> traité ou en attente
+     *
+     * @param ServerRequest $request
+     * @return void
+     */
     public function switchVu(ServerRequest $request){
         $id=$request->getAttribute('id');
         $pdf=$this->pdfRepo->find($id);
@@ -259,6 +265,12 @@ class AdminAction{
         return $this->renderer->render('@admin/messages', ["messages"=>$messages]);
     }
 
+    /**
+     * fonction pour gérer état du message : traité ou non
+     *
+     * @param ServerRequest $request
+     * @return void
+     */
     public function switchEtat(ServerRequest $request){
         $id=$request->getAttribute('id');
         $message=$this->messageRepo->find($id);

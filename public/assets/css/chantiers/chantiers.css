@@ -3,16 +3,14 @@ h1{
     text-align: center;
     margin-top: 5vh;
     margin-bottom: 10vh;
+    color: rgb(213,180,61);
 }
 main{
     min-height: 70vh;
 }
 .chantiers{
     display: flex;
-    /* flex-wrap: wrap-reverse; */
     flex-wrap: wrap;
-    /* flex-direction:row-reverse;
-    justify-content: flex-end; */
     width: 96%;
     margin-left: 3%;
     margin-bottom: 15vh;
@@ -33,7 +31,6 @@ article{
 }
 article div:nth-child(1){
     width: 35%;
-    /* border: black 1px solid; */
 }
 article img{
     width: 100%;
@@ -64,5 +61,38 @@ article a{
 }
  article a:hover{
     text-decoration: underline;
+}
+
+/* pagination */
+
+.pagination-container {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  bottom: 15vh;
+  width: 100%;
+  justify-content: center;
+}
+.pagination-number,
+.pagination-button{
+  font-size: 1.2rem;
+  background-color: transparent;
+  border: none;
+  margin: 0.25rem 0.25rem;
+  cursor: pointer;
+  height: 2.5rem;
+  width: 2.5rem;
+  border-radius: .2rem;
+  color: grey;
+}
+.pagination-number:hover,
+.pagination-button:not(.disabled):hover {
+  background: rgb(248, 248, 248);
+}
+.pagination-number.active {
+  color: rgb(68, 68, 68);
+}
+.hidden{
+    display: none;
 }
 

@@ -9,11 +9,16 @@
 {% endblock %}
 
 {% block body %}
-    {# <a href="{{path('prospect', {id: prospect.id})}}" id="retour"><img src="{{ assets('/assets/imgs/icone/left-arrow.png') }}" alt="flèche retour"> Retour au prospect</a> #}
+    
     <section>
         <h1>Tous mes chantiers</h1>
         <a href="{{path('addChantier')}}" id="add">Ajouter un chantier</a>
+        <form>
+            <input type="text" id="searche" onkeyup="input()" placeholder="Rechercher...">
+            <div id="azert"></div>
+        </form>
         <p id="att"><span>Attention</span> la suppression ou la modification d'un chantier est définitive.</p>
+        
         <section>
             {% for chantier in chantiers %}
             <article>
@@ -28,7 +33,7 @@
                     <a href="{{path('adminChantier', {id: chantier.id})}}">Voir le chantier</a>
                     <a href="{{path('updateChantier', {id: chantier.id})}}">Ajouter une photo</a><br>
                     <a href="{{path('updatePresChantier', {id: chantier.id})}}">Modifier la présentation du chantier</a>
-                    <a href="{{path('deleteChantier', {id: chantier.id})}}">Supprimer</a>
+                    
                 </div>
             </article>
             {% endfor %}
@@ -36,4 +41,7 @@
         
     </section>
 
+{% endblock %}
+{% block scripts %}
+    <script src="{{ assets('/assets/js/search.js') }}"></script>
 {% endblock %}

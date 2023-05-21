@@ -1,7 +1,6 @@
 h1{
-    width: 100%;
     text-align: center;
-    margin: 5vh 0;
+    margin: 4vh 0;
 }
 /* btn ajouter chantier */
 #add{
@@ -9,6 +8,7 @@ h1{
     padding: 5px  10px;
     background-color: rgb(216, 216, 216);
     border-radius: 5px;
+    margin-bottom: 5vh;
     margin-left: 44%;
 
 }
@@ -48,6 +48,7 @@ article{
     margin-bottom: 2vh;
     font-size: 0.9rem;
     padding-right: 5px;
+    overflow: hidden;
 }
 .img{
     width: 35%;
@@ -65,3 +66,10 @@ article{
 .txt p:nth-child(4){
     text-align: justify;
 }
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5vh;
+}
+

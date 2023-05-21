@@ -17,6 +17,7 @@ use Psr\Container\ContainerInterface;
 use Core\Framework\Validator\Validator;
 use Core\Framework\Router\RedirectTrait;
 use Core\Framework\Renderer\RendererInterface;
+use PHPMailer\PHPMailer\PHPMailer;
 
 class UserAction{
 
@@ -63,7 +64,7 @@ class UserAction{
     }
 
     /**
-     * get->affichage, post->range mess + prospect en BDD
+     * get->affichage, post->range mess + prospect en BDD +mail
      *
      * @param ServerRequest $request
      * @return void
@@ -129,6 +130,36 @@ class UserAction{
                     $this->manager->persist($message);
                     $this->manager->flush();
 
+                    // mail
+                    $mail = new PHPMailer(true);
+            $mail->isSMTP();                                            //On utilise SMTP pour envoyer l'email
+            $mail->Host       = 'smtp.gmail.com';                       //Le serveur SMTP
+            $mail->SMTPAuth   = true;                                   //On active l'authentification SMTP
+            $mail->Username   = $_ENV['MAIL_PROP'];                     //Votre adresse email
+            $mail->Password   = $_ENV['MAIL_PASS'];                     //Votre mot de passe
+            $mail->SMTPSecure = 'ssl';                                  //La méthode de chiffrement
+            $mail->Port       = 465;                                    //Le port SMTP
+
+            //On définit l'expéditeur et le destinataire de l'email
+            $mail->setFrom($data['mail'], $data['nom']);
+            $mail->addAddress($_ENV['MAIL_PROP']);
+
+            //On définit le sujet et le corps de l'email
+            $mail->isHTML(true);
+            $mail->Subject = 'Nouveau message depuis le site';
+            $mail->Body    = 'Bonjour, <br>Merci de vous connecter à votre espace administrateur afin de traiter la requête du prospect :<br>'.$data['message'];
+            $mail->AltBody= 'Merci de vous connecter à votre espace administrateur afin de traiter la requête du prospect.';
+
+            //On essaie d'envoyer l'email
+            try {
+                $mail->send();
+                
+            } catch (\Exception $e) {
+                //Création d'un toast d'erreur et redirection vers la page de formulaire
+                $this->toaster->makeToast('Erreur lors de l\'envoi de l\'email : ' . $mail->ErrorInfo, Toaster::ERROR);
+            }
+
+
                     $this->toaster->makeToast("<my-p class='lang' key='sendMess'>Votre message a bien été envoyé</my-p>", Toaster::SUCCESS);
                     return $this->redirect('contact');
                 }  
@@ -141,7 +172,7 @@ class UserAction{
     }
 
     /**
-     * en get affichage page, recup données js avec ajax, enregistre un pdf ds serveur, enregistre prospect en bdd
+     * en get affichage page, recup données js avec ajax, enregistre un pdf ds serveur, enregistre prospect en bdd + mail
      *
      * @param ServerRequest $request
      * @return void
@@ -221,7 +252,32 @@ class UserAction{
                     $pdf= new Pdf;
                     $pdf->setPdfPath($pdfName);
                     $pdf->setVu(0);
+                                        // mail
+                    $mail = new PHPMailer(true);
+            $mail->isSMTP();                                            //On utilise SMTP pour envoyer l'email
+            $mail->Host       = 'smtp.gmail.com';                       //Le serveur SMTP
+            $mail->SMTPAuth   = true;                                   //On active l'authentification SMTP
+            $mail->Username   = $_ENV['MAIL_PROP'];                     //Votre adresse email
+            $mail->Password   = $_ENV['MAIL_PASS'];                     //Votre mot de passe
+            $mail->SMTPSecure = 'ssl';                                  //La méthode de chiffrement
+            $mail->Port       = 465;                                    //Le port SMTP
 
+            //On définit l'expéditeur et le destinataire de l'email
+            $mail->setFrom($post->votreMail, $post->votreNom);
+            $mail->addAddress($_ENV['MAIL_PROP']);
+
+            //On définit le sujet et le corps de l'email
+            $mail->isHTML(true);
+            $mail->Subject = 'Nouvelle demande de devis depuis le site';
+            $mail->Body    = 'Bonjour, <br>Merci de vous connecter à votre espace administrateur afin de traiter la requête du prospect.';
+            $mail->AltBody= 'Merci de vous connecter à votre espace administrateur afin de traiter la requête du prospect.';
+
+            //On essaie d'envoyer l'email
+            try {
+                $mail->send();
+            } catch (\Exception $e) {
+                echo false;
+            }
                     if($prospect){
                         $prospect->addPdf($pdf);
                         $pdf->setProspect($prospect);

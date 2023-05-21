@@ -1,6 +1,5 @@
 section{
     width: 100%;
-    height: 80vh;
 }
 h1{
     text-align: center;
@@ -11,6 +10,7 @@ table{
     width: 60%;
     margin-left: 20%;
     border-collapse: collapse;
+    margin-bottom: 10vh;
 }
 table th, table td{
     width: 20%;
@@ -24,9 +24,24 @@ tr:nth-child(even){
     background-color: rgb(190, 190, 190);
 }
 
-tr td:last-child a{
-    margin-left: 1vw;
+tbody tr td:last-child{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
 }
+tr a{
+    text-decoration: none;
+}
+tr a:hover, tbody tr td:last-child p:hover{
+    font-weight: bold;
+}
+tbody tr td:last-child p{
+    cursor: pointer;
+}
+
 
 tbody td a:nth-child(5){
     padding: 2px;

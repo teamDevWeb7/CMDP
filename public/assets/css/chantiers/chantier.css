@@ -54,6 +54,9 @@ aside article{
 aside img{
     height: 100%;
 }
+aside article img:hover{
+    scale: 1.1;
+}
 
 
 main>section>div{
@@ -94,9 +97,7 @@ main div article div p{
     text-align: justify;
     margin-top: 0;
 }
-aside article img:hover{
-    scale: 1.1;
-}
+
 
 
 
