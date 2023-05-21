@@ -4,10 +4,11 @@ const listItems = paginatedList.querySelectorAll("article");
 const nextButton = document.getElementById("next-button");
 const prevButton = document.getElementById("prev-button");
 
-const paginationLimit = 6;
+const paginationLimit = 8;
 const pageCount = Math.ceil(listItems.length / paginationLimit);
 let currentPage;
 
+// creer btn page
 const appendPageNumber = (index) => {
     const pageNumber = document.createElement("button");
     pageNumber.className = "pagination-number";
@@ -16,7 +17,7 @@ const appendPageNumber = (index) => {
     pageNumber.setAttribute("aria-label", "Page " + index);
     paginationNumbers.appendChild(pageNumber);
 };
-
+// lance creation page
 const getPaginationNumbers = () => {
     for (let i = 1; i <= pageCount; i++) {
       appendPageNumber(i);
@@ -42,8 +43,10 @@ window.addEventListener("load", () => {
           });
         }
       });
+
 });
 
+// afficher art selon page/limitation
 const setCurrentPage = (pageNum) => {
     currentPage = pageNum;
     
@@ -57,8 +60,10 @@ const setCurrentPage = (pageNum) => {
         item.classList.remove("hidden");
       }
     });
-  };
+    window.scrollTo(0,0)
 
+  };
+// ajout classe pr page actuelle
 const handleActivePageNumber = () => {
     document.querySelectorAll(".pagination-number").forEach((button) => {
       button.classList.remove("active");
@@ -70,6 +75,7 @@ const handleActivePageNumber = () => {
     });
 };
 
+// disabled < et >
 const disableButton = (button) => {
     button.classList.add("disabled");
     button.setAttribute("disabled", true);

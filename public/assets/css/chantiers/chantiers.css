@@ -92,4 +92,7 @@ article a{
 .pagination-number.active {
   color: rgb(68, 68, 68);
 }
+.hidden{
+    display: none;
+}
 
