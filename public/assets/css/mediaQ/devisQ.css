@@ -7,7 +7,6 @@
     my-alert button{
         width: 15%;
     }
-
     #swipe{
         height: 82vh;
         width: 100%;
@@ -17,7 +16,6 @@
         margin-left: 5%;
         height: 15%;
     }
-
     .pts1, .pts2, .pts3, .pts4{
         height: 0.9vh;
     }
@@ -33,35 +31,26 @@
     .pts1{
         left: 14%;
     }
-
-
-
-
     #p1{
         height: 60vh;
     }
-
     #Q1{
         flex-wrap: wrap;
         margin-top: 5vh;
     }
-
     .choix{
         height: 15vh;
         width: 35vw;
         margin:0;
     }
-
     .choix img{
         width: 75%;
     }
-
     .suivant, .preced{
         z-index: 5;
         width: 20vw;
         height: 5vh;
     }
-
     #s1{
         bottom: 0vh;
         right: -8vw;
@@ -72,17 +61,12 @@
     .R{
         width: 20vw;
     }
-
     .choix:first-child img, .choix:last-child img {
         margin-bottom: 0;
     }
     .choix:first-child, .choix:last-child{
         margin-top: 0;
     }
-
-
-
-
     #p2{
         width: 100%;
         margin-left: 0;
@@ -104,8 +88,6 @@
         bottom: -2vh;
         right: 7vw;
     }
-
-
     #p3{
         height: 55vh;
         top: 17.75vh;
@@ -114,12 +96,10 @@
         justify-content: space-between;
         padding-bottom: 3vh;
     }
-
     #descriptionProjet{
         height: 70%;
         width: 70%;
     }
-
     #s3{
         bottom: -5.25vh;
         right: 7vw;
@@ -128,12 +108,10 @@
         bottom: -5.25vh;
         left: 7vw;
     }
-
     form{
         width: 75%;
         height: 50vh;
     }
-
     form div{
         margin-bottom: 2vh;
     }
@@ -143,23 +121,19 @@
         justify-content: center;
         margin-top: 6vh;
     }
-
     #btn1{
         width: 20%;
         left: 40%;
     }
-
     #p4 p{
         width: 75%;
     }
-
     #pre4{
         bottom: -8vw;
         left: -8vw;
     }
-
-    
 }
+
 @media screen and (max-width:600px){
 
     my-alert{
@@ -170,7 +144,6 @@
     my-alert button{
         width: 15%;
     }
-
     .chemin{
         display: none;
     }
@@ -201,22 +174,18 @@
     .R{
         width: 40vw;
     }
-
     #s1, #s2, #s3{
         bottom: -9vh;
         right: 5vw;
     }
-
     .suivant, .preced{
         z-index: 5;
         width: 30vw;
         height: 6vh;
     }
-
     #p2 h3{
         margin-top: 5vh;
     }
-
     #grid{
         height: 90%;
         width: 90%;
@@ -232,37 +201,27 @@
     .selecte{
         width: 35vw;
     }
-
     #pre2, #pre3, #pre4{
         bottom: -9vh;
         left: 5vw;
     }
-
     #p3{
         justify-content: flex-start;
     }
-
     #descriptionProjet{
         margin-top: 5%;
         width: 80%;
     }
-
     form{
         margin-top: 5vh;
         width: 90%;
         height: 75%;
         /* border: black solid 1px; */
     }
-
     #p4 p{
         width: 95%;
     }
-
     .g-recaptcha{
         margin-top: 5vh;
     }
-
-
-
-
 }
