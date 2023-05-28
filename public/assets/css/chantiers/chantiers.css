@@ -8,6 +8,9 @@ h1{
 main{
     min-height: 70vh;
 }
+#scroll_to_top{
+    display: none;
+}
 .chantiers{
     display: flex;
     flex-wrap: wrap;
@@ -69,7 +72,7 @@ article a{
   display: flex;
   align-items: center;
   position: absolute;
-  bottom: 15vh;
+  bottom: 18vh;
   width: 100%;
   justify-content: center;
 }
