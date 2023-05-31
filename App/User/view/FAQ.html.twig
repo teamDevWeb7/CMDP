@@ -14,12 +14,24 @@
 {% endblock %}
 
 {% block body %}
-    <my-div onclick="questions()"><img src="{{ assets('/assets/imgs/icone/left-arrow.png') }}" > Voir les questions</my-div>
+    <my-div onclick="questions()"><img src="{{ assets('/assets/imgs/icone/left-arrow.png') }}" > <my-p class="lang" key="seeQ">Voir les questions</my-p></my-div>
     <my-div id="quests">
         <p onclick="closeded()"><img src="{{ assets('/assets/imgs/icone/plus.png') }}" alt="croix pour fermer" ></p>
 
         <details>
-            <summary>Thème 1 </summary>
+            <summary class="lang" key="T1">Vos travaux à nos côtés</summary>
+                <p onclick="rep()" class="lang" key="T1Q1">Combien de temps est valable le devis ?</p>
+                <hr>
+                <p onclick="rep1()" class="lang" key="T1Q2">Une fois le devis signé quand commencent les travaux ?</p>
+                <hr>
+                <p onclick="rep2()" class="lang" key="T1Q3">À quelle fréquence le chef de projet me fera des retours ?</p>
+                <hr>
+                <p onclick="rep3()" class="lang" key="T1Q4">Le chantier sera-t-il livré habitable ?</p>
+                <hr>
+                <p onclick="rep4()" class="lang" key="T1Q5">Quelle sera le montant de l'accompte ?</p>
+        </details>
+        <details>
+            <summary><my-p class="lang" key="T2">Les avantages de la rénovation</my-p> </summary>
             <p onclick="rep()">Quest 1</p>
                 <hr>
                 <p onclick="rep1()">Quest 2</p>
@@ -31,19 +43,7 @@
                 <p>fgh</p>
         </details>
         <details>
-            <summary>Thème 1 </summary>
-            <p onclick="rep()">Quest 1</p>
-                <hr>
-                <p onclick="rep1()">Quest 2</p>
-                <hr>
-                <p>dfgh</p>
-                <hr>
-                <p>fghjk</p>
-                <hr>
-                <p>fgh</p>
-        </details>
-        <details>
-            <summary>Thème 1 </summary>
+            <summary><my-p class="lang" key="T3">La rénovation énergétique</my-p> </summary>
             <p onclick="rep()">Quest 1</p>
                 <hr>
                 <p onclick="rep1()">Quest 2</p>
@@ -57,7 +57,19 @@
     </my-div>
     <div id="prems">
         <section id="quest">
-            <button type="button">Thème 1 <img src="{{ assets('/assets/imgs/icone/plus.png') }}" alt="décoration pour inviter à cliquer"></button>
+            <button type="button"><my-p class="lang" key="T1">Vos travaux à nos côtés</my-p><img src="{{ assets('/assets/imgs/icone/plus.png') }}" alt="décoration pour inviter à cliquer"></button>
+            <div class="hide">
+                <p onclick="rep()" class="lang" key="T1Q1">Combien de temps est valable le devis ?</p>
+                <hr>
+                <p onclick="rep1()" class="lang" key="T1Q2">Une fois le devis signé quand commencent les travaux ?</p>
+                <hr>
+                <p onclick="rep2()" class="lang" key="T1Q3">À quelle fréquence le chef de projet me fera des retours ?</p>
+                <hr>
+                <p onclick="rep3()" class="lang" key="T1Q4">Le chantier sera-t-il livré habitable ?</p>
+                <hr>
+                <p onclick="rep4()" class="lang" key="T1Q5">Quelle sera le montant de l'accompte ?</p>
+            </div>
+            <button type="button"><my-p class="lang" key="T2">Les avantages de la rénovation</my-p><img src="{{ assets('/assets/imgs/icone/plus.png') }}" alt="décoration pour inviter à cliquer"></button>
             <div class="hide">
                 <p onclick="rep()">Quest 1</p>
                 <hr>
@@ -68,18 +80,6 @@
                 <p>fghjk</p>
                 <hr>
                 <p>fgh</p>
-            </div>
-            <button type="button">Thème 2 <img src="{{ assets('/assets/imgs/icone/plus.png') }}" alt="décoration pour inviter à cliquer"></button>
-            <div class="hide">
-                <p onclick="rep()">Quest 1</p>
-                <hr>
-                <p onclick="rep1()">Quest 2</p>
-                <hr>
-                <p>dfgh</p>
-                <hr>
-                <p>fghjk</p>
-                <hr>
-                <p>fgh</p>
                 <hr>
                 <p>dfgh</p>
                 <hr>
@@ -99,7 +99,7 @@
                 <hr>
                 <p>fgh</p>
             </div>
-            <button type="button">Thème 3 <img src="{{ assets('/assets/imgs/icone/plus.png') }}" alt="décoration pour inviter à cliquer"></button>
+            <button type="button"><my-p class="lang" key="T3">La rénovation énergétique</my-p><img src="{{ assets('/assets/imgs/icone/plus.png') }}" alt="décoration pour inviter à cliquer"></button>
             <div class="hide">
                 <p onclick="rep()">Quest 1</p>
                 <hr>

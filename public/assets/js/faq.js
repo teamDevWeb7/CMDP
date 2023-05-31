@@ -43,7 +43,7 @@ quest.addEventListener(
 
 // fonctions rep pour injecter le texte de la réponse
 function rep(){
-    endroit.innerHTML='lorem20';
+    endroit.innerHTML='<p></p><br><q>https://www.economie.gouv.fr/dgccrf/Publications/Vie-pratique/Fiches-pratiques/Devis</q>>';
 }
 function rep1(){
     endroit.innerHTML='sdefghjik'
