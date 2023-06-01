@@ -27,7 +27,8 @@ class ChantierModule extends AbstractModule{
         $this->renderer->addPath('chantier', __DIR__. DIRECTORY_SEPARATOR.'view');
 
         $this->router->get('/user/chantiers', [$chantierAction, 'chantiers'], 'chantiers');
-        $this->router->get('/user/infosChantier/{id:[\d]+}', [$chantierAction, 'chantier'], 'chantier');
+        $this->router->get('/user/infosChantier/{id:[\d]+}/{lieu}/{nomC}', [$chantierAction, 'chantier'], 'chantier');
+        // :[\p{L}\p{N}\s-]+
 
 
         // liste de ts les chantiers avec actions
