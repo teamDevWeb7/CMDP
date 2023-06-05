@@ -52,6 +52,21 @@ class AdminAction{
         $method=$request->getMethod();
 
         if($method==='POST'){
+            // captcha
+                // clé secrète donnée par google
+                $cle=$_ENV['GOOGLE_SECRET_KEY'];
+                $response = $_POST['g-recaptcha-response'];
+
+                $gapi = 'https://www.google.com/recaptcha/api/siteverify?secret='.$cle.'&response='.$response;
+
+                $json = json_decode(file_get_contents($gapi), true);
+
+                // if captcha pas sélectionné
+                if(!$json['success']){
+                    $this->toaster->makeToast("La validation du captcha est nécessaire à l'envoi", Toaster::ERROR);
+                    return $this->redirect('connexion');
+                // captcha ok
+                }else{
             $auth=$this->container->get(AdminAuth::class);
             $data=$request->getParsedBody();
 
@@ -72,7 +87,8 @@ class AdminAction{
             return $this->redirect('connexion');
             
         }
-        return $this->renderer->render('@admin/connexion');
+    }
+        return $this->renderer->render('@admin/connexion',['gg_key'=>$_ENV['GOOGLE_KEY']]);
     }
 
     public function deco(ServerRequest $request){
@@ -299,4 +315,11 @@ class AdminAction{
     
         return $this->redirect('pageMessages');
     }
+
+    // $minutesBeforeSessionExpire=30;
+    // if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > ($minutesBeforeSessionExpire*60))) {
+    //     session_unset();     // unset $_SESSION   
+    //     session_destroy();   // destroy session data  
+    // }
+    // $_SESSION['LAST_ACTIVITY'] = time(); // update last activity
 }

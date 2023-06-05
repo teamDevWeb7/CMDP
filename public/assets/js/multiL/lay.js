@@ -29,7 +29,7 @@ var arrLang={
         'entFam':'Une entreprise familiale',
         'entFa':'Engagés et à l\'écoute, nous faisons notre possible pour vous garantir une performance à la hauteur de vos attentes. Notre entreprise à taille humaine nous permet une communication transversale qui vous assure des réponses rapides et définitives. Notre but, votre satisfaction.',
         'entEco':'Une rénovation éco-friendly',
-        'entEc':'Nous avons conscience de l\'impact que nous avons sur la planète, c\'est pour cela que nous utilisons exclusivement des peintures à l\'eau respectant les normes XXXX. De plus, nous nous fournissons exclusivement chez des enseignes qui ont à cœur leur empreinte écologique.',
+        'entEc':'Nous avons conscience de l\'impact que nous avons sur la planète, c\'est pour cela que nous utilisons exclusivement des peintures à l\'eau respectant des normes élevées. De plus, nous nous fournissons exclusivement chez des enseignes qui ont à cœur leur empreinte écologique.',
         'entSuivi':'Un suivi personnalisé',
         'entSuiv':'Parce que chaque projet est unique, nos designs le sont aussi. Notre équipe commerciale assure un suivi complet de votre projet afin de vous assurer une réalisation sur mesure de vos idées. Des conseils ciblés et une disponibilité à tout instant, nous faisons de nos clients notre priorité.',
         'rea':'Nos réalisations',
@@ -81,6 +81,15 @@ var arrLang={
         // FAQ
         'quest': 'Votre question ne figure pas dans cette FAQ ?',
         'form':'Nous vous invitons à nous contacter directement via un formulaire de contact.',
+        'seeQ':'Voir les questions',
+        'T1':'Vos travaux à nos côtés',
+        'T2':'Les avantages de la rénovation',
+        'T3':'La rénovation énergétique',
+        'T1Q1':'Combien de temps est valable le devis ?',
+        'T1Q2':'Une fois le devis signé quand commencent les travaux ?',
+        'T1Q3':'À quelle fréquence le chef de projet me fera des retours ?',
+        'T1Q4':'Le chantier sera-t-il livré habitable ?',
+        'T1Q5':'Quelle sera le montant de l\'accompte ?',
         
 
         // contact
@@ -161,7 +170,7 @@ var arrLang={
         'entFam':'A family business',
         'entFa':'Committed and attentive, we do our best to guarantee you a performance that meets your expectations. Our company on a human scale allows us a transversal communication which guarantees you quick and definitive answers. Our goal, your satisfaction.',
         'entEco':'An eco-friendly renovation',
-        'entEc':'We are aware of the impact we have on the planet, which is why we only use water-based paints that meet XXXX standards. In addition, we only buy from brands that have their ecological footprint at heart. Because every gesture counts we make sure ours are green.',
+        'entEc':'We are aware of the impact we have on the planet, which is why we only use water-based paints that meet high standards. In addition, we only buy from brands that have their ecological footprint at heart. Because every gesture counts we make sure ours are green.',
         'entSuivi':'A personalized follow-up',
         'entSuiv':'Because each project is unique, our designs are too. Our sales team ensures a complete follow-up of your project in order to ensure a tailor-made realization of your ideas. Targeted advice and availability at all times, we make our customers our priority.',
         'rea':'Our realisations',
@@ -212,6 +221,10 @@ var arrLang={
         // FAQ
         'quest': 'You can\'t find the answer at your question here ?',
         'form':'We invite you to contact us directly via a contact form.',
+        'seeQ':'Show me the questions',
+        'T1':'Working with us',
+        'T2':'The advantages of renovation',
+        'T3':'The energy efficiency',
 
 
 

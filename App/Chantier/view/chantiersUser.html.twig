@@ -20,8 +20,10 @@
     <section class="chantiers" id="paginated-list" aria-live="polite">
         {% for chantier in chantiers %}
         <article>
+            {% set seo = chantier.nomChantier|replace({' ':'_'}) %}
+            {% set seo1 = chantier.lieu|replace({' ':'_'}) %}
             <div>
-                <a href="{{path('chantier', {id: chantier.id})}}">
+                <a href="{{path('chantier', {id: chantier.id,lieu:seo1,nomC:seo})}}">
                     <img src="{{assets('/assets/imgs/chantiers/'~chantier.imgPathChantier) }}" alt="image représentant du chantier">
                 </a>
             </div>
@@ -30,7 +32,8 @@
                 <p>{{chantier.dateChantier}}</p>
                 <p>{{chantier.lieu}}</p>
                 <p>{{chantier.desc}}</p>
-                <a href="{{path('chantier', {id: chantier.id})}}"><span class="lang" key="know">En savoir plus</span> <img src="{{ assets('/assets/imgs/icone/chevron.png') }}" alt="fleche"></a>
+
+                <a href="{{path('chantier', {id: chantier.id,lieu:seo1,nomC:seo})}}"><span class="lang" key="know">En savoir plus</span> <img src="{{ assets('/assets/imgs/icone/chevron.webp') }}" alt="fleche"></a>
             </div>
         </article>
         {% endfor %}

@@ -16,7 +16,8 @@ form{
     border-bottom: 2px solid rgb(213,180,61);
     border-radius: 10px;
     width: 33%;
-    height: 30%;
+    height: 50%;
+    background-color: transparent;
 }
 input:last-child{
     width: 34%;
@@ -31,4 +32,9 @@ input:last-child{
 }
 input:last-child:hover{
     font-size: 1.1rem;
+}
+form .g-recaptcha{
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }

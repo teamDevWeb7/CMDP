@@ -24,8 +24,10 @@ $(function() {
       localStorage.setItem("stored_lang",lang);
       // appel fonction switch langues
       translateLang(lang);
+
       // sinon le A du header reste dans la langue précédente jusqu'au prochain reload
       location.reload();
+
     });
   
 });
