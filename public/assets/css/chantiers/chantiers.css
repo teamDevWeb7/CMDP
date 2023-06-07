@@ -97,6 +97,8 @@ article a{
   color: rgb(68, 68, 68);
 }
 .hidden{
-    display: none;
+    position: absolute;
+    top: 0;
+    left: -100vh;
 }
 
