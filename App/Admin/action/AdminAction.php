@@ -18,6 +18,7 @@ use Psr\Container\ContainerInterface;
 use Core\Framework\Validator\Validator;
 use Core\Framework\Router\RedirectTrait;
 use Core\Framework\Renderer\RendererInterface;
+use DateTimeImmutable;
 use GuzzleHttp\Psr7\Stream;
 use Spipu\Html2Pdf\Html2Pdf;
 
@@ -97,6 +98,13 @@ class AdminAction{
         $this->toaster->makeToast('Déconnexion réussie', Toaster::SUCCESS);
         return $this->redirect('connexion');
     }
+
+    // public function logoutForNoAction(ServerRequest $request) {
+    //     $auth=$this->container->get(AdminAuth::class);
+    //     $auth->logout();
+    //     $this->toaster->makeToast('Déconnexion suite à une inactivité trop longue', Toaster::SUCCESS);
+    //     return $this->redirect('connexion');
+    // }
 
     public function accueilAdmin(ServerRequest $request){
         return $this->renderer->render('@admin/accueilAdmin');
@@ -316,10 +324,6 @@ class AdminAction{
         return $this->redirect('pageMessages');
     }
 
-    // $minutesBeforeSessionExpire=30;
-    // if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > ($minutesBeforeSessionExpire*60))) {
-    //     session_unset();     // unset $_SESSION   
-    //     session_destroy();   // destroy session data  
-    // }
-    // $_SESSION['LAST_ACTIVITY'] = time(); // update last activity
+
+
 }
