@@ -53,6 +53,22 @@ class AdminAction{
         $method=$request->getMethod();
 
         if($method==='POST'){
+            $_SESSION['tentativeCo'];
+
+            $derniereCo=getdate();
+            var_dump($derniereCo);
+            $autoriseCo=$derniereCo[0]+5;
+            var_dump($autoriseCo);
+            // 86400
+            if(time()==$autoriseCo){
+                $_SESSION['tentativeCo']=0;
+            }
+
+            if($_SESSION['tentativeCo']>3){
+                $this->toaster->makeToast('Vous vous êtes trompé de trop nombreuses fois, revenez demain à la même heure', Toaster::ERROR);
+                return $this->redirect('connexion'); 
+            }
+
             // captcha
                 // clé secrète donnée par google
                 $cle=$_ENV['GOOGLE_SECRET_KEY'];
@@ -80,10 +96,14 @@ class AdminAction{
                 return $this->redirect('connexion');
             }
 
+            
+
             if($auth->login($data['mail'], $data['password'])){
+                $_SESSION['tentativeCo']=0;
                 $this->toaster->makeToast('Connexion réussie', Toaster::SUCCESS);
                 return $this->redirect('accueilAdmin');
             }
+            $_SESSION['tentativeCo']+=1;
             $this->toaster->makeToast('Connexion impossible, vos accès sont inconnus', Toaster::ERROR);
             return $this->redirect('connexion');
             
@@ -98,13 +118,6 @@ class AdminAction{
         $this->toaster->makeToast('Déconnexion réussie', Toaster::SUCCESS);
         return $this->redirect('connexion');
     }
-
-    // public function logoutForNoAction(ServerRequest $request) {
-    //     $auth=$this->container->get(AdminAuth::class);
-    //     $auth->logout();
-    //     $this->toaster->makeToast('Déconnexion suite à une inactivité trop longue', Toaster::SUCCESS);
-    //     return $this->redirect('connexion');
-    // }
 
     public function accueilAdmin(ServerRequest $request){
         return $this->renderer->render('@admin/accueilAdmin');
