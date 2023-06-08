@@ -196,7 +196,7 @@ if((window.innerWidth>1250) && window.innerHeight>550){
     }
     requestAnimationFrame(goBanana1);
     
-}else if(window.innerWidth<1250 || window.innerHeight<550){
+}else if((window.innerWidth<1250 && window.innerWidth>992 )|| window.innerHeight<550){
     document.querySelector('#anim div').innerHTML='<p>Merci de mettre la fenêtre en plein écran pour profiter de l\'animation ;)</p>';
     window.setInterval(function(){location.reload()},2500);
 }

@@ -403,18 +403,18 @@ class ChantierAction{
     public function fileGuard(UploadedFile $file){
         if($file->getError()===4){
             $this->toaster->makeToast("Une erreur est survenue lors du chargement", Toaster::ERROR);
-            return $this->redirect('adminChantier');
+            return $this->redirect('adminChantiers');
         }
         list($type, $format)=explode('/', $file->getClientMediaType());
 
         if(!in_array($type, ['image']) or !in_array($format, ['jpg', 'jpeg', 'png'])){
             $this->toaster->makeToast("Le format de l'image n'est pas accepté, seuls les .png, .jpeg, et .jpg sont acceptés.", Toaster::ERROR);
-            return $this->redirect('adminChantier');
+            return $this->redirect('adminChantiers');
         }
 
         if($file->getSize()>2047674){
             $this->toaster->makeToast("La taille de l'image doit etre inférieure à 2MO", Toaster::ERROR);
-            return $this->redirect('adminChantier');
+            return $this->redirect('adminChantiers');
         }
         return true;
     }

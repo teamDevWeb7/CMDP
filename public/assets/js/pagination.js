@@ -7,6 +7,7 @@ const prevButton = document.getElementById("prev-button");
 const paginationLimit = 8;
 const pageCount = Math.ceil(listItems.length / paginationLimit);
 let currentPage;
+let page;
 
 // creer btn page
 const appendPageNumber = (index) => {
@@ -25,14 +26,20 @@ const getPaginationNumbers = () => {
 };
 
 window.addEventListener("load", () => {
+    page= localStorage.getItem('page') ?? 1;
     getPaginationNumbers();
-    setCurrentPage(1);
+    setCurrentPage(page);
 
     prevButton.addEventListener("click", () => {
         setCurrentPage(currentPage - 1);
+        page-=1;
+        localStorage.setItem('page', page)
     });
     nextButton.addEventListener("click", () => {
         setCurrentPage(currentPage + 1);
+        page+=1;
+        localStorage.setItem('page', page)
+        console.log(page)
     });
 
     document.querySelectorAll(".pagination-number").forEach((button) => {
@@ -40,6 +47,9 @@ window.addEventListener("load", () => {
         if (pageIndex) {
           button.addEventListener("click", () => {
             setCurrentPage(pageIndex);
+            page=pageIndex;
+            localStorage.setItem('page', page)
+            console.log(page)
           });
         }
       });
