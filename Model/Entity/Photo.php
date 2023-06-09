@@ -41,7 +41,6 @@ class Photo{
      * @ORM\JoinColumn(name="chantier_id", referencedColumnName="id", onDelete="CASCADE")
      * @var Chantier
      */
-
      private Chantier $chantier;
 
 
