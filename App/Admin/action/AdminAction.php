@@ -53,18 +53,20 @@ class AdminAction{
         $method=$request->getMethod();
 
         if($method==='POST'){
-            $_SESSION['tentativeCo'];
+            if(!$_SESSION['tentativeCo']||$_SESSION['tentativeCo']==null){
+                $_SESSION['tentativeCo']=0;
+            }
+            $date=new DateTimeImmutable();
 
-            $derniereCo=getdate();
-            var_dump($derniereCo);
-            $autoriseCo=$derniereCo[0]+5;
-            var_dump($autoriseCo);
-            // 86400
-            if(time()==$autoriseCo){
+            var_dump($_SESSION['lastCo']);
+            var_dump($_SESSION['tentativeCo']);
+
+            if($date->getTimestamp()>=$_SESSION['lastCo']+86400){
+                // 86400+24*60*60
                 $_SESSION['tentativeCo']=0;
             }
 
-            if($_SESSION['tentativeCo']>3){
+            if($_SESSION['tentativeCo']>2){
                 $this->toaster->makeToast('Vous vous êtes trompé de trop nombreuses fois, revenez demain à la même heure', Toaster::ERROR);
                 return $this->redirect('connexion'); 
             }
@@ -103,6 +105,8 @@ class AdminAction{
                 $this->toaster->makeToast('Connexion réussie', Toaster::SUCCESS);
                 return $this->redirect('accueilAdmin');
             }
+            
+            $_SESSION['lastCo']=$date->getTimestamp();
             $_SESSION['tentativeCo']+=1;
             $this->toaster->makeToast('Connexion impossible, vos accès sont inconnus', Toaster::ERROR);
             return $this->redirect('connexion');
