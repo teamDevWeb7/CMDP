@@ -30,8 +30,12 @@ class AdminAuthMiddleware extends AbstractMiddleware{
             // recup l objet qui gere l admin 
             $auth=$this->container->get(AdminAuth::class);
             // on check si est bien un admin
-            if($auth->isAdmin()==false){
-                $this->toaster->makeToast("Vous ne passerez pas !", Toaster::ERROR);
+            if($auth->isAdmin()==false || !$auth->checkTimestamp()){
+                if(!$auth->isAdmin()) {
+                    $this->toaster->makeToast("Vous ne passerez pas !", Toaster::ERROR);
+                } else {
+                    $this->toaster->makeToast('Votre session a expiré', Toaster::ERROR);
+                }
                 return (new Response())
                     ->withHeader('Location', '/');
             }

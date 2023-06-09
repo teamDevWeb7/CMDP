@@ -43,3 +43,7 @@ aside.addEventListener(
 
     }
 )
+
+function rtn(){
+    window.history.back();
+}

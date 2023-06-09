@@ -18,6 +18,7 @@ use Psr\Container\ContainerInterface;
 use Core\Framework\Validator\Validator;
 use Core\Framework\Router\RedirectTrait;
 use Core\Framework\Renderer\RendererInterface;
+use DateTimeImmutable;
 use GuzzleHttp\Psr7\Stream;
 use Spipu\Html2Pdf\Html2Pdf;
 
@@ -52,6 +53,24 @@ class AdminAction{
         $method=$request->getMethod();
 
         if($method==='POST'){
+            if(!$_SESSION['tentativeCo']||$_SESSION['tentativeCo']==null){
+                $_SESSION['tentativeCo']=0;
+            }
+            $date=new DateTimeImmutable();
+
+            var_dump($_SESSION['lastCo']);
+            var_dump($_SESSION['tentativeCo']);
+
+            if($date->getTimestamp()>=$_SESSION['lastCo']+86400){
+                // 86400+24*60*60
+                $_SESSION['tentativeCo']=0;
+            }
+
+            if($_SESSION['tentativeCo']>2){
+                $this->toaster->makeToast('Vous vous êtes trompé de trop nombreuses fois, revenez demain à la même heure', Toaster::ERROR);
+                return $this->redirect('connexion'); 
+            }
+
             // captcha
                 // clé secrète donnée par google
                 $cle=$_ENV['GOOGLE_SECRET_KEY'];
@@ -79,10 +98,16 @@ class AdminAction{
                 return $this->redirect('connexion');
             }
 
+            
+
             if($auth->login($data['mail'], $data['password'])){
+                $_SESSION['tentativeCo']=0;
                 $this->toaster->makeToast('Connexion réussie', Toaster::SUCCESS);
                 return $this->redirect('accueilAdmin');
             }
+            
+            $_SESSION['lastCo']=$date->getTimestamp();
+            $_SESSION['tentativeCo']+=1;
             $this->toaster->makeToast('Connexion impossible, vos accès sont inconnus', Toaster::ERROR);
             return $this->redirect('connexion');
             
@@ -316,10 +341,6 @@ class AdminAction{
         return $this->redirect('pageMessages');
     }
 
-    // $minutesBeforeSessionExpire=30;
-    // if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > ($minutesBeforeSessionExpire*60))) {
-    //     session_unset();     // unset $_SESSION   
-    //     session_destroy();   // destroy session data  
-    // }
-    // $_SESSION['LAST_ACTIVITY'] = time(); // update last activity
+
+
 }

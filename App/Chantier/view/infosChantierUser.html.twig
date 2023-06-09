@@ -14,7 +14,8 @@
 {% endblock %}
 
 {% block body %}
-    <a href="{{path('chantiers')}}" id="retour"><img src="{{ assets('/assets/imgs/icone/left-arrow.webp') }}" alt="flèche retour"> <span class="lang" key="goBack">Retour aux chantiers</span></a>
+    {# <a href="{{path('chantiers')}}" id="retour"><img src="{{ assets('/assets/imgs/icone/left-arrow.webp') }}" alt="flèche retour"> <span class="lang" key="goBack">Retour aux chantiers</span></a> #}
+     <p id="retour" onclick="rtn()"><img src="{{ assets('/assets/imgs/icone/left-arrow.webp') }}" alt="flèche retour"> <span class="lang" key="goBack">Retour aux chantiers</span></p>
 
     <h1>{{chantier.nomChantier}}</h1>
     <p>{{chantier.dateChantier}} ~ {{chantier.lieu}}</p>

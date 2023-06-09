@@ -1,13 +1,15 @@
 // animation sur lapage d'accueil
+let bucket=document.querySelector('#handBucket');
+bucket.classList.add('cache');
 if((window.innerWidth>1250) && window.innerHeight>550){
     let leftShoe=document.querySelector('#leftShoe');
     let rightShoe=document.querySelector('#rightShoe');
     let buck=document.querySelector('#bucket');
-    let bucket=document.querySelector('#handBucket');
+    
     let dirt=document.querySelector('#dirt');
     let logo_titre=document.querySelector('#logo_titre');
     
-    bucket.classList.add('cache');
+    
     
     // pour gerer le seau
     let swaggiSwag=function(){
@@ -28,12 +30,8 @@ if((window.innerWidth>1250) && window.innerHeight>550){
     
     // logo avec titre apparait
     let tadaaaa=function(){
-            dirt.classList.add('aufWierdesen');
             logo_titre.classList.add('hallo');
     }
-    
-    
-    // PB-> change onglet les shoes s arretent mais pas seau et tache
     
     
     let goBanana=function(){
@@ -81,13 +79,15 @@ if((window.innerWidth>1250) && window.innerHeight>550){
                         })
                     }, 500)
                 }, 2500)
-    
+                window.setTimeout(function(){
+                    requestAnimationFrame(peinturlurer);
+                }, 4800);
                 window.setTimeout(function(){
                     requestAnimationFrame(function(){
                         leftShoe.classList.add('pause');
                         leftShoe.classList.remove('cache');
                     })
-                    requestAnimationFrame(peinturlurer);
+                    
                     window.setTimeout(function(){
                         requestAnimationFrame(tadaaaa);
                         requestAnimationFrame(function(){
@@ -196,7 +196,7 @@ if((window.innerWidth>1250) && window.innerHeight>550){
     }
     requestAnimationFrame(goBanana1);
     
-}else if((window.innerWidth>993 && window.innerWidth<1250)&&(window.innerHeight<550)){
+}else if((window.innerWidth<1250 && window.innerWidth>992 )|| window.innerHeight<550){
     document.querySelector('#anim div').innerHTML='<p>Merci de mettre la fenêtre en plein écran pour profiter de l\'animation ;)</p>';
     window.setInterval(function(){location.reload()},2500);
 }
