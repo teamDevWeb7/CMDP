@@ -66,6 +66,8 @@ class AdminAction{
                 $_SESSION['tentativeCo']=0;
             }
 
+            $_SESSION['lastCo']=$date->getTimestamp();
+            
             if($_SESSION['tentativeCo']>2){
                 $this->toaster->makeToast('Vous vous êtes trompé de trop nombreuses fois, revenez demain à la même heure', Toaster::ERROR);
                 return $this->redirect('connexion'); 
@@ -106,7 +108,7 @@ class AdminAction{
                 return $this->redirect('accueilAdmin');
             }
             
-            $_SESSION['lastCo']=$date->getTimestamp();
+            
             $_SESSION['tentativeCo']+=1;
             $this->toaster->makeToast('Connexion impossible, vos accès sont inconnus', Toaster::ERROR);
             return $this->redirect('connexion');
