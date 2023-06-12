@@ -252,6 +252,24 @@ class UserAction{
                     $pdf= new Pdf;
                     $pdf->setPdfPath($pdfName);
                     $pdf->setVu(0);
+                    if($prospect){
+                        $prospect->addPdf($pdf);
+                        $pdf->setProspect($prospect);
+                    }
+                    else{
+                        $prosp= new Prospect;
+                        $prosp->setNom($nom)
+                                ->setPrenom($prenom)
+                                ->setMail($mail)
+                                ->setPhone($tel)
+                                ->addPdf($pdf);
+                                $pdf->setProspect($prosp);
+                        $this->manager->persist($prosp);
+                    }
+                    $this->manager->persist($pdf);
+                    $this->manager->flush();
+
+                    echo true;
                                         // mail
                     $mail = new PHPMailer(true);
             $mail->isSMTP();                                            //On utilise SMTP pour envoyer l'email
@@ -278,24 +296,7 @@ class UserAction{
             } catch (\Exception $e) {
                 echo false;
             }
-                    if($prospect){
-                        $prospect->addPdf($pdf);
-                        $pdf->setProspect($prospect);
-                    }
-                    else{
-                        $prosp= new Prospect;
-                        $prosp->setNom($nom)
-                                ->setPrenom($prenom)
-                                ->setMail($mail)
-                                ->setPhone($tel)
-                                ->addPdf($pdf);
-                                $pdf->setProspect($prosp);
-                        $this->manager->persist($prosp);
-                    }
-                    $this->manager->persist($pdf);
-                    $this->manager->flush();
-
-                    echo true; 
+                     
                 }
             }    
         }
