@@ -201,10 +201,8 @@ class AdminAction{
                 && ($data['mail']===$prospect->getMail())
                 && ($data['tel']===$prospect->getPhone())){
                 $this->toaster->makeToast('Aucune modification n\'a été renseignée donc aucune valeur n\'a été modifiée', Toaster::ERROR);
-                // return $this->redirect('prospects');
-                return $this->redirect('prospect', [$id]);
 
-                // faut que je regarde cmt ça marche dans les liens pr faire pareil
+                return $this->redirect('prospect', ["id"=>$id]);
                 
             }
 
@@ -215,7 +213,7 @@ class AdminAction{
 
             $this->manager->flush();
             $this->toaster->makeToast('Prospect modifié avec succès', Toaster::SUCCESS);
-            return $this->redirect('prospects');
+            return $this->redirect('prospect', ["id"=>$id]);
         }
         
         return $this->renderer->render('@admin/updateProsp', ["prospect"=>$prospect]);
