@@ -26,6 +26,7 @@
         <textarea name="desc" maxlength="210" rows="5">{{chantier.desc}}</textarea>
         <label for="img">Image</label>
         <input name="img" type="file">
+        <div ><img src="{{assets('/assets/imgs/chantiers/'~chantier.imgPathChantier) }}" style="width:100px"></div>
         {{csrf()}}
         <input type="submit" value="Modifier">
     </form>
