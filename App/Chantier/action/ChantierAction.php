@@ -407,6 +407,7 @@ class ChantierAction{
         return $this->redirect('adminChantiers');
     }
 
+    //pb fileGaurd laisse passer trop gros et pdf
     /**
      * check si le file ajouté respecte bien ma volonté, taille, type etc
      *
