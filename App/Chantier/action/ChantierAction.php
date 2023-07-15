@@ -186,6 +186,12 @@ class ChantierAction{
             $data=$request->getParsedBody();
             $file=$request->getUploadedFiles()['img'];
 
+            // traitement img
+            $error=$this->fileGuard($file, $id);
+            if($error !== true){
+                return $error;
+            }
+
             $validator=new Validator($data);
             $errors=$validator->required('txt')->getErrors();
             if($errors){
@@ -195,11 +201,7 @@ class ChantierAction{
                 return $this->redirect('adminChantier', ["id"=>$id]);
             }
 
-            // traitement img
-            $error=$this->fileGuard($file, $id);
-            if($error !== true){
-                return $error;
-            }
+
 
             $fileName=$file->getClientFileName();
 
@@ -415,6 +417,11 @@ class ChantierAction{
      * @return void
      */
     public function fileGuard(UploadedFile $file, $id=null){
+        if($file->getSize()>=8388608){
+            $this->toaster->makeToast("La taille de l'image doit être inférieure à 2MO", Toaster::ERROR);
+            return $this->redirect('adminChantier', ["id"=>$id]);
+        }
+
         if($file->getError()===4){
             $this->toaster->makeToast("Une erreur est survenue lors du chargement", Toaster::ERROR);
             return $this->redirect('adminChantier', ["id"=>$id]);
@@ -425,11 +432,11 @@ class ChantierAction{
             $this->toaster->makeToast("Le format de l'image n'est pas accepté, seuls les .png, .jpeg, et .jpg sont acceptés.", Toaster::ERROR);
             return $this->redirect('adminChantier', ["id"=>$id]);
         }
-
-        if($file->getSize()>2047674){
-            $this->toaster->makeToast("La taille de l'image doit etre inférieure à 2MO", Toaster::ERROR);
-            return $this->redirect('adminChantier', ["id"=>$id]);
-        }
+        // 2047674 brandon
+        //2097152
+        // pas file le pb, pas le nbr, dc pb est function? ou code fait pas cette partie????
+        // qd taille file ok, fait var dump et die -> pb taille intervient avant passagz fileGaurd ? 
+        
         return true;
     }
 }
