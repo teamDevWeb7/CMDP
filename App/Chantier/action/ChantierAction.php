@@ -195,7 +195,7 @@ class ChantierAction{
             // }
 
 
-            // $file=$request->getUploadedFiles()['img'];
+            $file=$request->getUploadedFiles()['img'];
             
 
             // traitement img

@@ -17,11 +17,11 @@
     <h2>Ajouter une image</h2>
     <p>Les images doivent être de type png, jpeg ou jpg et d'une taille maximale de 2MO.</p>
     <form method="POST" enctype="multipart/form-data">
-        <input name="img" type="file">
+        <input name="img" type="file" id="file">
         <label for="txt">Ajouter la description :</label>
         <textarea name="txt" maxlength="210" rows="5"></textarea>
         {{csrf()}}
-        <input type="submit">
+        <input type="submit" id="submit">
     </form>
 
     <h2>Les images déjà présente dans {{chantier.nomChantier}}</h2>
@@ -40,4 +40,7 @@
     </section>
 
 
+{% endblock %}
+{% block scripts %}
+    <script src="{{ assets('/assets/js/checkTailleImg.js') }}"></script>
 {% endblock %}
