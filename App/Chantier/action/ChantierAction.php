@@ -185,16 +185,6 @@ class ChantierAction{
         if($method=='POST'){
             $data=$request->getParsedBody();
 
-            
-
-            // if($request->getUploadedFiles()['img']->getSize()>=2047674){
-            //     $this->toaster->makeToast("La taille de l'image doit être inférieure à 2MO", Toaster::ERROR);
-            //     return $this->redirect('adminChantier', ["id"=>$id]);
-            // }else{
-            //     $file=$request->getUploadedFiles()['img'];
-            // }
-
-
             $file=$request->getUploadedFiles()['img'];
             
 

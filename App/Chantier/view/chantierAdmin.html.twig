@@ -14,8 +14,8 @@
     <a href="{{path('adminChantiers')}}" id="retour"><img src="{{ assets('/assets/imgs/icone/left-arrow.webp') }}" alt="flèche retour"> Retour aux chantiers</a>
 
     <h1>Chantier {{chantier.nomChantier}}</h1>
-    <a href="{{path('updateChantier', {id: chantier.id})}}" class="opts">Ajouter une photo</a>
-    <p class="opts" onclick="supprChan()">Supprimer le chantier</p>
+    <a href="{{path('updateChantier', {id: chantier.id})}}" class="opts" id="a1">Ajouter une photo</a>
+    <p class="opts" onclick="supprChan()" id="a2">Supprimer le chantier</p>
     <p id="att"><span>Attention</span> la suppression ou la modification d'un chantier est définitive.</p>
 
     <section class="suppr agentDormant" id="supprChan">
