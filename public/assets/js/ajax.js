@@ -33,11 +33,17 @@ function sendData() {
     // };
 
 
-
-    // gestion toast js
-    let devisSend=document.querySelector('#devisSend');
     let chemin=document.querySelector('.chemin');
     chemin.style.opacity='0';
-    devisSend.style.display='block';
-    devisSend.style.opacity='1';
+    // gestion toast js
+    if(true){
+        let devisSend=document.querySelector('#devisSend');
+        devisSend.style.display='block';
+        devisSend.style.opacity='1';
+    }else{
+        let devisPasSend=document.querySelector('#devisPasSend');
+        devisPasSend.style.display='block';
+        devisPasSend.style.opacity='1';
+    }
+    
 }

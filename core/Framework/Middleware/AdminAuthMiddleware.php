@@ -29,7 +29,7 @@ class AdminAuthMiddleware extends AbstractMiddleware{
         if(str_starts_with($uri, '/admin')&& $uri !=='/admin/connectAdmin'){
             // recup l objet qui gere l admin 
             $auth=$this->container->get(AdminAuth::class);
-            // on check si est bien un admin
+            // on check si est bien un admin et si derniere action ok tps
             if($auth->isAdmin()==false || !$auth->checkTimestamp()){
                 if(!$auth->isAdmin()) {
                     $this->toaster->makeToast("Vous ne passerez pas !", Toaster::ERROR);

@@ -1,5 +1,10 @@
 const byebyeToasts=setTimeout(byebyeToast, 5000);
+let toasts=document.querySelectorAll('.toast');
+let nbToasts=toasts.length;
 
 function byebyeToast(){
-    document.querySelector('.toast').setAttribute('class', 'disapeared');
+    for(let i=0; i<nbToasts; i++){
+        toasts[i].setAttribute('class', 'disapeared');
+    }
+    
 }

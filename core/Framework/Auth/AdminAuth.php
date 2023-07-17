@@ -45,7 +45,7 @@ class AdminAuth{
     }
 
     /**
-     * Vérifie si le timestamp est toujours valide
+     * Vérifie si le timestamp est toujours valide -> tej admin si pas action pdt 59 s
      * @return bool
      */
     public function checkTimestamp(): bool
@@ -68,7 +68,7 @@ class AdminAuth{
      */
     private function setTimestamp(): void
     {
-        $time = 59;
+        $time = 5900;
         $this->session->set('timestamp', time() + $time);
     }
 }

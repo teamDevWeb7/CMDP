@@ -184,7 +184,25 @@ class ChantierAction{
 
         if($method=='POST'){
             $data=$request->getParsedBody();
+
+            
+
+            // if($request->getUploadedFiles()['img']->getSize()>=2047674){
+            //     $this->toaster->makeToast("La taille de l'image doit être inférieure à 2MO", Toaster::ERROR);
+            //     return $this->redirect('adminChantier', ["id"=>$id]);
+            // }else{
+            //     $file=$request->getUploadedFiles()['img'];
+            // }
+
+
             $file=$request->getUploadedFiles()['img'];
+            
+
+            // traitement img
+            $error=$this->fileGuard($file, $id);
+            if($error !== true){
+                return $error;
+            }
 
             $validator=new Validator($data);
             $errors=$validator->required('txt')->getErrors();
@@ -192,14 +210,10 @@ class ChantierAction{
                 foreach($errors as $error){
                     $this->toaster->makeToast($error->toString(), Toaster::ERROR);
                 }
-                return $this->redirect('adminChantiers');
+                return $this->redirect('adminChantier', ["id"=>$id]);
             }
 
-            // traitement img
-            $error=$this->fileGuard($file);
-            if($error !== true){
-                return $error;
-            }
+
 
             $fileName=$file->getClientFileName();
 
@@ -207,7 +221,7 @@ class ChantierAction{
             foreach($ttesPhotos as $photo){
                 if($photo->getImgPath()==$fileName){
                     $this->toaster->makeToast('La photo, identifiée par le nom que vous lui avez donné est déjà sur le serveur', Toaster::ERROR);
-                    return $this->redirect('adminChantiers');
+                    return $this->redirect('adminChantier', ["id"=>$id]);
                 }
             }
 
@@ -215,7 +229,7 @@ class ChantierAction{
             $file->moveTo($imgPath);
             if(!$file->isMoved()){
                 $this->toaster->makeToast("Une erreur s'est produite",Toaster::ERROR);
-                return $this->redirect('adminChantiers');
+                return $this->redirect('adminChantier', ["id"=>$id]);
             }
 
             $img=new Photo;
@@ -226,7 +240,7 @@ class ChantierAction{
             $this->manager->flush();
 
             $this->toaster->makeToast("Votre photo a bien été ajoutée", Toaster::SUCCESS);
-                    return $this->redirect('adminChantiers');
+            return $this->redirect('adminChantier', ["id"=>$id]);
 
         }
 
@@ -243,6 +257,10 @@ class ChantierAction{
         $id=$request->getAttribute('id');
         $photo=$this->photoRepo->find($id);
 
+        $chan=$photo->getChantier();
+        $idd=$chan->getId();
+
+
         $method=$request->getMethod();
 
         if($method=='POST'){
@@ -254,12 +272,12 @@ class ChantierAction{
                 foreach($errors as $error){
                     $this->toaster->makeToast($error->toString(), Toaster::ERROR);
                 }
-                return $this->redirect('adminChantiers');
+                return $this->redirect('adminChantier', ["id"=>$idd]);
             }
 
             if($data['txt']==$photo->getDescImg()){
                 $this->toaster->makeToast("Aucune modification n'a été envoyée", Toaster::ERROR);
-                    return $this->redirect('adminChantiers');
+                return $this->redirect('adminChantier', ["id"=>$idd]);
             }
 
             $photo->setDescImg($data['txt']);
@@ -267,7 +285,7 @@ class ChantierAction{
             $this->manager->flush();
 
             $this->toaster->makeToast("La modification de la description de la photo a bien été prise en compte", Toaster::SUCCESS);
-                    return $this->redirect('adminChantiers');
+            return $this->redirect('adminChantier', ["id"=>$idd]);
         }
 
         return $this->renderer->render('@chantier/updatePhoto', ["photo"=>$photo]);
@@ -282,6 +300,10 @@ class ChantierAction{
     public function deletePhoto(ServerRequest $request){
         $id=$request->getAttribute('id');
         $photo=$this->photoRepo->find($id);
+
+        $chan=$photo->getChantier();
+        $idd=$chan->getId();
+
         $this->manager->remove($photo);
         $this->manager->flush();
         $photoASuppr=$photo->getImgPath();
@@ -290,7 +312,7 @@ class ChantierAction{
         unlink($chemin);
 
         $this->toaster->makeToast('Photo supprimée avec succès', Toaster::SUCCESS);
-        return $this->redirect('adminChantiers');
+        return $this->redirect('adminChantier', ["id"=>$idd]);
     }
 
     /**
@@ -307,6 +329,7 @@ class ChantierAction{
         if($method=='POST'){
             $data=$request->getParsedBody();
 
+            // mettre btn je veux changer l img -> if selected -> traitement
             $file=$request->getUploadedFiles()['img'];
 
             $validator=new Validator($data);
@@ -315,12 +338,13 @@ class ChantierAction{
                 foreach($errors as $error){
                     $this->toaster->makeToast($error->toString(), Toaster::ERROR);
                 }
-                return $this->redirect('adminChantiers');
+                return $this->redirect('adminChantier', ["id"=>$id]);
             }
 
 
+            if($file!=null){
             // traitement img
-            $error=$this->fileGuard($file);
+            $error=$this->fileGuard($file, $id);
             if($error !== true){
                 return $error;
             }
@@ -331,33 +355,36 @@ class ChantierAction{
             foreach($ttesPhotos as $photo){
                 if($photo->getImgPath()==$fileName){
                     $this->toaster->makeToast('La photo, identifiée par le nom que vous lui avez donné est déjà sur le serveur', Toaster::ERROR);
-                    return $this->redirect('adminChantiers');
+                    return $this->redirect('adminChantier', ["id"=>$id]);
                 }
             }
-
-            
             $imgPath=$this->container->get('img.basePath'). DIRECTORY_SEPARATOR .$fileName;
             $file->moveTo($imgPath);
             if(!$file->isMoved()){
                 $this->toaster->makeToast("Une erreur s'est produite",Toaster::ERROR);
-                return $this->redirect('adminChantiers');
+                return $this->redirect('adminChantier', ["id"=>$id]);
             }
             $vieillePhoto=$chantier->getImgPathChantier();
             $oldPath=$this->container->get('img.basePath').$vieillePhoto;
             unlink($oldPath);
+            $chantier->setImgPathChantier($fileName);
+            }
+
+
+            
+
 
 
             $chantier->setNomChantier($data['title'])
                             ->setDateChantier($data['date'])
                             ->setLieu($data['lieu'])
-                            ->setDesc($data['desc'])
-                            ->setImgPathChantier($fileName);
+                            ->setDesc($data['desc']);
 
             $this->manager->persist($chantier);
             $this->manager->flush();
 
             $this->toaster->makeToast('Chantier modifié avec succès', Toaster::SUCCESS);
-            return $this->redirect('adminChantiers');
+            return $this->redirect('adminChantier', ["id"=>$id]);
         }
 
         return $this->renderer->render('@chantier/updatePresChantier', ["chantier"=>$chantier]);
@@ -394,28 +421,34 @@ class ChantierAction{
         return $this->redirect('adminChantiers');
     }
 
+    //pb fileGaurd laisse passer trop gros et pdf
     /**
      * check si le file ajouté respecte bien ma volonté, taille, type etc
      *
      * @param UploadedFile $file
      * @return void
      */
-    public function fileGuard(UploadedFile $file){
+    public function fileGuard(UploadedFile $file, $id=null){
+        if($file->getSize()>=8388608){
+            $this->toaster->makeToast("La taille de l'image doit être inférieure à 2MO", Toaster::ERROR);
+            return $this->redirect('adminChantier', ["id"=>$id]);
+        }
+
         if($file->getError()===4){
             $this->toaster->makeToast("Une erreur est survenue lors du chargement", Toaster::ERROR);
-            return $this->redirect('adminChantiers');
+            return $this->redirect('adminChantier', ["id"=>$id]);
         }
         list($type, $format)=explode('/', $file->getClientMediaType());
 
         if(!in_array($type, ['image']) or !in_array($format, ['jpg', 'jpeg', 'png'])){
             $this->toaster->makeToast("Le format de l'image n'est pas accepté, seuls les .png, .jpeg, et .jpg sont acceptés.", Toaster::ERROR);
-            return $this->redirect('adminChantiers');
+            return $this->redirect('adminChantier', ["id"=>$id]);
         }
-
-        if($file->getSize()>2047674){
-            $this->toaster->makeToast("La taille de l'image doit etre inférieure à 2MO", Toaster::ERROR);
-            return $this->redirect('adminChantiers');
-        }
+        // 2047674 brandon
+        //2097152
+        // pas file le pb, pas le nbr, dc pb est function? ou code fait pas cette partie????
+        // qd taille file ok, fait var dump et die -> pb taille intervient avant passagz fileGaurd ? 
+        
         return true;
     }
 }
