@@ -32,3 +32,37 @@ header a{
 .pageActive{
     font-size: 1.5rem;
 }
+
+.cache{
+    display: none;
+}
+
+.photoMod{
+    position: absolute;
+    top: 35%;
+    left: 25%;
+    width: 50vw;
+    height: 30vh;
+    border: 1px grey solid;
+    border-radius: 20px;
+    background-color: rgb(199, 199, 199);
+    padding: 5%;
+}
+.photoMod p{
+    width: 100%;
+    text-align: center;
+}
+.photoMod button{
+    border: none;
+    background-color: grey;
+    color: white;
+    width: 15%;
+    border-radius: 5px;
+    margin-top: 10%;
+    margin-left: 40%;
+    font-size: 1.2rem;
+    padding: 1% 3%;
+}
+.photoMod button:hover{
+    cursor: pointer;
+}

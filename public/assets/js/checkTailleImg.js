@@ -1,24 +1,21 @@
-// select img
-// condition
-// taille inf ok
-// taille sup message + disabled envoyer
-// eventListener sur input ?
-
 const file = document.querySelector("#file");
-const submit=document.querySelector('#submit');
+let div=document.querySelector('#photoMod');
 
-document.addEventListener('click', showMeTheTruth);
+document.addEventListener('submit', showMeTheTruth);
 
 function showMeTheTruth(event){
-    if(event.target==submit){
-        // je rentre
-        console.log('yep');
-        event.preventDefault();
-        
-    }
-
     for (const filer of file.files) {
         console.log(filer.name);
         console.log(filer.size);
+        if(filer.size>2047674){
+            div.classList.remove('cache');
+            let divP=div.firstChild;
+            divP.innerHTML=`La taille de ${filer.name} est supérieure à 2MO`;
+            event.preventDefault();
+        }
     }
+}
+
+function shutDown(){
+    div.classList.add('cache');
 }

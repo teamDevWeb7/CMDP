@@ -16,6 +16,11 @@
 
     <h2>Ajouter une image</h2>
     <p>Les images doivent être de type png, jpeg ou jpg et d'une taille maximale de 2MO.</p>
+
+    <div class="cache photoMod" id="photoMod"><p></p>
+        <button onclick="shutDown()">OK</button>
+    </div>
+
     <form method="POST" enctype="multipart/form-data">
         <input name="img" type="file" id="file">
         <label for="txt">Ajouter la description :</label>
