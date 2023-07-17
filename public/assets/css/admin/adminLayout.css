@@ -51,6 +51,7 @@ header a{
 .photoMod p{
     width: 100%;
     text-align: center;
+    margin: 0;
 }
 .photoMod button{
     border: none;
@@ -58,7 +59,7 @@ header a{
     color: white;
     width: 15%;
     border-radius: 5px;
-    margin-top: 10%;
+    margin-top: 35px;
     margin-left: 40%;
     font-size: 1.2rem;
     padding: 1% 3%;

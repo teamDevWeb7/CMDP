@@ -3,6 +3,8 @@ let div=document.querySelector('#photoMod');
 
 document.addEventListener('submit', showMeTheTruth);
 
+//creation de noeud=+propre?
+
 function showMeTheTruth(event){
     for (const filer of file.files) {
         console.log(filer.name);

@@ -15,6 +15,11 @@
     <p id="att"><span>Attention</span> toute modification est définitive.</p>
 
     <p>Les images doivent être de type png, jpeg ou jpg et d'une taille maximale de 2MO.</p>
+
+    <div class="cache photoMod" id="photoMod"><p></p>
+        <button onclick="shutDown()">OK</button>
+    </div>
+
     <form method="POST" enctype="multipart/form-data">
         <label for="title">Nom du chantier</label>
         <input type="text" name="title" value="{{chantier.nomChantier}}" maxlength="45">
@@ -25,10 +30,13 @@
         <label for="desc">Description du chantier</label>
         <textarea name="desc" maxlength="210" rows="5">{{chantier.desc}}</textarea>
         <label for="img">Image</label>
-        <input name="img" type="file">
+        <input name="img" type="file" id="file">
         <div ><img src="{{assets('/assets/imgs/chantiers/'~chantier.imgPathChantier) }}" style="width:100px"></div>
         {{csrf()}}
         <input type="submit" value="Modifier">
     </form>
 
+{% endblock %}
+{% block scripts %}
+    <script src="{{ assets('/assets/js/checkTailleImg.js') }}"></script>
 {% endblock %}
