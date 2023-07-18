@@ -319,7 +319,6 @@ class ChantierAction{
         if($method=='POST'){
             $data=$request->getParsedBody();
 
-            // mettre btn je veux changer l img -> if selected -> traitement
             $file=$request->getUploadedFiles()['img'];
 
             $validator=new Validator($data);
@@ -331,8 +330,7 @@ class ChantierAction{
                 return $this->redirect('adminChantier', ["id"=>$id]);
             }
 
-
-            if($file!=null){
+            if(sizeof($file)>0 && $file->getError() !==4){
             // traitement img
             $error=$this->fileGuard($file, $id);
             if($error !== true){
