@@ -21,22 +21,9 @@
 
     <section>
         <div>
-            {# {% for photo in photos %}
-            <article class="grand" id="gd_{{photo.id}}">
-                <img src="{{assets('/assets/imgs/chantiers/'~ photo.imgPath) }}" alt="Photo provenant du chantier">
-                <div>
-                    <p>{{photo.descImg}}</p>
-                </div>
-            </article>
-            {% endfor %} #}
-
             <img src="{{assets('/assets/imgs/chantiers/'~chantier.imgPathChantier) }}" alt="image représentant du chantier" id="img1" style="opacity:1">
-            <div><p>
-                    {{photo.descImg}}
-                </p>
+            <div><p></p>
             </div>
-            
-
         </div>
         
 
@@ -44,7 +31,7 @@
         <aside>
             {% for photo in photos %}
             <article class="miniature"  id="mini_{{photo.id}}">
-                <img src="{{assets('/assets/imgs/chantiers/'~ photo.imgPath) }}" alt="Photo provenant du chantier">
+                <img src="{{assets('/assets/imgs/chantiers/'~ photo.imgPath) }}" alt="Photo provenant du chantier"><p>{{photo.descImg}}</p>
             </article>
             {% endfor %}
         </aside>

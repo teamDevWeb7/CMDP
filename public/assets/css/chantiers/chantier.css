@@ -98,6 +98,9 @@ main div div p{
     text-align: justify;
     margin-top: 0;
 }
+aside article p{
+    display: none;
+}
 
 
 
