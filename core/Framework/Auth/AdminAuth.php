@@ -68,7 +68,7 @@ class AdminAuth{
      */
     private function setTimestamp(): void
     {
-        $time = 5900;
+        $time = 59;
         $this->session->set('timestamp', time() + $time);
     }
 }
