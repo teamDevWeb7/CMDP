@@ -185,16 +185,6 @@ class ChantierAction{
         if($method=='POST'){
             $data=$request->getParsedBody();
 
-            
-
-            // if($request->getUploadedFiles()['img']->getSize()>=2047674){
-            //     $this->toaster->makeToast("La taille de l'image doit être inférieure à 2MO", Toaster::ERROR);
-            //     return $this->redirect('adminChantier', ["id"=>$id]);
-            // }else{
-            //     $file=$request->getUploadedFiles()['img'];
-            // }
-
-
             $file=$request->getUploadedFiles()['img'];
             
 
@@ -329,7 +319,6 @@ class ChantierAction{
         if($method=='POST'){
             $data=$request->getParsedBody();
 
-            // mettre btn je veux changer l img -> if selected -> traitement
             $file=$request->getUploadedFiles()['img'];
 
             $validator=new Validator($data);
@@ -341,8 +330,7 @@ class ChantierAction{
                 return $this->redirect('adminChantier', ["id"=>$id]);
             }
 
-
-            if($file!=null){
+            if(sizeof($file)>0 && $file->getError() !==4){
             // traitement img
             $error=$this->fileGuard($file, $id);
             if($error !== true){
